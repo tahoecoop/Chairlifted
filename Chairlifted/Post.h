@@ -19,6 +19,7 @@
 @property (nonatomic) PFFile *image;
 @property (nonatomic) NSSet *comments;
 @property (nonatomic) NSDate *createdAt;
+@property (nonatomic) int voteCount;
 
 + (void)load;
 + (NSString *)parseClassName;

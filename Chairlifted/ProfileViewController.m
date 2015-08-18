@@ -7,31 +7,41 @@
 //
 
 #import "ProfileViewController.h"
+#import "User.h"
+#import "UIAlertController+UIImagePicker.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UIImagePickerControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
 @implementation ProfileViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setUpUser
+{
+    User *user = [User currentUser];
+    self.userNameLabel.text = user.username;
+    self.imageView.image = [UIImage imageWithData:user.profileImage.getData];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)onPhotoEditButtonPressed:(UIButton *)sender
+{
+    UIAlertController *alert = [UIAlertController prepareForImagePicker:self];
+    [self presentViewController:alert animated:YES completion:nil];
 }
-*/
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.imageView.image = info[UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

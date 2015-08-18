@@ -38,6 +38,7 @@
 		BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C6B1B8296160083E71E /* ProfileViewController.m */; };
 		BA6F8C6F1B8296380083E71E /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C6E1B8296380083E71E /* DashboardViewController.m */; };
 		BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C711B8296640083E71E /* NetworkRequests.m */; };
+		BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		BA6F8C6E1B8296380083E71E /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		BA6F8C701B8296640083E71E /* NetworkRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequests.h; sourceTree = "<group>"; };
 		BA6F8C711B8296640083E71E /* NetworkRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRequests.m; sourceTree = "<group>"; };
+		BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+UIImagePicker.h"; sourceTree = "<group>"; };
+		BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+UIImagePicker.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 				BA6F8C601B8280F70083E71E /* Comment.m */,
 				BA6F8C701B8296640083E71E /* NetworkRequests.h */,
 				BA6F8C711B8296640083E71E /* NetworkRequests.m */,
+				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
+				BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 			files = (
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
+				BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */,
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
 				BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,

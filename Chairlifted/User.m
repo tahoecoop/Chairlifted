@@ -10,13 +10,13 @@
 
 @implementation User
 
-@dynamic name;
 @dynamic username;
 @dynamic email;
 @dynamic friends;
 @dynamic favoriteResorts;
 @dynamic posts;
 @dynamic runs;
+@dynamic profileImage;
 
 + (void)load
 {

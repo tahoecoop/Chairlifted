@@ -7,31 +7,76 @@
 //
 
 #import "CreatePostViewController.h"
+#import "Post.h"
+#import "UIAlertController+UIImagePicker.h"
 
 @interface CreatePostViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
+@property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
 @implementation CreatePostViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)onCancelButtonPressed:(UIBarButtonItem *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)onPostButtonPressed:(UIBarButtonItem *)sender
+{
+    Post *post = [Post new];
+    post.title = self.postTitleTextField.text;
+    post.text = self.bodyTextView.text;
+
+    if (self.imageView.image)
+    {
+        post.image = [PFFile fileWithData: UIImageJPEGRepresentation(self.imageView.image, 1.0)];
+    }
+
+    post.user = [User currentUser];
+    post.voteCount = 0;
+
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+     {
+         if (!error)
+         {
+             [self dismissViewControllerAnimated:YES completion:nil];
+         }
+         else
+         {
+             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+             {
+                 [self dismissViewControllerAnimated:YES completion:nil];
+             }];
+
+             [alert addAction:dismiss];
+             [self presentViewController:alert animated:YES completion:nil];
+         }
+     }];
 }
-*/
+- (IBAction)addPhotoButtonPressed:(UIButton *)sender
+{
+    UIAlertController *alert = [UIAlertController prepareForImagePicker:self];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.imageView.image = info[UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

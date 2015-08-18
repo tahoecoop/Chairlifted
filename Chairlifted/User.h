@@ -12,13 +12,13 @@
 
 @interface User : PFUser <PFSubclassing>
 
-@property (nonatomic) NSString *name;
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *email;
 @property (nonatomic) NSSet *friends;
 @property (nonatomic) NSSet *runs;
 @property (nonatomic) NSSet *posts;
 @property (nonatomic) NSSet *favoriteResorts;
+@property (nonatomic) PFFile *profileImage;
 
 + (void)load;
 

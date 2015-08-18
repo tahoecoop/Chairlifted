@@ -16,6 +16,7 @@
 @dynamic image;
 @dynamic comments;
 @dynamic createdAt;
+@dynamic voteCount;
 
 + (void)load
 {
