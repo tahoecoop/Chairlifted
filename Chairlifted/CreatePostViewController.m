@@ -9,6 +9,7 @@
 #import "CreatePostViewController.h"
 #import "Post.h"
 #import "UIAlertController+UIImagePicker.h"
+#import <AFNetworkReachabilityManager.h>
 
 @interface CreatePostViewController ()
 
@@ -24,6 +25,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//
+//        NSLog(@"Reachability changed: %@", AFStringFromNetworkReachabilityStatus(status));
+//
+//
+//        switch (status) {
+//            case AFNetworkReachabilityStatusReachableViaWWAN:
+//            case AFNetworkReachabilityStatusReachableViaWiFi:
+//                // -- Reachable -- //
+//                NSLog(@"Reachable");
+//                break;
+//            case AFNetworkReachabilityStatusNotReachable:
+//            default:
+//                // -- Not reachable -- //
+//                NSLog(@"Not Reachable");
+//                break;
+//        }
+//        
+//    }];
+
 }
 
 
@@ -35,6 +59,7 @@
 
 - (IBAction)onPostButtonPressed:(UIBarButtonItem *)sender
 {
+
     Post *post = [Post new];
     post.title = self.postTitleTextField.text;
     post.text = self.bodyTextView.text;
@@ -47,25 +72,36 @@
     post.user = [User currentUser];
     post.voteCount = 0;
 
-    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-     {
-         if (!error)
-         {
-             [self dismissViewControllerAnimated:YES completion:nil];
-         }
-         else
-         {
-             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
-             UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-             {
-                 [self dismissViewControllerAnimated:YES completion:nil];
-             }];
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
 
-             [alert addAction:dismiss];
-             [self presentViewController:alert animated:YES completion:nil];
-         }
-     }];
+        [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if (!error){
+                 [self dismissViewControllerAnimated:YES completion:nil];
+             }
+             else {
+                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+                 UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                               [self dismissViewControllerAnimated:YES completion:nil];
+                                           }];
+
+                 [alert addAction:dismiss];
+                 [self presentViewController:alert animated:YES completion:nil];
+             } 
+         }];
+    } else {
+        [post saveEventually];
+
+        UIAlertController *offlineAlert = [UIAlertController alertControllerWithTitle:@"Offline" message:@"You have submitted a post offline. This post will be saved locally for now. Next time you open Chairlifted with Internet, it will automatically be saved" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [offlineAlert addAction:dismiss];
+        [self presentViewController:offlineAlert animated:YES completion:nil];
+    }
 }
+
+
 - (IBAction)addPhotoButtonPressed:(UIButton *)sender
 {
     UIAlertController *alert = [UIAlertController prepareForImagePicker:self];
