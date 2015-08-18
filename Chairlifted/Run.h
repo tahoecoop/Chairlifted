@@ -12,9 +12,11 @@
 
 @interface Run : PFObject <PFSubclassing>
 
-@property (nonatomic) float *relativeAltitude;
-@property (nonatomic) float *speed;
-@property (nonatomic) float *timeOfRun;
+@property (nonatomic) float relativeAltitude;
+@property (nonatomic) NSMutableArray *speed;
+@property (nonatomic) double topSpeed;
+@property (nonatomic) double avgSpeed;
+@property (nonatomic) float timeOfRun;
 @property (nonatomic) NSDate *createdAt;
 
 + (void)load;

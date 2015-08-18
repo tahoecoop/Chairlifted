@@ -92,7 +92,7 @@
     } else {
         [post saveEventually];
 
-        UIAlertController *offlineAlert = [UIAlertController alertControllerWithTitle:@"Offline" message:@"You have submitted a post offline. This post will be saved locally for now. Next time you open Chairlifted with Internet, it will automatically be saved" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *offlineAlert = [UIAlertController alertControllerWithTitle:@"Offline" message:@"You have submitted a post offline. This post will be saved locally for now. Next time you open Chairlifted with Internet, it will automatically be saved." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];

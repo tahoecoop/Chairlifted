@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
 		BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C151B8253280083E71E /* AppDelegate.m */; };
 		BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C171B8253280083E71E /* Chairlifted.xcdatamodeld */; };
@@ -57,6 +58,8 @@
 		14ADEADAE442867E661D0CD0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3977807EA09C743BC022FA86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		78ED0421E622472209EE7C13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
+		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		BA6F8C0D1B8253270083E71E /* Chairlifted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chairlifted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6F8C111B8253270083E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6F8C121B8253280083E71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				BA6F8C6B1B8296160083E71E /* ProfileViewController.m */,
 				BA6F8C6D1B8296380083E71E /* DashboardViewController.h */,
 				BA6F8C6E1B8296380083E71E /* DashboardViewController.m */,
+				9648D03A1B83AB090062BA99 /* StatsViewController.h */,
+				9648D03B1B83AB090062BA99 /* StatsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				BA6F8C131B8253280083E71E /* main.m in Sources */,
 				BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */,
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
+				9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
