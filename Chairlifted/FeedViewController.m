@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 #import "Post.h"
 #import "User.h"
+#import "CustomFeedTableViewCell.h"
 
 @interface FeedViewController ()
 
@@ -68,10 +69,26 @@
     return self.posts.count;
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    [self configureCell:cell forRowAtIndexPath:indexPath];
     return cell;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height;
+    
+    return height;
+}
+
+- (void)configureCell:(CustomFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CustomFeedTableViewCell *postCell = (CustomFeedTableViewCell *)cell;
+
 }
 
 

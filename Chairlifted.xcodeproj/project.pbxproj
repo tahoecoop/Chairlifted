@@ -39,6 +39,7 @@
 		BA6F8C6F1B8296380083E71E /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C6E1B8296380083E71E /* DashboardViewController.m */; };
 		BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C711B8296640083E71E /* NetworkRequests.m */; };
 		BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */; };
+		BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C7A1B8386A20083E71E /* CustomFeedTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,8 @@
 		BA6F8C711B8296640083E71E /* NetworkRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRequests.m; sourceTree = "<group>"; };
 		BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+UIImagePicker.h"; sourceTree = "<group>"; };
 		BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+UIImagePicker.m"; sourceTree = "<group>"; };
+		BA6F8C791B8386A20083E71E /* CustomFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFeedTableViewCell.h; sourceTree = "<group>"; };
+		BA6F8C7A1B8386A20083E71E /* CustomFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFeedTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +226,8 @@
 				BA6F8C711B8296640083E71E /* NetworkRequests.m */,
 				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
 				BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */,
+				BA6F8C791B8386A20083E71E /* CustomFeedTableViewCell.h */,
+				BA6F8C7A1B8386A20083E71E /* CustomFeedTableViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			files = (
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
+				BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */,
 				BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */,
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
 				BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */,
@@ -560,6 +566,7 @@
 				BA6F8C351B8253280083E71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA6F8C361B8253280083E71E /* Build configuration list for PBXNativeTarget "ChairliftedTests" */ = {
 			isa = XCConfigurationList;
@@ -568,6 +575,7 @@
 				BA6F8C381B8253280083E71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
