@@ -116,7 +116,7 @@
     self.distanceTraveled = [self.startLocation distanceFromLocation:self.endLocation];
     double sum = 0;
     for (NSNumber *speed in self.speedsArray) {
-        sum += [speed doubleValue];
+        sum += fabs([speed doubleValue]);
     }
     self.avgSpeed = sum / self.speedsArray.count;
     self.topSpeed = [[self.speedsArray valueForKeyPath:@"@max.self"]doubleValue];
