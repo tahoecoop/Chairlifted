@@ -102,7 +102,6 @@
 
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [self showDataOnLabels];
 
     for (CLLocation *location in locations) {
         NSNumber *speed = [[NSNumber alloc]initWithDouble:fabs(location.speed)];
@@ -119,7 +118,8 @@
     for (NSNumber *speed in self.speedsArray) {
         sum += fabs([speed doubleValue]);
     }
-    self.avgSpeed = sum / self.speedsArray.count;
+    self.avgSpeed = self.distanceTraveled / self.timeElapsed;
+    //  sum / self.speedsArray.count;
     self.topSpeed = [[self.speedsArray valueForKeyPath:@"@max.self"]doubleValue];
 
     NSTimeInterval time = self.timeEnded.timeIntervalSince1970-self.timeCreated.timeIntervalSince1970;
