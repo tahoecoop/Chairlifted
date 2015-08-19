@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 @interface PostDetailViewController : UIViewController
+
+@property (nonatomic) Post *post;
 
 @end

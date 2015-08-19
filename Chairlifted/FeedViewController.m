@@ -10,10 +10,17 @@
 #import "Post.h"
 #import "User.h"
 #import "CustomFeedTableViewCell.h"
+#import "NSDate+TimePassage.h"
+#import "NetworkRequests.h"
+#import "CustomFeedWithPhotoTableViewCell.h"
+#import "PostDetailViewController.h"
 
 @interface FeedViewController ()
 
-@property (nonatomic) NSMutableArray *posts;
+@property (nonatomic) NSArray *posts;
+@property (nonatomic) CustomFeedTableViewCell *prototypeCell;
+@property (nonatomic) CustomFeedWithPhotoTableViewCell *photoPrototypeCell;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -25,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+
+
 
 }
 
@@ -40,6 +51,15 @@
         [loginVC setSignUpController:signupVC];
         [self presentViewController:loginVC animated:YES completion:nil];
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [NetworkRequests getPostsWithCompletion:^(NSArray *array)
+     {
+         self.posts = [NSArray arrayWithArray:array];
+         [self.tableView reloadData];
+     }];
 }
 
 
@@ -72,24 +92,94 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    [self configureCell:cell forRowAtIndexPath:indexPath];
-    return cell;
+    Post *post = self.posts[indexPath.row];
+    if (post.image)
+    {
+        CustomFeedWithPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellWithImage"];
+        [self configureCell:cell forRowAtIndexPath:indexPath];
+        return cell;
+    }
+    else
+    {
+        CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        [self configureCell:cell forRowAtIndexPath:indexPath];
+        return cell;
+    }
 }
 
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height;
-    
-    return height;
+    if ([cell isKindOfClass:[CustomFeedTableViewCell class]])
+    {
+        CustomFeedTableViewCell *textCell = (CustomFeedTableViewCell *)cell;
+        Post *post = self.posts[indexPath.row];
+        textCell.postLabel.text = post.title;
+        textCell.authorLabel.text = post.author.username;
+        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.comments.count];
+        textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
+        textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.voteCount];
+    }
+    else if ([cell isKindOfClass:[CustomFeedWithPhotoTableViewCell class]])
+    {
+        CustomFeedWithPhotoTableViewCell *textCell = (CustomFeedWithPhotoTableViewCell *)cell;
+        Post *post = self.posts[indexPath.row];
+        textCell.titleLabel.text = post.title;
+        textCell.authorLabel.text = post.author.username;
+        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.comments.count];
+        textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
+        textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.voteCount];
+        textCell.imageView.image = [UIImage imageWithData:post.image.getData];
+    }
 }
 
-- (void)configureCell:(CustomFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    Post *post = self.posts[indexPath.row];
+//    if (post.image)
+//    {
+//        [self configureCell:self.prototypeCell forRowAtIndexPath:indexPath];
+//        [self.prototypeCell layoutIfNeeded];
+//        CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//        return size.height + 1;
+//    }
+//    else
+//    {
+//        [self configureCell:self.photoPrototypeCell forRowAtIndexPath:indexPath];
+//        [self.photoPrototypeCell layoutIfNeeded];
+//        CGSize size = [self.photoPrototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//        return size.height + 1;
+//    }
+//}
+
+- (CustomFeedTableViewCell *)prototypeCell
 {
-    CustomFeedTableViewCell *postCell = (CustomFeedTableViewCell *)cell;
-
+    if (!_prototypeCell)
+    {
+        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    }
+    return _prototypeCell;
 }
+
+- (CustomFeedWithPhotoTableViewCell *)photoPrototypeCell
+{
+    if (!_photoPrototypeCell)
+    {
+        _photoPrototypeCell = [self.tableView dequeueReusableCellWithIdentifier:@"CellWithImage"];
+    }
+    return _photoPrototypeCell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if (![segue.identifier isEqualToString:@"createPost"])
+     {
+         PostDetailViewController *vc = segue.destinationViewController;
+         Post *post = self.posts[self.tableView.indexPathForSelectedRow.row];
+         vc.post = post;
+     }
+}
+
+
 
 
 @end

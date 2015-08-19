@@ -7,7 +7,25 @@
 //
 
 #import "NetworkRequests.h"
+#import "Post.h"
 
 @implementation NetworkRequests
+
++ (void)getPostsWithCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [Post query];
+    [query orderByDescending:@"hottness"];
+    [query includeKey:@"author"];
+    query.limit = 20;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if (!error)
+        {
+            complete(objects);
+        }
+    }];
+}
+
+
 
 @end

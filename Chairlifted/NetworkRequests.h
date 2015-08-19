@@ -10,4 +10,6 @@
 
 @interface NetworkRequests : NSObject
 
++ (void)getPostsWithCompletion:(void(^)(NSArray *array))complete;
+
 @end

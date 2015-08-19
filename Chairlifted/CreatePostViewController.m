@@ -44,8 +44,9 @@
         post.image = [PFFile fileWithData: UIImageJPEGRepresentation(self.imageView.image, 1.0)];
     }
 
-    post.user = [User currentUser];
+    post.author = [User currentUser];
     post.voteCount = 0;
+    [post calculateHottness];
 
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
@@ -77,6 +78,7 @@
     self.imageView.image = info[UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 @end

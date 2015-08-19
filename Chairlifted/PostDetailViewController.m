@@ -7,31 +7,98 @@
 //
 
 #import "PostDetailViewController.h"
+#import "DetailHeaderTableViewCell.h"
+#import "DetailPostImageTableViewCell.h"
+#import "DetailPostTextOnlyTableViewCell.h"
+#import "DetailActionTableViewCell.h"
+#import "DetailCommentTableViewCell.h"
 
-@interface PostDetailViewController ()
+
+
+@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation PostDetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    [self.tableView reloadData];
+//}
+
+#pragma mark - Table View Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return self.post.comments.count;
+    }
 }
-*/
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (self.post.image)
+        {
+            DetailPostImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImagePost"];
+
+            return cell;
+        }
+        else
+        {
+            DetailPostTextOnlyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextPost"];
+
+            return cell;
+        }
+    }
+    else
+    {
+        DetailCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+        return cell;
+    }
+
+}
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        DetailHeaderTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
+        return header;
+    }
+    else
+    {
+        DetailActionTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"Action"];
+        return header;
+    }
+}
+
+
+
+
+
 
 @end
