@@ -45,7 +45,6 @@
     [super viewDidLoad];
 
     self.timeElapsed = 0;
-//    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%f seconds",self.timeElapsed];
     self.speedsArray = [NSMutableArray new];
     self.locationManager = [[CLLocationManager alloc]init];
     [self.locationManager requestAlwaysAuthorization];
@@ -54,6 +53,7 @@
 //    self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%f meters",self.altitudeDelta];
 //    self.topSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.topSpeed];
 //    self.avgSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.avgSpeed];
+//    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%f seconds",self.timeElapsed];
 
     [[AFNetworkReachabilityManager sharedManager]startMonitoring];
 }
@@ -131,8 +131,6 @@
     run.timeOfRun = self.timeElapsed;
     run.speed = self.speedsArray;
     run.distanceTraveled = self.distanceTraveled;
-
-    //[run saveInBackground];
 
     if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
         [run saveInBackground];
