@@ -104,6 +104,13 @@
 
     for (CLLocation *location in locations) {
         manager.desiredAccuracy = kCLLocationAccuracyBest;
+
+        // TRY NEAREST TEN METERS IF WE STILL GET A NEGATIVE SPEED READING
+//        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+
+        // TRY NEARET HUNDRED METERS IF THE NEARESTTENMETERS MAKES IT SO WE BARELY GET ANY LOCATIONS
+//        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        
         if (location.horizontalAccuracy <= manager.desiredAccuracy) {
 
             NSNumber *speed = [[NSNumber alloc]initWithDouble:fabs(location.speed)];
