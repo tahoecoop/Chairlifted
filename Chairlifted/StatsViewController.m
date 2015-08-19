@@ -104,7 +104,7 @@
     [self showDataOnLabels];
 
     for (CLLocation *location in locations) {
-        NSNumber *speed = [[NSNumber alloc]initWithDouble:location.speed];
+        NSNumber *speed = [[NSNumber alloc]initWithDouble:fabs(location.speed)];
         [self.speedsArray addObject:speed];
     }
     self.startLocation = locations.firstObject;
