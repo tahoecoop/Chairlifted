@@ -14,26 +14,25 @@
 
 @interface StatsViewController () <CLLocationManagerDelegate>
 
-@property (nonatomic, strong) CMAltimeter *myAltimeter;
-
-@property CLLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet UIButton *onOffButton;
-@property BOOL isRecordingRun;
-@property double altitudeDelta;
+@property (weak, nonatomic) IBOutlet UILabel *topSpeedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *avgSpeedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeElapsedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeDeltaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceTraveledLabel;
+@property (weak, nonatomic) IBOutlet UIButton *onOffButton;
+@property (nonatomic, strong) CMAltimeter *myAltimeter;
+@property CLLocationManager *locationManager;
 @property CLLocation *startLocation;
 @property CLLocation *endLocation;
 @property CLLocationDistance distanceTraveled;
 @property NSMutableArray *speedsArray;
-@property double topSpeed;
-@property double avgSpeed;
-@property (weak, nonatomic) IBOutlet UILabel *topSpeedLabel;
-@property (weak, nonatomic) IBOutlet UILabel *avgSpeedLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeElapsedLabel;
-@property float timeElapsed;
 @property NSDate *timeCreated;
 @property NSDate *timeEnded;
+@property BOOL isRecordingRun;
+@property double altitudeDelta;
+@property double topSpeed;
+@property double avgSpeed;
+@property float timeElapsed;
 
 @end
 
