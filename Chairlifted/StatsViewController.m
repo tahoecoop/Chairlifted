@@ -60,11 +60,11 @@
 
 -(void)showDataOnLabels
 {
-    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%f seconds",self.timeElapsed];
-    self.distanceTraveledLabel.text = [NSString stringWithFormat:@"%f meters",self.distanceTraveled];
-    self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%f meters",self.altitudeDelta];
-    self.topSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.topSpeed];
-    self.avgSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.avgSpeed];
+    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%.2f seconds",self.timeElapsed];
+    self.distanceTraveledLabel.text = [NSString stringWithFormat:@"%.2f meters",self.distanceTraveled];
+    self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%.2f meters",self.altitudeDelta];
+    self.topSpeedLabel.text = [NSString stringWithFormat:@"%.2f m/s", self.topSpeed];
+    self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.2f m/s", self.avgSpeed];
 }
 
 
@@ -94,6 +94,7 @@
             self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%f",self.altitudeDelta];
             [self.myAltimeter stopRelativeAltitudeUpdates];
             [self saveInfo];
+            [self showDataOnLabels];
             [self.locationManager stopUpdatingLocation];
         }
     }
