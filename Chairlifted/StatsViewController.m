@@ -45,11 +45,22 @@
     [super viewDidLoad];
 
     self.timeElapsed = 0;
-    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%f seconds",self.timeElapsed];
+//    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%f seconds",self.timeElapsed];
     self.speedsArray = [NSMutableArray new];
     self.locationManager = [[CLLocationManager alloc]init];
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.delegate = self;
+//    self.distanceTraveledLabel.text = [NSString stringWithFormat:@"%f meters",self.distanceTraveled];
+//    self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%f meters",self.altitudeDelta];
+//    self.topSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.topSpeed];
+//    self.avgSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.avgSpeed];
+
+    [[AFNetworkReachabilityManager sharedManager]startMonitoring];
+}
+
+-(void)showDataOnLabels
+{
+    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%f seconds",self.timeElapsed];
     self.distanceTraveledLabel.text = [NSString stringWithFormat:@"%f meters",self.distanceTraveled];
     self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%f meters",self.altitudeDelta];
     self.topSpeedLabel.text = [NSString stringWithFormat:@"%f m/s", self.topSpeed];
@@ -67,7 +78,7 @@
             self.timeCreated = [NSDate new];
             [self.locationManager startUpdatingLocation];
             self.isRecordingRun = YES;
-            self.onOffButton.titleLabel.text = @"Stop";
+            [self.onOffButton setTitle:@"Stop" forState:UIControlStateNormal];
             self.timeElapsed = 0;
 
             NSOperationQueue *operationsQueue = [NSOperationQueue mainQueue];
@@ -79,7 +90,7 @@
 
             self.isRecordingRun = NO;
             self.timeEnded = [NSDate new];
-            self.onOffButton.titleLabel.text = @"Start";
+            [self.onOffButton setTitle:@"Start" forState:UIControlStateNormal];
             self.altitudeDeltaLabel.text = [NSString stringWithFormat:@"%f",self.altitudeDelta];
             [self.myAltimeter stopRelativeAltitudeUpdates];
             [self saveInfo];
@@ -90,6 +101,8 @@
 
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [self showDataOnLabels];
+
     for (CLLocation *location in locations) {
         NSNumber *speed = [[NSNumber alloc]initWithDouble:location.speed];
         [self.speedsArray addObject:speed];
@@ -116,8 +129,10 @@
     run.avgSpeed = self.avgSpeed;
     run.relativeAltitude = self.altitudeDelta;
     run.timeOfRun = self.timeElapsed;
-    run.createdAt = self.timeCreated;
     run.speed = self.speedsArray;
+    run.distanceTraveled = self.distanceTraveled;
+
+    //[run saveInBackground];
 
     if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
         [run saveInBackground];
@@ -132,6 +147,7 @@
         [offlineAlert addAction:dismiss];
         [self presentViewController:offlineAlert animated:YES completion:nil];
     }
+    [[AFNetworkReachabilityManager sharedManager]stopMonitoring];
 }
 
 

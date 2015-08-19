@@ -13,9 +13,9 @@
 @dynamic relativeAltitude;
 @dynamic speed;
 @dynamic timeOfRun;
-@dynamic createdAt;
 @dynamic topSpeed;
 @dynamic avgSpeed;
+@dynamic distanceTraveled;
 
 
 

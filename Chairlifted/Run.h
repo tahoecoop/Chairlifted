@@ -17,7 +17,7 @@
 @property (nonatomic) double topSpeed;
 @property (nonatomic) double avgSpeed;
 @property (nonatomic) float timeOfRun;
-@property (nonatomic) NSDate *createdAt;
+@property (nonatomic) float distanceTraveled;
 
 + (void)load;
 + (NSString *)parseClassName;
