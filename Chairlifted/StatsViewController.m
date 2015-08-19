@@ -103,8 +103,12 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 
     for (CLLocation *location in locations) {
-        NSNumber *speed = [[NSNumber alloc]initWithDouble:fabs(location.speed)];
-        [self.speedsArray addObject:speed];
+        manager.desiredAccuracy = kCLLocationAccuracyBest;
+        if (location.horizontalAccuracy <= manager.desiredAccuracy) {
+
+            NSNumber *speed = [[NSNumber alloc]initWithDouble:fabs(location.speed)];
+            [self.speedsArray addObject:speed];
+        }
     }
     self.startLocation = locations.firstObject;
     self.endLocation = locations.lastObject;
