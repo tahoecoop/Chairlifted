@@ -45,7 +45,7 @@
     }
 
     post.author = [User currentUser];
-    post.voteCount = 0;
+    post.likeCount = 0;
     [post calculateHottness];
 
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)

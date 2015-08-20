@@ -12,12 +12,20 @@
 #import "DetailPostTextOnlyTableViewCell.h"
 #import "DetailActionTableViewCell.h"
 #import "DetailCommentTableViewCell.h"
+#import "Comment.h"
+#import "NSDate+TimePassage.h"
+#import "CreateCommentWithImageViewController.h"
+#import "CreateCommentWithTextViewController.h"
+#import "NetworkRequests.h"
+#import "Like.h"
+
 
 
 
 @interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) NSArray *comments;
 
 @end
 
@@ -27,11 +35,21 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
-
-
+    self.tableView.estimatedSectionHeaderHeight = 100;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [NetworkRequests getPostComments:self.post withCompletion:^(NSArray *array)
+     {
+         self.comments = array;
+         [self.tableView reloadData];
+     }];
+
+}
 //-(void)viewDidAppear:(BOOL)animated
 //{
 //    [self.tableView reloadData];
@@ -52,7 +70,7 @@
     }
     else
     {
-        return self.post.comments.count;
+        return self.comments.count;
     }
 }
 
@@ -63,22 +81,27 @@
         if (self.post.image)
         {
             DetailPostImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImagePost"];
-
+            cell.postText.text = self.post.text;
+            cell.postImageView.image = [UIImage imageWithData:self.post.image.getData];
+            
             return cell;
         }
         else
         {
             DetailPostTextOnlyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextPost"];
-
+            cell.postText.text = self.post.text;
             return cell;
         }
     }
     else
     {
         DetailCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+        Comment *comment = self.comments[indexPath.row];
+        cell.commentAuthorLabel.text = comment.author.username;
+        cell.commentTextLabel.text = comment.text;
+        cell.commentTimeLabel.text = [NSDate determineTimePassed:comment.createdAt];
         return cell;
     }
-
 }
 
 
@@ -87,17 +110,49 @@
     if (section == 0)
     {
         DetailHeaderTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
+        header.postTitleLabel.text = self.post.title;
+        header.minutesAgoLabel.text = [NSDate determineTimePassed:self.post.createdAt];
+        header.likesLabel.text = [NSString stringWithFormat:@"%i likes",self.post.likeCount];
+        header.userNameLabel.text = self.post.author.username;
         return header;
     }
     else
     {
         DetailActionTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"Action"];
+        header.parentTableView = self.tableView;
+        header.post = self.post;
+        [header checkIfLiked];
         return header;
     }
 }
 
+- (IBAction)onCommentButtonPressed:(UIButton *)sender
+{
+    if (self.post.image)
+    {
+        [self performSegueWithIdentifier:@"photoSegue" sender:sender];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"textSegue" sender:sender];
+    }
+}
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"photoSegue"])
+    {
+        CreateCommentWithImageViewController *vc = (CreateCommentWithImageViewController *)[segue.destinationViewController topViewController];
+        vc.post = self.post;
+
+    }
+    else if ([segue.identifier isEqualToString:@"textSegue"])
+    {
+        CreateCommentWithTextViewController *vc = (CreateCommentWithTextViewController *)[segue.destinationViewController topViewController];
+        vc.post = self.post;
+    }
+}
 
 
 

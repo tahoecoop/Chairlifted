@@ -47,6 +47,10 @@
 		BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C8A1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m */; };
 		BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C8D1B8413420083E71E /* DetailActionTableViewCell.m */; };
 		BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C901B8413510083E71E /* DetailCommentTableViewCell.m */; };
+		BA757BFD1B84EC0100394195 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFC1B84EC0100394195 /* Resort.m */; };
+		BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */; };
+		BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */; };
+		BAE3D1971B853B2800BAC4EF /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1961B853B2800BAC4EF /* Like.m */; };
 		D3CE69F192DC679F97BC8BD1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ADEADAE442867E661D0CD0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +132,14 @@
 		BA6F8C8D1B8413420083E71E /* DetailActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailActionTableViewCell.m; sourceTree = "<group>"; };
 		BA6F8C8F1B8413510083E71E /* DetailCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCommentTableViewCell.h; sourceTree = "<group>"; };
 		BA6F8C901B8413510083E71E /* DetailCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCommentTableViewCell.m; sourceTree = "<group>"; };
+		BA757BFB1B84EC0100394195 /* Resort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resort.h; sourceTree = "<group>"; };
+		BA757BFC1B84EC0100394195 /* Resort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resort.m; sourceTree = "<group>"; };
+		BA757BFE1B84FB5A00394195 /* CreateCommentWithTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentWithTextViewController.h; sourceTree = "<group>"; };
+		BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithTextViewController.m; sourceTree = "<group>"; };
+		BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentWithImageViewController.h; sourceTree = "<group>"; };
+		BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithImageViewController.m; sourceTree = "<group>"; };
+		BAE3D1951B853B2800BAC4EF /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
+		BAE3D1961B853B2800BAC4EF /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,8 +277,12 @@
 				BA6F8C5A1B8280D50083E71E /* Run.m */,
 				BA6F8C5C1B8280E50083E71E /* Post.h */,
 				BA6F8C5D1B8280E50083E71E /* Post.m */,
+				BAE3D1951B853B2800BAC4EF /* Like.h */,
+				BAE3D1961B853B2800BAC4EF /* Like.m */,
 				BA6F8C5F1B8280F70083E71E /* Comment.h */,
 				BA6F8C601B8280F70083E71E /* Comment.m */,
+				BA757BFB1B84EC0100394195 /* Resort.h */,
+				BA757BFC1B84EC0100394195 /* Resort.m */,
 				BA6F8C701B8296640083E71E /* NetworkRequests.h */,
 				BA6F8C711B8296640083E71E /* NetworkRequests.m */,
 				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
@@ -290,6 +306,10 @@
 				BA6F8C6B1B8296160083E71E /* ProfileViewController.m */,
 				BA6F8C6D1B8296380083E71E /* DashboardViewController.h */,
 				BA6F8C6E1B8296380083E71E /* DashboardViewController.m */,
+				BA757BFE1B84FB5A00394195 /* CreateCommentWithTextViewController.h */,
+				BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */,
+				BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */,
+				BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */,
 				BA6F8C821B8412B90083E71E /* Custom Cells */,
 			);
 			name = "View Controllers";
@@ -451,6 +471,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAE3D1971B853B2800BAC4EF /* Like.m in Sources */,
+				BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */,
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
 				BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */,
@@ -466,6 +488,7 @@
 				BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
+				BA757BFD1B84EC0100394195 /* Resort.m in Sources */,
 				BA6F8C6F1B8296380083E71E /* DashboardViewController.m in Sources */,
 				BA6F8C131B8253280083E71E /* main.m in Sources */,
 				BA6F8C7E1B83A0D00083E71E /* NSDate+TimePassage.m in Sources */,
@@ -473,6 +496,7 @@
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
+				BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,9 @@
 @dynamic text;
 @dynamic title;
 @dynamic image;
-@dynamic comments;
 @dynamic createdAt;
-@dynamic voteCount;
+@dynamic likeCount;
+@dynamic commentCount;
 @dynamic hottness;
 
 + (void)load
@@ -31,21 +31,21 @@
 
 - (void)calculateHottness
 {
-    float likesScore = 1;
-    float commentsScore = 1;
+    float likesScore = 0;
+    float commentsScore = 0;
 
-    if (self.voteCount > 0)
+    if (self.likeCount > 0)
     {
-        likesScore = log10f(self.voteCount);
+        likesScore = log10f(self.likeCount) + 0.01;
     }
 
-    if (self.comments.count > 0)
+    if (self.commentCount > 0)
     {
-        commentsScore = roundf(log10f(self.comments.count));
+        commentsScore = log10f(self.commentCount) + 0.01;
     }
 
-    float seconds = NSTimeIntervalSince1970 / 20000;
-    self.hottness = (likesScore * seconds) + (commentsScore * seconds);
+    float seconds = NSTimeIntervalSince1970 / 86400;
+    self.hottness = likesScore + commentsScore + seconds;
 }
 
 

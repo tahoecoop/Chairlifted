@@ -1,19 +1,18 @@
 //
-//  Comment.m
+//  Like.m
 //  Chairlifted
 //
-//  Created by Benjamin COOPER on 8/17/15.
+//  Created by Benjamin COOPER on 8/19/15.
 //  Copyright (c) 2015 EBB. All rights reserved.
 //
 
-#import "Comment.h"
+#import "Like.h"
 
-@implementation Comment
+@implementation Like
 
-@dynamic author;
-@dynamic text;
-@dynamic createdAt;
+@dynamic liker;
 @dynamic post;
+
 
 + (void)load
 {
@@ -22,9 +21,7 @@
 
 + (NSString *)parseClassName
 {
-    return @"Comment";
+    return @"Like";
 }
-
-
 
 @end

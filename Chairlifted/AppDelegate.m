@@ -12,6 +12,8 @@
 #import "Run.h"
 #import "Post.h"
 #import "Comment.h"
+#import "Resort.h"
+#import "Like.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +32,8 @@
     [Run registerSubclass];
     [Post registerSubclass];
     [Comment registerSubclass];
+    [Resort registerSubclass];
+    [Like registerSubclass];
 
     // Initialize Parse.
     [Parse setApplicationId:@"tToLZMQ5nL7e5kvFQNS2Z9QPmSFUQEV229IAnRQ1"

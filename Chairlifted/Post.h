@@ -17,10 +17,11 @@
 @property (nonatomic) NSString *text;
 @property (nonatomic) NSString *title;
 @property (nonatomic) PFFile *image;
-@property (nonatomic) NSSet *comments;
 @property (nonatomic) NSDate *createdAt;
-@property (nonatomic) int voteCount;
+@property (nonatomic) int likeCount;
 @property (nonatomic) float hottness;
+@property (nonatomic) int commentCount;
+
 
 + (void)load;
 + (NSString *)parseClassName;
