@@ -34,6 +34,7 @@
              if (succeeded)
              {
                  self.post.likeCount++;
+                 [self.post calculateHottness];
                  [self.post saveInBackgroundWithBlock:^(BOOL succeededTwo, NSError *error)
                   {
                       if (succeededTwo)
@@ -53,6 +54,7 @@
              {
                  self.like = nil;
                  self.post.likeCount--;
+                 [self.post calculateHottness];
                  [self.post saveInBackgroundWithBlock:^(BOOL succeededTwo, NSError *error)
                   {
                       if (succeededTwo)

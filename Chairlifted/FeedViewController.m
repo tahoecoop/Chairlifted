@@ -38,7 +38,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.skipCount = 30;
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
 }
@@ -58,11 +57,14 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.skipCount = 30;
+
     [NetworkRequests getPostsWithSkipCount:0 completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
      }];
+    
 }
 
 
@@ -133,52 +135,54 @@
         textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
-        textCell.postImageView.image = [UIImage imageWithData:post.image.getData];
+//        textCell.postImageView.image = [UIImage imageWithData:post.image.getData];
+        textCell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.2];
     }
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.continueLoading)
-    {
+//    if (self.continueLoading)
+//    {
         if (indexPath.row == self.skipCount - 5)
         {
             [NetworkRequests getPostsWithSkipCount:self.skipCount completion:^(NSArray *array)
             {
-                if (array.count < 30)
-                {
-                    self.continueLoading = NO;
-                }
+//                if (array.count < 30)
+//                {
+//                    self.continueLoading = NO;
+//                }
 
-                [self.tableView beginUpdates];
+//                [self.tableView beginUpdates];
                 [self.posts addObjectsFromArray:array];
-                NSIndexPath *indexPathBottom = [NSIndexPath indexPathForRow:self.skipCount inSection:0];
+//                NSIndexPath *indexPathBottom = [NSIndexPath indexPathForRow:self.skipCount inSection:0];
 
-                [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPathBottom] withRowAnimation:UITableViewRowAnimationTop];
-                [self.tableView endUpdates];
+//                [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPathBottom] withRowAnimation:UITableViewRowAnimationTop];
+//                [self.tableView endUpdates];
                 self.skipCount = self.skipCount + 30;
+                [self.tableView reloadData];
 
             }];
         }
-    }
+//    }
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat currentOffsetX = scrollView.contentOffset.x;
-    CGFloat currentOffsetY = scrollView.contentOffset.y;
-    CGFloat contentHeight = scrollView.contentSize.height;
-
-    if (currentOffsetY < (contentHeight / 8.0))
-    {
-        scrollView.contentOffset = CGPointMake(currentOffsetX, (currentOffsetY + (contentHeight / 2)));
-    }
-
-    if (currentOffsetY >((contentHeight * 6) / 8.0))
-    {
-        scrollView.contentOffset = CGPointMake(currentOffsetX, (currentOffsetY - (contentHeight / 2)));
-    }
-}
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    CGFloat currentOffsetX = scrollView.contentOffset.x;
+//    CGFloat currentOffsetY = scrollView.contentOffset.y;
+//    CGFloat contentHeight = scrollView.contentSize.height;
+//
+//    if (currentOffsetY < (contentHeight / 8.0))
+//    {
+//        scrollView.contentOffset = CGPointMake(currentOffsetX, (currentOffsetY + (contentHeight / 2)));
+//    }
+//
+//    if (currentOffsetY >((contentHeight * 6) / 8.0))
+//    {
+//        scrollView.contentOffset = CGPointMake(currentOffsetX, (currentOffsetY - (contentHeight / 2)));
+//    }
+//}
 
 
 - (CustomFeedTableViewCell *)prototypeCell

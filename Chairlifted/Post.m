@@ -44,8 +44,16 @@
         commentsScore = log10f(self.commentCount) + 0.01;
     }
 
-    float seconds = NSTimeIntervalSince1970 / 86400;
-    self.hottness = likesScore + commentsScore + seconds;
+    if (self.createdAt)
+    {
+        float seconds = [self.createdAt timeIntervalSinceReferenceDate] / 86400;
+        self.hottness = likesScore + commentsScore + seconds;
+    }
+    else
+    {
+        float seconds = [[NSDate date] timeIntervalSinceReferenceDate] / 86400;
+        self.hottness = likesScore + commentsScore + seconds;
+    }
 }
 
 
