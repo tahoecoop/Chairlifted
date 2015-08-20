@@ -181,6 +181,20 @@
 		13789AC426B7F6C40BF5B935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA6F8C511B827B0C0083E71E /* Social.framework */,
+				BA6F8C4F1B827B060083E71E /* Accounts.framework */,
+				BA6F8C4D1B827AFB0083E71E /* libsqlite3.dylib */,
+				BA6F8C4B1B827AEE0083E71E /* libz.dylib */,
+				BA6F8C491B827AE40083E71E /* SystemConfiguration.framework */,
+				BA6F8C471B827ADC0083E71E /* StoreKit.framework */,
+				BA6F8C451B827AD60083E71E /* Security.framework */,
+				BA6F8C431B827ACF0083E71E /* QuartzCore.framework */,
+				BA6F8C411B827AC70083E71E /* CoreGraphics.framework */,
+				BA6F8C3F1B827ABD0083E71E /* CFNetwork.framework */,
+				BA6F8C3D1B827AB70083E71E /* AudioToolbox.framework */,
+				BA6F8C531B827E440083E71E /* ParseUI.framework */,
+				BA6F8C3B1B8278B60083E71E /* Parse.framework */,
+				BA6F8C391B8278AA0083E71E /* Bolts.framework */,
 				14ADEADAE442867E661D0CD0 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -201,20 +215,6 @@
 				BA6F8C0F1B8253270083E71E /* Chairlifted */,
 				BA6F8C2C1B8253280083E71E /* ChairliftedTests */,
 				BA6F8C0E1B8253270083E71E /* Products */,
-				BA6F8C511B827B0C0083E71E /* Social.framework */,
-				BA6F8C4F1B827B060083E71E /* Accounts.framework */,
-				BA6F8C4D1B827AFB0083E71E /* libsqlite3.dylib */,
-				BA6F8C4B1B827AEE0083E71E /* libz.dylib */,
-				BA6F8C491B827AE40083E71E /* SystemConfiguration.framework */,
-				BA6F8C471B827ADC0083E71E /* StoreKit.framework */,
-				BA6F8C451B827AD60083E71E /* Security.framework */,
-				BA6F8C431B827ACF0083E71E /* QuartzCore.framework */,
-				BA6F8C411B827AC70083E71E /* CoreGraphics.framework */,
-				BA6F8C3F1B827ABD0083E71E /* CFNetwork.framework */,
-				BA6F8C3D1B827AB70083E71E /* AudioToolbox.framework */,
-				BA6F8C531B827E440083E71E /* ParseUI.framework */,
-				BA6F8C3B1B8278B60083E71E /* Parse.framework */,
-				BA6F8C391B8278AA0083E71E /* Bolts.framework */,
 				2E20F20CA20FC1B8EB7F4008 /* Pods */,
 				13789AC426B7F6C40BF5B935 /* Frameworks */,
 			);
