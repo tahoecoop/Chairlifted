@@ -311,6 +311,11 @@
 				BA6F8C6E1B8296380083E71E /* DashboardViewController.m */,
 				9648D03A1B83AB090062BA99 /* StatsViewController.h */,
 				9648D03B1B83AB090062BA99 /* StatsViewController.m */,
+				BA757BFE1B84FB5A00394195 /* CreateCommentWithTextViewController.h */,
+				BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */,
+				BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */,
+				BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */,
+				BA6F8C821B8412B90083E71E /* Custom Cells */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */,
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
 				9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */,
+				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
 				BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */,
 			);
