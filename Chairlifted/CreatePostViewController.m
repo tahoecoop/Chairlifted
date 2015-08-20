@@ -69,8 +69,9 @@
         post.image = [PFFile fileWithData: UIImageJPEGRepresentation(self.imageView.image, 1.0)];
     }
 
-    post.user = [User currentUser];
-    post.voteCount = 0;
+    post.author = [User currentUser];
+    post.likeCount = 0;
+    [post calculateHottness];
 
     if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
 
@@ -113,6 +114,7 @@
     self.imageView.image = info[UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 @end

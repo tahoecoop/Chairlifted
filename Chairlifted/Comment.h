@@ -14,11 +14,10 @@
 
 @interface Comment : PFObject <PFSubclassing>
 
-@property (nonatomic) User *user;
+@property (nonatomic) User *author;
 @property (nonatomic) NSString *text;
-@property (nonatomic) Post *post;
 @property (nonatomic) NSDate *createdAt;
-
+@property (nonatomic) Post *post;
 
 + (void)load;
 + (NSString *)parseClassName;

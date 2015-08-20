@@ -10,13 +10,14 @@
 
 @implementation Post
 
-@dynamic user;
+@dynamic author;
 @dynamic text;
 @dynamic title;
 @dynamic image;
-@dynamic comments;
 @dynamic createdAt;
-@dynamic voteCount;
+@dynamic likeCount;
+@dynamic commentCount;
+@dynamic hottness;
 
 + (void)load
 {
@@ -27,6 +28,26 @@
 {
     return @"Post";
 }
+
+- (void)calculateHottness
+{
+    float likesScore = 0;
+    float commentsScore = 0;
+
+    if (self.likeCount > 0)
+    {
+        likesScore = log10f(self.likeCount) + 0.01;
+    }
+
+    if (self.commentCount > 0)
+    {
+        commentsScore = log10f(self.commentCount) + 0.01;
+    }
+
+    float seconds = NSTimeIntervalSince1970 / 86400;
+    self.hottness = likesScore + commentsScore + seconds;
+}
+
 
 
 

@@ -1,5 +1,5 @@
 //
-//  CustomFeedTableViewCell.h
+//  DetailHeaderTableViewCell.h
 //  Chairlifted
 //
 //  Created by Benjamin COOPER on 8/18/15.
@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomFeedTableViewCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UILabel *postLabel;
-@property (weak, nonatomic) IBOutlet UILabel *repliesLabel;
+@interface DetailHeaderTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *postTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesAgoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-
-
-
 
 @end
