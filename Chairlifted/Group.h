@@ -14,6 +14,8 @@
 @property (nonatomic) BOOL isPrivate;
 @property (nonatomic) NSDate *mostRecentPost;
 @property (nonatomic) int memberQuantity;
+@property (nonatomic) NSString *purpose;
+@property (nonatomic) PFFile *image;
 
 
 + (void)load;

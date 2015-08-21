@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
+		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
+		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
 		BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C151B8253280083E71E /* AppDelegate.m */; };
 		BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C171B8253280083E71E /* Chairlifted.xcdatamodeld */; };
@@ -75,6 +77,10 @@
 		78ED0421E622472209EE7C13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		BA215E181B8787170087DBEB /* GroupFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedViewController.h; sourceTree = "<group>"; };
+		BA215E191B8787170087DBEB /* GroupFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedViewController.m; sourceTree = "<group>"; };
+		BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedHeaderTableViewCell.h; sourceTree = "<group>"; };
+		BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedHeaderTableViewCell.m; sourceTree = "<group>"; };
 		BA6F8C0D1B8253270083E71E /* Chairlifted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chairlifted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6F8C111B8253270083E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6F8C121B8253280083E71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -333,6 +339,8 @@
 				BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */,
 				BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */,
 				BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */,
+				BA215E181B8787170087DBEB /* GroupFeedViewController.h */,
+				BA215E191B8787170087DBEB /* GroupFeedViewController.m */,
 				BA6F8C821B8412B90083E71E /* Custom Cells */,
 			);
 			name = "View Controllers";
@@ -357,6 +365,8 @@
 				BA6F8C901B8413510083E71E /* DetailCommentTableViewCell.m */,
 				BAE3D1A11B86AD9500BAC4EF /* GroupCustomTableViewCell.h */,
 				BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */,
+				BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */,
+				BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -508,6 +518,7 @@
 				BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */,
 				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
+				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,
 				BA6F8C5B1B8280D50083E71E /* Run.m in Sources */,
 				BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */,
@@ -516,6 +527,7 @@
 				BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
+				BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */,
 				BA757BFD1B84EC0100394195 /* Resort.m in Sources */,
 				BA6F8C6F1B8296380083E71E /* GroupsViewController.m in Sources */,
 				BA6F8C131B8253280083E71E /* main.m in Sources */,

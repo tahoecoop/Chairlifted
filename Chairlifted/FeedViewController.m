@@ -59,7 +59,7 @@
 {
     self.skipCount = 30;
 
-    [NetworkRequests getPostsWithSkipCount:0 completion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 andGroup:nil completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
@@ -142,47 +142,18 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (self.continueLoading)
-//    {
-        if (indexPath.row == self.skipCount - 5)
-        {
-            [NetworkRequests getPostsWithSkipCount:self.skipCount completion:^(NSArray *array)
-            {
-//                if (array.count < 30)
-//                {
-//                    self.continueLoading = NO;
-//                }
 
-//                [self.tableView beginUpdates];
-                [self.posts addObjectsFromArray:array];
-//                NSIndexPath *indexPathBottom = [NSIndexPath indexPathForRow:self.skipCount inSection:0];
-
-//                [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPathBottom] withRowAnimation:UITableViewRowAnimationTop];
-//                [self.tableView endUpdates];
-                self.skipCount = self.skipCount + 30;
-                [self.tableView reloadData];
-
-            }];
-        }
-//    }
+    if (indexPath.row == self.skipCount - 5)
+    {
+        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:nil completion:^(NSArray *array)
+         {
+             [self.posts addObjectsFromArray:array];
+             self.skipCount = self.skipCount + 30;
+             [self.tableView reloadData];
+         }];
+    }
 }
 
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    CGFloat currentOffsetX = scrollView.contentOffset.x;
-//    CGFloat currentOffsetY = scrollView.contentOffset.y;
-//    CGFloat contentHeight = scrollView.contentSize.height;
-//
-//    if (currentOffsetY < (contentHeight / 8.0))
-//    {
-//        scrollView.contentOffset = CGPointMake(currentOffsetX, (currentOffsetY + (contentHeight / 2)));
-//    }
-//
-//    if (currentOffsetY >((contentHeight * 6) / 8.0))
-//    {
-//        scrollView.contentOffset = CGPointMake(currentOffsetX, (currentOffsetY - (contentHeight / 2)));
-//    }
-//}
 
 
 - (CustomFeedTableViewCell *)prototypeCell

@@ -14,6 +14,9 @@
 @dynamic isPrivate;
 @dynamic mostRecentPost;
 @dynamic memberQuantity;
+@dynamic purpose;
+@dynamic image;
+
 
 + (void)load
 {

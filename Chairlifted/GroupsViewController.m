@@ -11,6 +11,7 @@
 #import "GroupCustomTableViewCell.h"
 #import "NSDate+TimePassage.h"
 #import "JoinGroup.h"
+#import "GroupFeedViewController.h"
 
 @interface GroupsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
@@ -153,6 +154,27 @@
     cell.lastUpdatedLabel.text = [NSDate determineTimePassed:group.mostRecentPost];
 
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"GroupFeedSegue"])
+    {
+        GroupFeedViewController *vc = segue.destinationViewController;
+        JoinGroup *joinGroup;
+        
+        if (self.segControl.selectedSegmentIndex == 0)
+        {
+            joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
+        }
+        else if (self.segControl.selectedSegmentIndex == 1)
+        {
+            joinGroup = self.allGroups[self.tableView.indexPathForSelectedRow.row];
+        }
+
+        vc.group = joinGroup.group;
+    }
 }
 
 

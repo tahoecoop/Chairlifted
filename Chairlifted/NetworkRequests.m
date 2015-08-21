@@ -11,13 +11,17 @@
 
 @implementation NetworkRequests
 
-+ (void)getPostsWithSkipCount:(int)skipCount completion:(void(^)(NSArray *array))complete
++ (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group completion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Post query];
     [query orderByDescending:@"hottness"];
     [query includeKey:@"author"];
     query.limit = 30;
     query.skip = skipCount;
+    if (group)
+    {
+        [query whereKey:@"group" equalTo:group];
+    }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
         if (!error)
