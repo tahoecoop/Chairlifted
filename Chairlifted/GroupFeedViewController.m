@@ -167,6 +167,11 @@
         CreatePostViewController *vc = (CreatePostViewController *)[segue.destinationViewController topViewController];
         vc.group = self.group;
     }
+    else if ([segue.identifier isEqualToString:@"ToPostDetailTextOnly"] || [segue.identifier isEqualToString:@"ToPostDetailImage"])
+    {
+        PostDetailViewController *vc = segue.destinationViewController  ;
+        vc.post = self.posts[self.tableView.indexPathForSelectedRow.row];
+    }
 }
 
 
