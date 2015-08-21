@@ -109,8 +109,7 @@
 
 + (void)getAllGroupsWithCompletion:(void(^)(NSArray *array))complete
 {
-    PFQuery *query = [JoinGroup query];
-    [query includeKey:@"group"];
+    PFQuery *query = [Group query];
     [query orderByAscending:@"name"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {

@@ -419,6 +419,114 @@
             </objects>
             <point key="canvasLocation" x="1474" y="368"/>
         </scene>
+        <!--Create Group View Controller-->
+        <scene sceneID="Yg9-Xk-viD">
+            <objects>
+                <viewController id="pfW-ji-dkY" customClass="CreateGroupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4je-SP-c2R"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZOK-Ir-dGV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9qf-cn-MKt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4t-cR-050">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qW6-37-NOp">
+                                        <rect key="frame" x="0.0" y="-74" width="320" height="716"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxN-zJ-aru">
+                                                <rect key="frame" x="8" y="284" width="304" height="128"/>
+                                                <color key="backgroundColor" red="1" green="0.9122308106" blue="0.83496706440000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pfW-ji-dkY" id="xZz-5w-0je"/>
+                                                </connections>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F0E-aw-izr">
+                                                <rect key="frame" x="8" y="177" width="304" height="63"/>
+                                                <color key="backgroundColor" red="1" green="0.9122308106" blue="0.83496706440000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pfW-ji-dkY" id="wVv-hL-3XY"/>
+                                                </connections>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-i0-qdk">
+                                                <rect key="frame" x="112" y="437" width="96" height="30"/>
+                                                <state key="normal" title="Upload Image">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onUploadImageButtonPressed:" destination="pfW-ji-dkY" eventType="touchUpInside" id="Anh-y7-bkn"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 / 100 characters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6f-KD-7FE">
+                                                <rect key="frame" x="210" y="261" width="102" height="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 / 50 characters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RG-0V-v8n">
+                                                <rect key="frame" x="217" y="154" width="95" height="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Purpose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fe-Mr-lhF">
+                                                <rect key="frame" x="14" y="289" width="98" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8l-Bi-nrU">
+                                                <rect key="frame" x="14" y="182" width="85" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wLr-np-RtF">
+                                                <rect key="frame" x="87" y="475" width="146" height="128"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hWy-qk-SJj">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Eoa-sY-mVB">
+                            <connections>
+                                <action selector="onCancelButtonPressed:" destination="pfW-ji-dkY" id="b0F-gv-Sd6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="L0l-Nh-VZU">
+                            <connections>
+                                <action selector="onSaveButtonPressed:" destination="pfW-ji-dkY" id="JrK-Gv-6Ef"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="groupImageView" destination="wLr-np-RtF" id="px6-qk-3PY"/>
+                        <outlet property="groupPurposePlaceholderLabel" destination="8fe-Mr-lhF" id="mAs-0e-72R"/>
+                        <outlet property="groupPurposeTextView" destination="gxN-zJ-aru" id="Cuy-Kd-ecN"/>
+                        <outlet property="groupTitlePlaceholderLabel" destination="D8l-Bi-nrU" id="mmi-fj-KlL"/>
+                        <outlet property="groupTitleTextView" destination="F0E-aw-izr" id="7CC-Ss-pmT"/>
+                        <outlet property="purposeCharactersLeftLabel" destination="t6f-KD-7FE" id="aCG-m0-WCF"/>
+                        <outlet property="saveButton" destination="L0l-Nh-VZU" id="IVH-YJ-qMw"/>
+                        <outlet property="titleCharactersLeftLabel" destination="0RG-0V-v8n" id="wlr-LP-4Xa"/>
+                        <outlet property="uploadImageButton" destination="2dU-i0-qdk" id="bcN-a9-kKe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z4B-fA-Rsx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1191" y="1755"/>
+        </scene>
         <!--Comment Text-->
         <scene sceneID="jJY-ut-0TV">
             <objects>
@@ -519,7 +627,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN7-QC-LtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="368"/>
+            <point key="canvasLocation" x="2245" y="363"/>
         </scene>
         <!--Comment Photo-->
         <scene sceneID="Mil-Kk-OBf">
@@ -827,7 +935,7 @@
                     <navigationItem key="navigationItem" title="Groups" id="8zS-VC-wAJ">
                         <barButtonItem key="rightBarButtonItem" title="Create" id="Z14-G3-HTo">
                             <connections>
-                                <action selector="onAddButtonPressed:" destination="tNw-6x-IvQ" id="Gbl-W6-t4e"/>
+                                <segue destination="Nsa-Nj-drc" kind="modal" identifier="CreateGroupSegue" id="sAH-Qg-La0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -838,7 +946,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbf-Ue-9Nw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="1093"/>
+            <point key="canvasLocation" x="785" y="1093"/>
         </scene>
         <!--Group Feed View Controller-->
         <scene sceneID="NjG-up-aBC">
@@ -887,6 +995,7 @@
                                                 <constraint firstItem="myl-CG-cBg" firstAttribute="leading" secondItem="uO7-aB-dR0" secondAttribute="trailing" constant="8" id="FhE-cW-1mp"/>
                                                 <constraint firstAttribute="trailing" secondItem="myl-CG-cBg" secondAttribute="trailing" constant="8" id="YD3-lG-i8t"/>
                                                 <constraint firstItem="mXW-bX-SUO" firstAttribute="top" secondItem="aAs-lh-4Kg" secondAttribute="top" constant="10" id="b5z-SO-tFc"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="myl-CG-cBg" secondAttribute="bottom" constant="9" id="c0l-ck-3aA"/>
                                                 <constraint firstItem="myl-CG-cBg" firstAttribute="leading" secondItem="mXW-bX-SUO" secondAttribute="trailing" constant="8" id="ddg-b2-g6V"/>
                                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="uO7-aB-dR0" secondAttribute="bottom" constant="73" id="dgM-fV-d0O"/>
                                                 <constraint firstItem="uO7-aB-dR0" firstAttribute="leading" secondItem="aAs-lh-4Kg" secondAttribute="leading" constant="14" id="el7-OG-Scd"/>
@@ -1053,7 +1162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6HJ-H9-57K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="1093"/>
+            <point key="canvasLocation" x="1191" y="1093"/>
         </scene>
         <!--Stats-->
         <scene sceneID="52T-FL-NWB">
@@ -1241,7 +1350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Idv-8g-OMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="2064"/>
+            <point key="canvasLocation" x="2185" y="2067"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Mgz-Tq-csq">
@@ -1309,7 +1418,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqJ-TX-G0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="1761"/>
+            <point key="canvasLocation" x="397" y="1755"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JMx-fs-Tuy">
@@ -1407,7 +1516,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwX-JR-A9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="1761"/>
+            <point key="canvasLocation" x="-43" y="1755"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C72-hS-4hf">
@@ -1444,6 +1553,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvJ-12-9Ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2465" y="1093"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QlA-Qr-xeS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nsa-Nj-drc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qtu-tB-5QB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pfW-ji-dkY" kind="relationship" relationship="rootViewController" id="e8x-no-2Gf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LFD-fI-1GW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="1755"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

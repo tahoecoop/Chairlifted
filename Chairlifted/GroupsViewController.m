@@ -38,6 +38,9 @@
 
 - (IBAction)onSegControlToggle:(UISegmentedControl *)sender
 {
+    self.myGroups = nil;
+    self.allGroups = nil;
+    
     if (self.segControl.selectedSegmentIndex == 0)
     {
         if (!self.myGroups.count > 0)
@@ -68,52 +71,6 @@
 }
 
 
-- (IBAction)onAddButtonPressed:(UIBarButtonItem *)button
-{
-    UIAlertController *newGroup = [UIAlertController alertControllerWithTitle:@"Create Group" message:@"Give your group a crunchy name!" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *save = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-    {
-        UITextField *textField = [[newGroup textFields]firstObject];
-        Group *group = [Group new];
-        group.name = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        group.memberQuantity = 1;
-        group.mostRecentPost = nil;
-        [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-        {
-            if (succeeded)
-            {
-                JoinGroup *joinGroup = [JoinGroup new];
-                joinGroup.group = group;
-                joinGroup.groupName = group.name;
-                joinGroup.user = [User currentUser];
-                joinGroup.lastViewed = [NSDate date];
-                [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                 {
-                     [self dismissViewControllerAnimated:YES completion:nil];
-                     self.myGroups = nil;
-                     self.allGroups = nil;
-
-                     [self.segControl sendActionsForControlEvents:UIControlEventValueChanged];
-
-                 }];
-            }
-        }];
-    }];
-
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
-    {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-
-    [newGroup addTextFieldWithConfigurationHandler:^(UITextField *textField)
-    {
-        textField.placeholder = @"Group name";
-    }];
-
-    [newGroup addAction:save];
-    [newGroup addAction:cancel];
-    [self presentViewController:newGroup animated:YES completion:nil];
-}
 
 #pragma mark - table View Methods
 
@@ -138,17 +95,18 @@
 {
     GroupCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     JoinGroup *joinGroup;
+    Group *group;
 
     if (self.segControl.selectedSegmentIndex == 0)
     {
         joinGroup = self.myGroups[indexPath.row];
+        group = joinGroup.group;
     }
     else if (self.segControl.selectedSegmentIndex == 1)
     {
-        joinGroup = self.allGroups[indexPath.row];
-
+        group = self.allGroups[indexPath.row];
     }
-    Group *group = joinGroup.group;
+
     cell.groupNameLabel.text = group.name;
     cell.memberQuantityLabel.text = [NSString stringWithFormat:@"%i members", group.memberQuantity];
     cell.lastUpdatedLabel.text = [NSDate determineTimePassed:group.mostRecentPost];
@@ -156,9 +114,9 @@
     return cell;
 }
 
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     if ([segue.identifier isEqualToString:@"GroupFeedSegue"])
     {
         GroupFeedViewController *vc = segue.destinationViewController;
@@ -167,15 +125,26 @@
         if (self.segControl.selectedSegmentIndex == 0)
         {
             joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
+            vc.group = joinGroup.group;
+
         }
         else if (self.segControl.selectedSegmentIndex == 1)
         {
-            joinGroup = self.allGroups[self.tableView.indexPathForSelectedRow.row];
+            vc.group = self.allGroups[self.tableView.indexPathForSelectedRow.row];
         }
-
-        vc.group = joinGroup.group;
+    }
+    else if ([segue.identifier isEqualToString:@"CreateGroupSegue"])
+    {
+        CreateGroupViewController *vc = (CreateGroupViewController *)[segue.destinationViewController topViewController];
+        vc.delegate = self;
     }
 }
+
+-(void)didFinishSaving
+{
+    [self.segControl sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
 
 
 

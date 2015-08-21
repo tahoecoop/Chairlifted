@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreateGroupViewController.h"
 
-@interface GroupsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GroupsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, doneSavingDelegate>
 
 @end
