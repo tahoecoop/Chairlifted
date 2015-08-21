@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DashboardViewController : UIViewController
+@interface GroupsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

@@ -14,6 +14,9 @@
 #import "Comment.h"
 #import "Resort.h"
 #import "Like.h"
+#import "PostTopic.h"
+#import "Group.h"
+#import "JoinGroup.h"
 
 @interface AppDelegate ()
 
@@ -34,6 +37,10 @@
     [Comment registerSubclass];
     [Resort registerSubclass];
     [Like registerSubclass];
+    [PostTopic registerSubclass];
+    [Group registerSubclass];
+    [JoinGroup registerSubclass];
+
 
     // Initialize Parse.
     [Parse setApplicationId:@"tToLZMQ5nL7e5kvFQNS2Z9QPmSFUQEV229IAnRQ1"

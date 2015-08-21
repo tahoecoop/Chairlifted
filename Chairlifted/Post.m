@@ -18,6 +18,10 @@
 @dynamic likeCount;
 @dynamic commentCount;
 @dynamic hottness;
+@dynamic postTopic;
+@dynamic group;
+@dynamic isPrivate;
+
 
 + (void)load
 {

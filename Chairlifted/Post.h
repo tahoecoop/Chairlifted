@@ -10,6 +10,8 @@
 #import <Parse/PFObject+Subclass.h>
 #import <Parse/PFFile.h>
 #import "User.h"
+#import "PostTopic.h"
+#import "Group.h"
 
 @interface Post : PFObject <PFSubclassing>
 
@@ -21,6 +23,10 @@
 @property (nonatomic) int likeCount;
 @property (nonatomic) float hottness;
 @property (nonatomic) int commentCount;
+@property (nonatomic) NSString *postTopic;
+@property (nonatomic) Group *group;
+@property (nonatomic) BOOL isPrivate;
+
 
 
 + (void)load;

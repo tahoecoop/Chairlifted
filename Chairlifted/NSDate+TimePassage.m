@@ -19,7 +19,11 @@
     int days = hours / 24;
 
 
-    if (minutes < 1)
+    if (date == nil)
+    {
+        return @"";
+    }
+    else if (minutes < 1)
     {
         return @"now";
     }

@@ -32,6 +32,9 @@
 {
     PFQuery *query = [Comment query];
     [query whereKey:@"post" equalTo:post];
+    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
+    [query includeKey:@"author"];
+    [query includeKey:@"group"];
     [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
@@ -73,14 +76,45 @@
      }];
 }
 
-- (void)getWeather
++ (void)getTopicsWithCompletion:(void(^)(NSArray *array))complete
 {
-
+    PFQuery *query = [PostTopic query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
 }
 
-- (void)getResorts
++ (void)getMyGroupsWithCompletion:(void(^)(NSArray *array))complete
 {
+    PFQuery *query = [JoinGroup query];
+    [query whereKey:@"user" equalTo:[User currentUser]];
+    [query includeKey:@"group"];
+    [query orderByDescending:@"mostRecentPost"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
+}
 
++ (void)getAllGroupsWithCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [JoinGroup query];
+    [query includeKey:@"group"];
+    [query orderByAscending:@"name"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
 }
 
 

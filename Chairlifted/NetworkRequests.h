@@ -10,6 +10,8 @@
 #import "Post.h"
 #import "Comment.h"
 #import "Like.h"
+#import "PostTopic.h"
+#import "JoinGroup.h"
 
 @interface NetworkRequests : NSObject
 
@@ -17,6 +19,12 @@
 + (void)getPostComments:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
 + (void)getLikes:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
 + (void)checkForLike:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
++ (void)getTopicsWithCompletion:(void(^)(NSArray *array))complete;
++ (void)getMyGroupsWithCompletion:(void(^)(NSArray *array))complete;
++ (void)getAllGroupsWithCompletion:(void(^)(NSArray *array))complete;
+
+
+
 
 
 @end

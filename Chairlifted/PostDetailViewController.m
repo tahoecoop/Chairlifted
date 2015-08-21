@@ -92,6 +92,7 @@
             cell.postText.text = self.post.text;
             return cell;
         }
+
     }
     else
     {
@@ -114,6 +115,15 @@
         header.minutesAgoLabel.text = [NSDate determineTimePassed:self.post.createdAt];
         header.likesLabel.text = [NSString stringWithFormat:@"%i likes",self.post.likeCount];
         header.userNameLabel.text = self.post.author.username;
+
+        if (self.post.group)
+        {
+            header.groupNameLabel.text = self.post.group.name;
+        }
+        else
+        {
+            header.groupNameLabel.hidden = YES;
+        }
         return header;
     }
     else

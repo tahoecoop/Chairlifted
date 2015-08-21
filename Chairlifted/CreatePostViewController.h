@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreatePostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CreatePostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate>
 
 @end

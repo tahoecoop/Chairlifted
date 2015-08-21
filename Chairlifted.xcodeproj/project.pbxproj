@@ -37,7 +37,7 @@
 		BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C651B8295CF0083E71E /* CreatePostViewController.m */; };
 		BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C681B8295E00083E71E /* PostDetailViewController.m */; };
 		BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C6B1B8296160083E71E /* ProfileViewController.m */; };
-		BA6F8C6F1B8296380083E71E /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C6E1B8296380083E71E /* DashboardViewController.m */; };
+		BA6F8C6F1B8296380083E71E /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C6E1B8296380083E71E /* GroupsViewController.m */; };
 		BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C711B8296640083E71E /* NetworkRequests.m */; };
 		BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */; };
 		BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C7A1B8386A20083E71E /* CustomFeedTableViewCell.m */; };
@@ -52,6 +52,10 @@
 		BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */; };
 		BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */; };
 		BAE3D1971B853B2800BAC4EF /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1961B853B2800BAC4EF /* Like.m */; };
+		BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1991B86850F00BAC4EF /* PostTopic.m */; };
+		BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19C1B869B5700BAC4EF /* Group.m */; };
+		BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */; };
+		BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */; };
 		D3CE69F192DC679F97BC8BD1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ADEADAE442867E661D0CD0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -113,8 +117,8 @@
 		BA6F8C681B8295E00083E71E /* PostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewController.m; sourceTree = "<group>"; };
 		BA6F8C6A1B8296160083E71E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		BA6F8C6B1B8296160083E71E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		BA6F8C6D1B8296380083E71E /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
-		BA6F8C6E1B8296380083E71E /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		BA6F8C6D1B8296380083E71E /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		BA6F8C6E1B8296380083E71E /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 		BA6F8C701B8296640083E71E /* NetworkRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequests.h; sourceTree = "<group>"; };
 		BA6F8C711B8296640083E71E /* NetworkRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRequests.m; sourceTree = "<group>"; };
 		BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+UIImagePicker.h"; sourceTree = "<group>"; };
@@ -143,6 +147,14 @@
 		BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithImageViewController.m; sourceTree = "<group>"; };
 		BAE3D1951B853B2800BAC4EF /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
 		BAE3D1961B853B2800BAC4EF /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
+		BAE3D1981B86850F00BAC4EF /* PostTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTopic.h; sourceTree = "<group>"; };
+		BAE3D1991B86850F00BAC4EF /* PostTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTopic.m; sourceTree = "<group>"; };
+		BAE3D19B1B869B5700BAC4EF /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		BAE3D19C1B869B5700BAC4EF /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		BAE3D19E1B86A7D300BAC4EF /* JoinGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGroup.h; sourceTree = "<group>"; };
+		BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGroup.m; sourceTree = "<group>"; };
+		BAE3D1A11B86AD9500BAC4EF /* GroupCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCustomTableViewCell.h; sourceTree = "<group>"; };
+		BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +298,12 @@
 				BA6F8C601B8280F70083E71E /* Comment.m */,
 				BA757BFB1B84EC0100394195 /* Resort.h */,
 				BA757BFC1B84EC0100394195 /* Resort.m */,
+				BAE3D1981B86850F00BAC4EF /* PostTopic.h */,
+				BAE3D1991B86850F00BAC4EF /* PostTopic.m */,
+				BAE3D19B1B869B5700BAC4EF /* Group.h */,
+				BAE3D19C1B869B5700BAC4EF /* Group.m */,
+				BAE3D19E1B86A7D300BAC4EF /* JoinGroup.h */,
+				BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */,
 				BA6F8C701B8296640083E71E /* NetworkRequests.h */,
 				BA6F8C711B8296640083E71E /* NetworkRequests.m */,
 				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
@@ -307,8 +325,8 @@
 				BA6F8C681B8295E00083E71E /* PostDetailViewController.m */,
 				BA6F8C6A1B8296160083E71E /* ProfileViewController.h */,
 				BA6F8C6B1B8296160083E71E /* ProfileViewController.m */,
-				BA6F8C6D1B8296380083E71E /* DashboardViewController.h */,
-				BA6F8C6E1B8296380083E71E /* DashboardViewController.m */,
+				BA6F8C6D1B8296380083E71E /* GroupsViewController.h */,
+				BA6F8C6E1B8296380083E71E /* GroupsViewController.m */,
 				9648D03A1B83AB090062BA99 /* StatsViewController.h */,
 				9648D03B1B83AB090062BA99 /* StatsViewController.m */,
 				BA757BFE1B84FB5A00394195 /* CreateCommentWithTextViewController.h */,
@@ -337,6 +355,8 @@
 				BA6F8C8D1B8413420083E71E /* DetailActionTableViewCell.m */,
 				BA6F8C8F1B8413510083E71E /* DetailCommentTableViewCell.h */,
 				BA6F8C901B8413510083E71E /* DetailCommentTableViewCell.m */,
+				BAE3D1A11B86AD9500BAC4EF /* GroupCustomTableViewCell.h */,
+				BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -486,21 +506,25 @@
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
 				BA6F8C881B8413110083E71E /* DetailPostImageTableViewCell.m in Sources */,
 				BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */,
+				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,
 				BA6F8C5B1B8280D50083E71E /* Run.m in Sources */,
+				BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */,
 				BA6F8C811B8404460083E71E /* CustomFeedWithPhotoTableViewCell.m in Sources */,
 				BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */,
+				BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
 				BA757BFD1B84EC0100394195 /* Resort.m in Sources */,
-				BA6F8C6F1B8296380083E71E /* DashboardViewController.m in Sources */,
+				BA6F8C6F1B8296380083E71E /* GroupsViewController.m in Sources */,
 				BA6F8C131B8253280083E71E /* main.m in Sources */,
 				BA6F8C7E1B83A0D00083E71E /* NSDate+TimePassage.m in Sources */,
 				BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */,
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
 				9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */,
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,
+				BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
 				BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */,
 			);
