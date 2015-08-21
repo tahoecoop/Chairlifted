@@ -15,6 +15,7 @@
 #import "CustomFeedWithPhotoTableViewCell.h"
 #import "PostDetailViewController.h"
 #import "GroupFeedHeaderTableViewCell.h"
+#import "CreatePostViewController.h"
 
 @interface GroupFeedViewController ()
 
@@ -104,9 +105,17 @@
         headerCell.groupPurposeLabel.text = self.group.purpose;
         headerCell.groupImageView.image = [UIImage imageWithData:self.group.image.getData scale:0.5];
 
-        if (self.joinGroup.status)
+        if ([self.joinGroup.status isEqualToString:@"joined"])
         {
-            [headerCell.requestToJoinButton setTitle:self.joinGroup.status forState:UIControlStateNormal];
+            [headerCell.requestToJoinButton setTitle:@"Leave group" forState:UIControlStateNormal];
+        }
+//        else if ([self.joinGroup.status isEqualToString:@""])
+//        {
+//
+//        }
+        else
+        {
+            [headerCell.requestToJoinButton setTitle:@"Join" forState:UIControlStateNormal];
         }
         return headerCell;
     }
@@ -148,6 +157,15 @@
              self.skipCount = self.skipCount + 30;
              [self.tableView reloadData];
          }];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"MakeGroupPost"])
+    {
+        CreatePostViewController *vc = (CreatePostViewController *)[segue.destinationViewController topViewController];
+        vc.group = self.group;
     }
 }
 
