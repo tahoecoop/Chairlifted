@@ -11,7 +11,7 @@
 @interface Group : PFObject <PFSubclassing>
 
 @property (nonatomic) NSString *name;
-@property (nonatomic) BOOL isPrivate;
+@property (nonatomic) NSNumber *isPrivate;
 @property (nonatomic) NSDate *mostRecentPost;
 @property (nonatomic) int memberQuantity;
 @property (nonatomic) NSString *purpose;

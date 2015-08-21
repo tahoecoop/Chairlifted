@@ -110,7 +110,14 @@
     cell.groupNameLabel.text = group.name;
     cell.memberQuantityLabel.text = [NSString stringWithFormat:@"%i members", group.memberQuantity];
     cell.lastUpdatedLabel.text = [NSDate determineTimePassed:group.mostRecentPost];
-
+    if (!group.isPrivate)
+    {
+        cell.privateImageView.hidden = YES;
+    }
+    else
+    {
+        cell.privateImageView.hidden = NO;
+    }
     return cell;
 }
 
@@ -120,13 +127,12 @@
     if ([segue.identifier isEqualToString:@"GroupFeedSegue"])
     {
         GroupFeedViewController *vc = segue.destinationViewController;
-        JoinGroup *joinGroup;
-        
+        JoinGroup *joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
+        vc.joinGroup = joinGroup;
+
         if (self.segControl.selectedSegmentIndex == 0)
         {
-            joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
             vc.group = joinGroup.group;
-
         }
         else if (self.segControl.selectedSegmentIndex == 1)
         {

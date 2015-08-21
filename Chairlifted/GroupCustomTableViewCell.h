@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memberQuantityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *privateImageView;
 
 @end

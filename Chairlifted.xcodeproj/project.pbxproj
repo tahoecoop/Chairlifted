@@ -11,6 +11,7 @@
 		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
+		BA215E251B87B3300087DBEB /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = BA215E241B87B3300087DBEB /* images.png */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
 		BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C151B8253280083E71E /* AppDelegate.m */; };
 		BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C171B8253280083E71E /* Chairlifted.xcdatamodeld */; };
@@ -84,6 +85,7 @@
 		BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedHeaderTableViewCell.m; sourceTree = "<group>"; };
 		BA215E211B87992E0087DBEB /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
 		BA215E221B87992E0087DBEB /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
+		BA215E241B87B3300087DBEB /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 		BA6F8C0D1B8253270083E71E /* Chairlifted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chairlifted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6F8C111B8253270083E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6F8C121B8253280083E71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		13789AC426B7F6C40BF5B935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA215E241B87B3300087DBEB /* images.png */,
 				BA6F8C511B827B0C0083E71E /* Social.framework */,
 				BA6F8C4F1B827B060083E71E /* Accounts.framework */,
 				BA6F8C4D1B827AFB0083E71E /* libsqlite3.dylib */,
@@ -256,6 +259,7 @@
 				BA6F8C141B8253280083E71E /* AppDelegate.h */,
 				BA6F8C151B8253280083E71E /* AppDelegate.m */,
 				BA6F8C631B8281090083E71E /* View Controllers */,
+				BA6F8C821B8412B90083E71E /* Custom Cells */,
 				BA6F8C621B8281000083E71E /* Model */,
 				BA6F8C1D1B8253280083E71E /* Main.storyboard */,
 				BA6F8C201B8253280083E71E /* Images.xcassets */,
@@ -346,7 +350,6 @@
 				BA215E191B8787170087DBEB /* GroupFeedViewController.m */,
 				BA215E211B87992E0087DBEB /* CreateGroupViewController.h */,
 				BA215E221B87992E0087DBEB /* CreateGroupViewController.m */,
-				BA6F8C821B8412B90083E71E /* Custom Cells */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				BA6F8C1F1B8253280083E71E /* Main.storyboard in Resources */,
 				BA6F8C241B8253280083E71E /* LaunchScreen.xib in Resources */,
 				BA6F8C211B8253280083E71E /* Images.xcassets in Resources */,
+				BA215E251B87B3300087DBEB /* images.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

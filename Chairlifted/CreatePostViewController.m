@@ -83,11 +83,21 @@
     post.title = self.postTitleTextField.text;
     post.text = self.bodyTextView.text;
     post.postTopic = self.topicButton.titleLabel.text;
-    post.isPrivate = NO;
+
 
     if (self.imageView.image)
     {
         post.image = [PFFile fileWithData: UIImageJPEGRepresentation(self.imageView.image, 1.0)];
+    }
+
+    if (self.group)
+    {
+        post.group = self.group;
+        post.isPrivate = self.group.isPrivate;
+    }
+    else
+    {
+        post.isPrivate = [NSNumber numberWithBool:NO];
     }
 
     post.author = [User currentUser];

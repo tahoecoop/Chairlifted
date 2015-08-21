@@ -11,9 +11,10 @@
 
 @implementation NetworkRequests
 
-+ (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group completion:(void(^)(NSArray *array))complete
++ (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Post query];
+    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:isPrivate]];
     [query orderByDescending:@"hottness"];
     [query includeKey:@"author"];
     query.limit = 30;
@@ -36,7 +37,6 @@
 {
     PFQuery *query = [Comment query];
     [query whereKey:@"post" equalTo:post];
-//    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
     [query includeKey:@"author"];
     [query includeKey:@"group"];
     [query orderByAscending:@"createdAt"];

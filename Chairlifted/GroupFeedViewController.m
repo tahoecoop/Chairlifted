@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *makeNewPostButton;
 
 
 @end
@@ -42,6 +43,15 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
+    if ([self.joinGroup.status isEqualToString:@"joined"])
+    {
+        self.makeNewPostButton.enabled = YES;
+    }
+    else
+    {
+        self.makeNewPostButton.enabled = NO;
+        self.makeNewPostButton.tintColor = [UIColor clearColor];
+    }
 }
 
 
@@ -49,7 +59,7 @@
 {
     self.skipCount = 30;
 
-    [NetworkRequests getPostsWithSkipCount:0 andGroup:self.group completion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 andGroup:self.group andIsPrivate:self.group.isPrivate completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
@@ -62,7 +72,14 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    if (self.group.isPrivate && ![self.joinGroup.status isEqualToString:@"joined"])
+    {
+        return 1;
+    }
+    else
+    {
+        return 2;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -86,6 +103,11 @@
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
         headerCell.groupImageView.image = [UIImage imageWithData:self.group.image.getData scale:0.5];
+
+        if (self.joinGroup.status)
+        {
+            [headerCell.requestToJoinButton setTitle:self.joinGroup.status forState:UIControlStateNormal];
+        }
         return headerCell;
     }
     else
@@ -120,7 +142,7 @@
 {
     if (indexPath.row == self.skipCount - 5)
     {
-        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:self.group completion:^(NSArray *array)
+        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:self.group andIsPrivate:self.group.isPrivate completion:^(NSArray *array)
          {
              [self.posts addObjectsFromArray:array];
              self.skipCount = self.skipCount + 30;
@@ -128,6 +150,7 @@
          }];
     }
 }
+
 
 
 @end

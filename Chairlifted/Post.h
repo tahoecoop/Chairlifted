@@ -25,7 +25,7 @@
 @property (nonatomic) int commentCount;
 @property (nonatomic) NSString *postTopic;
 @property (nonatomic) Group *group;
-@property (nonatomic) BOOL isPrivate;
+@property (nonatomic) NSNumber *isPrivate;
 
 
 

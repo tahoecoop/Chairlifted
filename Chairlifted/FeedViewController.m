@@ -59,7 +59,7 @@
 {
     self.skipCount = 30;
 
-    [NetworkRequests getPostsWithSkipCount:0 andGroup:nil completion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
@@ -145,8 +145,8 @@
 
     if (indexPath.row == self.skipCount - 5)
     {
-        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:nil completion:^(NSArray *array)
-         {
+        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
+        {
              [self.posts addObjectsFromArray:array];
              self.skipCount = self.skipCount + 30;
              [self.tableView reloadData];

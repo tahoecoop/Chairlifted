@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *groupTitlePlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *groupPurposePlaceholderLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 
 
 @end
@@ -61,7 +62,6 @@
 }
 
 
-
 - (IBAction)onCancelButtonPressed:(UIBarButtonItem *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -81,6 +81,16 @@
 
     group.memberQuantity = 1;
     group.mostRecentPost = nil;
+
+    if (self.segControl.selectedSegmentIndex == 0)
+    {
+        group.isPrivate = [NSNumber numberWithBool:NO];
+    }
+    else
+    {
+        group.isPrivate = [NSNumber numberWithBool:YES];
+    }
+
     [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (succeeded)
