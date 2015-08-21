@@ -39,7 +39,7 @@
 {
     if (self.segControl.selectedSegmentIndex == 0)
     {
-        if (!self.myGroups)
+        if (!self.myGroups.count > 0)
         {
             [NetworkRequests getMyGroupsWithCompletion:^(NSArray *array)
              {
@@ -47,16 +47,21 @@
                  [self.tableView reloadData];
              }];
         }
+        [self.tableView reloadData];
     }
     else if (self.segControl.selectedSegmentIndex == 1)
     {
-        if (!self.allGroups)
+        if (!self.allGroups.count > 0)
         {
             [NetworkRequests getAllGroupsWithCompletion:^(NSArray *array)
              {
                  self.allGroups = [NSMutableArray arrayWithArray:array];
                  [self.tableView reloadData];
              }];
+        }
+        else
+        {
+            [self.tableView reloadData];
         }
     }
 }

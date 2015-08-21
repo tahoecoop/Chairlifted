@@ -33,6 +33,7 @@
     Comment *comment = [Comment new];
     comment.text = self.textView.text;
     comment.author = [User currentUser];
+    comment.post = self.post;
     [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (succeeded)
