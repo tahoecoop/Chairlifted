@@ -32,7 +32,7 @@
 {
     PFQuery *query = [Comment query];
     [query whereKey:@"post" equalTo:post];
-    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
+//    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
     [query includeKey:@"author"];
     [query includeKey:@"group"];
     [query orderByAscending:@"createdAt"];

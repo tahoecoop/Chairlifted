@@ -83,6 +83,7 @@
     post.title = self.postTitleTextField.text;
     post.text = self.bodyTextView.text;
     post.postTopic = self.topicButton.titleLabel.text;
+    post.isPrivate = NO;
 
     if (self.imageView.image)
     {
