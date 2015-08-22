@@ -9,13 +9,20 @@
 #import "ProfileViewController.h"
 #import "User.h"
 #import "UIAlertController+UIImagePicker.h"
+#import "ProfileHeaderTableViewCell.h"
+#import "CustomFeedTableViewCell.h"
+#import "CustomFeedWithPhotoTableViewCell.h"
+#import "Post.h"
+#import "NSDate+TimePassage.h"
+#import "NetworkRequests.h"
 
-@interface ProfileViewController () <UIImagePickerControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *editProfilePhotoButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic) NSArray *myPosts;
+@property (nonatomic) int skipCount;
 
 @end
 
@@ -25,55 +32,105 @@
 {
     [super viewDidLoad];
     [self setUpUser];
+    self.skipCount = 0;
+    self.title = self.selectedUser.username;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
+    {
+        self.myPosts = array;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)setUpUser
 {
-    if (!self.selectedUser)
+    if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
         self.selectedUser = [User currentUser];
-        self.userNameLabel.text = self.selectedUser.username;
-        self.imageView.image = [UIImage imageWithData:self.selectedUser.profileImage.getData];
     }
     else
     {
-        self.editProfilePhotoButton.hidden = YES;
+        self.editButton.enabled = NO;
+        self.editButton.tintColor = [UIColor clearColor];
     }
-    self.cancelButton.hidden = YES;
 }
 
-- (IBAction)onPhotoEditButtonPressed:(UIButton *)sender
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([sender.titleLabel.text isEqualToString:@"Edit profile photo"])
+    return 2;
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0)
     {
-        UIAlertController *alert = [UIAlertController prepareForImagePicker:self];
-        [self presentViewController:alert animated:YES completion:nil];
+        return 1;
     }
     else
     {
-        self.selectedUser.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(self.imageView.image, 0.25)];
-        [self.selectedUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+        return self.myPosts.count;
+    }
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        ProfileHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderCell"];
+        headerCell.nameLabel.text = self.selectedUser.name;
+        headerCell.locationLabel.text = self.selectedUser.location;
+        headerCell.profileImageView.image = [UIImage imageWithData:self.selectedUser.profileImage.getData scale:0.3];
+        return headerCell;
+    }
+    else
+    {
+        Post *post = self.myPosts[indexPath.row];
+        if (post.image)
         {
-            self.cancelButton.hidden = YES;
-            [self.editProfilePhotoButton setTitle:@"Edit profile photo" forState:UIControlStateNormal];
-            //Add an activity indicator and a cool animated alert that it saved
-        }];
+            CustomFeedWithPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImagePostCell"];
+            cell.authorLabel.text = post.author.username;
+            cell.titleLabel.text = post.title;
+            cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
+            cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
+            cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            cell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.3];
+            return cell;
+        }
+        else
+        {
+            CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextPostCell"];
+            cell.authorLabel.text = post.author.username;
+            cell.postLabel.text = post.title;
+            cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
+            cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
+            cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+
+            return cell;
+        }
     }
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    self.cancelButton.hidden = NO;
-    self.imageView.image = info[UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.editProfilePhotoButton setTitle:@"Save" forState:UIControlStateNormal];
 
 }
 
 
-- (IBAction)onCancelButtonPressed:(UIButton *)sender
-{
-    self.imageView.image = [UIImage imageWithData:self.selectedUser.profileImage.getData];
-}
+
+
+
+
+
 
 @end

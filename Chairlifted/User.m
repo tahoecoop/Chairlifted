@@ -17,6 +17,9 @@
 @dynamic posts;
 @dynamic runs;
 @dynamic profileImage;
+@dynamic name;
+@dynamic favoriteResort;
+@dynamic location;
 
 + (void)load
 {

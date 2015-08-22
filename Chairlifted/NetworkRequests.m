@@ -33,6 +33,30 @@
 }
 
 
+
++ (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [Post query];
+    [query whereKey:@"author" equalTo:user];
+
+    if (!showsPrivate)
+    {
+        [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
+    }
+
+    [query orderByDescending:@"createdAt"];
+    query.limit = 30;
+    query.skip = skipCount;
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
+}
+
 + (void)getPostComments:(Post *)post withCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Comment query];
@@ -48,6 +72,7 @@
          }
      }];
 }
+
 
 + (void)getLikes:(Post *)post withCompletion:(void(^)(NSArray *array))complete
 {

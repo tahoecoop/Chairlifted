@@ -110,13 +110,13 @@
     cell.groupNameLabel.text = group.name;
     cell.memberQuantityLabel.text = [NSString stringWithFormat:@"%i members", group.memberQuantity];
     cell.lastUpdatedLabel.text = [NSDate determineTimePassed:group.mostRecentPost];
-    if (!group.isPrivate)
+    if (group.isPrivate)
     {
-        cell.privateImageView.hidden = YES;
+        cell.privateImageView.hidden = NO;
     }
     else
     {
-        cell.privateImageView.hidden = NO;
+        cell.privateImageView.hidden = YES;
     }
     return cell;
 }

@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import <Parse/PFObject+Subclass.h>
 #import <Parse/PFFile.h>
+#import "Resort.h"
 
 @interface User : PFUser <PFSubclassing>
 
@@ -19,6 +20,9 @@
 @property (nonatomic) NSSet *posts;
 @property (nonatomic) NSSet *favoriteResorts;
 @property (nonatomic) PFFile *profileImage;
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *location;
+@property (nonatomic) Resort *favoriteResort;
 
 + (void)load;
 

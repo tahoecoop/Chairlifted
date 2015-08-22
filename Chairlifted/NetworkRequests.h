@@ -22,6 +22,8 @@
 + (void)getTopicsWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getMyGroupsWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getAllGroupsWithCompletion:(void(^)(NSArray *array))complete;
++ (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete;
+
 
 
 

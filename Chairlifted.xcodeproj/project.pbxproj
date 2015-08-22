@@ -12,6 +12,8 @@
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
 		BA215E251B87B3300087DBEB /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = BA215E241B87B3300087DBEB /* images.png */; };
+		BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */; };
+		BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
 		BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C151B8253280083E71E /* AppDelegate.m */; };
 		BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C171B8253280083E71E /* Chairlifted.xcdatamodeld */; };
@@ -86,6 +88,10 @@
 		BA215E211B87992E0087DBEB /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
 		BA215E221B87992E0087DBEB /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 		BA215E241B87B3300087DBEB /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
+		BA215E261B87FF560087DBEB /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
+		BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
+		BA215E291B8811AF0087DBEB /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		BA6F8C0D1B8253270083E71E /* Chairlifted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chairlifted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6F8C111B8253270083E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6F8C121B8253280083E71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -350,6 +356,8 @@
 				BA215E191B8787170087DBEB /* GroupFeedViewController.m */,
 				BA215E211B87992E0087DBEB /* CreateGroupViewController.h */,
 				BA215E221B87992E0087DBEB /* CreateGroupViewController.m */,
+				BA215E291B8811AF0087DBEB /* EditProfileViewController.h */,
+				BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -375,6 +383,8 @@
 				BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */,
 				BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */,
 				BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */,
+				BA215E261B87FF560087DBEB /* ProfileHeaderTableViewCell.h */,
+				BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -534,6 +544,7 @@
 				BA6F8C811B8404460083E71E /* CustomFeedWithPhotoTableViewCell.m in Sources */,
 				BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */,
 				BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */,
+				BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
 				BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
@@ -546,6 +557,7 @@
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
 				9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */,
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,
+				BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */,
 				BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
 				BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */,
