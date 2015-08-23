@@ -57,6 +57,9 @@
 		BA757BFD1B84EC0100394195 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFC1B84EC0100394195 /* Resort.m */; };
 		BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */; };
 		BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */; };
+		BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D151B8920B600697FEA /* SearchViewController.m */; };
+		BAC93D191B8963CE00697FEA /* StateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D181B8963CE00697FEA /* StateViewController.m */; };
+		BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */; };
 		BAE3D1971B853B2800BAC4EF /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1961B853B2800BAC4EF /* Like.m */; };
 		BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1991B86850F00BAC4EF /* PostTopic.m */; };
 		BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19C1B869B5700BAC4EF /* Group.m */; };
@@ -162,6 +165,12 @@
 		BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithTextViewController.m; sourceTree = "<group>"; };
 		BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentWithImageViewController.h; sourceTree = "<group>"; };
 		BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithImageViewController.m; sourceTree = "<group>"; };
+		BAC93D141B8920B600697FEA /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		BAC93D151B8920B600697FEA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		BAC93D171B8963CE00697FEA /* StateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateViewController.h; sourceTree = "<group>"; };
+		BAC93D181B8963CE00697FEA /* StateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateViewController.m; sourceTree = "<group>"; };
+		BAC93D1A1B89646800697FEA /* ChooseResortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseResortViewController.h; sourceTree = "<group>"; };
+		BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseResortViewController.m; sourceTree = "<group>"; };
 		BAE3D1951B853B2800BAC4EF /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
 		BAE3D1961B853B2800BAC4EF /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
 		BAE3D1981B86850F00BAC4EF /* PostTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTopic.h; sourceTree = "<group>"; };
@@ -358,6 +367,12 @@
 				BA215E221B87992E0087DBEB /* CreateGroupViewController.m */,
 				BA215E291B8811AF0087DBEB /* EditProfileViewController.h */,
 				BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */,
+				BAC93D141B8920B600697FEA /* SearchViewController.h */,
+				BAC93D151B8920B600697FEA /* SearchViewController.m */,
+				BAC93D171B8963CE00697FEA /* StateViewController.h */,
+				BAC93D181B8963CE00697FEA /* StateViewController.m */,
+				BAC93D1A1B89646800697FEA /* ChooseResortViewController.h */,
+				BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -538,10 +553,13 @@
 				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
 				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
+				BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */,
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,
+				BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */,
 				BA6F8C5B1B8280D50083E71E /* Run.m in Sources */,
 				BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */,
 				BA6F8C811B8404460083E71E /* CustomFeedWithPhotoTableViewCell.m in Sources */,
+				BAC93D191B8963CE00697FEA /* StateViewController.m in Sources */,
 				BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */,
 				BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */,
 				BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */,

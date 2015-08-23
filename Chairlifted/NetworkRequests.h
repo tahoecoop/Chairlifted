@@ -12,17 +12,27 @@
 #import "Like.h"
 #import "PostTopic.h"
 #import "JoinGroup.h"
+#import "Resort.h"
 
 @interface NetworkRequests : NSObject
 
 + (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete;
-+ (void)getPostComments:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
++ (void)getPostComments:(Post *)post withSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
++ (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete;
++ (void)getPostsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
+
 + (void)getLikes:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
 + (void)checkForLike:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
+
 + (void)getTopicsWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getMyGroupsWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getAllGroupsWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete;
+
++ (void)getMyGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
++ (void)getAllGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
++ (void)getGroupsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
+
++ (void)getResortsWithState:(NSString *)state andCompletion:(void(^)(NSArray *array))complete;
+
+
 
 
 

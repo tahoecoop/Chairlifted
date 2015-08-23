@@ -10,6 +10,7 @@
 
 @interface EditProfileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *resortNameLabel;
 
 
 @end

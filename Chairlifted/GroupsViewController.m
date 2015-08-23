@@ -12,15 +12,16 @@
 #import "NSDate+TimePassage.h"
 #import "JoinGroup.h"
 #import "GroupFeedViewController.h"
+#import "SearchViewController.h"
 
 @interface GroupsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) NSArray *myGroups;
+@property (nonatomic) NSMutableArray *myGroups;
 @property (nonatomic) NSMutableArray *allGroups;
-@property (nonatomic) NSArray *pendingGroups;
-
-
+@property (nonatomic) NSMutableArray *pendingGroups;
+@property (nonatomic) int groupSkipCount;
+@property (nonatomic) int mySkipCount;
 
 @end
 
@@ -29,9 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [NetworkRequests getMyGroupsWithCompletion:^(NSArray *array)
+    self.mySkipCount = 0;
+    self.groupSkipCount = 0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
     {
-        self.myGroups = array;
+        self.myGroups = [NSMutableArray arrayWithArray:array];
         [self.tableView reloadData];
     }];
 }
@@ -45,9 +52,10 @@
     {
         if (!self.myGroups.count > 0)
         {
-            [NetworkRequests getMyGroupsWithCompletion:^(NSArray *array)
+            self.mySkipCount = 0;
+            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
              {
-                 self.myGroups = array;
+                 self.myGroups = [NSMutableArray arrayWithArray:array];
                  [self.tableView reloadData];
              }];
         }
@@ -57,7 +65,8 @@
     {
         if (!self.allGroups.count > 0)
         {
-            [NetworkRequests getAllGroupsWithCompletion:^(NSArray *array)
+            self.groupSkipCount = 0;
+            [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
              {
                  self.allGroups = [NSMutableArray arrayWithArray:array];
                  [self.tableView reloadData];
@@ -144,14 +153,62 @@
         CreateGroupViewController *vc = (CreateGroupViewController *)[segue.destinationViewController topViewController];
         vc.delegate = self;
     }
+    else if ([segue.identifier isEqualToString:@"ToGroupSearch"])
+    {
+        SearchViewController *vc = segue.destinationViewController;
+        vc.isGroup = YES;
+    }
 }
+
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+    if (self.segControl.selectedSegmentIndex == 0)
+    {
+        if (indexPath.row == self.mySkipCount - 5)
+        {
+            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+             {
+                 [self.myGroups addObjectsFromArray:array];
+                 self.mySkipCount = self.mySkipCount + 30;
+                 [self.tableView reloadData];
+             }];
+        }
+    }
+    else if (self.segControl.selectedSegmentIndex == 1)
+    {
+        if (indexPath.row == self.groupSkipCount - 5)
+        {
+            [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
+             {
+                 [self.allGroups addObjectsFromArray:array];
+                 self.groupSkipCount = self.groupSkipCount + 30;
+                 [self.tableView reloadData];
+             }];
+        }
+    }
+}
+
 
 -(void)didFinishSaving
 {
     [self.segControl sendActionsForControlEvents:UIControlEventValueChanged];
 }
-
-
 
 
 @end

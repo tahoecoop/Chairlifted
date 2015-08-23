@@ -21,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
-@property (nonatomic) NSArray *myPosts;
+@property (nonatomic) NSMutableArray *myPosts;
 @property (nonatomic) int skipCount;
 
 @end
@@ -44,7 +44,7 @@
 
     [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
     {
-        self.myPosts = array;
+        self.myPosts = [NSMutableArray arrayWithArray:array];
         [self.tableView reloadData];
     }];
 }
@@ -117,6 +117,34 @@
 
             return cell;
         }
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+    if (indexPath.row == self.skipCount - 5)
+    {
+        [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
+         {
+             [self.myPosts addObjectsFromArray:array];
+             self.skipCount = self.skipCount + 30;
+             [self.tableView reloadData];
+         }];
     }
 }
 

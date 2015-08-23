@@ -25,7 +25,8 @@
 @interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) NSArray *comments;
+@property (nonatomic) NSMutableArray *comments;
+@property (nonatomic)int skipCount;
 
 @end
 
@@ -39,13 +40,14 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.estimatedSectionHeaderHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.skipCount = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [NetworkRequests getPostComments:self.post withCompletion:^(NSArray *array)
+    [NetworkRequests getPostComments:self.post withSkipCount:self.skipCount andCompletion:^(NSArray *array)
      {
-         self.comments = array;
+         self.comments = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
      }];
 
@@ -102,6 +104,35 @@
         cell.commentTextLabel.text = comment.text;
         cell.commentTimeLabel.text = [NSDate determineTimePassed:comment.createdAt];
         return cell;
+    }
+}
+
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+    if (indexPath.row == self.skipCount - 5)
+    {
+        [NetworkRequests getPostComments:self.post withSkipCount:self.skipCount andCompletion:^(NSArray *array)
+         {
+             [self.comments addObjectsFromArray:array];
+             self.skipCount = self.skipCount + 30;
+             [self.tableView reloadData];
+         }];
     }
 }
 

@@ -65,7 +65,6 @@
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
      }];
-
 }
 
 
@@ -147,8 +146,26 @@
 }
 
 
+
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+
     if (indexPath.row == self.skipCount - 5)
     {
         [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:self.group andIsPrivate:self.group.isPrivate completion:^(NSArray *array)

@@ -40,6 +40,8 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
+    [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -142,7 +144,21 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
 
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
     if (indexPath.row == self.skipCount - 5)
     {
         [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
@@ -176,7 +192,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (![segue.identifier isEqualToString:@"createPost"])
+    if ([segue.identifier isEqualToString:@"Photo"] || [segue.identifier isEqualToString:@"NoPhoto"])
      {
          PostDetailViewController *vc = segue.destinationViewController;
          Post *post = self.posts[self.tableView.indexPathForSelectedRow.row];
