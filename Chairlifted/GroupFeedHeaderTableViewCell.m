@@ -25,9 +25,18 @@
     {
         if (self.group.isPrivate)
         {
-            [button setTitle:@"Pending" forState:UIControlStateNormal];
-
-            //It'll do stuff
+            JoinGroup *joinGroup = [JoinGroup new];
+            joinGroup.user = [User currentUser];
+            joinGroup.group = self.group;
+            joinGroup.groupName = self.group.name;
+            joinGroup.status = @"pending";
+            [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+            {
+                if (succeeded)
+                {
+                    [button setTitle:@"Pending" forState:UIControlStateNormal];
+                }
+            }];
         }
         else
         {
@@ -36,11 +45,19 @@
             joinGroup.group = self.group;
             joinGroup.status = @"joined";
             joinGroup.lastViewed = [NSDate date];
+            joinGroup.groupName = self.group.name;
             [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
             {
                 if (succeeded)
                 {
-                    [button setTitle:@"Leave group" forState:UIControlStateNormal];
+                    self.group.memberQuantity++;
+                    [self.group saveInBackgroundWithBlock:^(BOOL succeededTwo, NSError *error)
+                    {
+                        if (succeededTwo)
+                        {
+                            [button setTitle:@"Leave group" forState:UIControlStateNormal];
+                        }
+                    }];
                 }
             }];
         }
@@ -51,7 +68,14 @@
         {
             if (succeeded)
             {
-                [button setTitle:@"Join" forState:UIControlStateNormal];
+                self.group.memberQuantity--;
+                [self.group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                {
+                    if (succeeded)
+                    {
+                        [button setTitle:@"Join" forState:UIControlStateNormal];
+                    }
+                }];
             }
         }];
     }

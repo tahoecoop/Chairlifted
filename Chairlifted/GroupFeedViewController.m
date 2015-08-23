@@ -76,6 +76,8 @@
     if ([self.joinGroup.status isEqualToString:@"joined"])
     {
         self.makeNewPostButton.enabled = YES;
+        self.joinGroup.lastViewed = [NSDate date];
+        [self.joinGroup saveInBackground];
     }
     else
     {
@@ -120,15 +122,17 @@
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
         headerCell.groupImageView.image = [UIImage imageWithData:self.group.image.getData scale:0.5];
+        headerCell.group = self.group;
+        headerCell.joinGroup = self.joinGroup;
 
         if ([self.joinGroup.status isEqualToString:@"joined"])
         {
             [headerCell.requestToJoinButton setTitle:@"Leave group" forState:UIControlStateNormal];
         }
-//        else if ([self.joinGroup.status isEqualToString:@""])
-//        {
-//
-//        }
+        else if ([self.joinGroup.status isEqualToString:@"pending"])
+        {
+            [headerCell.requestToJoinButton setTitle:@"Pending" forState:UIControlStateNormal];
+        }
         else
         {
             [headerCell.requestToJoinButton setTitle:@"Join" forState:UIControlStateNormal];

@@ -151,6 +151,7 @@
 {
     PFQuery *query = [JoinGroup query];
     [query whereKey:@"user" equalTo:[User currentUser]];
+    [query whereKey:@"status" equalTo:@"joined"];
     [query includeKey:@"group"];
     [query orderByDescending:@"mostRecentPost"];
     query.skip = skipCount;
