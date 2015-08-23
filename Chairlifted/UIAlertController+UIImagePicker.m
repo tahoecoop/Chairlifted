@@ -29,7 +29,7 @@
       }];
     UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
       {
-          [superSelf dismissViewControllerAnimated:YES completion:nil];
+          [alert dismissViewControllerAnimated:YES completion:nil];
       }];
 
     [alert addAction:takePhoto];

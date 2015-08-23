@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Resort.h"
 
-@interface EditProfileViewController : UIViewController
+@interface EditProfileViewController : UIViewController <UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *resortNameLabel;
+@property (nonatomic) Resort *selectedResort;
 
 
 @end

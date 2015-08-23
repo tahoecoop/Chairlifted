@@ -97,7 +97,7 @@
     {
         EditProfileViewController *vc = segue.destinationViewController;
         Resort *resort = self.resorts[self.tableView.indexPathForSelectedRow.row];
-        vc.resortNameLabel.text = resort.name;
+        vc.selectedResort = resort;
     }
 }
 

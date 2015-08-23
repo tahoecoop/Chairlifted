@@ -88,8 +88,11 @@
     {
         ProfileHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderCell"];
         headerCell.nameLabel.text = self.selectedUser.name;
-        headerCell.locationLabel.text = self.selectedUser.location;
+        Resort *resort = self.selectedUser.favoriteResort;
+        [resort fetchIfNeeded];
+        headerCell.locationLabel.text = resort.name;
         headerCell.profileImageView.image = [UIImage imageWithData:self.selectedUser.profileImage.getData scale:0.3];
+
         return headerCell;
     }
     else
