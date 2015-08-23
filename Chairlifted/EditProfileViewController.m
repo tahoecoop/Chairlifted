@@ -72,7 +72,7 @@
 }
 
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.profileImageView.image = info[UIImagePickerControllerOriginalImage];
     [self checkIfEditsMade];
@@ -96,7 +96,7 @@
         user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(self.profileImageView.image, 1.0)];
     }
 
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error)
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
         [self dismissViewControllerAnimated:YES completion:nil];
     }];

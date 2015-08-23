@@ -27,6 +27,7 @@
 + (void)getTopicsWithCompletion:(void(^)(NSArray *array))complete;
 
 + (void)getMyGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
++ (void)getJoinGroupIfAlreadyJoinedWithGroup:(Group *)group andCompletion:(void(^)(NSArray *array))complete;
 + (void)getAllGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 + (void)getGroupsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 

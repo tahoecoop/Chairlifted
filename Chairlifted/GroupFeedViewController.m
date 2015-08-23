@@ -44,14 +44,17 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
-    if ([self.joinGroup.status isEqualToString:@"joined"])
+    if (!self.joinGroup)
     {
-        self.makeNewPostButton.enabled = YES;
+        [NetworkRequests getJoinGroupIfAlreadyJoinedWithGroup:self.group andCompletion:^(NSArray *array)
+         {
+             self.joinGroup = array.firstObject;
+             [self setUpGroupInfo];
+         }];
     }
     else
     {
-        self.makeNewPostButton.enabled = NO;
-        self.makeNewPostButton.tintColor = [UIColor clearColor];
+        [self setUpGroupInfo];
     }
 }
 
@@ -65,6 +68,20 @@
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
      }];
+}
+
+
+-(void)setUpGroupInfo
+{
+    if ([self.joinGroup.status isEqualToString:@"joined"])
+    {
+        self.makeNewPostButton.enabled = YES;
+    }
+    else
+    {
+        self.makeNewPostButton.enabled = NO;
+        self.makeNewPostButton.tintColor = [UIColor clearColor];
+    }
 }
 
 

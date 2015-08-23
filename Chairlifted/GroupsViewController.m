@@ -136,12 +136,12 @@
     if ([segue.identifier isEqualToString:@"GroupFeedSegue"])
     {
         GroupFeedViewController *vc = segue.destinationViewController;
-        JoinGroup *joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
-        vc.joinGroup = joinGroup;
 
         if (self.segControl.selectedSegmentIndex == 0)
         {
+            JoinGroup *joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
             vc.group = joinGroup.group;
+            vc.joinGroup = joinGroup;
         }
         else if (self.segControl.selectedSegmentIndex == 1)
         {

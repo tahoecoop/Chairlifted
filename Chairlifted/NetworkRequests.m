@@ -164,6 +164,22 @@
      }];
 }
 
+
++ (void)getJoinGroupIfAlreadyJoinedWithGroup:(Group *)group andCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [JoinGroup query];
+    [query whereKey:@"user" equalTo:[User currentUser]];
+    [query whereKey:@"group" equalTo:group];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
+}
+
+
 + (void)getAllGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Group query];
@@ -178,6 +194,7 @@
          }
      }];
 }
+
 
 + (void)getGroupsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
 {
