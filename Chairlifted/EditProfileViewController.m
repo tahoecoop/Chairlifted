@@ -9,6 +9,8 @@
 #import "EditProfileViewController.h"
 #import "User.h"
 #import "UIAlertController+UIImagePicker.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface EditProfileViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -147,5 +149,23 @@
     self.resortNameLabel.text = self.selectedResort.name;
     [self.changeFavoriteResortButton setTitle:@"Change Favorite Resort" forState:UIControlStateNormal];
 }
+
+
+#pragma mark - Logout Method
+
+
+- (IBAction)onLogoutButtonPressed:(UIButton *)sender {
+    
+    [PFUser logOut];
+
+    [FBSDKAccessToken setCurrentAccessToken:nil];
+
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc]init];
+
+    [login logOut];
+    
+    [self performSegueWithIdentifier:@"logout" sender:self];
+}
+
 
 @end

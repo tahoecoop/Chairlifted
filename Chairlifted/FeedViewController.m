@@ -46,15 +46,15 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (![PFUser currentUser])
-    {
-        PFLogInViewController *loginVC = [PFLogInViewController new];
-        loginVC.delegate = self;
-        PFSignUpViewController *signupVC = [PFSignUpViewController new];
-        signupVC.delegate = self;
-        [loginVC setSignUpController:signupVC];
-        [self presentViewController:loginVC animated:YES completion:nil];
-    }
+//    if (![PFUser currentUser])
+//    {
+//        PFLogInViewController *loginVC = [PFLogInViewController new];
+//        loginVC.delegate = self;
+//        PFSignUpViewController *signupVC = [PFSignUpViewController new];
+//        signupVC.delegate = self;
+//        [loginVC setSignUpController:signupVC];
+//        [self presentViewController:loginVC animated:YES completion:nil];
+//    }
 }
 
 -(void)viewWillAppear:(BOOL)animated

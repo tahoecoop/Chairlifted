@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
+		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
+		96E4A6831B8A5BA20006C097 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E4A6811B8A5BA20006C097 /* FBSDKCoreKit.framework */; };
+		96E4A6841B8A5BA20006C097 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E4A6821B8A5BA20006C097 /* FBSDKLoginKit.framework */; };
 		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
-		BA215E251B87B3300087DBEB /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = BA215E241B87B3300087DBEB /* images.png */; };
 		BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */; };
 		BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
@@ -84,13 +86,16 @@
 		78ED0421E622472209EE7C13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		96E4A6811B8A5BA20006C097 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		96E4A6821B8A5BA20006C097 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BA215E181B8787170087DBEB /* GroupFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedViewController.h; sourceTree = "<group>"; };
 		BA215E191B8787170087DBEB /* GroupFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedViewController.m; sourceTree = "<group>"; };
 		BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedHeaderTableViewCell.h; sourceTree = "<group>"; };
 		BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedHeaderTableViewCell.m; sourceTree = "<group>"; };
 		BA215E211B87992E0087DBEB /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
 		BA215E221B87992E0087DBEB /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
-		BA215E241B87B3300087DBEB /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 		BA215E261B87FF560087DBEB /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
 		BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
 		BA215E291B8811AF0087DBEB /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E4A6841B8A5BA20006C097 /* FBSDKLoginKit.framework in Frameworks */,
 				BA6F8C521B827B0C0083E71E /* Social.framework in Frameworks */,
 				BA6F8C501B827B060083E71E /* Accounts.framework in Frameworks */,
 				BA6F8C541B827E440083E71E /* ParseUI.framework in Frameworks */,
@@ -201,6 +207,7 @@
 				BA6F8C401B827ABD0083E71E /* CFNetwork.framework in Frameworks */,
 				BA6F8C3E1B827AB70083E71E /* AudioToolbox.framework in Frameworks */,
 				BA6F8C3C1B8278B60083E71E /* Parse.framework in Frameworks */,
+				96E4A6831B8A5BA20006C097 /* FBSDKCoreKit.framework in Frameworks */,
 				BA6F8C3A1B8278AA0083E71E /* Bolts.framework in Frameworks */,
 				D3CE69F192DC679F97BC8BD1 /* libPods.a in Frameworks */,
 			);
@@ -219,7 +226,8 @@
 		13789AC426B7F6C40BF5B935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BA215E241B87B3300087DBEB /* images.png */,
+				96E4A6811B8A5BA20006C097 /* FBSDKCoreKit.framework */,
+				96E4A6821B8A5BA20006C097 /* FBSDKLoginKit.framework */,
 				BA6F8C511B827B0C0083E71E /* Social.framework */,
 				BA6F8C4F1B827B060083E71E /* Accounts.framework */,
 				BA6F8C4D1B827AFB0083E71E /* libsqlite3.dylib */,
@@ -347,6 +355,8 @@
 			children = (
 				BA6F8C1A1B8253280083E71E /* FeedViewController.h */,
 				BA6F8C1B1B8253280083E71E /* FeedViewController.m */,
+				96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */,
+				96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */,
 				BA6F8C641B8295CF0083E71E /* CreatePostViewController.h */,
 				BA6F8C651B8295CF0083E71E /* CreatePostViewController.m */,
 				BA6F8C671B8295E00083E71E /* PostDetailViewController.h */,
@@ -489,7 +499,6 @@
 				BA6F8C1F1B8253280083E71E /* Main.storyboard in Resources */,
 				BA6F8C241B8253280083E71E /* LaunchScreen.xib in Resources */,
 				BA6F8C211B8253280083E71E /* Images.xcassets in Resources */,
-				BA215E251B87B3300087DBEB /* images.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +573,7 @@
 				BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */,
 				BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
+				96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */,
 				BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
 				BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */,
