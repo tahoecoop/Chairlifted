@@ -95,7 +95,7 @@
 
                          UIImage *displayPicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:url] scale:1.0];
 
-                         NSArray *friendsArray = [NSArray arrayWithArray:[[result valueForKey:@"frieds"] valueForKey:@"data"]];
+                         NSArray *friendsArray = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
 
 
                          User *user = [User new];
@@ -110,7 +110,7 @@
 
 
                          if (error) {
-                             [PFUser logInWithUsername:result[@"email"] password:result[@"id"]];
+                             [PFUser logInWithUsername:result[@"name"] password:result[@"id"]];
                              [self performSegueWithIdentifier:@"autoLogin" sender:self];
 
                          }
