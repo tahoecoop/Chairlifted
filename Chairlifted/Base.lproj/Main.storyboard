@@ -218,6 +218,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pfe-6B-QSu" id="CTa-zu-1Zs"/>
+                        <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginFirst" id="Lxg-Ss-HDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -2261,12 +2262,11 @@
                     <connections>
                         <outlet property="passwordTextField" destination="2UE-Ij-FKM" id="MRO-qj-B4N"/>
                         <outlet property="usernameTextField" destination="dQ8-na-fRK" id="7x7-Oc-hGX"/>
-                        <segue destination="mtb-gw-xtd" kind="modal" identifier="autoLogin" id="0xi-UQ-kKO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKM-HU-Rcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="363"/>
+            <point key="canvasLocation" x="-446" y="347"/>
         </scene>
         <!--Groups-->
         <scene sceneID="HZt-fJ-YJi">
@@ -2430,7 +2430,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onLogoutButtonPressed:" destination="OQS-CS-eyQ" eventType="touchUpInside" id="8GE-lG-hM3"/>
                                     <segue destination="tXg-Zz-ck9" kind="modal" identifier="logout" id="vG6-2M-ghs"/>
                                 </connections>
                             </button>
@@ -2644,9 +2643,10 @@
         <image name="lock" width="69" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vG6-2M-ghs"/>
+        <segue reference="Dqi-pz-FPR"/>
         <segue reference="5HB-Tl-T42"/>
         <segue reference="oi7-M8-uuK"/>
-        <segue reference="ejQ-rk-85I"/>
         <segue reference="hWB-ji-5Hf"/>
     </inferredMetricsTieBreakers>
 </document>

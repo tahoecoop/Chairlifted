@@ -14,6 +14,7 @@
 #import "NetworkRequests.h"
 #import "CustomFeedWithPhotoTableViewCell.h"
 #import "PostDetailViewController.h"
+#import "LoginViewController.h"
 
 @interface FeedViewController ()
 
@@ -46,27 +47,32 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-//    if (![PFUser currentUser])
-//    {
+    if (![User currentUser])
+    {
 //        PFLogInViewController *loginVC = [PFLogInViewController new];
 //        loginVC.delegate = self;
 //        PFSignUpViewController *signupVC = [PFSignUpViewController new];
 //        signupVC.delegate = self;
 //        [loginVC setSignUpController:signupVC];
 //        [self presentViewController:loginVC animated:YES completion:nil];
-//    }
+
+
+        [self performSegueWithIdentifier:@"loginFirst" sender:self];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.skipCount = 30;
+    if ([User currentUser])
+    {
+        self.skipCount = 30;
 
-    [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
-     {
-         self.posts = [NSMutableArray arrayWithArray:array];
-         [self.tableView reloadData];
-     }];
-    
+        [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
+         {
+             self.posts = [NSMutableArray arrayWithArray:array];
+             [self.tableView reloadData];
+         }];
+    }
 }
 
 

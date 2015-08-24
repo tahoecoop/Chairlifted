@@ -154,17 +154,18 @@
 #pragma mark - Logout Method
 
 
-- (IBAction)onLogoutButtonPressed:(UIButton *)sender {
-    
-    [PFUser logOut];
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"logout"])
+    {
+        [User logOut];
 
-    [FBSDKAccessToken setCurrentAccessToken:nil];
+        [FBSDKAccessToken setCurrentAccessToken:nil];
 
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc]init];
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc]init];
 
-    [login logOut];
-    
-    [self performSegueWithIdentifier:@"logout" sender:self];
+        [login logOut];
+    }
 }
 
 
