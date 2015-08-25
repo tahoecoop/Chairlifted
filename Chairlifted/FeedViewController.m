@@ -144,7 +144,15 @@
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
 //        textCell.postImageView.image = [UIImage imageWithData:post.image.getData];
-        textCell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.2];
+        PFFile *postImage = post.image;
+        [postImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+        {
+            if (!error)
+            {
+                textCell.postImageView.image = [UIImage imageWithData:data scale:0.2];
+            }
+        }];
+
     }
 }
 

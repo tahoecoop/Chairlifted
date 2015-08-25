@@ -1216,7 +1216,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-EW-xgG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-EW-xgG">
                                                     <rect key="frame" x="8" y="79" width="58" height="16"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1314,7 +1314,7 @@
                                                     <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plk-p3-9lF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plk-p3-9lF">
                                                     <rect key="frame" x="8" y="79" width="58" height="16"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1534,7 +1534,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6af-vw-dmY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6af-vw-dmY">
                                                     <rect key="frame" x="8" y="78" width="58" height="16"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1615,7 +1615,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaR-nH-p4C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12 replies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaR-nH-p4C">
                                                     <rect key="frame" x="8" y="90" width="58" height="16"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1935,6 +1935,21 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="Ra2-OE-UzI">
+                                                    <rect key="frame" x="114" y="75" width="20" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="TEo-Cs-a0l"/>
+                                                        <constraint firstAttribute="width" constant="20" id="cIk-E1-sb6"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Temp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djt-RO-FMM">
+                                                    <rect key="frame" x="142" y="77" width="46" height="15"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -1944,7 +1959,11 @@
                                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="NSK-vq-bGa" secondAttribute="bottom" constant="62" id="5Iz-So-02D"/>
                                                 <constraint firstAttribute="trailing" secondItem="jxm-Xa-lO5" secondAttribute="trailing" constant="8" id="5hX-Kx-VYx"/>
                                                 <constraint firstItem="NSK-vq-bGa" firstAttribute="leading" secondItem="CNL-aU-BKn" secondAttribute="trailing" constant="8" id="E4X-Zo-GnE"/>
+                                                <constraint firstItem="Ra2-OE-UzI" firstAttribute="centerY" secondItem="djt-RO-FMM" secondAttribute="centerY" constant="0.5" id="J33-W9-e8f"/>
                                                 <constraint firstAttribute="trailing" secondItem="NSK-vq-bGa" secondAttribute="trailing" constant="8" id="bAd-b0-qw6"/>
+                                                <constraint firstItem="Ra2-OE-UzI" firstAttribute="top" secondItem="NSK-vq-bGa" secondAttribute="bottom" constant="8" id="loF-Zu-pEL"/>
+                                                <constraint firstItem="Ra2-OE-UzI" firstAttribute="leading" secondItem="CNL-aU-BKn" secondAttribute="trailing" constant="8" id="lzC-90-PTm"/>
+                                                <constraint firstItem="djt-RO-FMM" firstAttribute="leading" secondItem="Ra2-OE-UzI" secondAttribute="trailing" constant="8" id="npA-V4-FEd"/>
                                                 <constraint firstItem="jxm-Xa-lO5" firstAttribute="top" secondItem="GXr-ZU-iwN" secondAttribute="top" constant="21" id="phZ-w2-6AA"/>
                                                 <constraint firstItem="CNL-aU-BKn" firstAttribute="leading" secondItem="GXr-ZU-iwN" secondAttribute="leading" constant="16" id="uqS-Lp-gNn"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NSK-vq-bGa" secondAttribute="bottom" constant="8" id="yWr-WQ-W8z"/>
@@ -1957,6 +1976,8 @@
                                             <outlet property="locationLabel" destination="NSK-vq-bGa" id="82c-jE-fDT"/>
                                             <outlet property="nameLabel" destination="jxm-Xa-lO5" id="rhn-JQ-Wqr"/>
                                             <outlet property="profileImageView" destination="CNL-aU-BKn" id="8J4-BV-ez3"/>
+                                            <outlet property="weatherIconImageView" destination="Ra2-OE-UzI" id="yAy-Ev-g8w"/>
+                                            <outlet property="weatherLabel" destination="djt-RO-FMM" id="HhG-Ak-auK"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextPostCell" rowHeight="100" id="cAV-2r-BGy" customClass="CustomFeedTableViewCell">

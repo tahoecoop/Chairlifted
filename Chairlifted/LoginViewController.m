@@ -30,11 +30,12 @@
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error)
         {
 
-             [PFUser logInWithUsername:result[@"name"] password:result[@"id"]];
+             [User logInWithUsername:result[@"name"] password:result[@"id"]];
 
              if ([User currentUser])
              {
-                 [self performSegueWithIdentifier:@"autoLogin" sender:self];
+//                 [self performSegueWithIdentifier:@"autoLogin" sender:self];
+                 [self dismissViewControllerAnimated:YES completion:nil];
              }
 
          }];
@@ -101,8 +102,9 @@
                   {
                       NSLog(@"%@", result);
 
-                      [PFUser logInWithUsername:result[@"name"] password:result[@"id"]];
-                      [self performSegueWithIdentifier:@"autoLogin" sender:self];
+                      [User logInWithUsername:result[@"name"] password:result[@"id"]];
+//                      [self performSegueWithIdentifier:@"autoLogin" sender:self];
+                      [self dismissViewControllerAnimated:YES completion:nil];
 
                       NSURL *url = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://graph.facebook.com/\%@/picture?type=large&return_ssl_resources=1", result[@"id"]]];
 
@@ -124,7 +126,7 @@
 
                       if (error)
                       {
-                          [PFUser logInWithUsername:result[@"name"] password:result[@"id"]];
+                          [User logInWithUsername:result[@"name"] password:result[@"id"]];
                           //                             [self performSegueWithIdentifier:@"autoLogin" sender:self];
                           [self dismissViewControllerAnimated:YES completion:nil];
                           
