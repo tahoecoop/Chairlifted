@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic) NSArray *friendsArray;
 
 @end
 
@@ -34,7 +35,6 @@
 
              if ([User currentUser])
              {
-//                 [self performSegueWithIdentifier:@"autoLogin" sender:self];
                  [self dismissViewControllerAnimated:YES completion:nil];
              }
 
@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.friendsArray = [NSArray new];
 
     if ([FBSDKAccessToken currentAccessToken])
     {
@@ -58,32 +58,16 @@
              }
          }];
     }
-
-    UIButton *fbLoginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    fbLoginButton.backgroundColor=[UIColor darkGrayColor];
-    fbLoginButton.frame=CGRectMake(0,0,180,40);
-    fbLoginButton.center = self.view.center;
-    [fbLoginButton setTitle: @"Login With Facebook" forState: UIControlStateNormal];
-
-    // Handle clicks on the button
-    [fbLoginButton
-     addTarget:self
-     action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-
-    // Add the button to the view
-    [self.view addSubview:fbLoginButton];
 }
 
 
--(void)loginButtonClicked
-{
 
-
+- (IBAction)onFBLoginPressed:(UIButton *)sender {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
      logInWithReadPermissions: @[@"public_profile", @"user_friends", @"email", @"user_about_me"]
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
-    {
+     {
          if (error)
          {
              NSLog(@"Process error");
@@ -103,14 +87,13 @@
                       NSLog(@"%@", result);
 
                       [User logInWithUsername:result[@"name"] password:result[@"id"]];
-//                      [self performSegueWithIdentifier:@"autoLogin" sender:self];
                       [self dismissViewControllerAnimated:YES completion:nil];
 
                       NSURL *url = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://graph.facebook.com/\%@/picture?type=large&return_ssl_resources=1", result[@"id"]]];
 
                       UIImage *displayPicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:url] scale:1.0];
 
-                      NSArray *friendsArray = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
+                      self.friendsArray = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
 
 
                       User *user = [User new];
@@ -119,34 +102,32 @@
                       user.password = result[@"id"];
                       user.email = result[@"email"];
                       user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(displayPicture, 1.0)];
+                      user.friends = self.friendsArray;
 
                       [user signUpInBackground];
-
-
-
+                      
                       if (error)
                       {
-                          [User logInWithUsername:result[@"name"] password:result[@"id"]];
-                          //                             [self performSegueWithIdentifier:@"autoLogin" sender:self];
-                          [self dismissViewControllerAnimated:YES completion:nil];
                           
                       }
                       
                   }];
              }
          }
-    }];
+     }];
 }
 
 
 - (IBAction)onParseLoginButtonPressed:(UIButton *)button
 {
-//    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text];
     [User logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
     {
         if ([User currentUser])
         {
             [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        if (error) {
+//            UIAlertController *loginErrorAlert = 
         }
     }];
 }

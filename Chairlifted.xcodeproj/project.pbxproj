@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */; };
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
 		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
 		96E4A6831B8A5BA20006C097 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E4A6811B8A5BA20006C097 /* FBSDKCoreKit.framework */; };
@@ -59,6 +60,8 @@
 		BA757BFD1B84EC0100394195 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFC1B84EC0100394195 /* Resort.m */; };
 		BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */; };
 		BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */; };
+		BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */; };
+		BA962CEF1B8B8F06001B87C6 /* untitled.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA962CEC1B8B8F06001B87C6 /* untitled.plist */; };
 		BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D151B8920B600697FEA /* SearchViewController.m */; };
 		BAC93D191B8963CE00697FEA /* StateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D181B8963CE00697FEA /* StateViewController.m */; };
 		BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */; };
@@ -84,6 +87,8 @@
 		14ADEADAE442867E661D0CD0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3977807EA09C743BC022FA86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		78ED0421E622472209EE7C13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		96131C411B8CE8D8005BDF9F /* CreateNewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewUserViewController.h; sourceTree = "<group>"; };
+		96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewUserViewController.m; sourceTree = "<group>"; };
 		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -170,6 +175,9 @@
 		BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithTextViewController.m; sourceTree = "<group>"; };
 		BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentWithImageViewController.h; sourceTree = "<group>"; };
 		BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithImageViewController.m; sourceTree = "<group>"; };
+		BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPEmitterView.h; sourceTree = "<group>"; };
+		BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPEmitterView.m; sourceTree = "<group>"; };
+		BA962CEC1B8B8F06001B87C6 /* untitled.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = untitled.plist; path = Chairlifted/untitled.plist; sourceTree = "<group>"; };
 		BAC93D141B8920B600697FEA /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		BAC93D151B8920B600697FEA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		BAC93D171B8963CE00697FEA /* StateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateViewController.h; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 				BA6F8C3B1B8278B60083E71E /* Parse.framework */,
 				BA6F8C391B8278AA0083E71E /* Bolts.framework */,
 				14ADEADAE442867E661D0CD0 /* libPods.a */,
+				BA962CEC1B8B8F06001B87C6 /* untitled.plist */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,6 +366,8 @@
 				BA6F8C1B1B8253280083E71E /* FeedViewController.m */,
 				96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */,
 				96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */,
+				96131C411B8CE8D8005BDF9F /* CreateNewUserViewController.h */,
+				96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */,
 				BA6F8C641B8295CF0083E71E /* CreatePostViewController.h */,
 				BA6F8C651B8295CF0083E71E /* CreatePostViewController.m */,
 				BA6F8C671B8295E00083E71E /* PostDetailViewController.h */,
@@ -383,6 +394,8 @@
 				BAC93D181B8963CE00697FEA /* StateViewController.m */,
 				BAC93D1A1B89646800697FEA /* ChooseResortViewController.h */,
 				BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */,
+				BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */,
+				BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -499,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA6F8C1F1B8253280083E71E /* Main.storyboard in Resources */,
+				BA962CEF1B8B8F06001B87C6 /* untitled.plist in Resources */,
 				BA6F8C241B8253280083E71E /* LaunchScreen.xib in Resources */,
 				BA6F8C211B8253280083E71E /* Images.xcassets in Resources */,
 			);
@@ -557,6 +571,7 @@
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
 				BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */,
 				BA6F8C851B8413000083E71E /* DetailHeaderTableViewCell.m in Sources */,
+				BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */,
 				BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */,
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
 				BA6F8C881B8413110083E71E /* DetailPostImageTableViewCell.m in Sources */,
@@ -584,6 +599,7 @@
 				BA6F8C131B8253280083E71E /* main.m in Sources */,
 				BA6F8C7E1B83A0D00083E71E /* NSDate+TimePassage.m in Sources */,
 				BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */,
+				96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */,
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
 				9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */,
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,

@@ -230,6 +230,19 @@
      }];
 }
 
+#pragma mark - Get weather
+
++ (void)getWeatherFromLatitude:(double)latitude andLongitude:(double)longitude andCompletion:(void(^)(NSDictionary *dictionary))complete
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/20788a00b48f1134a3caba1ed068b963/%f,%f", latitude, longitude]];
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+          NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+          complete(dict);
+      }] resume];
+}
+
+
 
 
 @end
