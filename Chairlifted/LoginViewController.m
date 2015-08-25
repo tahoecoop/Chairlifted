@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic) NSArray *friendsArray;
 
 @end
 
@@ -34,7 +35,6 @@
 
              if ([User currentUser])
              {
-//                 [self performSegueWithIdentifier:@"autoLogin" sender:self];
                  [self dismissViewControllerAnimated:YES completion:nil];
              }
 
@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.friendsArray = [NSArray new];
 
     if ([FBSDKAccessToken currentAccessToken])
     {
@@ -103,14 +103,13 @@
                       NSLog(@"%@", result);
 
                       [User logInWithUsername:result[@"name"] password:result[@"id"]];
-//                      [self performSegueWithIdentifier:@"autoLogin" sender:self];
                       [self dismissViewControllerAnimated:YES completion:nil];
 
                       NSURL *url = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://graph.facebook.com/\%@/picture?type=large&return_ssl_resources=1", result[@"id"]]];
 
                       UIImage *displayPicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:url] scale:1.0];
 
-                      NSArray *friendsArray = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
+                      self.friendsArray = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
 
 
                       User *user = [User new];
@@ -119,17 +118,13 @@
                       user.password = result[@"id"];
                       user.email = result[@"email"];
                       user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(displayPicture, 1.0)];
+//                      user.friends = self.friendsArray;
 
                       [user signUpInBackground];
 
-
-
                       if (error)
                       {
-                          [User logInWithUsername:result[@"name"] password:result[@"id"]];
-                          //                             [self performSegueWithIdentifier:@"autoLogin" sender:self];
-                          [self dismissViewControllerAnimated:YES completion:nil];
-                          
+
                       }
                       
                   }];

@@ -15,7 +15,7 @@
 
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *email;
-@property (nonatomic) NSSet *friends;
+@property (nonatomic) NSArray *friends;
 @property (nonatomic) NSSet *runs;
 @property (nonatomic) NSSet *posts;
 @property (nonatomic) NSSet *favoriteResorts;
