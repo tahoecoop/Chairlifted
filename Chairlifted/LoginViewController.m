@@ -34,7 +34,8 @@
 
              if ([User currentUser])
              {
-                 [self performSegueWithIdentifier:@"autoLogin" sender:self];
+//                 [self performSegueWithIdentifier:@"autoLogin" sender:self];
+                 [self dismissViewControllerAnimated:YES completion:nil];
              }
 
          }];
@@ -102,7 +103,8 @@
                       NSLog(@"%@", result);
 
                       [User logInWithUsername:result[@"name"] password:result[@"id"]];
-                      [self performSegueWithIdentifier:@"autoLogin" sender:self];
+//                      [self performSegueWithIdentifier:@"autoLogin" sender:self];
+                      [self dismissViewControllerAnimated:YES completion:nil];
 
                       NSURL *url = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://graph.facebook.com/\%@/picture?type=large&return_ssl_resources=1", result[@"id"]]];
 
