@@ -29,6 +29,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.hidden = YES;
 }
 
 - (void)populateTheCells
@@ -78,6 +79,9 @@
         {
             groupCell.privateImageView.hidden = YES;
         }
+        groupCell.backgroundColor = [UIColor whiteColor];
+        tableView.backgroundColor = [UIColor clearColor];
+
         return groupCell;
     }
     else
@@ -92,6 +96,9 @@
             postPhotoCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             postPhotoCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             postPhotoCell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.3];
+            postPhotoCell.backgroundColor = [UIColor whiteColor];
+            tableView.backgroundColor = [UIColor clearColor];
+
             return postPhotoCell;
         }
         else
@@ -102,6 +109,9 @@
             postTextCell.authorLabel.text = post.author.username;
             postTextCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             postTextCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
+            postTextCell.backgroundColor = [UIColor whiteColor];
+            tableView.backgroundColor = [UIColor clearColor];
+
             return postTextCell;
         }
     }
@@ -154,7 +164,19 @@
 {
     [self populateTheCells];
     [searchBar resignFirstResponder];
+    self.tableView.hidden = NO;
 }
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([self.searchBar.text isEqualToString:@""])
+    {
+        self.tableView.hidden = YES;
+        [searchBar resignFirstResponder];
+    }
+}
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
