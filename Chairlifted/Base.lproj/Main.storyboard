@@ -2325,7 +2325,7 @@
         <scene sceneID="FJk-Xb-J0A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tKV-Hr-6Rn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="rider - 1x" id="Has-gT-Pyk"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Profile" id="Has-gT-Pyk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZAn-8a-hdZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2410,9 +2410,10 @@
                                 <rect key="frame" x="19" y="229" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editingDidChange:" destination="OQS-CS-eyQ" eventType="editingChanged" id="2KO-vy-K0x"/>
+                                    <outlet property="delegate" destination="OQS-CS-eyQ" id="M2F-At-rSe"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESB-10-KcO">
@@ -2465,6 +2466,19 @@
                                     <segue destination="tXg-Zz-ck9" kind="modal" identifier="logout" id="vG6-2M-ghs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0X-1B-ajt">
+                                <rect key="frame" x="23" y="384" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-Bs-b7F">
+                                <rect key="frame" x="19" y="413" width="285" height="29"/>
+                                <segments>
+                                    <segment title="Skier"/>
+                                    <segment title="Snowboarder"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2492,6 +2506,7 @@
                         <outlet property="profileImageView" destination="Cic-VW-hXn" id="frA-EK-845"/>
                         <outlet property="resortNameLabel" destination="iq1-Mb-aj0" id="ckx-7t-EP8"/>
                         <outlet property="saveButton" destination="Te7-an-CaZ" id="UZi-JM-2dh"/>
+                        <outlet property="segControl" destination="vsK-Bs-b7F" id="okO-jz-zQ2"/>
                         <outlet property="usernameLabel" destination="pfh-CB-blW" id="gFx-Pl-9OR"/>
                     </connections>
                 </viewController>
@@ -2678,7 +2693,6 @@
         <image name="gradient" width="395" height="509"/>
         <image name="group - 1x" width="30" height="30"/>
         <image name="lock" width="69" height="69"/>
-        <image name="rider - 1x" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

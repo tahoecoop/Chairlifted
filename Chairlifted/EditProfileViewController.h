@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Resort.h"
 
-@interface EditProfileViewController : UIViewController <UIImagePickerControllerDelegate>
+@interface EditProfileViewController : UIViewController <UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *resortNameLabel;
 @property (nonatomic) Resort *selectedResort;
