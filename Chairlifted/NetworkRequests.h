@@ -33,7 +33,7 @@
 
 + (void)getResortsWithState:(NSString *)state andCompletion:(void(^)(NSArray *array))complete;
 
-
++ (void)getWeatherFromLatitude:(double)latitude andLongitude:(double)longitude andCompletion:(void(^)(NSDictionary *dictionary))complete;
 
 
 

@@ -204,7 +204,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Main Feed" id="7NL-Vu-SKl">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="16d-Gr-G5T">
+                        <barButtonItem key="leftBarButtonItem" image="googles" id="16d-Gr-G5T">
                             <connections>
                                 <segue destination="X6j-Ag-GgR" kind="push" id="Dqi-pz-FPR"/>
                             </connections>
@@ -1128,7 +1128,6 @@
         <!--Search View Controller-->
         <scene sceneID="xNS-YR-3l2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QSQ-7n-EnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="X6j-Ag-GgR" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xIX-V6-FHA"/>
@@ -1408,6 +1407,7 @@
                         <outlet property="tableView" destination="UTi-3n-tlX" id="Ezf-0h-JCc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QSQ-7n-EnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1661" y="1437"/>
         </scene>
@@ -2187,6 +2187,7 @@
                         <segue destination="fTy-ZM-WeE" kind="relationship" relationship="viewControllers" id="oY4-qA-Asx"/>
                         <segue destination="RtJ-BB-RoY" kind="relationship" relationship="viewControllers" id="LfK-a6-4LZ"/>
                         <segue destination="tKV-Hr-6Rn" kind="relationship" relationship="viewControllers" id="kyb-Q8-m47"/>
+                        <segue destination="NJT-Hf-MmZ" kind="relationship" relationship="viewControllers" id="w7o-VO-Vqd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1f7-SC-Q7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2213,6 +2214,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3p-k9-Y2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="592" y="368"/>
+        </scene>
+        <!--Create-->
+        <scene sceneID="6c1-BI-Ote">
+            <objects>
+                <viewController id="NJT-Hf-MmZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d9E-ve-D58"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tdm-QI-Oot"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FoO-Vx-FRM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Create" image="biggerCreate" id="Qpl-bT-19y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ClS-Dw-Stt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="504" y="-375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gCb-wK-l5S">
@@ -2652,7 +2672,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="biggerCreate" width="50" height="50"/>
         <image name="chairlift" width="30" height="30"/>
+        <image name="googles" width="30" height="30"/>
         <image name="gradient" width="395" height="509"/>
         <image name="group - 1x" width="30" height="30"/>
         <image name="lock" width="69" height="69"/>

@@ -60,6 +60,12 @@
         self.editButton.enabled = NO;
         self.editButton.tintColor = [UIColor clearColor];
     }
+    Resort *resort = self.selectedUser.favoriteResort;
+    [resort fetchIfNeeded];
+    [NetworkRequests getWeatherFromLatitude:resort.latitude andLongitude:resort.longitude andCompletion:^(NSDictionary *dictionary)
+     {
+         NSLog(@"%f,%f", resort.latitude, resort.longitude);
+     }];
 }
 
 
