@@ -63,7 +63,7 @@
 {
     self.skipCount = 30;
 
-    [NetworkRequests getPostsWithSkipCount:0 andGroup:self.group andIsPrivate:self.group.isPrivate completion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 andGroup:self.group andIsPrivate:[self.group.isPrivate boolValue] completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
