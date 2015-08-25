@@ -15,6 +15,7 @@
 #import "CustomFeedWithPhotoTableViewCell.h"
 #import "PostDetailViewController.h"
 #import "LoginViewController.h"
+#import "UIImage+SkiSnowboardIcon.h"
 
 @interface FeedViewController ()
 
@@ -121,7 +122,6 @@
 }
 
 
-
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell isKindOfClass:[CustomFeedTableViewCell class]])
@@ -185,7 +185,6 @@
 }
 
 
-
 - (CustomFeedTableViewCell *)prototypeCell
 {
     if (!_prototypeCell)
@@ -213,8 +212,6 @@
          vc.post = post;
      }
 }
-
-
 
 
 @end

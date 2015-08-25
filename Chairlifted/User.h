@@ -23,6 +23,7 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *location;
 @property (nonatomic) Resort *favoriteResort;
+@property (nonatomic) NSNumber *isSnowboarder;
 
 + (void)load;
 

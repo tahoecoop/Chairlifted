@@ -18,6 +18,7 @@
 #import "Group.h"
 #import "JoinGroup.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "UIImage+SkiSnowboardIcon.h"
 
 @interface AppDelegate ()
 

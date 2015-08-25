@@ -15,7 +15,7 @@
 #import "Post.h"
 #import "NSDate+TimePassage.h"
 #import "NetworkRequests.h"
-
+#import "UIImage+SkiSnowboardIcon.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -33,7 +33,7 @@
     [super viewDidLoad];
     [self setUpUser];
     self.skipCount = 0;
-    self.title = self.selectedUser.username;
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -54,12 +54,20 @@
     if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
         self.selectedUser = [User currentUser];
+//        UITabBarItem *tabBarItem = self.tabBarController.tabBarItem;
+//        tabBarItem.title = @"Profile";
+// tabBarItem.image = [UIImage returnSkierOrSnowboarderImage:self.selectedUser.isSnowboarder];
+
     }
     else
     {
         self.editButton.enabled = NO;
         self.editButton.tintColor = [UIColor clearColor];
+        self.title = self.selectedUser.username;
     }
+
+
+
     Resort *resort = self.selectedUser.favoriteResort;
     [resort fetchIfNeeded];
     [NetworkRequests getWeatherFromLatitude:resort.latitude andLongitude:resort.longitude andCompletion:^(NSDictionary *dictionary)

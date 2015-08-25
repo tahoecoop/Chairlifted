@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutlet UILabel *editPictureLabel;
 @property (strong, nonatomic) IBOutlet UIButton *changeFavoriteResortButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
+@property (nonatomic) BOOL changedProfilePicture;
 
 @end
 
@@ -64,6 +66,15 @@
         self.resortNameLabel.text = @"";
         [self.changeFavoriteResortButton setTitle:@"Add Favorite Resort" forState:UIControlStateNormal];
     }
+
+    if ([[User currentUser].isSnowboarder boolValue])
+    {
+        [self.segControl setSelectedSegmentIndex:1];
+    }
+    else
+    {
+        [self.segControl setSelectedSegmentIndex:0];
+    }
 }
 
 
@@ -77,6 +88,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.profileImageView.image = info[UIImagePickerControllerOriginalImage];
+    self.changedProfilePicture = YES;
     [self checkIfEditsMade];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -93,7 +105,17 @@
     User *user = [User currentUser];
     user.name = [self.fullNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     user.favoriteResort = self.selectedResort;
-    if (self.profileImageView.image)
+
+    if (self.segControl.selectedSegmentIndex == 0)
+    {
+        user.isSnowboarder = [NSNumber numberWithBool:NO];
+    }
+    else
+    {
+        user.isSnowboarder = [NSNumber numberWithBool:YES];
+    }
+
+    if (self.changedProfilePicture)
     {
         user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(self.profileImageView.image, 1.0)];
     }
@@ -124,7 +146,7 @@
         self.resortNameLabel.textColor = [UIColor redColor];
     }
 
-    if ([User currentUser].profileImage == [PFFile fileWithData:UIImageJPEGRepresentation(self.profileImageView.image, 1.0)])
+    if (self.changedProfilePicture)
     {
         self.profileImageView.layer.borderColor = [UIColor redColor].CGColor;
         self.profileImageView.layer.borderWidth = 1.0;
@@ -137,9 +159,16 @@
 }
 
 
+
 - (IBAction)editingDidChange:(UITextField *)textField
 {
     [self checkIfEditsMade];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
 }
 
 

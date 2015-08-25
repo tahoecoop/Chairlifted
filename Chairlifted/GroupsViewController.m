@@ -43,10 +43,12 @@
     }];
 }
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.segControl sendActionsForControlEvents:UIControlEventValueChanged];
 }
+
 
 - (IBAction)onSegControlToggle:(UISegmentedControl *)sender
 {

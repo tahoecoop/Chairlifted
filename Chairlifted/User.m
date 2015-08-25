@@ -20,6 +20,7 @@
 @dynamic name;
 @dynamic favoriteResort;
 @dynamic location;
+@dynamic isSnowboarder;
 
 + (void)load
 {

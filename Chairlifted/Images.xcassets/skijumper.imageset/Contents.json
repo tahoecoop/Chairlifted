@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "skijumper.pdf"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "skipass2x.pdf"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
