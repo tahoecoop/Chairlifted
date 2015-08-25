@@ -47,7 +47,12 @@
 
     if ([User currentUser].profileImage)
     {
-        self.profileImageView.image = [UIImage imageWithData:[User currentUser].profileImage.getData scale:0.3];
+        PFFile *imageData = [User currentUser].profileImage;
+        [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+         {
+             self.profileImageView.image = [UIImage imageWithData:data scale:0.4];
+         }];
+
         self.editPictureLabel.text = @"Edit";
     }
     else
@@ -60,8 +65,10 @@
     if ([User currentUser].favoriteResort)
     {
         self.selectedResort = [User currentUser].favoriteResort;
-        [self.selectedResort fetchIfNeeded];
-        self.resortNameLabel.text = self.selectedResort.name;
+        [self.selectedResort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+         {
+             self.resortNameLabel.text = self.selectedResort.name;
+         }];
     }
     else
     {

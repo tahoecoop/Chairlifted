@@ -2851,10 +2851,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5HB-Tl-T42"/>
-        <segue reference="oi7-M8-uuK"/>
+        <segue reference="OVz-C5-sJh"/>
         <segue reference="Dqi-pz-FPR"/>
+        <segue reference="5HB-Tl-T42"/>
+        <segue reference="Lxg-Ss-HDx"/>
         <segue reference="H5x-1z-wpL"/>
-        <segue reference="vG6-2M-ghs"/>
     </inferredMetricsTieBreakers>
 </document>

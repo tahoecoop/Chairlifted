@@ -133,7 +133,13 @@
         GroupFeedHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
-        headerCell.groupImageView.image = [UIImage imageWithData:self.group.image.getData scale:0.5];
+
+        PFFile *imageData = self.group.image;
+        [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+         {
+             headerCell.groupImageView.image = [UIImage imageWithData:data scale:0.5];
+         }];
+
         headerCell.group = self.group;
         headerCell.joinGroup = self.joinGroup;
 

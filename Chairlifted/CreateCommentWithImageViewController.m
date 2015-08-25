@@ -68,7 +68,12 @@
 {
     self.postTitleLabel.text = self.post.title;
     self.postBodyLabel.text = self.post.text;
-    self.commentImageView.image = [UIImage imageWithData:self.post.image.getData];
+
+    PFFile *imageData = self.post.image;
+    [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+     {
+         self.commentImageView.image = [UIImage imageWithData:data scale:0.7];
+     }];
     [self.textView becomeFirstResponder];
 }
 @end

@@ -92,13 +92,19 @@
         Post *post = self.results[indexPath.row];
         if (post.image)
         {
-            CustomFeedWithPhotoTableViewCell *postPhotoCell = [tableView dequeueReusableCellWithIdentifier:@"PostPhotoCell"];
+            CustomFeedWithPhotoTableViewCell *postPhotoCell = [tableView dequeueReusableCellWithIdentifier:@"PostImageCell"];
             postPhotoCell.titleLabel.text = post.title;
             postPhotoCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
             postPhotoCell.authorLabel.text = post.author.username;
             postPhotoCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             postPhotoCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            postPhotoCell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.3];
+
+            PFFile *imageData = post.image;
+            [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+             {
+                 postPhotoCell.postImageView.image = [UIImage imageWithData:data scale:0.7];
+             }];
+
             postPhotoCell.backgroundColor = [UIColor whiteColor];
             tableView.backgroundColor = [UIColor clearColor];
 

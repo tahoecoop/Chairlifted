@@ -96,7 +96,11 @@
         {
             DetailPostImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImagePost"];
             cell.postText.text = self.post.text;
-            cell.postImageView.image = [UIImage imageWithData:self.post.image.getData];
+            PFFile *imageData = self.post.image;
+            [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+             {
+                 cell.postImageView.image = [UIImage imageWithData:data scale:0.7];
+             }];
             
             return cell;
         }

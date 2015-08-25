@@ -79,10 +79,13 @@
 
 
     Resort *resort = self.selectedUser.favoriteResort;
-    [resort fetchIfNeeded];
-    [NetworkRequests getWeatherFromLatitude:resort.latitude andLongitude:resort.longitude andCompletion:^(NSDictionary *dictionary)
+    [resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
      {
-         NSLog(@"%f,%f", resort.latitude, resort.longitude);
+         [NetworkRequests getWeatherFromLatitude:resort.latitude andLongitude:resort.longitude andCompletion:^(NSDictionary *dictionary)
+          {
+              NSLog(@"%f,%f", resort.latitude, resort.longitude);
+          }];
+
      }];
 }
 
@@ -113,9 +116,16 @@
         ProfileHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderCell"];
         headerCell.nameLabel.text = self.selectedUser.name;
         Resort *resort = self.selectedUser.favoriteResort;
-        [resort fetchIfNeeded];
-        headerCell.locationLabel.text = resort.name;
-        headerCell.profileImageView.image = [UIImage imageWithData:self.selectedUser.profileImage.getData scale:0.3];
+        [resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+         {
+             headerCell.locationLabel.text = resort.name;
+         }];
+
+        PFFile *imageData = self.selectedUser.profileImage;
+        [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+         {
+             headerCell.profileImageView.image = [UIImage imageWithData:data scale:0.7];
+         }];
 
         return headerCell;
     }
@@ -130,7 +140,13 @@
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
-            cell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.3];
+
+            PFFile *imageData = post.image;
+            [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+             {
+                 cell.postImageView.image = [UIImage imageWithData:data scale:0.3];
+             }];
+
             return cell;
         }
         else
