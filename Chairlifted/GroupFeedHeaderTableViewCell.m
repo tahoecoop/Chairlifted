@@ -23,7 +23,7 @@
 {
     if ([button.titleLabel.text isEqualToString:@"Join"])
     {
-        if (self.group.isPrivate)
+        if ([self.group.isPrivate boolValue])
         {
             JoinGroup *joinGroup = [JoinGroup new];
             joinGroup.user = [User currentUser];
