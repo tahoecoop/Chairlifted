@@ -149,7 +149,14 @@
 
         if (self.post.group)
         {
-            header.groupNameLabel.text = self.post.group.name;
+            Group *postGroup = self.post.group;
+            [postGroup fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+            {
+                if (!error)
+                {
+                    header.groupNameLabel.text = postGroup.name;
+                }
+            }];
         }
         else
         {
