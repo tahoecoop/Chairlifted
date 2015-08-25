@@ -7,6 +7,8 @@
 //
 
 #import "DetailActionTableViewCell.h"
+#import "UIImage+SkiSnowboardIcon.h"
+#import "UIImageView+SpinningFigure.h"
 
 @implementation DetailActionTableViewCell
 
@@ -24,6 +26,14 @@
 
 - (IBAction)onLikeButtonPressed:(UIButton *)sender
 {
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width / 2) - 15, (self.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
     if ([sender.titleLabel.text isEqualToString:@"Like"])
     {
         self.like = [Like new];
@@ -40,6 +50,7 @@
                       if (succeededTwo)
                       {
                           [self checkIfLiked];
+                          [activityView removeFromSuperview];
                           [self.parentTableView reloadData];
                       }
                   }];
@@ -60,8 +71,8 @@
                       if (succeededTwo)
                       {
                           [self checkIfLiked];
+                          [activityView removeFromSuperview];
                           [self.parentTableView reloadData];
-
                       }
                   }];
              }

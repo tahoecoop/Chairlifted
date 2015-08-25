@@ -9,12 +9,15 @@
 #import "LoginViewController.h"
 #import "User.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "UIImage+SkiSnowboardIcon.h"
+#import "UIImageView+SpinningFigure.h"
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (nonatomic) NSArray *friendsArray;
+
 
 @end
 
@@ -62,7 +65,17 @@
 
 
 
-- (IBAction)onFBLoginPressed:(UIButton *)sender {
+- (IBAction)onFBLoginPressed:(UIButton *)sender
+{
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
+
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
      logInWithReadPermissions: @[@"public_profile", @"user_friends", @"email", @"user_about_me"]
@@ -104,7 +117,13 @@
                       user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(displayPicture, 1.0)];
                       user.friends = self.friendsArray;
 
-                      [user signUpInBackground];
+                      [user signUpInBackgroundWithBlock:^(BOOL success, NSError *error)
+                       {
+                           if (success)
+                           {
+                               [activityView removeFromSuperview];
+                           }
+                       }];
                       
                       if (error)
                       {
@@ -120,13 +139,24 @@
 
 - (IBAction)onParseLoginButtonPressed:(UIButton *)button
 {
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
+
     [User logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
     {
         if ([User currentUser])
         {
+            [activityView removeFromSuperview];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
-        if (error) {
+        if (error)
+        {
 //            UIAlertController *loginErrorAlert = 
         }
     }];

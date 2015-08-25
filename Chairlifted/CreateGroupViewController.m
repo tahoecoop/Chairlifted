@@ -11,6 +11,8 @@
 #import "Group.h"
 #import "JoinGroup.h"
 #import "User.h"
+#import "UIImageView+SpinningFigure.h"
+#import "UIImage+SkiSnowboardIcon.h"
 
 @interface CreateGroupViewController () <UITextViewDelegate>
 
@@ -70,6 +72,14 @@
 
 - (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
 {
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
     Group *group = [Group new];
     group.name = [self.groupTitleTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     group.purpose = [self.groupPurposeTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -103,6 +113,7 @@
              joinGroup.lastViewed = [NSDate date];
              [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
               {
+                  [activityView removeFromSuperview];
                   [self.delegate didFinishSaving];
                   [self dismissViewControllerAnimated:YES completion:nil];
               }];

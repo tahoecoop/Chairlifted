@@ -32,23 +32,26 @@
     self.tableView.hidden = YES;
 }
 
-- (void)populateTheCells
+- (void)populateTheCells:(NSString *)searchText
 {
+    self.results = nil;
     if (self.isGroup)
     {
-        [NetworkRequests getGroupsFromSearch:[self.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
+        [NetworkRequests getGroupsFromSearch:searchText WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
          {
              self.results = [NSMutableArray arrayWithArray:array];
              self.skipCount = self.skipCount + 30;
              [self.tableView reloadData];
+             self.tableView.hidden = NO;
          }];
     }
     else
     {
-        [NetworkRequests getPostsFromSearch:[self.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
+        [NetworkRequests getPostsFromSearch:searchText WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
         {
             self.results = [NSMutableArray arrayWithArray:array];
             self.skipCount = self.skipCount + 30;
+            self.tableView.hidden = NO;
             [self.tableView reloadData];
         }];
     }
@@ -162,9 +165,9 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self populateTheCells];
+    self.skipCount = 0;
+    [self populateTheCells:[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     [searchBar resignFirstResponder];
-    self.tableView.hidden = NO;
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText

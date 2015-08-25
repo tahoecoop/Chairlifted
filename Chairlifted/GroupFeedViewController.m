@@ -16,6 +16,8 @@
 #import "PostDetailViewController.h"
 #import "GroupFeedHeaderTableViewCell.h"
 #import "CreatePostViewController.h"
+#import "UIImage+SkiSnowboardIcon.h"
+#import "UIImageView+SpinningFigure.h"
 
 @interface GroupFeedViewController ()
 
@@ -27,7 +29,7 @@
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *makeNewPostButton;
-
+@property (nonatomic) UIView *activityView;
 
 @end
 
@@ -44,6 +46,15 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
+
+    self.activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [self.activityView addSubview:spinnerImageView];
+    [self.view addSubview:self.activityView];
+    [spinnerImageView rotateLayerInfinite];
+
     if (!self.joinGroup)
     {
         [NetworkRequests getJoinGroupIfAlreadyJoinedWithGroup:self.group andCompletion:^(NSArray *array)
@@ -66,6 +77,7 @@
     [NetworkRequests getPostsWithSkipCount:0 andGroup:self.group andIsPrivate:[self.group.isPrivate boolValue] completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
+         [self.activityView removeFromSuperview];
          [self.tableView reloadData];
      }];
 }

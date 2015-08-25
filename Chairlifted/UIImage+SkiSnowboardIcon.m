@@ -15,7 +15,7 @@
 {
     if (isSnowboarder)
     {
-        return [UIImage imageNamed:@"rider - 1x"];
+        return [UIImage imageNamed:@"boarder"];
     }
     else
     {

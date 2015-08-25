@@ -9,6 +9,8 @@
 #import "ChooseResortViewController.h"
 #import "EditProfileViewController.h"
 #import "User.h"
+#import "UIImageView+SpinningFigure.h"
+#import "UIImage+SkiSnowboardIcon.h"
 
 @interface ChooseResortViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -22,9 +24,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
     [NetworkRequests getResortsWithState:self.state andCompletion:^(NSArray *array)
     {
         self.resorts = array;
+        [activityView removeFromSuperview];
         [self.tableView reloadData];
     }];
 }

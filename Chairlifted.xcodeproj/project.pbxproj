@@ -61,6 +61,7 @@
 		BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */; };
 		BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */; };
 		BA88E74E1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */; };
+		BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */ = {isa = PBXBuildFile; fileRef = BA88E7531B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m */; };
 		BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */; };
 		BA962CEF1B8B8F06001B87C6 /* untitled.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA962CEC1B8B8F06001B87C6 /* untitled.plist */; };
 		BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D151B8920B600697FEA /* SearchViewController.m */; };
@@ -178,6 +179,8 @@
 		BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithImageViewController.m; sourceTree = "<group>"; };
 		BA88E74C1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SkiSnowboardIcon.h"; sourceTree = "<group>"; };
 		BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SkiSnowboardIcon.m"; sourceTree = "<group>"; };
+		BA88E7521B8D1B74006D3CE6 /* UIImageView+SpinningFigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SpinningFigure.h"; sourceTree = "<group>"; };
+		BA88E7531B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SpinningFigure.m"; sourceTree = "<group>"; };
 		BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPEmitterView.h; sourceTree = "<group>"; };
 		BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPEmitterView.m; sourceTree = "<group>"; };
 		BA962CEC1B8B8F06001B87C6 /* untitled.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = untitled.plist; path = Chairlifted/untitled.plist; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				BA6F8C7D1B83A0D00083E71E /* NSDate+TimePassage.m */,
 				BA88E74C1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.h */,
 				BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */,
+				BA88E7521B8D1B74006D3CE6 /* UIImageView+SpinningFigure.h */,
+				BA88E7531B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -584,6 +589,7 @@
 				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
 				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
+				BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */,
 				BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */,
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,
 				BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */,

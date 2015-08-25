@@ -13,6 +13,8 @@
 #import "JoinGroup.h"
 #import "GroupFeedViewController.h"
 #import "SearchViewController.h"
+#import "UIImageView+SpinningFigure.h"
+#import "UIImage+SkiSnowboardIcon.h"
 
 @interface GroupsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
@@ -35,10 +37,19 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
     
     [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
     {
         self.myGroups = [NSMutableArray arrayWithArray:array];
+        [activityView removeFromSuperview];
         [self.tableView reloadData];
     }];
 }
@@ -59,10 +70,20 @@
     {
         if (!self.myGroups.count > 0)
         {
+            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+            [activityView addSubview:spinnerImageView];
+            [self.view addSubview:activityView];
+            [spinnerImageView rotateLayerInfinite];
+
+
             self.mySkipCount = 0;
             [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
              {
                  self.myGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
                  [self.tableView reloadData];
              }];
         }
@@ -72,10 +93,19 @@
     {
         if (!self.allGroups.count > 0)
         {
+            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+            [activityView addSubview:spinnerImageView];
+            [self.view addSubview:activityView];
+            [spinnerImageView rotateLayerInfinite];
+
             self.groupSkipCount = 0;
             [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
              {
                  self.allGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
                  [self.tableView reloadData];
              }];
         }

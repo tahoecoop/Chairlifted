@@ -16,6 +16,7 @@
 #import "NSDate+TimePassage.h"
 #import "NetworkRequests.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "UIImageView+SpinningFigure.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -41,10 +42,19 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
 
     [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
     {
         self.myPosts = [NSMutableArray arrayWithArray:array];
+        [activityView removeFromSuperview];
         [self.tableView reloadData];
     }];
 }
