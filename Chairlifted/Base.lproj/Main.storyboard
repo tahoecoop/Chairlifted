@@ -217,12 +217,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pfe-6B-QSu" id="CTa-zu-1Zs"/>
-                        <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginFirst" id="Lxg-Ss-HDx"/>
+                        <segue destination="OH9-nH-gEF" kind="modal" identifier="loginFirst" id="Lxg-Ss-HDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047" y="368"/>
+            <point key="canvasLocation" x="1579" y="368"/>
         </scene>
         <!--Post Detail-->
         <scene sceneID="Gey-j1-ssd">
@@ -498,7 +498,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xf-6Q-EKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1474" y="368"/>
+            <point key="canvasLocation" x="2006" y="368"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="Yg9-Xk-viD">
@@ -735,7 +735,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN7-QC-LtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2245" y="363"/>
+            <point key="canvasLocation" x="2777" y="363"/>
         </scene>
         <!--Comment Photo-->
         <scene sceneID="Mil-Kk-OBf">
@@ -2213,7 +2213,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1f7-SC-Q7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159.46666666666667" y="368.25333333333333"/>
+            <point key="canvasLocation" x="691" y="368"/>
         </scene>
         <!--Feed-->
         <scene sceneID="Jrc-aN-7hg">
@@ -2234,7 +2234,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3p-k9-Y2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592" y="368"/>
+            <point key="canvasLocation" x="1124" y="368"/>
         </scene>
         <!--Create-->
         <scene sceneID="6c1-BI-Ote">
@@ -2286,22 +2286,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2UE-Ij-FKM">
-                                <rect key="frame" x="16" y="148" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2UE-Ij-FKM">
+                                <rect key="frame" x="16" y="259" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQ8-na-fRK">
-                                <rect key="frame" x="16" y="85" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQ8-na-fRK">
+                                <rect key="frame" x="16" y="221" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8r-vE-2fu">
-                                <rect key="frame" x="103" y="186" width="115" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfV-uI-vHW">
+                                <rect key="frame" x="120" y="376" width="81" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7Rp-ZP-kme"/>
+                                    <constraint firstAttribute="width" constant="81" id="GKE-zA-q23"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
+                                <state key="normal" title="Signup">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="YTn-kz-ggW" kind="push" id="vom-FD-Sr7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ev-sV-LKt">
+                                <rect key="frame" x="98" y="297" width="124" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="6Lo-Lh-lWo"/>
+                                    <constraint firstAttribute="height" constant="33" id="z2d-Nk-qdU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                <state key="normal" title="Facebook Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onFBLoginPressed:" destination="tXg-Zz-ck9" eventType="touchUpInside" id="SUe-1a-QhM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chairlifted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFF-JH-fvQ">
+                                <rect key="frame" x="70" y="165" width="181" height="48"/>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8r-vE-2fu">
+                                <rect key="frame" x="120" y="338" width="81" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Login with Parse">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="afk-HL-TjB"/>
+                                    <constraint firstAttribute="height" constant="30" id="c7v-BJ-cT5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
+                                <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2311,7 +2350,24 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v8r-vE-2fu" firstAttribute="top" secondItem="2Ev-sV-LKt" secondAttribute="bottom" constant="8" id="0Fc-CU-pev"/>
+                            <constraint firstItem="2UE-Ij-FKM" firstAttribute="top" secondItem="dQ8-na-fRK" secondAttribute="bottom" constant="8" id="6rV-nT-LiA"/>
+                            <constraint firstAttribute="centerX" secondItem="AFF-JH-fvQ" secondAttribute="centerX" constant="-0.5" id="9pL-1f-w5i"/>
+                            <constraint firstItem="2UE-Ij-FKM" firstAttribute="leading" secondItem="5vg-W7-DRJ" secondAttribute="leadingMargin" id="CZn-IC-3UO"/>
+                            <constraint firstItem="dQ8-na-fRK" firstAttribute="trailing" secondItem="5vg-W7-DRJ" secondAttribute="trailingMargin" id="EvS-q1-qG0"/>
+                            <constraint firstAttribute="centerX" secondItem="2Ev-sV-LKt" secondAttribute="centerX" id="JaY-r2-ezP"/>
+                            <constraint firstItem="2Ev-sV-LKt" firstAttribute="top" secondItem="2UE-Ij-FKM" secondAttribute="bottom" constant="8" id="Qrs-SV-h07"/>
+                            <constraint firstItem="dQ8-na-fRK" firstAttribute="leading" secondItem="5vg-W7-DRJ" secondAttribute="leadingMargin" id="WaG-UT-9op"/>
+                            <constraint firstAttribute="centerX" secondItem="PfV-uI-vHW" secondAttribute="centerX" constant="-0.5" id="ZC0-64-6VU"/>
+                            <constraint firstItem="PfV-uI-vHW" firstAttribute="top" secondItem="v8r-vE-2fu" secondAttribute="bottom" constant="8" id="ZDb-zI-FK5"/>
+                            <constraint firstItem="2UE-Ij-FKM" firstAttribute="trailing" secondItem="5vg-W7-DRJ" secondAttribute="trailingMargin" id="jlj-c1-Cfa"/>
+                            <constraint firstItem="dQ8-na-fRK" firstAttribute="top" secondItem="AFF-JH-fvQ" secondAttribute="bottom" constant="8" id="kLG-uK-Zz3"/>
+                            <constraint firstAttribute="centerX" secondItem="v8r-vE-2fu" secondAttribute="centerX" constant="-0.5" id="tVb-6m-trh"/>
+                            <constraint firstItem="dQ8-na-fRK" firstAttribute="top" secondItem="Eor-v4-bTn" secondAttribute="bottom" constant="157" id="uMQ-WU-YVR"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jFR-sQ-cuC"/>
                     <connections>
                         <outlet property="passwordTextField" destination="2UE-Ij-FKM" id="MRO-qj-B4N"/>
                         <outlet property="usernameTextField" destination="dQ8-na-fRK" id="7x7-Oc-hGX"/>
@@ -2319,7 +2375,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKM-HU-Rcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-446" y="347"/>
+            <point key="canvasLocation" x="86" y="347"/>
+        </scene>
+        <!--Create New User View Controller-->
+        <scene sceneID="9DP-Wi-aM8">
+            <objects>
+                <viewController id="YTn-kz-ggW" customClass="CreateNewUserViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jq7-Oy-7Lw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nql-bn-yWq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s5q-cy-WVD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gs7-Mq-EH6">
+                                <rect key="frame" x="16" y="179" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-Rc-MGd">
+                                <rect key="frame" x="16" y="228" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fu-uR-ASh">
+                                <rect key="frame" x="122" y="275" width="76" height="30"/>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
+                                <state key="normal" title="Create User">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCreateUserButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="cY9-hI-vaN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vtW-Rc-MGd" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="8cJ-jX-uKa"/>
+                            <constraint firstItem="vtW-Rc-MGd" firstAttribute="top" secondItem="gs7-Mq-EH6" secondAttribute="bottom" constant="19" id="9b2-6x-smF"/>
+                            <constraint firstItem="gs7-Mq-EH6" firstAttribute="top" secondItem="jq7-Oy-7Lw" secondAttribute="bottom" constant="115" id="Izk-Qy-8Io"/>
+                            <constraint firstAttribute="centerX" secondItem="3fu-uR-ASh" secondAttribute="centerX" id="OoS-F8-KAW"/>
+                            <constraint firstItem="gs7-Mq-EH6" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leadingMargin" id="PMU-MW-uZv"/>
+                            <constraint firstItem="gs7-Mq-EH6" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="PUg-c1-17R"/>
+                            <constraint firstItem="vtW-Rc-MGd" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leadingMargin" id="XeL-o4-jyS"/>
+                            <constraint firstItem="3fu-uR-ASh" firstAttribute="top" secondItem="vtW-Rc-MGd" secondAttribute="bottom" constant="17" id="szk-Mk-rRK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2QY-BC-xch"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="vtW-Rc-MGd" id="oMb-aS-Fei"/>
+                        <outlet property="usernameTextField" destination="gs7-Mq-EH6" id="tai-XF-BPi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBz-Pf-VO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-446" y="982"/>
         </scene>
         <!--Groups-->
         <scene sceneID="HZt-fJ-YJi">
@@ -2380,7 +2491,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e94-iy-cuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="368"/>
+            <point key="canvasLocation" x="2380" y="368"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ilV-dE-LT2">
@@ -2483,7 +2594,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tXg-Zz-ck9" kind="modal" identifier="logout" id="vG6-2M-ghs"/>
+                                    <segue destination="OH9-nH-gEF" kind="modal" identifier="logout" id="vG6-2M-ghs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2691,6 +2802,24 @@
             </objects>
             <point key="canvasLocation" x="-159" y="2452"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IKa-4u-0Q3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OH9-nH-gEF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qYJ-Vt-yfe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tXg-Zz-ck9" kind="relationship" relationship="rootViewController" id="mO0-d9-EOL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gby-QY-ec5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-446" y="347"/>
+        </scene>
     </scenes>
     <resources>
         <image name="biggerCreate" width="50" height="50"/>
@@ -2708,10 +2837,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="5HB-Tl-T42"/>
         <segue reference="oi7-M8-uuK"/>
         <segue reference="Dqi-pz-FPR"/>
-        <segue reference="5HB-Tl-T42"/>
-        <segue reference="Lxg-Ss-HDx"/>
         <segue reference="H5x-1z-wpL"/>
+        <segue reference="vG6-2M-ghs"/>
     </inferredMetricsTieBreakers>
 </document>

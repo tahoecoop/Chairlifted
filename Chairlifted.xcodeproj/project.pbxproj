@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */; };
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
 		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
 		96E4A6831B8A5BA20006C097 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E4A6811B8A5BA20006C097 /* FBSDKCoreKit.framework */; };
@@ -86,6 +87,8 @@
 		14ADEADAE442867E661D0CD0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3977807EA09C743BC022FA86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		78ED0421E622472209EE7C13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		96131C411B8CE8D8005BDF9F /* CreateNewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewUserViewController.h; sourceTree = "<group>"; };
+		96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewUserViewController.m; sourceTree = "<group>"; };
 		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 				BA6F8C1B1B8253280083E71E /* FeedViewController.m */,
 				96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */,
 				96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */,
+				96131C411B8CE8D8005BDF9F /* CreateNewUserViewController.h */,
+				96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */,
 				BA6F8C641B8295CF0083E71E /* CreatePostViewController.h */,
 				BA6F8C651B8295CF0083E71E /* CreatePostViewController.m */,
 				BA6F8C671B8295E00083E71E /* PostDetailViewController.h */,
@@ -593,6 +598,7 @@
 				BA6F8C131B8253280083E71E /* main.m in Sources */,
 				BA6F8C7E1B83A0D00083E71E /* NSDate+TimePassage.m in Sources */,
 				BA6F8C6C1B8296160083E71E /* ProfileViewController.m in Sources */,
+				96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */,
 				BA6F8C5E1B8280E50083E71E /* Post.m in Sources */,
 				9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */,
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,

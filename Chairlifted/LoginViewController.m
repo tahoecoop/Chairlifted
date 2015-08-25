@@ -58,32 +58,16 @@
              }
          }];
     }
-
-    UIButton *fbLoginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    fbLoginButton.backgroundColor=[UIColor darkGrayColor];
-    fbLoginButton.frame=CGRectMake(0,0,180,40);
-    fbLoginButton.center = self.view.center;
-    [fbLoginButton setTitle: @"Login With Facebook" forState: UIControlStateNormal];
-
-    // Handle clicks on the button
-    [fbLoginButton
-     addTarget:self
-     action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-
-    // Add the button to the view
-    [self.view addSubview:fbLoginButton];
 }
 
 
--(void)loginButtonClicked
-{
 
-
+- (IBAction)onFBLoginPressed:(UIButton *)sender {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
      logInWithReadPermissions: @[@"public_profile", @"user_friends", @"email", @"user_about_me"]
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
-    {
+     {
          if (error)
          {
              NSLog(@"Process error");
@@ -118,30 +102,32 @@
                       user.password = result[@"id"];
                       user.email = result[@"email"];
                       user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(displayPicture, 1.0)];
-//                      user.friends = self.friendsArray;
+                      user.friends = self.friendsArray;
 
                       [user signUpInBackground];
-
+                      
                       if (error)
                       {
-
+                          
                       }
                       
                   }];
              }
          }
-    }];
+     }];
 }
 
 
 - (IBAction)onParseLoginButtonPressed:(UIButton *)button
 {
-//    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text];
     [User logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
     {
         if ([User currentUser])
         {
             [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        if (error) {
+//            UIAlertController *loginErrorAlert = 
         }
     }];
 }
