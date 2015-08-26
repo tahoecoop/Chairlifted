@@ -195,6 +195,7 @@
     [self checkIfEditsMade];
     self.resortNameLabel.text = self.selectedResort.name;
     [self.changeFavoriteResortButton setTitle:@"Change Favorite Resort" forState:UIControlStateNormal];
+    [self.delegate didUpdateResort];
 }
 
 

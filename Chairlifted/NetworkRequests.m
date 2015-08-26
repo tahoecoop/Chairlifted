@@ -238,7 +238,7 @@
     [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       {
           NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-          complete(dict);
+          complete(dict[@"currently"]);
       }] resume];
 }
 

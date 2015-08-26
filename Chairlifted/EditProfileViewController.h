@@ -9,10 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "Resort.h"
 
+@protocol updatedResortDelegate;
+
 @interface EditProfileViewController : UIViewController <UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *resortNameLabel;
 @property (nonatomic) Resort *selectedResort;
+@property (nonatomic) id <updatedResortDelegate> delegate;
 
+
+
+@end
+
+@protocol updatedResortDelegate <NSObject>
+
+- (void)didUpdateResort;
 
 @end

@@ -17,13 +17,17 @@
 #import "NetworkRequests.h"
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
+#import "EditProfileViewController.h"
 
-@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, updatedResortDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (nonatomic) NSMutableArray *myPosts;
 @property (nonatomic) int skipCount;
+@property (nonatomic) NSDictionary *weatherDict;
+@property (nonatomic) Resort *resort;
+@property (nonatomic) BOOL shouldUpdateResort;
 
 @end
 
@@ -32,31 +36,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setUpUser];
     self.skipCount = 0;
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.shouldUpdateResort = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-    [activityView addSubview:spinnerImageView];
-    [self.view addSubview:activityView];
-    [spinnerImageView rotateLayerInfinite];
-
-
-    [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
-    {
-        self.myPosts = [NSMutableArray arrayWithArray:array];
-        [activityView removeFromSuperview];
-        [self.tableView reloadData];
-    }];
+    [self setUpUser];
 }
 
 - (void)setUpUser
@@ -64,10 +54,6 @@
     if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
         self.selectedUser = [User currentUser];
-//        UITabBarItem *tabBarItem = self.tabBarController.tabBarItem;
-//        tabBarItem.title = @"Profile";
-// tabBarItem.image = [UIImage returnSkierOrSnowboarderImage:self.selectedUser.isSnowboarder];
-
     }
     else
     {
@@ -77,16 +63,32 @@
     }
 
 
+    if (self.shouldUpdateResort)
+    {
+        UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+        UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+        spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+        [activityView addSubview:spinnerImageView];
+        [self.view addSubview:activityView];
+        [spinnerImageView rotateLayerInfinite];
 
-    Resort *resort = self.selectedUser.favoriteResort;
-    [resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
-     {
-         [NetworkRequests getWeatherFromLatitude:resort.latitude andLongitude:resort.longitude andCompletion:^(NSDictionary *dictionary)
-          {
-              NSLog(@"%f,%f", resort.latitude, resort.longitude);
-          }];
-
-     }];
+        self.resort = self.selectedUser.favoriteResort;
+        [self.resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+         {
+             [NetworkRequests getWeatherFromLatitude:self.resort.latitude andLongitude:self.resort.longitude andCompletion:^(NSDictionary *dictionary)
+              {
+                  self.weatherDict = dictionary;
+                  [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
+                   {
+                       self.myPosts = [NSMutableArray arrayWithArray:array];
+                       [activityView removeFromSuperview];
+                       self.shouldUpdateResort = NO;
+                       [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                   }];
+              }];
+         }];
+    }
 }
 
 
@@ -115,11 +117,12 @@
     {
         ProfileHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderCell"];
         headerCell.nameLabel.text = self.selectedUser.name;
-        Resort *resort = self.selectedUser.favoriteResort;
-        [resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
-         {
-             headerCell.locationLabel.text = resort.name;
-         }];
+        if (self.resort && self.weatherDict)
+        {
+            headerCell.weatherLabel.text = [NSString stringWithFormat:@"%.2f", [self.weatherDict[@"temperature"] floatValue]];
+            headerCell.weatherIconImageView.image = [UIImage imageNamed:self.weatherDict[@"icon"]];
+            headerCell.locationLabel.text = self.resort.name;
+        }
 
         PFFile *imageData = self.selectedUser.profileImage;
         [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
@@ -191,10 +194,19 @@
     }
 }
 
+-(void)didUpdateResort
+{
+    self.shouldUpdateResort = YES;
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    if ([segue.identifier isEqualToString:@"EditProfile"])
+    {
+        EditProfileViewController *vc = (EditProfileViewController *)[segue.destinationViewController topViewController];
+        vc.delegate = self;
+    }
 }
 
 
