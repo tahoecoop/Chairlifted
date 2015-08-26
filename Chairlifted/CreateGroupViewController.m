@@ -53,7 +53,7 @@
 
 - (void)checkIfCanPost
 {
-    if ([self.groupTitleTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0 && [self.groupPurposeTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0)
+    if ([self.groupTitleTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0 && [self.groupPurposeTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0 && [self.groupTitleTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length < 51 && [self.groupPurposeTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length < 101)
     {
         self.saveButton.enabled = YES;
     }
@@ -136,17 +136,37 @@
         {
             self.groupTitlePlaceholderLabel.hidden = NO;
         }
+        self.titleCharactersLeftLabel.text = [NSString stringWithFormat:@"%i/50 characters", (int)textView.text.length];
+
+        if (textView.text.length > 50)
+        {
+            self.titleCharactersLeftLabel.textColor = [UIColor redColor];
+        }
+        else
+        {
+            self.titleCharactersLeftLabel.textColor = [UIColor blackColor];
+        }
     }
     else if (textView == self.groupPurposeTextView)
     {
         if (textView.text.length > 0)
         {
             self.groupPurposePlaceholderLabel.hidden = YES;
-
         }
         else
         {
             self.groupPurposePlaceholderLabel.hidden = NO;
+        }
+
+        self.purposeCharactersLeftLabel.text = [NSString stringWithFormat:@"%i/100 characters", (int)textView.text.length];
+
+        if (textView.text.length > 100)
+        {
+            self.purposeCharactersLeftLabel.textColor = [UIColor redColor];
+        }
+        else
+        {
+            self.purposeCharactersLeftLabel.textColor = [UIColor blackColor];
         }
     }
     [self checkIfCanPost];
