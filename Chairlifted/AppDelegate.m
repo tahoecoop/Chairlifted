@@ -65,7 +65,7 @@
     {
         User *user = [User currentUser];
         UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-        UITabBarItem *tabBarItem = [[tabBarController.tabBar items] objectAtIndex:2];
+        UITabBarItem *tabBarItem = [[tabBarController.tabBar items] objectAtIndex:3];
         [tabBarItem setImage:[UIImage returnSkierOrSnowboarderImage:[user.isSnowboarder boolValue]]];
         tabBarItem.title = @"Profile";
     }
