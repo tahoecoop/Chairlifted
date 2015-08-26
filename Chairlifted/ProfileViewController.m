@@ -62,12 +62,14 @@
     else if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
         self.selectedUser = [User currentUser];
+        self.shouldUpdateResort = YES;
     }
     else
     {
         self.editButton.enabled = NO;
         self.editButton.tintColor = [UIColor clearColor];
         self.title = self.selectedUser.username;
+        self.shouldUpdateResort = YES;
     }
 
 
@@ -96,6 +98,10 @@
                    }];
               }];
          }];
+    }
+    else
+    {
+        [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 }
 
