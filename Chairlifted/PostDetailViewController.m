@@ -119,6 +119,7 @@
         cell.commentAuthorLabel.text = comment.author.username;
         cell.commentTextLabel.text = comment.text;
         cell.commentTimeLabel.text = [NSDate determineTimePassed:comment.createdAt];
+
         return cell;
     }
 }
@@ -185,20 +186,37 @@
         DetailActionTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"Action"];
         header.parentTableView = self.tableView;
         header.post = self.post;
+
         [header checkIfLiked];
         return header;
     }
 }
 
-- (IBAction)onCommentButtonPressed:(UIButton *)sender
+
+- (IBAction)onLikeButtonPressed:(UIButton *)button
 {
-    if (self.post.image)
+    if (![User currentUser])
     {
-        [self performSegueWithIdentifier:@"photoSegue" sender:sender];
+        [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
+    }
+}
+
+- (IBAction)onCommentButtonPressed:(UIButton *)button
+{
+    if ([User currentUser])
+    {
+        if (self.post.image)
+        {
+            [self performSegueWithIdentifier:@"photoSegue" sender:button];
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"textSegue" sender:button];
+        }
     }
     else
     {
-        [self performSegueWithIdentifier:@"textSegue" sender:sender];
+        [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
     }
 }
 

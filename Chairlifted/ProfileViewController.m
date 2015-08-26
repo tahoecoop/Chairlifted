@@ -51,7 +51,15 @@
 
 - (void)setUpUser
 {
-    if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
+    if (![User currentUser])
+    {
+        if (![User currentUser])
+        {
+            [self performSegueWithIdentifier:@"loginBeforeProfile" sender:self];
+            self.shouldUpdateResort = NO;
+        }
+    }
+    else if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
         self.selectedUser = [User currentUser];
     }
@@ -100,7 +108,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (![User currentUser])
+    {
+        return 0;
+    }
+    else if (section == 0)
     {
         return 1;
     }
@@ -116,6 +128,7 @@
     if (indexPath.section == 0)
     {
         ProfileHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderCell"];
+
         headerCell.nameLabel.text = self.selectedUser.name;
         if (self.resort && self.weatherDict)
         {

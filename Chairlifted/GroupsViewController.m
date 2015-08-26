@@ -38,20 +38,24 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-    [activityView addSubview:spinnerImageView];
-    [self.view addSubview:activityView];
-    [spinnerImageView rotateLayerInfinite];
-    
-    [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+    if ([User currentUser])
     {
-        self.myGroups = [NSMutableArray arrayWithArray:array];
-        [activityView removeFromSuperview];
-        [self.tableView reloadData];
-    }];
+        UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+        UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+        spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+        [activityView addSubview:spinnerImageView];
+        [self.view addSubview:activityView];
+        [spinnerImageView rotateLayerInfinite];
+
+
+        [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+         {
+             self.myGroups = [NSMutableArray arrayWithArray:array];
+             [activityView removeFromSuperview];
+             [self.tableView reloadData];
+         }];
+    }
 }
 
 
@@ -61,57 +65,77 @@
 }
 
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (![User currentUser])
+    {
+        if (![User currentUser])
+        {
+            self.segControl.hidden = YES;
+            [self performSegueWithIdentifier:@"loginBeforeGroups" sender:self];
+        }
+        else
+        {
+            self.segControl.hidden = NO;
+        }
+    }
+}
+
+
 - (IBAction)onSegControlToggle:(UISegmentedControl *)sender
 {
     self.myGroups = nil;
     self.allGroups = nil;
-    
-    if (self.segControl.selectedSegmentIndex == 0)
+
+    if ([User currentUser])
     {
-        if (!self.myGroups.count > 0)
+        if (self.segControl.selectedSegmentIndex == 0)
         {
-            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-            [activityView addSubview:spinnerImageView];
-            [self.view addSubview:activityView];
-            [spinnerImageView rotateLayerInfinite];
+            if (!self.myGroups.count > 0)
+            {
+                UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+                activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+                UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+                spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+                [activityView addSubview:spinnerImageView];
+                [self.view addSubview:activityView];
+                [spinnerImageView rotateLayerInfinite];
 
 
-            self.mySkipCount = 0;
-            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
-             {
-                 self.myGroups = [NSMutableArray arrayWithArray:array];
-                 [activityView removeFromSuperview];
-                 [self.tableView reloadData];
-             }];
-        }
-        [self.tableView reloadData];
-    }
-    else if (self.segControl.selectedSegmentIndex == 1)
-    {
-        if (!self.allGroups.count > 0)
-        {
-            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-            [activityView addSubview:spinnerImageView];
-            [self.view addSubview:activityView];
-            [spinnerImageView rotateLayerInfinite];
-
-            self.groupSkipCount = 0;
-            [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
-             {
-                 self.allGroups = [NSMutableArray arrayWithArray:array];
-                 [activityView removeFromSuperview];
-                 [self.tableView reloadData];
-             }];
-        }
-        else
-        {
+                self.mySkipCount = 0;
+                [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+                 {
+                     self.myGroups = [NSMutableArray arrayWithArray:array];
+                     [activityView removeFromSuperview];
+                     [self.tableView reloadData];
+                 }];
+            }
             [self.tableView reloadData];
+        }
+        else if (self.segControl.selectedSegmentIndex == 1)
+        {
+            if (!self.allGroups.count > 0)
+            {
+                UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+                activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+                UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+                spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+                [activityView addSubview:spinnerImageView];
+                [self.view addSubview:activityView];
+                [spinnerImageView rotateLayerInfinite];
+
+                self.groupSkipCount = 0;
+                [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
+                 {
+                     self.allGroups = [NSMutableArray arrayWithArray:array];
+                     [activityView removeFromSuperview];
+                     [self.tableView reloadData];
+                 }];
+            }
+            else
+            {
+                [self.tableView reloadData];
+            }
         }
     }
 }

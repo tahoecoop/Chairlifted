@@ -48,8 +48,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (![User currentUser])
-    {
+//    if (![User currentUser])
+//    {
 //        PFLogInViewController *loginVC = [PFLogInViewController new];
 //        loginVC.delegate = self;
 //        PFSignUpViewController *signupVC = [PFSignUpViewController new];
@@ -58,14 +58,14 @@
 //        [self presentViewController:loginVC animated:YES completion:nil];
 
 
-        [self performSegueWithIdentifier:@"loginFirst" sender:self];
-    }
+//        [self performSegueWithIdentifier:@"loginFirst" sender:self];
+//    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if ([User currentUser])
-    {
+//    if ([User currentUser])
+//    {
         self.skipCount = 30;
 
         [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
@@ -73,7 +73,7 @@
              self.posts = [NSMutableArray arrayWithArray:array];
              [self.tableView reloadData];
          }];
-    }
+//    }
 }
 
 
@@ -201,6 +201,19 @@
         _photoPrototypeCell = [self.tableView dequeueReusableCellWithIdentifier:@"CellWithImage"];
     }
     return _photoPrototypeCell;
+}
+
+
+- (IBAction)createPostButtonPressed:(UIBarButtonItem *)button
+{
+    if ([User currentUser])
+    {
+        [self performSegueWithIdentifier:@"createPost" sender:button];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"loginFirst" sender:self];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
