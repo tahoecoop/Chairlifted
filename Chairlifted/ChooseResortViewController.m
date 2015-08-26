@@ -57,16 +57,17 @@
     Resort *resort = self.resorts[indexPath.row];
     cell.textLabel.text = resort.name;
     User *user = [User currentUser];
-    [user.favoriteResort fetchIfNeeded];
-    
-    if ([resort.name isEqualToString:user.favoriteResort.name] || [tableView indexPathForSelectedRow] == indexPath)
+    [user.favoriteResort fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error)
     {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else
-    {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+        if ([resort.name isEqualToString:user.favoriteResort.name] || [tableView indexPathForSelectedRow] == indexPath)
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }];
     return cell;
 }
 
