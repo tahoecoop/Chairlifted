@@ -50,8 +50,23 @@
                       if (succeededTwo)
                       {
                           [self checkIfLiked];
-                          [activityView removeFromSuperview];
-                          [self.parentTableView reloadData];
+
+                          PFQuery *pushQuery = [PFInstallation query];
+                          [pushQuery whereKey:@"user" equalTo:self.post.author];
+
+                          NSDictionary *pushData = @{@"alert" : [NSString stringWithFormat:@"%@ liked your post!", [User currentUser].username],
+                                                     @"badge" : @"Increment"};
+                          PFPush *push = [PFPush new];
+                          [push setData:pushData];
+                          [push setQuery:pushQuery];
+                          [push sendPushInBackgroundWithBlock:^(BOOL succeededPush, NSError *error)
+                          {
+                              if (succeededPush)
+                              {
+                                  [activityView removeFromSuperview];
+                                  [self.parentTableView reloadData];
+                              }
+                          }];
                       }
                   }];
              }

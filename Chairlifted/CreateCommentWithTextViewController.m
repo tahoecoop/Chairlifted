@@ -57,8 +57,22 @@
               {
                   if (succeededTwo)
                   {
-                      [activityView removeFromSuperview];
-                      [self dismissViewControllerAnimated:YES completion:nil];
+                      PFQuery *pushQuery = [PFInstallation query];
+                      [pushQuery whereKey:@"user" equalTo:self.post.author];
+
+                      NSDictionary *pushData = @{@"alert" : [NSString stringWithFormat:@"%@ commented on your post!", [User currentUser].username],
+                                                 @"badge" : @"Increment"};
+                      PFPush *push = [PFPush new];
+                      [push setData:pushData];
+                      [push setQuery:pushQuery];
+                      [push sendPushInBackgroundWithBlock:^(BOOL succeededPush, NSError *error)
+                       {
+                           if (succeededPush)
+                           {
+                               [activityView removeFromSuperview];
+                               [self dismissViewControllerAnimated:YES completion:nil];
+                           }
+                       }];
                   }
               }];
          }

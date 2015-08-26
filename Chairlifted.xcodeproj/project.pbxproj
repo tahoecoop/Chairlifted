@@ -488,7 +488,6 @@
 				TargetAttributes = {
 					BA6F8C0C1B8253270083E71E = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = A5JHWHDAMA;
 					};
 					BA6F8C281B8253280083E71E = {
 						CreatedOnToolsVersion = 6.4;
@@ -754,6 +753,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Chairlifted/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ebb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -771,6 +771,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Chairlifted/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ebb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
