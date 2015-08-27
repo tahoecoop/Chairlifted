@@ -10,7 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 
 
 @end

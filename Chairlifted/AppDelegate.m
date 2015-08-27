@@ -1,4 +1,3 @@
-//
 //  AppDelegate.m
 //  Chairlifted
 //
@@ -19,6 +18,7 @@
 #import "JoinGroup.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "UIImage+SkiSnowboardIcon.h"
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 @interface AppDelegate ()
 
@@ -44,12 +44,25 @@
     [JoinGroup registerSubclass];
 
 
+
+    [PFUser enableAutomaticUser];
+
+
+
+
+
     // Initialize Parse.
     [Parse setApplicationId:@"tToLZMQ5nL7e5kvFQNS2Z9QPmSFUQEV229IAnRQ1"
                   clientKey:@"0haiam3p9bKZRmTHv8TQFEpwBjfm1cRPtco3DTg1"];
 
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+
+
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+
+
 
     // Register for Push Notitications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |

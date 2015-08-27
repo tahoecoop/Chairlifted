@@ -1,4 +1,3 @@
-//
 //  CreateNewUserViewController.h
 //  Chairlifted
 //
@@ -11,3 +10,7 @@
 @interface CreateNewUserViewController : UIViewController
 
 @end
+
+
+
+
