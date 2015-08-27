@@ -52,6 +52,7 @@
 
     user.username = self.usernameTextField.text;
     user.password = self.passwordTextField.text;
+    user.displayName = self.usernameTextField.text;
     user.email = self.emailTextField.text;
 
     [user saveInBackgroundWithBlock:^(BOOL success, NSError *error)

@@ -40,7 +40,7 @@
 
 -(void)setUpUserInfo
 {
-    self.usernameLabel.text = [User currentUser].username;
+    self.usernameLabel.text = [User currentUser].displayName;
 
     if ([User currentUser].name)
     {

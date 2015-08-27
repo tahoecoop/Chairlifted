@@ -69,7 +69,7 @@
     {
         self.editButton.enabled = NO;
         self.editButton.tintColor = [UIColor clearColor];
-        self.title = self.selectedUser.username;
+        self.title = self.selectedUser.displayName;
         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 
@@ -158,7 +158,7 @@
         if (post.image)
         {
             CustomFeedWithPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImagePostCell"];
-            cell.authorLabel.text = post.author.username;
+            cell.authorLabel.text = post.author.displayName;
             cell.titleLabel.text = post.title;
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
@@ -175,7 +175,7 @@
         else
         {
             CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextPostCell"];
-            cell.authorLabel.text = post.author.username;
+            cell.authorLabel.text = post.author.displayName;
             cell.postLabel.text = post.title;
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];

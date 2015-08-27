@@ -117,7 +117,7 @@
     {
         DetailCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
         Comment *comment = self.comments[indexPath.row];
-        cell.commentAuthorLabel.text = comment.author.username;
+        cell.commentAuthorLabel.text = comment.author.displayName;
         cell.commentTextLabel.text = comment.text;
         cell.commentTimeLabel.text = [NSDate determineTimePassed:comment.createdAt];
 
@@ -164,7 +164,7 @@
         header.postTitleLabel.text = self.post.title;
         header.minutesAgoLabel.text = [NSDate determineTimePassed:self.post.createdAt];
         header.likesLabel.text = [NSString stringWithFormat:@"%i likes",self.post.likeCount];
-        header.userNameLabel.text = self.post.author.username;
+        header.userNameLabel.text = self.post.author.displayName;
 
         if (self.post.group)
         {

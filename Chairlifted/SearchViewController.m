@@ -95,7 +95,7 @@
             CustomFeedWithPhotoTableViewCell *postPhotoCell = [tableView dequeueReusableCellWithIdentifier:@"PostImageCell"];
             postPhotoCell.titleLabel.text = post.title;
             postPhotoCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
-            postPhotoCell.authorLabel.text = post.author.username;
+            postPhotoCell.authorLabel.text = post.author.displayName;
             postPhotoCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             postPhotoCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
 
@@ -115,7 +115,7 @@
             CustomFeedTableViewCell *postTextCell = [tableView dequeueReusableCellWithIdentifier:@"PostTextCell"];
             postTextCell.postLabel.text = post.title;
             postTextCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
-            postTextCell.authorLabel.text = post.author.username;
+            postTextCell.authorLabel.text = post.author.displayName;
             postTextCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             postTextCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             postTextCell.backgroundColor = [UIColor whiteColor];

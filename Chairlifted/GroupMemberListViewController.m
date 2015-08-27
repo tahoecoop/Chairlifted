@@ -118,7 +118,7 @@
              {
                  if (!error)
                  {
-                     cell.usernameLabel.text = user.username;
+                     cell.usernameLabel.text = user.displayName;
                  }
              }];
             return cell;
@@ -139,7 +139,7 @@
             User *user = joinGroup.user;
             [user fetchIfNeededInBackgroundWithBlock:^(PFObject * object, NSError *error)
              {
-                 cell.textLabel.text = user.username;
+                 cell.textLabel.text = user.displayName;
              }];
         }
         return cell;

@@ -129,7 +129,7 @@
         CustomFeedTableViewCell *textCell = (CustomFeedTableViewCell *)cell;
         Post *post = self.posts[indexPath.row];
         textCell.postLabel.text = post.title;
-        textCell.authorLabel.text = post.author.username;
+        textCell.authorLabel.text = post.author.displayName;
         textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
@@ -139,7 +139,7 @@
         CustomFeedWithPhotoTableViewCell *textCell = (CustomFeedWithPhotoTableViewCell *)cell;
         Post *post = self.posts[indexPath.row];
         textCell.titleLabel.text = post.title;
-        textCell.authorLabel.text = post.author.username;
+        textCell.authorLabel.text = post.author.displayName;
         textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];

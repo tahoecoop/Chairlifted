@@ -170,7 +170,7 @@
         {
             CustomFeedWithPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellWithImage"];
             cell.titleLabel.text = post.title;
-            cell.authorLabel.text = post.author.username;
+            cell.authorLabel.text = post.author.displayName;
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
@@ -181,7 +181,7 @@
         {
             CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             cell.postLabel.text = post.title;
-            cell.authorLabel.text = post.author.username;
+            cell.authorLabel.text = post.author.displayName;
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
