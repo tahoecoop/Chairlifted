@@ -19,6 +19,7 @@
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
 #import "GroupMemberListViewController.h"
+#import "UIAlertController+ReportInappropriate.h"
 
 @interface GroupFeedViewController ()
 
@@ -29,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *makeNewPostButton;
 @property (nonatomic) UIView *activityView;
 
 @end
@@ -88,14 +88,8 @@
 {
     if ([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"])
     {
-        self.makeNewPostButton.enabled = YES;
         self.joinGroup.lastViewed = [NSDate date];
         [self.joinGroup saveInBackground];
-    }
-    else
-    {
-        self.makeNewPostButton.enabled = NO;
-        self.makeNewPostButton.tintColor = [UIColor clearColor];
     }
 }
 
@@ -135,6 +129,15 @@
         headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
+
+        if ([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"])
+        {
+            headerCell.createNewPostButton.hidden = NO;
+        }
+        else
+        {
+            headerCell.createNewPostButton.hidden = YES;
+        }
 
         PFFile *imageData = self.group.image;
         [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
@@ -229,10 +232,13 @@
 }
 
 
-- (IBAction)moreButtonPressed:(UIButton *)button
+- (IBAction)moreButtonPressed:(UIBarButtonItem *)button
 {
-    
+    UIAlertController *alert = [UIAlertController alertForReportInappropriate];
+    [self presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -19,6 +19,7 @@
 #import "UIImageView+SpinningFigure.h"
 #import "EditProfileViewController.h"
 #import "PostDetailViewController.h"
+#import "UIAlertController+ReportInappropriate.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, updatedResortDelegate>
 
@@ -42,7 +43,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.shouldUpdateResort = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -54,11 +54,8 @@
 {
     if (![User currentUser])
     {
-        if (![User currentUser])
-        {
-            [self performSegueWithIdentifier:@"loginBeforeProfile" sender:self];
-            self.shouldUpdateResort = NO;
-        }
+        [self performSegueWithIdentifier:@"loginBeforeProfile" sender:self];
+        self.shouldUpdateResort = NO;
     }
     else if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
@@ -71,6 +68,11 @@
         self.editButton.tintColor = [UIColor clearColor];
         self.title = self.selectedUser.username;
         self.shouldUpdateResort = YES;
+    }
+
+    if (!self.selectedUser.favoriteResort)
+    {
+        self.shouldUpdateResort = NO;
     }
 
 
@@ -219,6 +221,12 @@
     self.shouldUpdateResort = YES;
 }
 
+
+- (IBAction)moreButtonPressed:(UIBarButtonItem *)button
+{
+    UIAlertController *alert = [UIAlertController alertForReportInappropriate];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

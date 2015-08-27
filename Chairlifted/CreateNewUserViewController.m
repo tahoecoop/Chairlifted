@@ -34,10 +34,12 @@
     [self.view addSubview:activityView];
     [spinnerImageView rotateLayerInfinite];
 
-
+    NSString *username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *password = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     User *user = [User new];
-    user.username = self.usernameTextField.text;
-    user.password = self.passwordTextField.text;
+    user.username = username;
+    user.password = password;
+    user.displayName = username;
 
     [user saveInBackgroundWithBlock:^(BOOL success, NSError *error)
      {
