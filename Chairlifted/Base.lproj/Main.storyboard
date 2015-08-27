@@ -2553,6 +2553,15 @@
                                     <action selector="onParseLoginButtonPressed:" destination="tXg-Zz-ck9" eventType="touchUpInside" id="hwn-SU-wIR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1K-Nr-Nqs">
+                                <rect key="frame" x="102" y="414" width="116" height="30"/>
+                                <state key="normal" title="Forgot password">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onForgotPasswordButtonPressed:" destination="tXg-Zz-ck9" eventType="touchUpInside" id="nEM-Ti-JGd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2564,9 +2573,11 @@
                             <constraint firstItem="dQ8-na-fRK" firstAttribute="trailing" secondItem="5vg-W7-DRJ" secondAttribute="trailingMargin" id="EvS-q1-qG0"/>
                             <constraint firstAttribute="centerX" secondItem="2Ev-sV-LKt" secondAttribute="centerX" id="JaY-r2-ezP"/>
                             <constraint firstItem="2Ev-sV-LKt" firstAttribute="top" secondItem="2UE-Ij-FKM" secondAttribute="bottom" constant="8" id="Qrs-SV-h07"/>
+                            <constraint firstItem="v1K-Nr-Nqs" firstAttribute="top" secondItem="PfV-uI-vHW" secondAttribute="bottom" constant="8" id="V3z-za-9P6"/>
                             <constraint firstItem="dQ8-na-fRK" firstAttribute="leading" secondItem="5vg-W7-DRJ" secondAttribute="leadingMargin" id="WaG-UT-9op"/>
                             <constraint firstAttribute="centerX" secondItem="PfV-uI-vHW" secondAttribute="centerX" constant="-0.5" id="ZC0-64-6VU"/>
                             <constraint firstItem="PfV-uI-vHW" firstAttribute="top" secondItem="v8r-vE-2fu" secondAttribute="bottom" constant="8" id="ZDb-zI-FK5"/>
+                            <constraint firstAttribute="centerX" secondItem="v1K-Nr-Nqs" secondAttribute="centerX" id="aS8-Pt-3xb"/>
                             <constraint firstItem="2UE-Ij-FKM" firstAttribute="trailing" secondItem="5vg-W7-DRJ" secondAttribute="trailingMargin" id="jlj-c1-Cfa"/>
                             <constraint firstItem="dQ8-na-fRK" firstAttribute="top" secondItem="AFF-JH-fvQ" secondAttribute="bottom" constant="8" id="kLG-uK-Zz3"/>
                             <constraint firstAttribute="centerX" secondItem="v8r-vE-2fu" secondAttribute="centerX" constant="-0.5" id="tVb-6m-trh"/>
