@@ -11,6 +11,7 @@
 @implementation User
 
 @dynamic username;
+@dynamic displayName;
 @dynamic email;
 @dynamic friends;
 @dynamic favoriteResorts;

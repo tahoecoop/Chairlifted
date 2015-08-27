@@ -2831,11 +2831,23 @@
                                     <segment title="Snowboarder"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zl8-Ds-Cj7">
+                                <rect key="frame" x="274" y="518" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7Kq-J3-iJK"/>
+                                    <constraint firstAttribute="width" constant="30" id="ppS-Pm-GJY"/>
+                                </constraints>
+                                <state key="normal" image="egg">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="34F-1L-BSc" firstAttribute="top" secondItem="tCN-rd-xdp" secondAttribute="bottom" constant="20" id="Ujs-Q0-Fa5"/>
+                            <constraint firstItem="zl8-Ds-Cj7" firstAttribute="trailing" secondItem="lQL-67-oVV" secondAttribute="trailingMargin" id="YAf-y5-ZyP"/>
+                            <constraint firstItem="34F-1L-BSc" firstAttribute="top" secondItem="zl8-Ds-Cj7" secondAttribute="bottom" constant="20" id="ZyY-Yh-cdF"/>
                             <constraint firstItem="tCN-rd-xdp" firstAttribute="leading" secondItem="lQL-67-oVV" secondAttribute="leadingMargin" id="twx-q0-aEb"/>
                         </constraints>
                     </view>
@@ -3063,6 +3075,7 @@
         <image name="cloudy" width="50" height="50"/>
         <image name="discovery" width="30" height="30"/>
         <image name="editProfile" width="30" height="30"/>
+        <image name="egg" width="320" height="320"/>
         <image name="ellipses" width="30" height="30"/>
         <image name="googles" width="30" height="30"/>
         <image name="gradient" width="395" height="509"/>
@@ -3080,11 +3093,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="NNo-lQ-BKY"/>
-        <segue reference="hWB-ji-5Hf"/>
-        <segue reference="Lxg-Ss-HDx"/>
-        <segue reference="ejQ-rk-85I"/>
         <segue reference="1lm-hb-AIn"/>
+        <segue reference="hWB-ji-5Hf"/>
+        <segue reference="vG6-2M-ghs"/>
+        <segue reference="ejQ-rk-85I"/>
+        <segue reference="NNo-lQ-BKY"/>
         <segue reference="smD-0w-2Gw"/>
     </inferredMetricsTieBreakers>
 </document>

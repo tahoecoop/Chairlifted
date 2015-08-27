@@ -14,6 +14,7 @@
 @interface User : PFUser <PFSubclassing>
 
 @property (nonatomic) NSString *username;
+@property (nonatomic) NSString *displayName;
 @property (nonatomic) NSString *email;
 @property (nonatomic) NSArray *friends;
 @property (nonatomic) NSSet *runs;

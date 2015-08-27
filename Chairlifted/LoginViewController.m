@@ -114,17 +114,32 @@
                           user[@"profileImage"] = [PFFile fileWithData:UIImageJPEGRepresentation(displayPicture, 1.0)];
 
                           user[@"friends"] = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
-
                       }];
+
+                     UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"Choose a dsiplay name" message:@"Choose your display name." preferredStyle:UIAlertControllerStyleAlert];
+                     [vc addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                         textField.placeholder = @"Display Name";
+                     }];
+
+                     UIAlertAction *set = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                           {
+                                               UITextField *dName = [[vc textFields]firstObject];
+                                               user[@"displayName"] = dName.text;
+                                               [self dismissViewControllerAnimated:YES completion:nil];
+
+                                           }];
+
+                     [vc addAction:set];
+                     [self presentViewController:vc animated:YES completion:nil];
 
                      NSLog(@"User with facebook signed up and logged in!");
 
                  } else {
 
                      NSLog(@"User with facebook logged in!");
+                     [self dismissViewControllerAnimated:YES completion:nil];
 
                  }
-                 [self dismissViewControllerAnimated:YES completion:nil];
              }
 
          } else {
