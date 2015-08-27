@@ -1476,11 +1476,11 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="165" id="1rr-jv-NDq" customClass="GroupFeedHeaderTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="165"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="175" id="1rr-jv-NDq" customClass="GroupFeedHeaderTableViewCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1rr-jv-NDq" id="aAs-lh-4Kg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="myl-CG-cBg">
@@ -1519,27 +1519,39 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyr-1w-RlN">
-                                                    <rect key="frame" x="15" y="126" width="30" height="30"/>
+                                                    <rect key="frame" x="15" y="126" width="40" height="40"/>
                                                     <animations/>
-                                                    <state key="normal" image="groupIcon"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="N7R-EP-31w"/>
+                                                        <constraint firstAttribute="height" constant="40" id="kkA-VZ-eqO"/>
+                                                    </constraints>
+                                                    <state key="normal" image="groupIcon40"/>
                                                     <connections>
                                                         <segue destination="GUn-d1-gbJ" kind="push" identifier="toGroupMembers" id="WUk-fX-E4c"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYY-PY-4td">
-                                                    <rect key="frame" x="145" y="126" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQH-Oz-Uuy">
+                                                    <rect key="frame" x="265" y="126" width="40" height="40"/>
                                                     <animations/>
-                                                    <state key="normal" image="shareIcon"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="85K-P9-WT1"/>
+                                                        <constraint firstAttribute="width" constant="40" id="ji5-1o-zIl"/>
+                                                    </constraints>
+                                                    <state key="normal" image="newPostIcon"/>
                                                     <connections>
-                                                        <action selector="shareButtonPressed:" destination="h3l-Lf-Wxf" eventType="touchUpInside" id="pup-wO-IPc"/>
+                                                        <segue destination="4DD-lG-lYp" kind="modal" identifier="MakeGroupPost" id="AIY-s3-N9h"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQH-Oz-Uuy">
-                                                    <rect key="frame" x="275" y="126" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYY-PY-4td">
+                                                    <rect key="frame" x="140" y="126" width="40" height="40"/>
                                                     <animations/>
-                                                    <state key="normal" image="ellipses"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="MkF-oG-pic"/>
+                                                        <constraint firstAttribute="height" constant="40" id="gIu-fM-2md"/>
+                                                    </constraints>
+                                                    <state key="normal" image="shareIcon37"/>
                                                     <connections>
-                                                        <action selector="moreButtonPressed:" destination="h3l-Lf-Wxf" eventType="touchUpInside" id="yg9-aN-pQE"/>
+                                                        <action selector="shareButtonPressed:" destination="h3l-Lf-Wxf" eventType="touchUpInside" id="pup-wO-IPc"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1573,6 +1585,7 @@
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="createNewPostButton" destination="bQH-Oz-Uuy" id="6Op-Zu-55f"/>
                                             <outlet property="groupImageView" destination="myl-CG-cBg" id="CFe-qP-mtS"/>
                                             <outlet property="groupNameLabel" destination="mXW-bX-SUO" id="RQi-kI-7GA"/>
                                             <outlet property="groupPurposeLabel" destination="uO7-aB-dR0" id="qct-fu-UzR"/>
@@ -1580,7 +1593,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="EYe-9J-h1p" customClass="CustomFeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="261" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EYe-9J-h1p" id="1WO-kd-qFY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
@@ -1652,14 +1665,14 @@
                                             <segue destination="tdP-05-5rf" kind="push" identifier="ToPostDetailTextOnly" id="3tz-ET-Ncu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWithImage" rowHeight="112" id="ifY-US-OHm" customClass="CustomFeedWithPhotoTableViewCell">
-                                        <rect key="frame" x="0.0" y="351" width="320" height="112"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWithImage" rowHeight="112" id="ifY-US-OHm" customClass="CustomFeedWithPhotoTableViewCell">
+                                        <rect key="frame" x="0.0" y="361" width="320" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ifY-US-OHm" id="Qgl-jE-gpv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26m ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gle-wv-rR7">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="26m ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gle-wv-rR7">
                                                     <rect key="frame" x="240" y="8" width="70" height="16"/>
                                                     <animations/>
                                                     <constraints>
@@ -1676,7 +1689,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9r-ix-W3v">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9r-ix-W3v">
                                                     <rect key="frame" x="8" y="8" width="224" height="16"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -1691,7 +1704,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="LS9-tb-JZq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkJ-i2-8FM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" misplaced="YES" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkJ-i2-8FM">
                                                     <rect key="frame" x="66" y="32" width="244" height="50"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -1754,15 +1767,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s0v-CY-XCu">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" systemItem="compose" id="KzB-YO-8Bd">
+                        <barButtonItem key="rightBarButtonItem" image="ellipses" style="plain" id="KzB-YO-8Bd">
                             <connections>
-                                <segue destination="4DD-lG-lYp" kind="modal" identifier="MakeGroupPost" id="NNo-lQ-BKY"/>
+                                <action selector="moreButtonPressed:" destination="h3l-Lf-Wxf" id="DRq-e5-jWc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="makeNewPostButton" destination="KzB-YO-8Bd" id="Ntw-yr-5FO"/>
                         <outlet property="tableView" destination="tc4-LZ-BFx" id="CY1-3q-ORZ"/>
                     </connections>
                 </viewController>
@@ -1816,6 +1828,13 @@
                                                         <action selector="acceptButtonPressed:" destination="yEk-TB-K5s" eventType="touchUpInside" id="OJh-41-NOl"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-5I-vmU">
+                                                    <rect key="frame" x="8" y="22" width="187" height="16"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <color key="textColor" red="0.70980392160000005" green="0.0" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6g-Gd-EcE">
                                                     <rect key="frame" x="210" y="10" width="40" height="40"/>
                                                     <animations/>
@@ -1828,13 +1847,6 @@
                                                         <action selector="denyButtonPressed:" destination="yEk-TB-K5s" eventType="touchUpInside" id="raM-6Q-vvJ"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-5I-vmU">
-                                                    <rect key="frame" x="8" y="22" width="187" height="16"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <color key="textColor" red="0.70980392160000005" green="0.0" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -2349,15 +2361,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="G8u-ti-4P3">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="4Li-xI-Mj2">
-                            <connections>
-                                <segue destination="A4h-Kx-rbY" kind="modal" id="Lbi-QA-nt6"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="editProfile" id="hWc-mm-qVx">
+                        <barButtonItem key="leftBarButtonItem" image="editProfile" id="hWc-mm-qVx">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="DeP-yQ-dQG" kind="modal" identifier="EditProfile" modalTransitionStyle="flipHorizontal" id="CFe-Ca-Xio"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ellipses" id="5zd-qd-3Qe">
+                            <connections>
+                                <action selector="moreButtonPressed:" destination="dCR-o4-j1p" id="0Dn-he-ms7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3080,11 +3092,13 @@
         <image name="googles" width="30" height="30"/>
         <image name="gradient" width="395" height="509"/>
         <image name="group - 1x" width="30" height="30"/>
-        <image name="groupIcon" width="30" height="30"/>
+        <image name="groupIcon40" width="40" height="40"/>
         <image name="heartEmptyIcon" width="30" height="30"/>
         <image name="newGroup" width="30" height="30"/>
+        <image name="newPostIcon" width="30" height="30"/>
         <image name="rejectIcon33" width="33" height="33"/>
         <image name="shareIcon" width="30" height="30"/>
+        <image name="shareIcon37" width="37" height="37"/>
         <image name="svg2pdf.htm" width="45" height="45"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -22,6 +22,7 @@
 @dynamic favoriteResort;
 @dynamic location;
 @dynamic isSnowboarder;
+@dynamic displayName;
 
 + (void)load
 {
