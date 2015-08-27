@@ -1853,6 +1853,7 @@
                                         <connections>
                                             <outlet property="acceptButton" destination="Ac2-ki-Tae" id="h4r-v9-lwz"/>
                                             <outlet property="denyButton" destination="g6g-Gd-EcE" id="jIZ-JC-9Wd"/>
+                                            <outlet property="usernameLabel" destination="Bcc-5I-vmU" id="iMa-Uq-nPq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
