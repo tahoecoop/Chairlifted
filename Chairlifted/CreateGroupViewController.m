@@ -108,7 +108,14 @@
              JoinGroup *joinGroup = [JoinGroup new];
              joinGroup.group = group;
              joinGroup.groupName = group.name;
-             joinGroup.status = @"joined";
+             if (group.isPrivate)
+             {
+                 joinGroup.status = @"admin";
+             }
+             else
+             {
+                 joinGroup.status = @"joined";
+             }
              joinGroup.user = [User currentUser];
              joinGroup.lastViewed = [NSDate date];
              [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)

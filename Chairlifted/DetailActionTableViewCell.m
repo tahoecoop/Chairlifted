@@ -36,7 +36,7 @@
         [self addSubview:activityView];
         [spinnerImageView rotateLayerInfinite];
 
-        if ([sender.titleLabel.text isEqualToString:@"Like"])
+        if ([sender.imageView.image isEqual:[UIImage imageNamed:@"heartEmptyIcon.pdf"]])
         {
             self.like = [Like new];
             self.like.liker = [User currentUser];
@@ -118,17 +118,17 @@
                       if (arrayTwo.count > 0)
                       {
                           self.like = arrayTwo[0];
-                          [self.likeButton setTitle:@"Unlike" forState:UIControlStateNormal];
+                          [self.likeButton setImage:[UIImage imageNamed:@"heartFullIcon.pdf"] forState:UIControlStateNormal];
                       }
                       else
                       {
-                          [self.likeButton setTitle:@"Like" forState:UIControlStateNormal];
+                          self.likeButton.imageView.image = [UIImage imageNamed:@"heartEmptyIcon.pdf"];
                       }
                   }];
              }
              else
              {
-                 [self.likeButton setTitle:@"Like" forState:UIControlStateNormal];
+                 self.likeButton.imageView.image = [UIImage imageNamed:@"heartEmptyIcon.pdf"];
              }
          }
      }];

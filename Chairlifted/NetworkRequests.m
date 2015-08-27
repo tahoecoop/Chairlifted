@@ -149,10 +149,17 @@
 
 + (void)getMyGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
 {
-    PFQuery *query = [JoinGroup query];
-    [query whereKey:@"user" equalTo:[User currentUser]];
-    [query whereKey:@"status" equalTo:@"joined"];
+    PFQuery *queryJoined = [JoinGroup query];
+    [queryJoined whereKey:@"user" equalTo:[User currentUser]];
+    [queryJoined whereKey:@"status" equalTo:@"joined"];
+
+    PFQuery *queryAdmin = [JoinGroup query];
+    [queryAdmin whereKey:@"user" equalTo:[User currentUser]];
+    [queryAdmin whereKey:@"status" equalTo:@"admin"];
+
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[queryJoined, queryAdmin]];
     [query includeKey:@"group"];
+
     [query orderByDescending:@"mostRecentPost"];
     query.skip = skipCount;
     query.limit = 30;
@@ -214,6 +221,49 @@
 }
 
 
+#pragma mark - Get Users
+
++(void)getPendingUsersInGroup:(Group *)group andSkipCount: (int)skipCount withCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [JoinGroup query];
+    [query whereKey:@"group" equalTo:group];
+    [query whereKey:@"status" equalTo:@"pending"];
+    [query orderByAscending:@"createdAt"];
+    query.limit = 30;
+    query.skip = skipCount;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if (!error)
+        {
+            complete(objects);
+        }
+    }];
+}
+
++(void)getJoinedUsersInGroup:(Group *)group andSkipCount: (int)skipCount withCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *queryJoined = [JoinGroup query];
+    [queryJoined whereKey:@"status" equalTo:@"joined"];
+    [queryJoined whereKey:@"group" equalTo:group];
+
+    PFQuery *queryAdmin = [JoinGroup query];
+    [queryAdmin whereKey:@"status" equalTo:@"admin"];
+    [queryAdmin whereKey:@"group" equalTo:group];
+
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[queryJoined, queryAdmin]];
+    [query orderByAscending:@"userUsername"];
+    query.limit = 30;
+    query.skip = skipCount;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if (!error)
+        {
+            complete(objects);
+        }
+    }];
+}
+
+
 #pragma mark - get Resorts
 
 + (void)getResortsWithState:(NSString *)state andCompletion:(void(^)(NSArray *array))complete
@@ -229,6 +279,8 @@
          }
      }];
 }
+
+
 
 #pragma mark - Get weather
 

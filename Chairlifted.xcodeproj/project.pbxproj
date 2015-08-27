@@ -73,6 +73,9 @@
 		BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */; };
 		BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */; };
 		D3CE69F192DC679F97BC8BD1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ADEADAE442867E661D0CD0 /* libPods.a */; };
+		FE8CCA011B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */; };
+		FE8F1A081B8E6CAF00A22BD7 /* GroupMemberListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F1A071B8E6CAF00A22BD7 /* GroupMemberListViewController.m */; };
+		FE8F1A0B1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F1A0A1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +203,12 @@
 		BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGroup.m; sourceTree = "<group>"; };
 		BAE3D1A11B86AD9500BAC4EF /* GroupCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCustomTableViewCell.h; sourceTree = "<group>"; };
 		BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCustomTableViewCell.m; sourceTree = "<group>"; };
+		FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ReportInappropriate.h"; sourceTree = "<group>"; };
+		FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ReportInappropriate.m"; sourceTree = "<group>"; };
+		FE8F1A061B8E6CAF00A22BD7 /* GroupMemberListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMemberListViewController.h; sourceTree = "<group>"; };
+		FE8F1A071B8E6CAF00A22BD7 /* GroupMemberListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMemberListViewController.m; sourceTree = "<group>"; };
+		FE8F1A091B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMemberRespondRequestCellTableViewCell.h; sourceTree = "<group>"; };
+		FE8F1A0A1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMemberRespondRequestCellTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +368,8 @@
 				BA6F8C711B8296640083E71E /* NetworkRequests.m */,
 				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
 				BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */,
+				FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */,
+				FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */,
 				BA6F8C7C1B83A0D00083E71E /* NSDate+TimePassage.h */,
 				BA6F8C7D1B83A0D00083E71E /* NSDate+TimePassage.m */,
 				BA88E74C1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.h */,
@@ -396,6 +407,8 @@
 				BA215E191B8787170087DBEB /* GroupFeedViewController.m */,
 				BA215E211B87992E0087DBEB /* CreateGroupViewController.h */,
 				BA215E221B87992E0087DBEB /* CreateGroupViewController.m */,
+				FE8F1A061B8E6CAF00A22BD7 /* GroupMemberListViewController.h */,
+				FE8F1A071B8E6CAF00A22BD7 /* GroupMemberListViewController.m */,
 				BA215E291B8811AF0087DBEB /* EditProfileViewController.h */,
 				BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */,
 				BAC93D141B8920B600697FEA /* SearchViewController.h */,
@@ -433,6 +446,8 @@
 				BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */,
 				BA215E261B87FF560087DBEB /* ProfileHeaderTableViewCell.h */,
 				BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */,
+				FE8F1A091B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.h */,
+				FE8F1A0A1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -587,6 +602,7 @@
 				BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */,
 				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
+				FE8F1A0B1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m in Sources */,
 				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
 				BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */,
 				BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */,
@@ -599,9 +615,11 @@
 				BAC93D191B8963CE00697FEA /* StateViewController.m in Sources */,
 				BA6F8C721B8296640083E71E /* NetworkRequests.m in Sources */,
 				BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */,
+				FE8F1A081B8E6CAF00A22BD7 /* GroupMemberListViewController.m in Sources */,
 				BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
 				96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */,
+				FE8CCA011B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m in Sources */,
 				BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
 				BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */,

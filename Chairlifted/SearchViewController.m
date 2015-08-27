@@ -76,11 +76,11 @@
 
         if (group.isPrivate)
         {
-            groupCell.privateImageView.hidden = NO;
+            groupCell.privateLabel.hidden = NO;
         }
         else
         {
-            groupCell.privateImageView.hidden = YES;
+            groupCell.privateLabel.hidden = YES;
         }
         groupCell.backgroundColor = [UIColor whiteColor];
         tableView.backgroundColor = [UIColor clearColor];

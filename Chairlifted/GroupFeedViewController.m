@@ -18,6 +18,7 @@
 #import "CreatePostViewController.h"
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
+#import "GroupMemberListViewController.h"
 
 @interface GroupFeedViewController ()
 
@@ -85,7 +86,7 @@
 
 -(void)setUpGroupInfo
 {
-    if ([self.joinGroup.status isEqualToString:@"joined"])
+    if ([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"])
     {
         self.makeNewPostButton.enabled = YES;
         self.joinGroup.lastViewed = [NSDate date];
@@ -131,6 +132,7 @@
     if (indexPath.section == 0)
     {
         GroupFeedHeaderTableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
+        headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
 
@@ -143,7 +145,11 @@
         headerCell.group = self.group;
         headerCell.joinGroup = self.joinGroup;
 
-        if ([self.joinGroup.status isEqualToString:@"joined"])
+        if ([self.joinGroup.status isEqualToString:@"admin"])
+        {
+            [headerCell.requestToJoinButton setTitle:@"Admin" forState:UIControlStateNormal];
+        }
+        else if ([self.joinGroup.status isEqualToString:@"joined"])
         {
             [headerCell.requestToJoinButton setTitle:@"Leave group" forState:UIControlStateNormal];
         }
@@ -216,6 +222,18 @@
     }
 }
 
+
+- (IBAction)shareButtonPressed:(UIButton *)button
+{
+
+}
+
+
+- (IBAction)moreButtonPressed:(UIButton *)button
+{
+    
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"MakeGroupPost"])
@@ -227,6 +245,11 @@
     {
         PostDetailViewController *vc = segue.destinationViewController  ;
         vc.post = self.posts[self.tableView.indexPathForSelectedRow.row];
+    }
+    else if ([segue.identifier isEqualToString:@"toGroupMembers"])
+    {
+        GroupMemberListViewController *vc = segue.destinationViewController;
+        vc.group = self.group;
     }
 }
 

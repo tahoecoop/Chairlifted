@@ -17,6 +17,7 @@
 @property (nonatomic) NSString *status;
 @property (nonatomic) NSDate *lastViewed;
 @property (nonatomic) NSString *groupName;
+@property (nonatomic) NSString *userUsername;
 
 + (void)load;
 + (NSString *)parseClassName;

@@ -15,6 +15,7 @@
 @dynamic status;
 @dynamic lastViewed;
 @dynamic groupName;
+@dynamic  userUsername;
 
 
 + (void)load

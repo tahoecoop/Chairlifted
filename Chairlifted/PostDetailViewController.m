@@ -20,6 +20,7 @@
 #import "Like.h"
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
+#import "UIAlertController+ReportInappropriate.h"
 
 
 
@@ -159,6 +160,7 @@
     if (section == 0)
     {
         DetailHeaderTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
+        header.selectionStyle = UITableViewCellSelectionStyleNone;
         header.postTitleLabel.text = self.post.title;
         header.minutesAgoLabel.text = [NSDate determineTimePassed:self.post.createdAt];
         header.likesLabel.text = [NSString stringWithFormat:@"%i likes",self.post.likeCount];
@@ -184,6 +186,7 @@
     else
     {
         DetailActionTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"Action"];
+        header.selectionStyle = UITableViewCellSelectionStyleNone;
         header.parentTableView = self.tableView;
         header.post = self.post;
 
@@ -218,6 +221,13 @@
     {
         [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
     }
+}
+
+
+- (IBAction)onMoreButtonPressed:(UIBarButtonItem *)button
+{
+    UIAlertController *alert = [UIAlertController alertForReportInappropriate];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

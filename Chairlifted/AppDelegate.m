@@ -59,16 +59,13 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
-    
 
-    if ([User currentUser])
-    {
-        User *user = [User currentUser];
-        UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-        UITabBarItem *tabBarItem = [[tabBarController.tabBar items] objectAtIndex:3];
-        [tabBarItem setImage:[UIImage returnSkierOrSnowboarderImage:[user.isSnowboarder boolValue]]];
-        tabBarItem.title = @"Profile";
-    }
+
+    User *user = [User currentUser];
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UITabBarItem *tabBarItem = [[tabBarController.tabBar items] objectAtIndex:3];
+    [tabBarItem setImage:[UIImage returnSkierOrSnowboarderImage:[user.isSnowboarder boolValue]]];
+    tabBarItem.title = @"Profile";
 
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

@@ -31,6 +31,10 @@
 + (void)getAllGroupsWithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 + (void)getGroupsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 
++(void)getPendingUsersInGroup:(Group *)group andSkipCount: (int)skipCount withCompletion:(void(^)(NSArray *array))complete;
++(void)getJoinedUsersInGroup:(Group *)group andSkipCount: (int)skipCount withCompletion:(void(^)(NSArray *array))complete;
+
+
 + (void)getResortsWithState:(NSString *)state andCompletion:(void(^)(NSArray *array))complete;
 
 + (void)getWeatherFromLatitude:(double)latitude andLongitude:(double)longitude andCompletion:(void(^)(NSDictionary *dictionary))complete;

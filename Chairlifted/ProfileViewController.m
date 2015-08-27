@@ -18,6 +18,7 @@
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
 #import "EditProfileViewController.h"
+#import "PostDetailViewController.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, updatedResortDelegate>
 
@@ -138,7 +139,7 @@
         headerCell.nameLabel.text = self.selectedUser.name;
         if (self.resort && self.weatherDict)
         {
-            headerCell.weatherLabel.text = [NSString stringWithFormat:@"%.2f", [self.weatherDict[@"temperature"] floatValue]];
+            headerCell.weatherLabel.text = [NSString stringWithFormat:@"%.f°", [self.weatherDict[@"temperature"] floatValue]];
             headerCell.weatherIconImageView.image = [UIImage imageNamed:self.weatherDict[@"icon"]];
             headerCell.locationLabel.text = self.resort.name;
         }
@@ -225,6 +226,11 @@
     {
         EditProfileViewController *vc = (EditProfileViewController *)[segue.destinationViewController topViewController];
         vc.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"FromProfileToDetailText"] || [segue.identifier isEqualToString:@"FromProfileToDetailImage"])
+    {
+        PostDetailViewController *vc = segue.destinationViewController;
+        vc.post = self.myPosts[self.tableView.indexPathForSelectedRow.row];
     }
 }
 
