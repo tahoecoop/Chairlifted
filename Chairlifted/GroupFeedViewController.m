@@ -250,6 +250,7 @@
     {
         GroupMemberListViewController *vc = segue.destinationViewController;
         vc.group = self.group;
+        vc.joinGroup = self.joinGroup;
     }
 }
 
