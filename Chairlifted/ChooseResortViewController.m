@@ -57,7 +57,7 @@
     Resort *resort = self.resorts[indexPath.row];
     cell.textLabel.text = resort.name;
     User *user = [User currentUser];
-    [user.favoriteResort fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error)
+    [user.favoriteResort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
     {
         if ([resort.name isEqualToString:user.favoriteResort.name] || [tableView indexPathForSelectedRow] == indexPath)
         {
