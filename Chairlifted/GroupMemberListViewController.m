@@ -131,7 +131,7 @@
 
         if (self.members.count == 0)
         {
-            cell.textLabel.text = @"No pending requests";
+            cell.textLabel.text = @"No current members";
         }
         else
         {
