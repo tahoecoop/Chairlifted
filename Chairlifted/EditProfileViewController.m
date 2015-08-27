@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *editPictureLabel;
 @property (strong, nonatomic) IBOutlet UIButton *changeFavoriteResortButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
+@property (weak, nonatomic) IBOutlet UIButton *eggButton;
 @property (nonatomic) BOOL changedProfilePicture;
 
 @end
@@ -33,6 +34,7 @@
 {
     [super viewDidLoad];
     [self setUpUserInfo];
+    self.eggButton.imageView.image = [UIImage imageNamed:@"egg"];
 }
 
 

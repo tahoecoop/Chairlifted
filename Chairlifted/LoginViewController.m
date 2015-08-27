@@ -181,7 +181,17 @@
     {
         UITextField *emailForForgotten = [[forgotPasswordAlert textFields]firstObject];
 
-        [PFUser requestPasswordResetForEmailInBackground:emailForForgotten.text];
+        [PFUser requestPasswordResetForEmailInBackground:emailForForgotten.text block:^(BOOL succeded, NSError *error){
+            if (error) {
+                UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@",error] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                }];
+
+                [vc addAction:okay];
+
+                [self presentViewController:vc animated:YES completion:nil];
+            }
+        }];
     }];
     
     UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
