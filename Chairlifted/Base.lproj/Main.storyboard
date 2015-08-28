@@ -3131,7 +3131,20 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqQ-I2-OzZ" customClass="PPEmitterView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <animations/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJU-pq-aLR">
+                                        <rect key="frame" x="137" y="343" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onCancelButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="B5C-qo-Mv0"/>
+                                            <action selector="onCreateUserButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="Cqn-OI-oak"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="lJU-pq-aLR" secondAttribute="centerX" id="Kwo-Kv-E7N"/>
