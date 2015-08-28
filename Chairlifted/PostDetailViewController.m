@@ -21,11 +21,12 @@
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIAlertController+ReportInappropriate.h"
+#import <MessageUI/MessageUI.h>
 
 
 
 
-@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray *comments;
@@ -229,7 +230,39 @@
 
 - (IBAction)onMoreButtonPressed:(UIBarButtonItem *)button
 {
-    UIAlertController *alert = [UIAlertController alertForReportInappropriate];
+    UIAlertController *alert = [UIAlertController alertForReportInappropriateWithCompletion:^(BOOL sendReport)
+    {
+        if (sendReport)
+        {
+            if ([MFMailComposeViewController canSendMail])
+            {
+                MFMailComposeViewController *mailer = [MFMailComposeViewController new];
+                mailer.delegate = self;
+
+                [mailer setSubject:@"Report User"];
+
+                NSArray *toRecipients = @[@"chairlifted.devteam@gmail.com"];
+                [mailer setToRecipients:toRecipients];
+
+                NSString *emailBody = [NSString stringWithFormat:@"PostID: %@ \n\n\nThank you for your feedback. Please explain why you are reporting this post as inappropriate: \n\t", self.post.objectId];
+                [mailer setMessageBody:emailBody isHTML:NO];
+
+                [self presentViewController:mailer animated:YES completion:nil];
+            }
+            else
+            {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Your device is not set up to send emails" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                                       {
+                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                       }];
+
+                [alert addAction:okay];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }
+
+    }];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -247,6 +280,32 @@
         CreateCommentWithTextViewController *vc = (CreateCommentWithTextViewController *)[segue.destinationViewController topViewController];
         vc.post = self.post;
     }
+}
+
+
+#pragma mark - MFMailCompose Methods
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            break;
+
+        case MFMailComposeResultFailed:
+            break;
+
+        case MFMailComposeResultSaved:
+            break;
+
+        case MFMailComposeResultSent:
+            break;
+
+        default:
+            break;
+    }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

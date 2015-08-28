@@ -10,17 +10,22 @@
 
 @implementation UIAlertController (ReportInappropriate)
 
-+ (UIAlertController *)alertForReportInappropriate
+@dynamic delegate;
+
++ (UIAlertController *)alertForReportInappropriateWithCompletion:(void(^)(BOOL sendReport))complete
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *reportUserAction = [UIAlertAction actionWithTitle:@"Report Inappropriate" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action)
     {
-        // Send a stock email to ourselves reporting the user/post/group
+        complete(YES);
         [alert dismissViewControllerAnimated:YES completion:nil];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
     {
-        [alert dismissViewControllerAnimated:YES completion:nil];
+        [alert dismissViewControllerAnimated:YES completion:^
+         {
+             complete(NO);
+         }];
     }];
     
     [alert addAction:reportUserAction];

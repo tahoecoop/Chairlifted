@@ -18,6 +18,7 @@
 @interface NetworkRequests : NSObject
 
 + (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete;
++(void)getDisplayNamesWithDisplayName: (NSString *)name Completion:(void(^)(NSArray *array))complete;
 + (void)getPostComments:(Post *)post withSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 + (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete;
 + (void)getPostsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
