@@ -133,22 +133,20 @@
                      [vc addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                          textField.placeholder = @"Display Name";
                      }];
+                     UITextField *dName = [[vc textFields]firstObject];
 
                      UIAlertAction *set = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                            {
-                                               UITextField *dName = [[vc textFields]firstObject];
-
-                                               [NetworkRequests getDisplayNamesWithDisplayName:dName.text Completion:^(NSArray *array) {
+                                               [NetworkRequests getDisplayNamesWithDisplayName:dName.text Completion:^(NSArray *array)
+                                               {
                                                    self.displayNames = array;
-                                                   if ([self.displayNames containsObject:[NSString stringWithFormat:@"%@",dName.text]])
+
+                                                   if ([self.displayNames.firstObject[@"displayName"] isEqualToString:[NSString stringWithFormat:@"%@",dName.text]])
                                                    {
                                                        UIAlertController *takenDisplayNameAlert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"This display name is taken." preferredStyle:UIAlertControllerStyleAlert];
                                                        UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                                        {
-                                                           [self dismissViewControllerAnimated:YES completion:^
-                                                           {
-                                                               [self presentViewController:vc animated:YES completion:nil];
-                                                           }];
+                                                           [self presentViewController:vc animated:YES completion:nil];
                                                        }];
                                                        [takenDisplayNameAlert addAction:okay];
                                                        [self presentViewController:takenDisplayNameAlert animated:YES completion:nil];
@@ -158,9 +156,8 @@
                                                        user[@"displayName"] = dName.text;
                                                        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                                                         {
-                                                            NSLog(@"%@", error);
+                                                            NSLog(@"%@", user);
                                                             [self dismissViewControllerAnimated:YES completion:nil];
-
                                                         }];
                                                    }
                                                }];

@@ -44,6 +44,13 @@
 {
     PFQuery *query = [User query];
     [query whereKey:@"displayName" equalTo:name];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
+     {
+         if (!error) {
+             complete(array);
+         }
+     }];
 }
 
 
