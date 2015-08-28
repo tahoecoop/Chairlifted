@@ -77,6 +77,23 @@
      }];
 }
 
++ (void)getPostsWithTopic:(NSString *)topic WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [Post query];
+    [query orderByDescending:@"hottness"];
+    [query includeKey:@"author"];
+    [query whereKey:@"postTopic" equalTo:topic];
+    query.skip = skipCount;
+    query.limit = 30;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
+}
+
 #pragma mark - comment methods
 
 + (void)getPostComments:(Post *)post withSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
