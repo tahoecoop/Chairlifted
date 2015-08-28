@@ -57,25 +57,15 @@
             [self.view addSubview:activityView];
             [spinnerImageView rotateLayerInfinite];
 
-
-            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
-            {
-                [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
-                 {
-                     self.myGroups = [NSMutableArray arrayWithArray:array];
-                     [activityView removeFromSuperview];
-                     [self.tableView reloadData];
-                 }];
-            }
-            else
-            {
-                [activityView removeFromSuperview];
-                UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
+            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+             {
+                 self.myGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
+                 [self.tableView reloadData];
+             }];
         }
     }
-
+    
     [self.segControl sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
@@ -113,22 +103,13 @@
 
 
             self.mySkipCount = 0;
-            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
-            {
-                [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
-                 {
-                     self.myGroups = nil;
-                     self.myGroups = [NSMutableArray arrayWithArray:array];
-                     [activityView removeFromSuperview];
-                     [self.tableView reloadData];
-                 }];
-            }
-            else
-            {
-                [activityView removeFromSuperview];
-                UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
+            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+             {
+                 self.myGroups = nil;
+                 self.myGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
+                 [self.tableView reloadData];
+             }];
         }
         else if (self.segControl.selectedSegmentIndex == 1)
         {
@@ -141,23 +122,13 @@
             [spinnerImageView rotateLayerInfinite];
 
             self.groupSkipCount = 0;
-
-            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
-            {
-                [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
-                 {
-                     self.allGroups = nil;
-                     self.allGroups = [NSMutableArray arrayWithArray:array];
-                     [activityView removeFromSuperview];
-                     [self.tableView reloadData];
-                 }];
-            }
-            else
-            {
-                [activityView removeFromSuperview];
-                UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
+            [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
+             {
+                 self.allGroups = nil;
+                 self.allGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
+                 [self.tableView reloadData];
+             }];
         }
         else
         {
