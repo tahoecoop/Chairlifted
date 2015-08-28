@@ -2378,7 +2378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqJ-TX-G0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159" y="1755"/>
+            <point key="canvasLocation" x="-165" y="1755"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LOa-rM-W3S">
@@ -3384,7 +3384,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tXg-Zz-ck9" kind="modal" id="ypa-Le-irg"/>
+                                    <segue destination="tXg-Zz-ck9" kind="modal" identifier="logout" id="ypa-Le-irg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0X-1B-ajt">
@@ -4564,10 +4564,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oi7-M8-uuK"/>
+        <segue reference="YcW-7x-VgW"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="GLv-ub-mwA"/>
         <segue reference="yO8-bf-1gz"/>
-        <segue reference="Vyn-fc-o24"/>
+        <segue reference="ypa-Le-irg"/>
     </inferredMetricsTieBreakers>
 </document>

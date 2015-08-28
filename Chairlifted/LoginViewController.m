@@ -91,6 +91,7 @@
                      NSLog(@"Uh oh. The user cancelled the Facebook login.");
 
                      errorMessage = @"Uh oh. The user cancelled the Facebook login.";
+                     [activityView removeFromSuperview];
                  }
                  else
                  {
@@ -155,11 +156,12 @@
                                                    else
                                                    {
                                                        user[@"displayName"] = dName.text;
-                                                       [self dismissViewControllerAnimated:YES completion:nil];
                                                        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                                                       {
-                                                           NSLog(@"%@", error);
-                                                       }];
+                                                        {
+                                                            NSLog(@"%@", error);
+                                                            [self dismissViewControllerAnimated:YES completion:nil];
+
+                                                        }];
                                                    }
                                                }];
                                            }];
