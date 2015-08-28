@@ -60,7 +60,7 @@
     user.displayName = username;
     user.email = email;
 
-    [user saveInBackgroundWithBlock:^(BOOL success, NSError *error)
+    [user signUpInBackgroundWithBlock:^(BOOL success, NSError *error)
      {
          [activityView removeFromSuperview];
 
@@ -76,6 +76,10 @@
      }];
 }
 
+- (IBAction)onCancelButtonPressed:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 

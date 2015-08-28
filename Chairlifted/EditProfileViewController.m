@@ -22,8 +22,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *editPictureLabel;
 @property (strong, nonatomic) IBOutlet UIButton *changeFavoriteResortButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
-@property (weak, nonatomic) IBOutlet UIButton *eggButton;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (nonatomic) BOOL changedProfilePicture;
+@property (weak, nonatomic) IBOutlet UIButton *eggButton;
 
 @end
 
@@ -41,6 +42,11 @@
 -(void)setUpUserInfo
 {
     self.usernameLabel.text = [User currentUser].displayName;
+
+    if ([User currentUser].email)
+    {
+        self.emailTextField.text = [User currentUser].email;
+    }
 
     if ([User currentUser].name)
     {
@@ -124,6 +130,7 @@
     User *user = [User currentUser];
     user.name = [self.fullNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     user.favoriteResort = self.selectedResort;
+    user.email = self.emailTextField.text;
 
     if (self.segControl.selectedSegmentIndex == 0)
     {
@@ -210,11 +217,11 @@
     {
         [User logOut];
 
-        [FBSDKAccessToken setCurrentAccessToken:nil];
-
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc]init];
 
         [login logOut];
+
+        [FBSDKAccessToken setCurrentAccessToken:nil];
     }
 }
 

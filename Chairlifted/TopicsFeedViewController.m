@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.skipCount = 30;
 
     if (self.postTopic)
     {
@@ -43,9 +44,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-
 }
+
 
 - (void)getTopicPosts
 {
@@ -57,7 +57,7 @@
     [self.view addSubview:activityView];
     [spinnerImageView rotateLayerInfinite];
 
-     [NetworkRequests getPostsWithTopic:self.postTopic WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
+     [NetworkRequests getPostsWithTopic:self.postTopic WithSkipCount:0 andCompletion:^(NSArray *array)
     {
         if (self.posts)
         {
@@ -83,7 +83,7 @@
     [self.view addSubview:activityView];
     [spinnerImageView rotateLayerInfinite];
 
-    [NetworkRequests getPostsWithSkipCount:self.skipCount andResort:self.resort andCompletion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 andResort:self.resort andCompletion:^(NSArray *array)
     {
         if (self.posts)
         {
@@ -136,6 +136,47 @@
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
         return textCell;
+    }
+}
+
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+    if (indexPath.row == self.skipCount - 5)
+    {
+        if (self.postTopic)
+        {
+            [NetworkRequests getPostsWithTopic:self.postTopic WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
+            {
+                [self.posts addObjectsFromArray:array];
+                self.skipCount = self.skipCount + 30;
+                [tableView reloadData];
+            }];
+        }
+        else
+        {
+            [NetworkRequests getPostsWithSkipCount:self.skipCount andResort:self.resort andCompletion:^(NSArray *array)
+            {
+                [self.posts addObjectsFromArray:array];
+                self.skipCount = self.skipCount + 30;
+                [tableView reloadData];
+            }];
+        }
     }
 }
 

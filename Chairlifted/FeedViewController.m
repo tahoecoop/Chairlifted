@@ -66,15 +66,12 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-//    if ([User currentUser])
-//    {
-        self.skipCount = 30;
-        [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
-         {
-             self.posts = [NSMutableArray arrayWithArray:array];
-             [self.tableView reloadData];
-         }];
-//    }
+    self.skipCount = 30;
+    [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
+     {
+         self.posts = [NSMutableArray arrayWithArray:array];
+         [self.tableView reloadData];
+     }];
 }
 
 

@@ -34,8 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.mySkipCount = 0;
-    self.groupSkipCount = 0;
+    self.mySkipCount = 30;
+    self.groupSkipCount = 30;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -57,7 +57,7 @@
             [self.view addSubview:activityView];
             [spinnerImageView rotateLayerInfinite];
 
-            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+            [NetworkRequests getMyGroupsWithSkipCount:0 andCompletion:^(NSArray *array)
              {
                  self.myGroups = [NSMutableArray arrayWithArray:array];
                  [activityView removeFromSuperview];
@@ -102,8 +102,7 @@
             [spinnerImageView rotateLayerInfinite];
 
 
-            self.mySkipCount = 0;
-            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+            [NetworkRequests getMyGroupsWithSkipCount:0 andCompletion:^(NSArray *array)
              {
                  self.myGroups = nil;
                  self.myGroups = [NSMutableArray arrayWithArray:array];
@@ -121,8 +120,7 @@
             [self.view addSubview:activityView];
             [spinnerImageView rotateLayerInfinite];
 
-            self.groupSkipCount = 0;
-            [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
+            [NetworkRequests getAllGroupsWithSkipCount:0 andCompletion:^(NSArray *array)
              {
                  self.allGroups = nil;
                  self.allGroups = [NSMutableArray arrayWithArray:array];
@@ -207,35 +205,6 @@
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"GroupFeedSegue"])
-    {
-        GroupFeedViewController *vc = segue.destinationViewController;
-
-        if (self.segControl.selectedSegmentIndex == 0)
-        {
-            JoinGroup *joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
-            vc.group = joinGroup.group;
-            vc.joinGroup = joinGroup;
-        }
-        else if (self.segControl.selectedSegmentIndex == 1)
-        {
-            vc.group = self.allGroups[self.tableView.indexPathForSelectedRow.row];
-        }
-    }
-    else if ([segue.identifier isEqualToString:@"CreateGroupSegue"])
-    {
-        CreateGroupViewController *vc = (CreateGroupViewController *)[segue.destinationViewController topViewController];
-        vc.delegate = self;
-    }
-    else if ([segue.identifier isEqualToString:@"ToGroupSearch"])
-    {
-        SearchViewController *vc = segue.destinationViewController;
-        vc.isGroup = YES;
-    }
-}
-
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -277,6 +246,36 @@
                  [self.tableView reloadData];
              }];
         }
+    }
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"GroupFeedSegue"])
+    {
+        GroupFeedViewController *vc = segue.destinationViewController;
+
+        if (self.segControl.selectedSegmentIndex == 0)
+        {
+            JoinGroup *joinGroup = self.myGroups[self.tableView.indexPathForSelectedRow.row];
+            vc.group = joinGroup.group;
+            vc.joinGroup = joinGroup;
+        }
+        else if (self.segControl.selectedSegmentIndex == 1)
+        {
+            vc.group = self.allGroups[self.tableView.indexPathForSelectedRow.row];
+        }
+    }
+    else if ([segue.identifier isEqualToString:@"CreateGroupSegue"])
+    {
+        CreateGroupViewController *vc = (CreateGroupViewController *)[segue.destinationViewController topViewController];
+        vc.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"ToGroupSearch"])
+    {
+        SearchViewController *vc = segue.destinationViewController;
+        vc.isGroup = YES;
     }
 }
 

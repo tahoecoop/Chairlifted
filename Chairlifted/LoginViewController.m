@@ -13,12 +13,15 @@
 #import "UIImageView+SpinningFigure.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "UIAlertController+ErrorAlert.h"
+#import "NetworkRequests.h"
+#import "UIAlertController+ErrorAlert.h"
 
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic) NSArray *displayNames;
 
 
 @end
@@ -133,9 +136,32 @@
                      UIAlertAction *set = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                            {
                                                UITextField *dName = [[vc textFields]firstObject];
-                                               user[@"displayName"] = dName.text;
-                                               [self dismissViewControllerAnimated:YES completion:nil];
 
+                                               [NetworkRequests getDisplayNamesWithDisplayName:dName.text Completion:^(NSArray *array) {
+                                                   self.displayNames = array;
+                                                   if ([self.displayNames containsObject:[NSString stringWithFormat:@"%@",dName.text]])
+                                                   {
+                                                       UIAlertController *takenDisplayNameAlert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"This display name is taken." preferredStyle:UIAlertControllerStyleAlert];
+                                                       UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                                       {
+                                                           [self dismissViewControllerAnimated:YES completion:^
+                                                           {
+                                                               [self presentViewController:vc animated:YES completion:nil];
+                                                           }];
+                                                       }];
+                                                       [takenDisplayNameAlert addAction:okay];
+                                                       [self presentViewController:takenDisplayNameAlert animated:YES completion:nil];
+                                                   }
+                                                   else
+                                                   {
+                                                       user[@"displayName"] = dName.text;
+                                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                                       [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                                                       {
+                                                           NSLog(@"%@", error);
+                                                       }];
+                                                   }
+                                               }];
                                            }];
 
                      [vc addAction:set];
@@ -156,7 +182,8 @@
          }
          else
          {
-
+             UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
+             [self presentViewController:alert animated:YES completion:nil];
              NSLog(@"%@", error);
          }
      }];

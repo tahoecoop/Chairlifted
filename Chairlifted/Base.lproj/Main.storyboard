@@ -213,13 +213,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pfe-6B-QSu" id="CTa-zu-1Zs"/>
-                        <segue destination="OH9-nH-gEF" kind="modal" identifier="loginFirst" id="Lxg-Ss-HDx"/>
                         <segue destination="4DD-lG-lYp" kind="modal" identifier="createPost" id="yO8-bf-1gz"/>
+                        <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginFirst" id="aDL-Dn-cqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579" y="368"/>
+            <point key="canvasLocation" x="1597" y="354"/>
         </scene>
         <!--Post Detail-->
         <scene sceneID="Gey-j1-ssd">
@@ -372,6 +372,7 @@
                                         <connections>
                                             <outlet property="postImageView" destination="PLb-nu-zTa" id="mY0-8b-jQ8"/>
                                             <outlet property="postText" destination="aib-M7-kV7" id="BZZ-dn-Khs"/>
+                                            <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginBeforeLikePost" id="Vyn-fc-o24"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Action" rowHeight="60" id="Kpd-TQ-4fK" customClass="DetailActionTableViewCell">
@@ -514,7 +515,6 @@
                         <outlet property="tableView" destination="cl0-9I-TmS" id="IDB-1s-SlN"/>
                         <segue destination="pAg-yg-GIZ" kind="modal" identifier="textSegue" id="35e-V4-gSN"/>
                         <segue destination="83L-gJ-Ydc" kind="modal" identifier="photoSegue" id="E4G-X3-CMi"/>
-                        <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginBeforeLikePost" id="smD-0w-2Gw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xf-6Q-EKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3041,7 +3041,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="YTn-kz-ggW" kind="push" id="vom-FD-Sr7"/>
+                                            <segue destination="YTn-kz-ggW" kind="modal" id="vom-FD-Sr7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1K-Nr-Nqs">
@@ -3115,7 +3115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKM-HU-Rcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86" y="347"/>
+            <point key="canvasLocation" x="-27" y="982"/>
         </scene>
         <!--Create New User View Controller-->
         <scene sceneID="9DP-Wi-aM8">
@@ -3133,6 +3133,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="lJU-pq-aLR" secondAttribute="centerX" id="Kwo-Kv-E7N"/>
+                                </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gs7-Mq-EH6">
                                 <rect key="frame" x="16" y="185" width="288" height="30"/>
@@ -3151,6 +3154,7 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
                                 <state key="normal" title="Create User">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3161,11 +3165,11 @@
                                 <rect key="frame" x="16" y="116" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.76357653039999995" green="0.87125576240000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YqQ-I2-OzZ" secondAttribute="trailing" id="2So-5X-kIm"/>
                             <constraint firstItem="gs7-Mq-EH6" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="5g4-V8-XbE"/>
@@ -3180,6 +3184,7 @@
                             <constraint firstItem="vtW-Rc-MGd" firstAttribute="top" secondItem="gs7-Mq-EH6" secondAttribute="bottom" constant="36" id="oSh-Kc-KOG"/>
                             <constraint firstAttribute="centerX" secondItem="3fu-uR-ASh" secondAttribute="centerX" id="rIK-nT-DUe"/>
                             <constraint firstItem="3fu-uR-ASh" firstAttribute="top" secondItem="vtW-Rc-MGd" secondAttribute="bottom" constant="26" id="tHt-Ck-K0l"/>
+                            <constraint firstItem="lJU-pq-aLR" firstAttribute="top" secondItem="3fu-uR-ASh" secondAttribute="bottom" constant="6" id="tdL-7n-mVM"/>
                             <constraint firstItem="YqQ-I2-OzZ" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leading" id="uH9-WO-JQQ"/>
                             <constraint firstItem="gs7-Mq-EH6" firstAttribute="top" secondItem="YBd-qu-ewW" secondAttribute="bottom" constant="39" id="zIl-J4-R7C"/>
                         </constraints>
@@ -3366,7 +3371,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OH9-nH-gEF" kind="modal" identifier="logout" id="vG6-2M-ghs"/>
+                                    <segue destination="tXg-Zz-ck9" kind="modal" id="ypa-Le-irg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0X-1B-ajt">
@@ -3395,6 +3400,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uvs-5p-3b9">
+                                <rect key="frame" x="19" y="265" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3420,6 +3430,8 @@
                     <connections>
                         <outlet property="changeFavoriteResortButton" destination="SEO-7q-uUn" id="jOb-e6-7Re"/>
                         <outlet property="editPictureLabel" destination="ESB-10-KcO" id="RiA-zY-TVp"/>
+                        <outlet property="eggButton" destination="zl8-Ds-Cj7" id="ynO-od-Z8s"/>
+                        <outlet property="emailTextField" destination="Uvs-5p-3b9" id="jhR-xj-dAc"/>
                         <outlet property="fullNameTextField" destination="db9-7C-YWH" id="9j6-fY-lOC"/>
                         <outlet property="profileImageView" destination="Cic-VW-hXn" id="frA-EK-845"/>
                         <outlet property="resortNameLabel" destination="iq1-Mb-aj0" id="ckx-7t-EP8"/>
@@ -3602,25 +3614,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWs-9w-SLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-159" y="2452"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="IKa-4u-0Q3">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OH9-nH-gEF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qYJ-Vt-yfe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="tXg-Zz-ck9" kind="relationship" relationship="rootViewController" id="mO0-d9-EOL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gby-QY-ec5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-446" y="347"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="7o8-wO-xOr">
@@ -4553,11 +4546,10 @@
         <image name="svg2pdf.htm" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="smD-0w-2Gw"/>
-        <segue reference="kJt-a5-H8f"/>
-        <segue reference="Lxg-Ss-HDx"/>
-        <segue reference="yO8-bf-1gz"/>
+        <segue reference="oi7-M8-uuK"/>
+        <segue reference="ypa-Le-irg"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="GLv-ub-mwA"/>
+        <segue reference="yO8-bf-1gz"/>
     </inferredMetricsTieBreakers>
 </document>
