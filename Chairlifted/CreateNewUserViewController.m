@@ -76,6 +76,10 @@
      }];
 }
 
+- (IBAction)onCancelButtonPressed:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
