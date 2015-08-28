@@ -80,7 +80,7 @@
 
 #pragma mark - Parse Delegate Methods
 
-- (void)signUpViewController:(PFSignUpViewController * __nonnull)signUpController didSignUpUser:(PFUser * __nonnull)user
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
 {
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
@@ -91,7 +91,7 @@
      }];
 }
 
--(void)logInViewController:(PFLogInViewController * __nonnull)logInController didLogInUser:(PFUser * __nonnull)user
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
     [logInController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -144,13 +144,12 @@
         textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
-//        textCell.postImageView.image = [UIImage imageWithData:post.image.getData];
-        PFFile *postImage = post.image;
+        PFFile *postImage = post.imageThumbnail;
         [postImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
         {
             if (!error)
             {
-                textCell.postImageView.image = [UIImage imageWithData:data scale:0.2];
+                textCell.postImageView.image = [UIImage imageWithData:data scale:1.0];
             }
         }];
 

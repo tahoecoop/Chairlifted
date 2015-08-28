@@ -99,10 +99,10 @@
             postPhotoCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             postPhotoCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
 
-            PFFile *imageData = post.image;
+            PFFile *imageData = post.imageThumbnail;
             [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
              {
-                 postPhotoCell.postImageView.image = [UIImage imageWithData:data scale:0.7];
+                 postPhotoCell.postImageView.image = [UIImage imageWithData:data scale:1.0];
              }];
 
             postPhotoCell.backgroundColor = [UIColor whiteColor];

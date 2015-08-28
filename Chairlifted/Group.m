@@ -16,6 +16,8 @@
 @dynamic memberQuantity;
 @dynamic purpose;
 @dynamic image;
+@dynamic imageThumbnail;
+
 
 
 + (void)load

@@ -63,6 +63,8 @@
 		BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D151B8920B600697FEA /* SearchViewController.m */; };
 		BAC93D191B8963CE00697FEA /* StateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D181B8963CE00697FEA /* StateViewController.m */; };
 		BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */; };
+		BAD5753A1B8FEFAD000FB31F /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD575391B8FEFAD000FB31F /* DiscoverViewController.m */; };
+		BAD5753D1B900094000FB31F /* TopicsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */; };
 		BAE3D1971B853B2800BAC4EF /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1961B853B2800BAC4EF /* Like.m */; };
 		BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1991B86850F00BAC4EF /* PostTopic.m */; };
 		BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19C1B869B5700BAC4EF /* Group.m */; };
@@ -186,6 +188,10 @@
 		BAC93D181B8963CE00697FEA /* StateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateViewController.m; sourceTree = "<group>"; };
 		BAC93D1A1B89646800697FEA /* ChooseResortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseResortViewController.h; sourceTree = "<group>"; };
 		BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseResortViewController.m; sourceTree = "<group>"; };
+		BAD575381B8FEFAD000FB31F /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		BAD575391B8FEFAD000FB31F /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		BAD5753B1B900094000FB31F /* TopicsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicsFeedViewController.h; sourceTree = "<group>"; };
+		BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicsFeedViewController.m; sourceTree = "<group>"; };
 		BAE3D1951B853B2800BAC4EF /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
 		BAE3D1961B853B2800BAC4EF /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
 		BAE3D1981B86850F00BAC4EF /* PostTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTopic.h; sourceTree = "<group>"; };
@@ -406,6 +412,10 @@
 				BAC93D181B8963CE00697FEA /* StateViewController.m */,
 				BAC93D1A1B89646800697FEA /* ChooseResortViewController.h */,
 				BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */,
+				BAD575381B8FEFAD000FB31F /* DiscoverViewController.h */,
+				BAD575391B8FEFAD000FB31F /* DiscoverViewController.m */,
+				BAD5753B1B900094000FB31F /* TopicsFeedViewController.h */,
+				BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */,
 				BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */,
 				BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */,
 			);
@@ -581,6 +591,7 @@
 			files = (
 				FE83A95E1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m in Sources */,
 				BAE3D1971B853B2800BAC4EF /* Like.m in Sources */,
+				BAD5753A1B8FEFAD000FB31F /* DiscoverViewController.m in Sources */,
 				BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */,
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
@@ -597,6 +608,7 @@
 				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
 				BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */,
 				BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */,
+				BAD5753D1B900094000FB31F /* TopicsFeedViewController.m in Sources */,
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,
 				BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */,
 				BA6F8C5B1B8280D50083E71E /* Run.m in Sources */,

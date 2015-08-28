@@ -86,7 +86,7 @@
 
     if (self.groupImageView.image)
     {
-        group.image =  [PFFile fileWithData: UIImageJPEGRepresentation(self.groupImageView.image, 1.0)];
+        group.imageThumbnail =  [PFFile fileWithData: UIImageJPEGRepresentation(self.groupImageView.image, 0.25)];
     }
 
     group.memberQuantity = 1;

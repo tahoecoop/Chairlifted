@@ -21,6 +21,7 @@
 + (void)getPostComments:(Post *)post withSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 + (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete;
 + (void)getPostsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
++ (void)getPostsWithTopic:(NSString *)topic WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 
 + (void)getLikes:(Post *)post withCompletion:(void(^)(NSArray *array))complete;
 + (void)checkForLike:(Post *)post withCompletion:(void(^)(NSArray *array))complete;

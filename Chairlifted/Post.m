@@ -14,6 +14,7 @@
 @dynamic text;
 @dynamic title;
 @dynamic image;
+@dynamic imageThumbnail;
 @dynamic createdAt;
 @dynamic likeCount;
 @dynamic commentCount;

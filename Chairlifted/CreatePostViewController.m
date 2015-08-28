@@ -100,6 +100,7 @@
     if (self.imageView.image)
     {
         post.image = [PFFile fileWithData: UIImageJPEGRepresentation(self.imageView.image, 1.0)];
+        post.imageThumbnail = [PFFile fileWithData: UIImageJPEGRepresentation(self.imageView.image, 0.25)];
     }
 
     if (self.group)

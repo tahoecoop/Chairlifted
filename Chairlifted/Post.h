@@ -19,6 +19,7 @@
 @property (nonatomic) NSString *text;
 @property (nonatomic) NSString *title;
 @property (nonatomic) PFFile *image;
+@property (nonatomic) PFFile *imageThumbnail;
 @property (nonatomic) NSDate *createdAt;
 @property (nonatomic) int likeCount;
 @property (nonatomic) float hottness;
