@@ -217,11 +217,11 @@
     {
         [User logOut];
 
-        [FBSDKAccessToken setCurrentAccessToken:nil];
-
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc]init];
 
         [login logOut];
+
+        [FBSDKAccessToken setCurrentAccessToken:nil];
     }
 }
 
