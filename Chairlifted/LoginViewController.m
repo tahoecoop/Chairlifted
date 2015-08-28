@@ -58,21 +58,6 @@
 
 - (IBAction)onFBLoginPressed:(UIButton *)sender
 {
-    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-
-    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-
-    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-
-    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-
-    [activityView addSubview:spinnerImageView];
-
-    [self.view addSubview:activityView];
-
-    [spinnerImageView rotateLayerInfinite];
-
-
     NSArray *permissionsArray = @[ @"user_about_me", @"user_birthday", @"user_location", @"user_friends", @"email", @"public_profile"];
 
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error)
@@ -91,7 +76,6 @@
                      NSLog(@"Uh oh. The user cancelled the Facebook login.");
 
                      errorMessage = @"Uh oh. The user cancelled the Facebook login.";
-                     [activityView removeFromSuperview];
                  }
                  else
                  {
@@ -110,7 +94,6 @@
              }
              else
              {
-
                  if (user.isNew)
                  {
 
@@ -136,32 +119,42 @@
                      UITextField *dName = [[vc textFields]firstObject];
 
                      UIAlertAction *set = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                                           {
-                                               [NetworkRequests getDisplayNamesWithDisplayName:dName.text Completion:^(NSArray *array)
-                                               {
-                                                   self.displayNames = array;
+                       {
+                           UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+                           activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+                           UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+                           spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+                           [activityView addSubview:spinnerImageView];
+                           [self.view addSubview:activityView];
+                           [spinnerImageView rotateLayerInfinite];
 
-                                                   if ([self.displayNames.firstObject[@"displayName"] isEqualToString:[NSString stringWithFormat:@"%@",dName.text]])
-                                                   {
-                                                       UIAlertController *takenDisplayNameAlert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"This display name is taken." preferredStyle:UIAlertControllerStyleAlert];
-                                                       UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                                                       {
-                                                           [self presentViewController:vc animated:YES completion:nil];
-                                                       }];
-                                                       [takenDisplayNameAlert addAction:okay];
-                                                       [self presentViewController:takenDisplayNameAlert animated:YES completion:nil];
-                                                   }
-                                                   else
-                                                   {
-                                                       user[@"displayName"] = dName.text;
-                                                       [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                                                        {
-                                                            NSLog(@"%@", user);
-                                                            [self dismissViewControllerAnimated:YES completion:nil];
-                                                        }];
-                                                   }
-                                               }];
-                                           }];
+                           [NetworkRequests getDisplayNamesWithDisplayName:dName.text Completion:^(NSArray *array)
+                           {
+                               self.displayNames = array;
+
+                               if ([self.displayNames.firstObject[@"displayName"] isEqualToString:[NSString stringWithFormat:@"%@",dName.text]])
+                               {
+                                   UIAlertController *takenDisplayNameAlert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"This display name is taken." preferredStyle:UIAlertControllerStyleAlert];
+                                   UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                   {
+                                       [self presentViewController:vc animated:YES completion:nil];
+                                   }];
+                                   [takenDisplayNameAlert addAction:okay];
+                                   [activityView removeFromSuperview];
+                                   [self presentViewController:takenDisplayNameAlert animated:YES completion:nil];
+                               }
+                               else
+                               {
+                                   user[@"displayName"] = dName.text;
+                                   [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                                    {
+                                        NSLog(@"%@", user);
+                                        [activityView removeFromSuperview];
+                                        [self performSegueWithIdentifier:@"newUser" sender:set];
+                                    }];
+                               }
+                           }];
+                       }];
 
                      [vc addAction:set];
                      [self presentViewController:vc animated:YES completion:nil];
