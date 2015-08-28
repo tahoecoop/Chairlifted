@@ -40,6 +40,12 @@
 }
 
 
++(void)getDisplayNamesWithDisplayName: (NSString *)name Completion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [User query];
+    [query whereKey:@"displayName" equalTo:name];
+}
+
 
 + (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete
 {

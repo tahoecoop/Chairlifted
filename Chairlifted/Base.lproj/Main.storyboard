@@ -3040,7 +3040,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="YTn-kz-ggW" kind="push" id="vom-FD-Sr7"/>
+                                            <segue destination="YTn-kz-ggW" kind="modal" id="vom-FD-Sr7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1K-Nr-Nqs">
@@ -3134,6 +3134,7 @@
                                         <rect key="frame" x="137" y="343" width="46" height="30"/>
                                         <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
                                         <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -3164,6 +3165,7 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
                                 <state key="normal" title="Create User">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3173,7 +3175,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-qu-ewW">
                                 <rect key="frame" x="16" y="116" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <animations/>
