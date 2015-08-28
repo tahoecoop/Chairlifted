@@ -43,7 +43,7 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.estimatedSectionHeaderHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.skipCount = 0;
+    self.skipCount = 30;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -57,7 +57,7 @@
     [spinnerImageView rotateLayerInfinite];
 
 
-    [NetworkRequests getPostComments:self.post withSkipCount:self.skipCount andCompletion:^(NSArray *array)
+    [NetworkRequests getPostComments:self.post withSkipCount:0 andCompletion:^(NSArray *array)
      {
          self.comments = [NSMutableArray arrayWithArray:array];
          [activityView removeFromSuperview];

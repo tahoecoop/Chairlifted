@@ -25,7 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.skipCount = 0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -34,6 +33,7 @@
 
 - (void)populateTheCells:(NSString *)searchText
 {
+    self.skipCount = 0;
     self.results = nil;
     if (self.isGroup)
     {
@@ -171,7 +171,6 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    self.skipCount = 0;
     [self populateTheCells:[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     [searchBar resignFirstResponder];
 }
@@ -184,7 +183,6 @@
         [searchBar resignFirstResponder];
     }
 }
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

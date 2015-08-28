@@ -16,7 +16,8 @@
 
 @property (nonatomic) NSMutableArray *members;
 @property (nonatomic) NSMutableArray *pendingMembers;
-@property (nonatomic) int skipCount;
+@property (nonatomic) int joinedSkipCount;
+@property (nonatomic) int pendingSkipCount;
 
 @end
 
@@ -26,6 +27,8 @@
 {
     [super viewDidLoad];
 
+    self.joinedSkipCount = 30;
+    self.pendingSkipCount = 30;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -39,10 +42,10 @@
 
 -(void)getInfo
 {
-    [NetworkRequests getPendingUsersInGroup:self.group andSkipCount:self.skipCount withCompletion:^(NSArray *array)
+    [NetworkRequests getPendingUsersInGroup:self.group andSkipCount:0 withCompletion:^(NSArray *array)
      {
          self.pendingMembers = [NSMutableArray arrayWithArray:array];
-         [NetworkRequests getJoinedUsersInGroup:self.group andSkipCount:self.skipCount withCompletion:^(NSArray *arrayTwo)
+         [NetworkRequests getJoinedUsersInGroup:self.group andSkipCount:0 withCompletion:^(NSArray *arrayTwo)
           {
               self.members = [NSMutableArray arrayWithArray:arrayTwo];
               [self.tableView reloadData];
@@ -155,6 +158,34 @@
     else
     {
         return @"Current Members";
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == self.pendingSkipCount - 5)
+        {
+            [NetworkRequests getPendingUsersInGroup:self.group andSkipCount:self.pendingSkipCount withCompletion:^(NSArray *array)
+             {
+                 [self.pendingMembers addObjectsFromArray:array];
+                 self.pendingSkipCount = self.pendingSkipCount + 30;
+                 [self.tableView reloadData];
+             }];
+        }
+    }
+    else
+    {
+        if (indexPath.row == self.joinedSkipCount - 5)
+        {
+            [NetworkRequests getJoinedUsersInGroup:self.group andSkipCount:self.joinedSkipCount withCompletion:^(NSArray *array)
+            {
+                [self.members addObjectsFromArray:array];
+                self.joinedSkipCount = self.joinedSkipCount +30;
+                [self.tableView reloadData];
+            }];
+        }
     }
 }
 
