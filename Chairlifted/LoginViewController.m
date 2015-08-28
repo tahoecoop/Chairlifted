@@ -135,6 +135,10 @@
                                                UITextField *dName = [[vc textFields]firstObject];
                                                user[@"displayName"] = dName.text;
                                                [self dismissViewControllerAnimated:YES completion:nil];
+                                               [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                                   NSLog(@"%@", error);
+                                               }];
+
 
                                            }];
 
