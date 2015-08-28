@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SendReportInappropriateEmailDelegate;
+
 @interface UIAlertController (ReportInappropriate)
 
-+ (UIAlertController *)alertForReportInappropriate;
++ (UIAlertController *)alertForReportInappropriateWithCompletion:(void(^)(BOOL sendReport))complete;
+
+@property (nonatomic, weak) id<SendReportInappropriateEmailDelegate>delegate;
+
+@end
+
+@protocol SendReportInappropriateEmailDelegate <NSObject>
+
+-(void)didSelectReportInappropriate;
 
 @end

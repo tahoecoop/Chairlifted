@@ -20,8 +20,10 @@
 #import "EditProfileViewController.h"
 #import "PostDetailViewController.h"
 #import "UIAlertController+ReportInappropriate.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, updatedResortDelegate>
+
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, updatedResortDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -224,7 +226,38 @@
 
 - (IBAction)moreButtonPressed:(UIBarButtonItem *)button
 {
-    UIAlertController *alert = [UIAlertController alertForReportInappropriate];
+    UIAlertController *alert = [UIAlertController alertForReportInappropriateWithCompletion:^(BOOL sendReport)
+    {
+        if (sendReport)
+        {
+            if ([MFMailComposeViewController canSendMail])
+            {
+                MFMailComposeViewController *mailer = [MFMailComposeViewController new];
+                mailer.delegate = self;
+
+                [mailer setSubject:@"Report User"];
+
+                NSArray *toRecipients = @[@"chairlifted.devteam@gmail.com"];
+                [mailer setToRecipients:toRecipients];
+
+                NSString *emailBody = [NSString stringWithFormat:@"User: %@ \n\n\nThank you for your feedback. Please explain why you are reporting this user as inappropriate: \n\t", self.selectedUser.username];
+                [mailer setMessageBody:emailBody isHTML:NO];
+
+                [self presentViewController:mailer animated:YES completion:nil];
+            }
+            else
+            {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Your device is not set up to send emails" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                {
+                    [alert dismissViewControllerAnimated:YES completion:nil];
+                }];
+                
+                [alert addAction:okay];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }
+    }];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -243,6 +276,30 @@
 }
 
 
+#pragma mark - MFMailCompose Methods
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            break;
+
+        case MFMailComposeResultFailed:
+            break;
+
+        case MFMailComposeResultSaved:
+            break;
+
+        case MFMailComposeResultSent:
+            break;
+
+        default:
+            break;
+    }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
