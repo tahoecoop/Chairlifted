@@ -92,51 +92,47 @@
     {
         if (self.segControl.selectedSegmentIndex == 0)
         {
-                UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-                UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-                spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-                [activityView addSubview:spinnerImageView];
-                [self.view addSubview:activityView];
-                [spinnerImageView rotateLayerInfinite];
+            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+            [activityView addSubview:spinnerImageView];
+            [self.view addSubview:activityView];
+            [spinnerImageView rotateLayerInfinite];
 
 
-                self.mySkipCount = 0;
-                [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
-                 {
-                     self.myGroups = nil;
-                     self.myGroups = [NSMutableArray arrayWithArray:array];
-                     [activityView removeFromSuperview];
-                     [self.tableView reloadData];
-                 }];
-//            [self.tableView reloadData];
+            self.mySkipCount = 0;
+            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+             {
+                 self.myGroups = nil;
+                 self.myGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
+                 [self.tableView reloadData];
+             }];
         }
         else if (self.segControl.selectedSegmentIndex == 1)
         {
-//            if (!self.allGroups.count > 0)
-//            {
-                UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-                UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-                spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-                [activityView addSubview:spinnerImageView];
-                [self.view addSubview:activityView];
-                [spinnerImageView rotateLayerInfinite];
+            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+            [activityView addSubview:spinnerImageView];
+            [self.view addSubview:activityView];
+            [spinnerImageView rotateLayerInfinite];
 
-                self.groupSkipCount = 0;
-                [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
-                 {
-                     self.allGroups = nil;
-                     self.allGroups = [NSMutableArray arrayWithArray:array];
-                     [activityView removeFromSuperview];
-                     [self.tableView reloadData];
-                 }];
-            }
-            else
-            {
-                [self.tableView reloadData];
-            }
-//        }
+            self.groupSkipCount = 0;
+            [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
+             {
+                 self.allGroups = nil;
+                 self.allGroups = [NSMutableArray arrayWithArray:array];
+                 [activityView removeFromSuperview];
+                 [self.tableView reloadData];
+             }];
+        }
+        else
+        {
+            [self.tableView reloadData];
+        }
     }
 }
 

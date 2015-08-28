@@ -16,6 +16,8 @@
 @property (nonatomic) int memberQuantity;
 @property (nonatomic) NSString *purpose;
 @property (nonatomic) PFFile *image;
+@property (nonatomic) PFFile *imageThumbnail;
+
 
 
 + (void)load;

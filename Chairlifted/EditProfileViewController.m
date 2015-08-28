@@ -136,7 +136,7 @@
 
     if (self.changedProfilePicture)
     {
-        user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(self.profileImageView.image, 1.0)];
+        user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation(self.profileImageView.image, 0.25)];
     }
 
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)

@@ -21,6 +21,7 @@
 @property (nonatomic) NSSet *posts;
 @property (nonatomic) NSSet *favoriteResorts;
 @property (nonatomic) PFFile *profileImage;
+@property (nonatomic) PFFile *profileImageThumbnail;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *location;
 @property (nonatomic) Resort *favoriteResort;

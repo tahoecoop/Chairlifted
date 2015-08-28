@@ -136,10 +136,10 @@
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
 
-        PFFile *imageData = self.group.image;
+        PFFile *imageData = self.group.imageThumbnail;
         [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
          {
-             headerCell.groupImageView.image = [UIImage imageWithData:data scale:0.5];
+             headerCell.groupImageView.image = [UIImage imageWithData:data scale:1.0];
          }];
 
         headerCell.group = self.group;
@@ -174,7 +174,11 @@
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
-            cell.postImageView.image = [UIImage imageWithData:post.image.getData scale:0.2];
+            PFFile *imageData = post.imageThumbnail;
+            [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+             {
+                 cell.postImageView.image = [UIImage imageWithData:data scale:1.0];
+             }];
             return cell;
         }
         else

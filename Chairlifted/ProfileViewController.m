@@ -167,7 +167,7 @@
             PFFile *imageData = post.image;
             [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
              {
-                 cell.postImageView.image = [UIImage imageWithData:data scale:0.3];
+                 cell.postImageView.image = [UIImage imageWithData:data scale:1.0];
              }];
 
             return cell;

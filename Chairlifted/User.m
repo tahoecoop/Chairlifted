@@ -18,6 +18,7 @@
 @dynamic posts;
 @dynamic runs;
 @dynamic profileImage;
+@dynamic profileImageThumbnail;
 @dynamic name;
 @dynamic favoriteResort;
 @dynamic location;
