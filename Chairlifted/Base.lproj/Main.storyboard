@@ -371,6 +371,7 @@
                                         <connections>
                                             <outlet property="postImageView" destination="PLb-nu-zTa" id="mY0-8b-jQ8"/>
                                             <outlet property="postText" destination="aib-M7-kV7" id="BZZ-dn-Khs"/>
+                                            <segue destination="OH9-nH-gEF" kind="modal" identifier="loginBeforeLikePost" id="HtT-Lw-8e1"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Action" rowHeight="60" id="Kpd-TQ-4fK" customClass="DetailActionTableViewCell">
@@ -513,7 +514,6 @@
                         <outlet property="tableView" destination="cl0-9I-TmS" id="IDB-1s-SlN"/>
                         <segue destination="pAg-yg-GIZ" kind="modal" identifier="textSegue" id="35e-V4-gSN"/>
                         <segue destination="83L-gJ-Ydc" kind="modal" identifier="photoSegue" id="E4G-X3-CMi"/>
-                        <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginBeforeLikePost" id="smD-0w-2Gw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xf-6Q-EKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3161,7 +3161,7 @@
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.76357653039999995" green="0.87125576240000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YqQ-I2-OzZ" secondAttribute="trailing" id="2So-5X-kIm"/>
                             <constraint firstItem="gs7-Mq-EH6" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="5g4-V8-XbE"/>
@@ -4561,11 +4561,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="H5x-1z-wpL"/>
         <segue reference="kJt-a5-H8f"/>
-        <segue reference="GLv-ub-mwA"/>
-        <segue reference="smD-0w-2Gw"/>
-        <segue reference="vG6-2M-ghs"/>
+        <segue reference="H5x-1z-wpL"/>
         <segue reference="yO8-bf-1gz"/>
+        <segue reference="GLv-ub-mwA"/>
+        <segue reference="HtT-Lw-8e1"/>
+        <segue reference="mO0-d9-EOL"/>
     </inferredMetricsTieBreakers>
 </document>
