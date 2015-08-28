@@ -13,7 +13,8 @@
 #import "UIAlertController+ErrorAlert.h"
 
 
-@interface CreateNewUserViewController ()
+@interface CreateNewUserViewController () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -26,6 +27,9 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.emailTextField.delegate = self;
 
     // Do any additional setup after loading the view.
 
@@ -81,6 +85,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
 
 
 
