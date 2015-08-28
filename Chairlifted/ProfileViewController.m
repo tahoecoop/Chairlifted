@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *moreButton;
 @property (nonatomic) NSMutableArray *myPosts;
 @property (nonatomic) int skipCount;
 @property (nonatomic) NSDictionary *weatherDict;
@@ -62,6 +63,8 @@
     else if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
     {
         self.selectedUser = [User currentUser];
+        self.moreButton.enabled = NO;
+        self.moreButton.tintColor = [UIColor clearColor];
     }
     else
     {

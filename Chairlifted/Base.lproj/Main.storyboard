@@ -2371,6 +2371,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="hWc-mm-qVx" id="fbM-Gd-Lg2"/>
+                        <outlet property="moreButton" destination="5zd-qd-3Qe" id="7zW-0O-abT"/>
                         <outlet property="tableView" destination="4YK-i8-EDE" id="wa3-rN-vAo"/>
                         <segue destination="tXg-Zz-ck9" kind="modal" identifier="loginBeforeProfile" id="e9Z-DB-KJn"/>
                     </connections>
