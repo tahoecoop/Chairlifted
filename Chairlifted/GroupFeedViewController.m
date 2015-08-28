@@ -139,7 +139,7 @@
             headerCell.createNewPostButton.hidden = YES;
         }
 
-        PFFile *imageData = self.group.image;
+        PFFile *imageData = self.group.imageThumbnail;
         [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
          {
              headerCell.groupImageView.image = [UIImage imageWithData:data scale:0.5];
