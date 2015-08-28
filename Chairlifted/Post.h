@@ -27,6 +27,7 @@
 @property (nonatomic) NSString *postTopic;
 @property (nonatomic) Group *group;
 @property (nonatomic) NSNumber *isPrivate;
+@property (nonatomic) Resort *resort;
 
 
 

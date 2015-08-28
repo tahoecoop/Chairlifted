@@ -22,6 +22,7 @@
 @dynamic postTopic;
 @dynamic group;
 @dynamic isPrivate;
+@dynamic resort;
 
 
 + (void)load

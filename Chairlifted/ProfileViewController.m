@@ -38,11 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.skipCount = 0;
+    self.skipCount = 30;
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.shouldUpdateResort = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -92,7 +93,7 @@
              [NetworkRequests getWeatherFromLatitude:self.resort.latitude andLongitude:self.resort.longitude andCompletion:^(NSDictionary *dictionary)
               {
                   self.weatherDict = dictionary;
-                  [NetworkRequests getPostsWithSkipCount:self.skipCount andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
+                  [NetworkRequests getPostsWithSkipCount:0 andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
                    {
                        self.myPosts = [NSMutableArray arrayWithArray:array];
                        [activityView removeFromSuperview];

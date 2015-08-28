@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PostTopic.h"
+#import "Resort.h"
 
 @interface TopicsFeedViewController : UIViewController
 
 @property (nonatomic) NSString *postTopic;
+@property (nonatomic) Resort *resort;
 
 @end

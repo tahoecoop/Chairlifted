@@ -71,6 +71,7 @@
 		BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */; };
 		BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */; };
 		D3CE69F192DC679F97BC8BD1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ADEADAE442867E661D0CD0 /* libPods.a */; };
+		FE319EEF1B901466007E631D /* DiscoverResortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE319EEE1B901466007E631D /* DiscoverResortsViewController.m */; };
 		FE83A95E1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */; };
 		FE8CCA011B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */; };
 		FE8F1A081B8E6CAF00A22BD7 /* GroupMemberListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F1A071B8E6CAF00A22BD7 /* GroupMemberListViewController.m */; };
@@ -202,6 +203,8 @@
 		BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGroup.m; sourceTree = "<group>"; };
 		BAE3D1A11B86AD9500BAC4EF /* GroupCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCustomTableViewCell.h; sourceTree = "<group>"; };
 		BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCustomTableViewCell.m; sourceTree = "<group>"; };
+		FE319EED1B901466007E631D /* DiscoverResortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverResortsViewController.h; sourceTree = "<group>"; };
+		FE319EEE1B901466007E631D /* DiscoverResortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverResortsViewController.m; sourceTree = "<group>"; };
 		FE83A95C1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ErrorAlert.h"; sourceTree = "<group>"; };
 		FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ErrorAlert.m"; sourceTree = "<group>"; };
 		FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ReportInappropriate.h"; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 				BAD575391B8FEFAD000FB31F /* DiscoverViewController.m */,
 				BAD5753B1B900094000FB31F /* TopicsFeedViewController.h */,
 				BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */,
+				FE319EED1B901466007E631D /* DiscoverResortsViewController.h */,
+				FE319EEE1B901466007E631D /* DiscoverResortsViewController.m */,
 				BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */,
 				BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */,
 			);
@@ -607,6 +612,7 @@
 				FE8F1A0B1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m in Sources */,
 				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
 				BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */,
+				FE319EEF1B901466007E631D /* DiscoverResortsViewController.m in Sources */,
 				BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */,
 				BAD5753D1B900094000FB31F /* TopicsFeedViewController.m in Sources */,
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,

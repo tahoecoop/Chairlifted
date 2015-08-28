@@ -64,12 +64,15 @@
      }];
 }
 
+
 + (void)getPostsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Post query];
     [query orderByAscending:@"title"];
     [query includeKey:@"author"];
     [query whereKey:@"title" containsString:searchTerm];
+    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
+    [query orderByDescending:@"createdAt"];
     query.skip = skipCount;
     query.limit = 30;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -81,12 +84,15 @@
      }];
 }
 
+
 + (void)getPostsWithTopic:(NSString *)topic WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Post query];
     [query orderByDescending:@"hottness"];
     [query includeKey:@"author"];
     [query whereKey:@"postTopic" equalTo:topic];
+    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
+    [query orderByDescending:@"hottness"];
     query.skip = skipCount;
     query.limit = 30;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -97,6 +103,27 @@
          }
      }];
 }
+
+
++ (void)getPostsWithSkipCount:(int)skipCount andResort:(Resort *)resort andCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [Post query];
+    [query whereKey:@"resort" equalTo:resort];
+    [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
+    [query orderByDescending:@"hottness"];
+    query.limit = 30;
+    query.skip = skipCount;
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
+}
+
+
 
 #pragma mark - comment methods
 

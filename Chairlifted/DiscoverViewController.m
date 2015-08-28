@@ -17,6 +17,8 @@
 #import "NSDate+TimePassage.h"
 #import "TopicsFeedViewController.h"
 #import "PostDetailViewController.h"
+#import "DiscoverResortsViewController.h"
+#import "UIAlertController+ReportInappropriate.h"
 
 
 @interface DiscoverViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
@@ -26,6 +28,7 @@
 @property (nonatomic) NSMutableArray *posts;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) int skipCount;
 
 @end
@@ -97,7 +100,7 @@
     }
     else if (self.segControl.selectedSegmentIndex == 1)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellTopics"];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellStates"];
         cell.textLabel.text = self.states[indexPath.row];
         return cell;
     }
@@ -151,12 +154,26 @@
     {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+
+    if (self.segControl.selectedSegmentIndex == 2)
+    {
+        if (indexPath.row == self.skipCount - 5)
+        {
+            [NetworkRequests getPostsFromSearch:[self.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
+             {
+                 [self.posts addObjectsFromArray:array];
+                 self.skipCount = self.skipCount + 30;
+                 [self.tableView reloadData];
+             }];
+        }
+    }
 }
 
 
 - (IBAction)onSegControlToggle:(UISegmentedControl *)sender
 {
     [self.tableView reloadData];
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark -  search bar methods
@@ -173,11 +190,11 @@
 
 
     self.posts = nil;
-    self.skipCount = 0;
+    self.skipCount = 30;
     NSString *searchText = [searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (searchText.length > 0)
     {
-        [NetworkRequests getPostsFromSearch:searchText WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
+        [NetworkRequests getPostsFromSearch:searchText WithSkipCount:0 andCompletion:^(NSArray *array)
         {
             self.posts = [NSMutableArray arrayWithArray:array];
             [activityView removeFromSuperview];
@@ -197,7 +214,8 @@
     }
     else if ([segue.identifier isEqualToString:@"ToResorts"])
     {
-        
+        DiscoverResortsViewController *vc = segue.destinationViewController;
+        vc.state = self.states[self.tableView.indexPathForSelectedRow.row];
     }
     else
     {

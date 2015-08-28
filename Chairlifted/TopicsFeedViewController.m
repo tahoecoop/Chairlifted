@@ -12,6 +12,10 @@
 #import "Post.h"
 #import "NSDate+TimePassage.h"
 #import "NetworkRequests.h"
+#import "PostDetailViewController.h"
+#import "UIImage+SkiSnowboardIcon.h"
+#import "UIImageView+SpinningFigure.h"
+#import "UIAlertController+ReportInappropriate.h"
 
 @interface TopicsFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,7 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self getTopics];
+
+    if (self.postTopic)
+    {
+        [self getTopicPosts];
+    }
+    else
+    {
+        [self getResortPosts];
+    }
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -34,14 +47,58 @@
 
 }
 
-- (void)getTopics
+- (void)getTopicPosts
 {
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
      [NetworkRequests getPostsWithTopic:self.postTopic WithSkipCount:self.skipCount andCompletion:^(NSArray *array)
     {
-        self.posts = [NSMutableArray arrayWithArray:array];
+        if (self.posts)
+        {
+            [self.posts addObjectsFromArray:array];
+        }
+        else
+        {
+            self.posts = [NSMutableArray arrayWithArray:array];
+        }
+        [activityView removeFromSuperview];
         [self.tableView reloadData];
     }];
 }
+
+
+-(void)getResortPosts
+{
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+    spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+    [activityView addSubview:spinnerImageView];
+    [self.view addSubview:activityView];
+    [spinnerImageView rotateLayerInfinite];
+
+    [NetworkRequests getPostsWithSkipCount:self.skipCount andResort:self.resort andCompletion:^(NSArray *array)
+    {
+        if (self.posts)
+        {
+            [self.posts addObjectsFromArray:array];
+        }
+        else
+        {
+            self.posts = [NSMutableArray arrayWithArray:array];
+        }
+        [activityView removeFromSuperview];
+        [self.tableView reloadData];
+    }];
+}
+
+
 #pragma mark - TableView
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -80,6 +137,13 @@
         textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
         return textCell;
     }
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    PostDetailViewController *vc = segue.destinationViewController;
+    vc.post = self.posts[self.tableView.indexPathForSelectedRow.row];
 }
 
 @end

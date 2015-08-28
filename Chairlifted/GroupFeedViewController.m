@@ -236,13 +236,10 @@
 }
 
 
-- (IBAction)moreButtonPressed:(UIBarButtonItem *)button
+- (IBAction)moreButtonPressed:(UIButton *)button
 {
-    UIAlertController *alert = [UIAlertController alertForReportInappropriate];
-    [self presentViewController:alert animated:YES completion:nil];
+    
 }
-
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
