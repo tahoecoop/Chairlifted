@@ -15,6 +15,8 @@
 #import "SearchViewController.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import <AFNetworkReachabilityManager.h>
+#import "UIAlertController+ErrorAlert.h"
 
 @interface GroupsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
@@ -37,7 +39,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
 }
 
 
@@ -56,12 +57,21 @@
             [spinnerImageView rotateLayerInfinite];
 
 
-            [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
-             {
-                 self.myGroups = [NSMutableArray arrayWithArray:array];
-                 [activityView removeFromSuperview];
-                 [self.tableView reloadData];
-             }];
+            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
+                [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
+                 {
+                     self.myGroups = [NSMutableArray arrayWithArray:array];
+                     [activityView removeFromSuperview];
+                     [self.tableView reloadData];
+                 }];
+            }
+            else
+            {
+                [activityView removeFromSuperview];
+                UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
         }
     }
 
@@ -92,16 +102,18 @@
     {
         if (self.segControl.selectedSegmentIndex == 0)
         {
-                UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-                UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-                spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-                [activityView addSubview:spinnerImageView];
-                [self.view addSubview:activityView];
-                [spinnerImageView rotateLayerInfinite];
+            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+            [activityView addSubview:spinnerImageView];
+            [self.view addSubview:activityView];
+            [spinnerImageView rotateLayerInfinite];
 
 
-                self.mySkipCount = 0;
+            self.mySkipCount = 0;
+            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
                 [NetworkRequests getMyGroupsWithSkipCount:self.mySkipCount andCompletion:^(NSArray *array)
                  {
                      self.myGroups = nil;
@@ -109,21 +121,28 @@
                      [activityView removeFromSuperview];
                      [self.tableView reloadData];
                  }];
-//            [self.tableView reloadData];
+            }
+            else
+            {
+                [activityView removeFromSuperview];
+                UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
         }
         else if (self.segControl.selectedSegmentIndex == 1)
         {
-//            if (!self.allGroups.count > 0)
-//            {
-                UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-                UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-                spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-                [activityView addSubview:spinnerImageView];
-                [self.view addSubview:activityView];
-                [spinnerImageView rotateLayerInfinite];
+            UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+            UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
+            spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
+            [activityView addSubview:spinnerImageView];
+            [self.view addSubview:activityView];
+            [spinnerImageView rotateLayerInfinite];
 
-                self.groupSkipCount = 0;
+            self.groupSkipCount = 0;
+
+            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
                 [NetworkRequests getAllGroupsWithSkipCount:self.groupSkipCount andCompletion:^(NSArray *array)
                  {
                      self.allGroups = nil;
@@ -134,9 +153,15 @@
             }
             else
             {
-                [self.tableView reloadData];
+                [activityView removeFromSuperview];
+                UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
+                [self presentViewController:alert animated:YES completion:nil];
             }
-//        }
+        }
+        else
+        {
+            [self.tableView reloadData];
+        }
     }
 }
 

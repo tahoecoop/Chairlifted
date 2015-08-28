@@ -28,7 +28,11 @@
     }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
-        if (!error)
+        if (error)
+        {
+            UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
+        }
+        else
         {
             complete(objects);
         }

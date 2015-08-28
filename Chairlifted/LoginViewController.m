@@ -12,6 +12,7 @@
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "UIAlertController+ErrorAlert.h"
 
 
 @interface LoginViewController ()
@@ -73,18 +74,23 @@
 
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error)
      {
-         if (!error) {
+         if (!error)
+         {
 
-             if (!user) {
+             if (!user)
+             {
 
                  NSString *errorMessage = nil;
 
-                 if (!error) {
+                 if (!error)
+                 {
 
                      NSLog(@"Uh oh. The user cancelled the Facebook login.");
 
                      errorMessage = @"Uh oh. The user cancelled the Facebook login.";
-                 } else {
+                 }
+                 else
+                 {
 
                      NSLog(@"Uh oh. An error occurred: %@", error);
 
@@ -97,9 +103,12 @@
                                                        cancelButtonTitle:nil
                                                        otherButtonTitles:@"Dismiss", nil];
                  [alert show];
-             } else {
+             }
+             else
+             {
 
-                 if (user.isNew) {
+                 if (user.isNew)
+                 {
 
                      [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id, name, friends, email"}]
 
@@ -134,7 +143,9 @@
 
                      NSLog(@"User with facebook signed up and logged in!");
 
-                 } else {
+                 }
+                 else
+                 {
 
                      NSLog(@"User with facebook logged in!");
                      [self dismissViewControllerAnimated:YES completion:nil];
@@ -142,7 +153,9 @@
                  }
              }
 
-         } else {
+         }
+         else
+         {
 
              NSLog(@"%@", error);
          }
@@ -168,22 +181,25 @@
 
     [User logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
      {
+         if (error)
+         {
+             UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
+             [self presentViewController:alert animated:YES completion:nil];
+         }
          if ([User currentUser])
          {
              [activityView removeFromSuperview];
              
              [self dismissViewControllerAnimated:YES completion:nil];
          }
-         if (error)
-         {
 
-         }
      }];
 }
 
 
 
-- (IBAction)onForgotPasswordButtonPressed:(UIButton *)sender {
+- (IBAction)onForgotPasswordButtonPressed:(UIButton *)sender
+{
     
     UIAlertController *forgotPasswordAlert = [UIAlertController alertControllerWithTitle:@"Reset Password" message:@"Reset your password by enterting the associated email below." preferredStyle:UIAlertControllerStyleAlert];
     
@@ -196,15 +212,12 @@
     {
         UITextField *emailForForgotten = [[forgotPasswordAlert textFields]firstObject];
 
-        [PFUser requestPasswordResetForEmailInBackground:emailForForgotten.text block:^(BOOL succeded, NSError *error){
-            if (error) {
-                UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@",error] preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                }];
-
-                [vc addAction:okay];
-
-                [self presentViewController:vc animated:YES completion:nil];
+        [PFUser requestPasswordResetForEmailInBackground:emailForForgotten.text block:^(BOOL succeded, NSError *error)
+        {
+            if (error)
+            {
+                UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
+                [self presentViewController:alert animated:YES completion:nil];
             }
         }];
     }];

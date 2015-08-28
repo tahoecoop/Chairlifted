@@ -70,9 +70,11 @@
         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 
-    if (!self.selectedUser.favoriteResort) {
+    if (!self.selectedUser.favoriteResort)
+    {
         self.shouldUpdateResort = NO;
     }
+
 
     if (self.shouldUpdateResort)
     {
@@ -99,7 +101,6 @@
                    }];
               }];
          }];
-
     }
 }
 

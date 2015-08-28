@@ -13,6 +13,7 @@
 #import "PostTopic.h"
 #import "JoinGroup.h"
 #import "Resort.h"
+#import "UIAlertController+ErrorAlert.h"
 
 @interface NetworkRequests : NSObject
 

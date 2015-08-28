@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */; };
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
-		968A5AC81B8E9EF20053D275 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 968A5AC71B8E9EF20053D275 /* TableViewCell.m */; };
 		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
 		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
@@ -70,6 +69,7 @@
 		BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */; };
 		BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */; };
 		D3CE69F192DC679F97BC8BD1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ADEADAE442867E661D0CD0 /* libPods.a */; };
+		FE83A95E1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */; };
 		FE8CCA011B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */; };
 		FE8F1A081B8E6CAF00A22BD7 /* GroupMemberListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F1A071B8E6CAF00A22BD7 /* GroupMemberListViewController.m */; };
 		FE8F1A0B1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F1A0A1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m */; };
@@ -93,8 +93,6 @@
 		96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewUserViewController.m; sourceTree = "<group>"; };
 		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
-		968A5AC61B8E9EF20053D275 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		968A5AC71B8E9EF20053D275 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BA215E181B8787170087DBEB /* GroupFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedViewController.h; sourceTree = "<group>"; };
@@ -198,6 +196,8 @@
 		BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGroup.m; sourceTree = "<group>"; };
 		BAE3D1A11B86AD9500BAC4EF /* GroupCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCustomTableViewCell.h; sourceTree = "<group>"; };
 		BAE3D1A21B86AD9500BAC4EF /* GroupCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCustomTableViewCell.m; sourceTree = "<group>"; };
+		FE83A95C1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ErrorAlert.h"; sourceTree = "<group>"; };
+		FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ErrorAlert.m"; sourceTree = "<group>"; };
 		FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ReportInappropriate.h"; sourceTree = "<group>"; };
 		FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ReportInappropriate.m"; sourceTree = "<group>"; };
 		FE8F1A061B8E6CAF00A22BD7 /* GroupMemberListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMemberListViewController.h; sourceTree = "<group>"; };
@@ -357,6 +357,8 @@
 				BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */,
 				FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */,
 				FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */,
+				FE83A95C1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.h */,
+				FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */,
 				BA6F8C7C1B83A0D00083E71E /* NSDate+TimePassage.h */,
 				BA6F8C7D1B83A0D00083E71E /* NSDate+TimePassage.m */,
 				BA88E74C1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.h */,
@@ -577,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE83A95E1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m in Sources */,
 				BAE3D1971B853B2800BAC4EF /* Like.m in Sources */,
 				BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */,
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,

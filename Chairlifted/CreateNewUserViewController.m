@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "UIAlertController+ErrorAlert.h"
 
 
 @interface CreateNewUserViewController ()
@@ -48,18 +49,30 @@
 
     [spinnerImageView rotateLayerInfinite];
 
+    NSString *username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *password = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *email = [self.emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
     User *user = [User new];
 
-    user.username = self.usernameTextField.text;
-    user.password = self.passwordTextField.text;
-    user.displayName = self.usernameTextField.text;
-    user.email = self.emailTextField.text;
+    user.username = username;
+    user.password = password;
+    user.displayName = username;
+    user.email = email;
 
     [user saveInBackgroundWithBlock:^(BOOL success, NSError *error)
      {
          [activityView removeFromSuperview];
-         
-         [self dismissViewControllerAnimated:YES completion:nil];
+
+         if (error)
+         {
+             UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
+             [self presentViewController:alert animated:YES completion:nil];
+         }
+         else
+         {
+            [self dismissViewControllerAnimated:YES completion:nil];
+         }
      }];
 }
 

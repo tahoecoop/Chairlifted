@@ -16,6 +16,8 @@
 #import "PostDetailViewController.h"
 #import "LoginViewController.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "UIAlertController+ErrorAlert.h"
+#import <AFNetworkReachabilityManager.h>
 
 @interface FeedViewController ()
 
@@ -67,12 +69,19 @@
 //    if ([User currentUser])
 //    {
         self.skipCount = 30;
-
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
         [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
          {
              self.posts = [NSMutableArray arrayWithArray:array];
              [self.tableView reloadData];
          }];
+    }
+    else
+    {
+        UIAlertController *alert = [UIAlertController showErrorAlert:NULL orMessage:@"No internet connection"];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 //    }
 }
 

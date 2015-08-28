@@ -25,7 +25,6 @@
 @property (nonatomic) NSString *location;
 @property (nonatomic) Resort *favoriteResort;
 @property (nonatomic) NSNumber *isSnowboarder;
-@property (nonatomic) NSString *displayName;
 
 + (void)load;
 
