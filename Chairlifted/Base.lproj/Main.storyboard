@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -232,8 +233,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cl0-9I-TmS">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cl0-9I-TmS">
+                                <rect key="frame" x="0.0" y="-167" width="320" height="735"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -334,26 +335,25 @@
                                             <outlet property="postText" destination="Ryh-oM-efv" id="aYc-nH-W7L"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagePost" rowHeight="187" id="87a-NT-kJ1" customClass="DetailPostImageTableViewCell">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagePost" rowHeight="365" id="87a-NT-kJ1" customClass="DetailPostImageTableViewCell">
                                         <rect key="frame" x="0.0" y="230" width="320" height="187"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="87a-NT-kJ1" id="24i-4e-HV6">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="186"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aib-M7-kV7">
-                                                    <rect key="frame" x="8" y="121" width="304" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Post text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aib-M7-kV7">
+                                                    <rect key="frame" x="8" y="328" width="304" height="29"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-nu-zTa">
-                                                    <rect key="frame" x="108" y="8" width="105" height="105"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="105" id="Knf-3Z-yUp"/>
-                                                        <constraint firstAttribute="height" constant="105" id="jeS-du-4ZR"/>
+                                                        <constraint firstAttribute="width" secondItem="PLb-nu-zTa" secondAttribute="height" multiplier="1:1" id="8qK-zt-9YX"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -361,10 +361,11 @@
                                             <constraints>
                                                 <constraint firstItem="aib-M7-kV7" firstAttribute="leading" secondItem="24i-4e-HV6" secondAttribute="leadingMargin" id="5Hw-lQ-ShY"/>
                                                 <constraint firstItem="aib-M7-kV7" firstAttribute="trailing" secondItem="24i-4e-HV6" secondAttribute="trailingMargin" id="6gn-Kx-Ni9"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aib-M7-kV7" secondAttribute="bottom" constant="36.5" id="Vte-kO-lsb"/>
-                                                <constraint firstAttribute="centerX" secondItem="PLb-nu-zTa" secondAttribute="centerX" id="be6-Rb-j2b"/>
-                                                <constraint firstItem="aib-M7-kV7" firstAttribute="top" secondItem="PLb-nu-zTa" secondAttribute="bottom" constant="8" id="ehZ-eR-T94"/>
-                                                <constraint firstItem="PLb-nu-zTa" firstAttribute="top" secondItem="24i-4e-HV6" secondAttribute="topMargin" id="r9x-KD-UO3"/>
+                                                <constraint firstItem="PLb-nu-zTa" firstAttribute="leading" secondItem="24i-4e-HV6" secondAttribute="leading" id="B8C-EU-GEK"/>
+                                                <constraint firstAttribute="bottom" secondItem="aib-M7-kV7" secondAttribute="bottom" constant="8" id="JCe-sC-qLB"/>
+                                                <constraint firstItem="aib-M7-kV7" firstAttribute="top" secondItem="PLb-nu-zTa" secondAttribute="bottom" constant="8" id="Vj7-HD-QXV"/>
+                                                <constraint firstItem="PLb-nu-zTa" firstAttribute="top" secondItem="24i-4e-HV6" secondAttribute="topMargin" constant="-8" id="r9x-KD-UO3"/>
+                                                <constraint firstAttribute="trailing" secondItem="PLb-nu-zTa" secondAttribute="trailing" id="wLn-kJ-ms2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -4560,9 +4561,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="oi7-M8-uuK"/>
-        <segue reference="ypa-Le-irg"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="GLv-ub-mwA"/>
         <segue reference="yO8-bf-1gz"/>
+        <segue reference="Vyn-fc-o24"/>
     </inferredMetricsTieBreakers>
 </document>

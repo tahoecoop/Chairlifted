@@ -100,7 +100,10 @@
             PFFile *imageData = self.post.image;
             [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
              {
+                 cell.postImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
                  cell.postImageView.image = [UIImage imageWithData:data scale:1.0];
+//                 cell.postText.frame = CGRectMake(8, cell.postImageView.frame.origin.y + cell.postImageView.frame.size.height + 8, self.view.frame.size.width - 16, 20);
+
              }];
             
             return cell;
