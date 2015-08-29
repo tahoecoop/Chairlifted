@@ -90,30 +90,33 @@
     [spinnerImageView rotateLayerInfinite];
 
 
-    [NetworkRequests getPostsWithSkipCount:0 andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
-     {
-         self.myPosts = [NSMutableArray arrayWithArray:array];
-
-         if (self.shouldUpdateResort)
+    if (self.selectedUser)
+    {
+        [NetworkRequests getPostsWithSkipCount:0 andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
          {
-             self.resort = self.selectedUser.favoriteResort;
-             [self.resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
-              {
-                  [NetworkRequests getWeatherFromLatitude:self.resort.latitude andLongitude:self.resort.longitude andCompletion:^(NSDictionary *dictionary)
-                   {
-                       self.weatherDict = dictionary;
-                       [activityView removeFromSuperview];
-                       self.shouldUpdateResort = NO;
-                       [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+             self.myPosts = [NSMutableArray arrayWithArray:array];
 
-                   }];
-              }];
-         }
-         else
-         {
-             [activityView removeFromSuperview];
-         }
-     }];
+             if (self.shouldUpdateResort)
+             {
+                 self.resort = self.selectedUser.favoriteResort;
+                 [self.resort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+                  {
+                      [NetworkRequests getWeatherFromLatitude:self.resort.latitude andLongitude:self.resort.longitude andCompletion:^(NSDictionary *dictionary)
+                       {
+                           self.weatherDict = dictionary;
+                           [activityView removeFromSuperview];
+                           self.shouldUpdateResort = NO;
+                           [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+
+                       }];
+                  }];
+             }
+             else
+             {
+                 [activityView removeFromSuperview];
+             }
+         }];
+    }
 }
 
 

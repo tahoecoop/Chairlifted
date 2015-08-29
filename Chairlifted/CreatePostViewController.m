@@ -15,6 +15,7 @@
 #import "PostTopic.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "StateViewController.h"
 
 @interface CreatePostViewController ()
 
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *textPostPlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (nonatomic) UIView *activityView;
+@property (weak, nonatomic) IBOutlet UILabel *selectedResortLabel;
+@property (weak, nonatomic) IBOutlet UIButton *tagResortButton;
 
 @end
 
@@ -113,6 +116,11 @@
         post.isPrivate = [NSNumber numberWithBool:NO];
     }
 
+    if (self.selectedResort)
+    {
+        post.resort = self.selectedResort;
+    }
+    
     post.author = [User currentUser];
     post.likeCount = 0;
     [post calculateHottness];
@@ -252,6 +260,26 @@
 - (IBAction)editingChanged:(UITextField *)textField
 {
     [self checkIfCanPost];
+}
+
+
+#pragma mark - Segue methods
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ToTagResort"])
+    {
+        StateViewController *vc = segue.destinationViewController;
+        vc.isForPost = YES;
+    }
+}
+
+
+-(IBAction)unwindToCreatePost:(UIStoryboardSegue *)segue
+{
+    self.selectedResortLabel.text = self.selectedResort.name;
+    [self.tagResortButton setTitle:@"Change Tagged Resort" forState:UIControlStateNormal];
+    
 }
 
 #pragma mark - activity indicator methods

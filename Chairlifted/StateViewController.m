@@ -62,6 +62,7 @@
 {
     ChooseResortViewController *vc = segue.destinationViewController;
     vc.state = self.states[self.tableView.indexPathForSelectedRow.row];
+    vc.isForPost = self.isForPost;
 }
 
 

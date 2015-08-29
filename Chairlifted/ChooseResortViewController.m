@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "CreatePostViewController.h"
 
 @interface ChooseResortViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -59,7 +60,7 @@
     User *user = [User currentUser];
     [user.favoriteResort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
     {
-        if ([resort.name isEqualToString:user.favoriteResort.name] || [tableView indexPathForSelectedRow] == indexPath)
+        if ((!self.isForPost && [resort.name isEqualToString:user.favoriteResort.name]) || [tableView indexPathForSelectedRow] == indexPath)
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -103,12 +104,29 @@
     }
 }
 
+- (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
+{
+    if (self.isForPost)
+    {
+        [self performSegueWithIdentifier:@"UnwindToCreatePost" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"UnwindToEditProfile" sender:self];
+    }
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"unwind"])
+    if ([segue.identifier isEqualToString:@"UnwindToEditProfile"])
     {
         EditProfileViewController *vc = segue.destinationViewController;
+        Resort *resort = self.resorts[self.tableView.indexPathForSelectedRow.row];
+        vc.selectedResort = resort;
+    }
+    else if ([segue.identifier isEqualToString:@"UnwindToCreatePost"])
+    {
+        CreatePostViewController *vc = segue.destinationViewController;
         Resort *resort = self.resorts[self.tableView.indexPathForSelectedRow.row];
         vc.selectedResort = resort;
     }

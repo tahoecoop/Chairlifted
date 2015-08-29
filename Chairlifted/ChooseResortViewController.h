@@ -13,6 +13,7 @@
 @interface ChooseResortViewController : UIViewController
 
 @property (nonatomic) NSString *state;
+@property (nonatomic) BOOL isForPost;
 
 
 @end

@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailPostImageTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *postText;
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UIButton *imageButton;
+
 
 @end
