@@ -110,6 +110,11 @@
     {
         post.group = self.group;
         post.isPrivate = self.group.isPrivate;
+
+        PFPush *push = [PFPush new];
+        [push setChannel:self.group.objectId];
+        [push setMessage:[NSString stringWithFormat:@"New group post in %@ from %@", self.group.name, [User currentUser].displayName]];
+        [push sendPushInBackground];
     }
     else
     {

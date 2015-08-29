@@ -110,7 +110,7 @@
                           [NetworkRequests getWeatherFromLatitude:self.resort.latitude andLongitude:self.resort.longitude andCompletion:^(NSDictionary *dictionary)
                            {
                                self.weatherDict = dictionary;
-                               [activityView removeFromSuperview];
+                               //[activityView removeFromSuperview];
                                self.shouldUpdateResort = NO;
                                [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                            }];

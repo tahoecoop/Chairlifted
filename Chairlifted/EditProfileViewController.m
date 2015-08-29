@@ -192,10 +192,46 @@
     [self checkIfEditsMade];
 }
 
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return NO;
+}
+
+
+- (IBAction)onLikeSwitchChanged:(UISwitch *)sender
+{
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    if (sender.on)
+    {
+        [installation setObject:[NSNumber numberWithBool:YES] forKey:@"likes"];
+    }
+    else
+    {
+        [installation setObject:[NSNumber numberWithBool:NO] forKey:@"likes"];
+    }
+    [installation saveInBackground];
+}
+
+
+- (IBAction)onCommentSwitchChanged:(UISwitch *)sender
+{
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    if (!installation[@"user"])
+    {
+        installation[@"user"] = [User currentUser];
+    }
+
+    if (sender.on)
+    {
+        [installation setObject:[NSNumber numberWithBool:YES] forKey:@"comments"];
+    }
+    else
+    {
+        [installation setObject:[NSNumber numberWithBool:NO] forKey:@"comments"];
+    }
+    [installation saveInBackground];
 }
 
 

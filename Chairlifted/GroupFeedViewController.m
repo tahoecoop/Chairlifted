@@ -238,7 +238,40 @@
 
 - (IBAction)moreButtonPressed:(UIButton *)button
 {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    UIAlertAction *notificationsAction;
+    if ([installation.channels containsObject:self.group.name])
+    {
+        notificationsAction = [UIAlertAction actionWithTitle:@"Turn off notifications" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+       {
+           [installation removeObject:self.group.name forKey:@"channels"];
+           [installation saveInBackground];
+
+           [alert dismissViewControllerAnimated:YES completion:nil];
+       }];
+    }
+    else
+    {
+        notificationsAction = [UIAlertAction actionWithTitle:@"Turn on notifications" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+       {
+           [installation addUniqueObject:self.group.objectId forKey:@"channels"];
+           [installation saveInBackground];
+
+           [alert dismissViewControllerAnimated:YES completion:nil];
+       }];
+    }
+
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
     
+    [alert addAction:notificationsAction];
+    [alert addAction:cancel];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

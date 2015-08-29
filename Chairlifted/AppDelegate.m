@@ -47,10 +47,6 @@
 
     [PFUser enableAutomaticUser];
 
-
-
-
-
     // Initialize Parse.
     [Parse setApplicationId:@"tToLZMQ5nL7e5kvFQNS2Z9QPmSFUQEV229IAnRQ1"
                   clientKey:@"0haiam3p9bKZRmTHv8TQFEpwBjfm1cRPtco3DTg1"];
@@ -207,6 +203,7 @@
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation[@"user"] = [User currentUser];
     [currentInstallation saveInBackground];
 }
 
