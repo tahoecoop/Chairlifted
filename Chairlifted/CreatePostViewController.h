@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Group.h"
+#import "Resort.h"
 
 @interface CreatePostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic) Group *group;
+@property (nonatomic) Resort *selectedResort;
 
 @end

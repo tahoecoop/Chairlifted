@@ -919,8 +919,8 @@
                                                     <outlet property="delegate" destination="I3Y-AD-axG" id="DAS-Zr-Ev7"/>
                                                 </connections>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSj-8K-lvD">
-                                                <rect key="frame" x="79" y="330" width="163" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSj-8K-lvD">
+                                                <rect key="frame" x="79" y="341" width="163" height="30"/>
                                                 <animations/>
                                                 <state key="normal" title="Upload Photo (optional)">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -949,6 +949,21 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k46-rh-gma">
+                                                <rect key="frame" x="34" y="508" width="86" height="30"/>
+                                                <state key="normal" title="Tag a Resort">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="4Cb-cK-8Ea" kind="push" identifier="ToTagResort" id="eSN-dC-lKM"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Which resort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2Y-OY-QMY">
+                                                <rect key="frame" x="195" y="517" width="97" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1010,6 +1025,8 @@
                         <outlet property="postTitleTextField" destination="Zy1-md-dfA" id="9mp-oo-Dk2"/>
                         <outlet property="saveButton" destination="Ue7-oO-dBx" id="CBC-sB-eoS"/>
                         <outlet property="scrollViewContentView" destination="Fu7-Df-fkO" id="qY8-kD-nX7"/>
+                        <outlet property="selectedResortLabel" destination="K2Y-OY-QMY" id="wwx-uN-192"/>
+                        <outlet property="tagResortButton" destination="k46-rh-gma" id="7og-dn-aMD"/>
                         <outlet property="textPostPlaceholderLabel" destination="Usf-SU-Ddf" id="rVf-Q8-ZQu"/>
                         <outlet property="topicButton" destination="bqI-oI-bBU" id="fVI-Lq-5kt"/>
                         <outlet property="uploadPhotoButton" destination="mSj-8K-lvD" id="V3D-41-C8b"/>
@@ -3558,12 +3575,14 @@
                     <navigationItem key="navigationItem" id="v3e-5b-GfG">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="xnf-aX-rbc">
                             <connections>
-                                <segue destination="Jr5-FX-EUU" kind="unwind" identifier="unwind" unwindAction="unwindSegue:" id="cD1-uo-1xP"/>
+                                <action selector="onDoneButtonPressed:" destination="h7Q-GL-g4E" id="atf-VQ-0yi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Et6-ik-02y" id="AsY-Yg-lJe"/>
+                        <segue destination="Jr5-FX-EUU" kind="unwind" identifier="UnwindToEditProfile" unwindAction="unwindSegue:" id="auh-bZ-EVk"/>
+                        <segue destination="Jr5-FX-EUU" kind="unwind" identifier="UnwindToCreatePost" unwindAction="unwindToCreatePost:" id="Js6-QG-WZt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rd0-Ly-uok" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4568,6 +4587,7 @@
         <segue reference="H5x-1z-wpL"/>
         <segue reference="GLv-ub-mwA"/>
         <segue reference="yO8-bf-1gz"/>
+        <segue reference="eSN-dC-lKM"/>
         <segue reference="ypa-Le-irg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,4 +10,6 @@
 
 @interface StateViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic) BOOL isForPost;
+
 @end
