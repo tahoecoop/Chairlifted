@@ -11,9 +11,10 @@
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIAlertController+ErrorAlert.h"
+#import <ParseUI/ParseUI.h>
 
 
-@interface CreateNewUserViewController () <UITextFieldDelegate>
+@interface CreateNewUserViewController () <UITextFieldDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -40,19 +41,13 @@
 
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-
     UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-
     spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-
     [activityView addSubview:spinnerImageView];
-
     [self.view addSubview:activityView];
-
     [spinnerImageView rotateLayerInfinite];
-
+    
     NSString *username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *password = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *email = [self.emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -63,6 +58,8 @@
     user.password = password;
     user.displayName = username;
     user.email = email;
+    user.profileImage = [PFFile fileWithData:UIImageJPEGRepresentation([UIImage imageNamed:@"trooper1.pdf"], 1.0)];
+    user.profileImageThumbnail = [PFFile fileWithData:UIImageJPEGRepresentation([UIImage imageNamed:@"trooper1.pdf"], 0.3)];
 
     [user signUpInBackgroundWithBlock:^(BOOL success, NSError *error)
      {
@@ -91,7 +88,6 @@
     [textField resignFirstResponder];
     return NO;
 }
-
 
 
 @end
