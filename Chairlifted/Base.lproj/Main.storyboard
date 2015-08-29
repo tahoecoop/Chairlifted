@@ -3021,7 +3021,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="21"/>
                                         <state key="normal" title="Login">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -3134,6 +3134,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJU-pq-aLR">
                                         <rect key="frame" x="137" y="343" width="46" height="30"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3145,6 +3146,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="lJU-pq-aLR" secondAttribute="centerX" id="Kwo-Kv-E7N"/>
@@ -3415,6 +3417,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uvs-5p-3b9">
                                 <rect key="frame" x="19" y="265" width="288" height="30"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -4559,10 +4562,10 @@
         <image name="svg2pdf.htm" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oi7-M8-uuK"/>
-        <segue reference="ypa-Le-irg"/>
+        <segue reference="3tz-ET-Ncu"/>
         <segue reference="H5x-1z-wpL"/>
+        <segue reference="ypa-Le-irg"/>
         <segue reference="GLv-ub-mwA"/>
-        <segue reference="yO8-bf-1gz"/>
+        <segue reference="AIY-s3-N9h"/>
     </inferredMetricsTieBreakers>
 </document>
