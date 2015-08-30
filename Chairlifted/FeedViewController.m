@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
+@property (weak, nonatomic) IBOutlet UIView *cardView;
 
 
 @end
@@ -66,12 +67,15 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:75.0/255.0 green:171.0/255.0 blue:253.0/255.0  alpha:1.0];
+
     self.skipCount = 30;
     [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
      }];
+
 }
 
 
@@ -128,9 +132,14 @@
         Post *post = self.posts[indexPath.row];
         textCell.postLabel.text = post.title;
         textCell.authorLabel.text = post.author.displayName;
-        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-        textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+        textCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
+
+        [textCell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
+        [textCell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
+        [textCell.cardView.layer setShadowRadius:2.0];
+        [textCell.cardView.layer setShadowOpacity:0.5];
     }
     else if ([cell isKindOfClass:[CustomFeedWithPhotoTableViewCell class]])
     {
@@ -138,9 +147,15 @@
         Post *post = self.posts[indexPath.row];
         textCell.titleLabel.text = post.title;
         textCell.authorLabel.text = post.author.displayName;
-        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-        textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+        textCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
+
+        [textCell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
+        [textCell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
+        [textCell.cardView.layer setShadowRadius:2.0];
+        [textCell.cardView.layer setShadowOpacity:0.5];
+
         PFFile *postImage = post.imageThumbnail;
         [postImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
         {

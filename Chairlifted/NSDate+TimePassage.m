@@ -29,15 +29,15 @@
     }
     else if (hours < 1)
     {
-        return [NSString stringWithFormat:@"%im ago", minutes];
+        return [NSString stringWithFormat:@"%im", minutes];
     }
     else if (days < 1)
     {
-        return [NSString stringWithFormat:@"%ih ago", hours];
+        return [NSString stringWithFormat:@"%ih", hours];
     }
     else
     {
-        return [NSString stringWithFormat:@"%id ago", days];
+        return [NSString stringWithFormat:@"%id", days];
     }
 }
 

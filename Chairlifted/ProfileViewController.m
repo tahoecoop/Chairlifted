@@ -46,12 +46,14 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.shouldUpdateResort = YES;
+    [self setUpUser];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self setUpUser];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:174.0/255.0 green:16.0/255.0 blue:13.0/255.0  alpha:1.0];
 }
 
 - (void)setUpUser
@@ -94,6 +96,7 @@
         
         [NetworkRequests getPostsWithSkipCount:0 andUser:self.selectedUser andShowsPrivate:[self.selectedUser isEqual:[User currentUser]] completion:^(NSArray *array)
          {
+             self.myPosts = nil;
              self.myPosts = [NSMutableArray arrayWithArray:array];
 
              if (self.shouldUpdateResort)
@@ -184,6 +187,12 @@
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
 
+            [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
+            [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
+            [cell.cardView.layer setShadowRadius:2.0];
+            [cell.cardView.layer setShadowOpacity:0.5];
+
+
             PFFile *imageData = post.image;
             [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
              {
@@ -200,6 +209,12 @@
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+
+            [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
+            [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
+            [cell.cardView.layer setShadowRadius:2.0];
+            [cell.cardView.layer setShadowOpacity:0.5];
+
 
             return cell;
         }
