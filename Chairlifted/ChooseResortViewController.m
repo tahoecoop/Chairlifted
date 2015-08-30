@@ -25,7 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];

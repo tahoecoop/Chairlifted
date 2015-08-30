@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *repliesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesAgoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
+@property (weak, nonatomic) IBOutlet UIView *cardView;
 
 @end

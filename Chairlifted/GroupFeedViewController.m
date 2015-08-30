@@ -45,6 +45,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
 
@@ -177,6 +178,12 @@
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+
+            [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
+            [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
+            [cell.cardView.layer setShadowRadius:2.0];
+            [cell.cardView.layer setShadowOpacity:0.5];
+
             PFFile *imageData = post.imageThumbnail;
             [imageData getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
              {
@@ -192,6 +199,12 @@
             cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+
+            [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
+            [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
+            [cell.cardView.layer setShadowRadius:2.0];
+            [cell.cardView.layer setShadowOpacity:0.5];
+
             return cell;
         }
     }
