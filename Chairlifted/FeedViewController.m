@@ -29,6 +29,15 @@
 @property (nonatomic) BOOL continueLoading;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 
+// Pull to refresh properties
+@property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIView *refreshLoadingView;
+@property (nonatomic, strong) UIView *refreshColorView;
+@property (nonatomic, strong) UIImageView *rightFlake;
+@property (nonatomic, strong) UIImageView *leftFlake;
+@property (assign) BOOL isFlakesOverlap;
+@property (assign) BOOL isAnimating;
+
 
 @end
 
@@ -47,6 +56,7 @@
     self.continueLoading = YES;
     [self.tableView setLayoutMargins:UIEdgeInsetsZero];
 
+    [self setupRefreshControl];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -215,6 +225,133 @@
     return _photoPrototypeCell;
 }
 
+#pragma mark - Pull to refresh methods
+
+- (void)setupRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshLoadingView = [[UIView alloc] initWithFrame:self.refreshControl.bounds];
+    self.refreshColorView = [[UIView alloc] initWithFrame:self.refreshControl.bounds];
+    self.refreshLoadingView.backgroundColor = [UIColor clearColor];
+    self.refreshColorView.backgroundColor = [UIColor blueColor];
+    self.refreshColorView.alpha = 0.30;
+
+    self.rightFlake = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flake1.png"]];
+    self.leftFlake = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flake1.png"]];
+    [self.refreshLoadingView addSubview:self.leftFlake];
+    [self.refreshLoadingView addSubview:self.rightFlake];
+
+    self.refreshLoadingView.clipsToBounds = YES;
+    self.refreshControl.tintColor = [UIColor clearColor];
+    [self.refreshControl addSubview:self.refreshColorView];
+    [self.refreshControl addSubview:self.refreshLoadingView];
+
+    self.isFlakesOverlap = NO;
+    self.isAnimating = NO;
+
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+}
+
+
+- (void)refresh:(id)sender
+{
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGRect refreshBounds = self.refreshControl.bounds;
+    CGFloat pullDistance = MAX(0.0, -self.refreshControl.frame.origin.y);
+    CGFloat midX = self.tableView.frame.size.width / 2.0;
+
+    CGFloat rightFlakeHeight = self.rightFlake.bounds.size.height;
+    CGFloat rightFlakeHeightHalf = rightFlakeHeight / 2.0;
+    CGFloat rightFlakeWidth = self.rightFlake.bounds.size.width;
+    CGFloat rightFlakeWidthHalf = rightFlakeWidth / 2.0;
+    CGFloat leftFlakeHeight = self.leftFlake.bounds.size.height;
+    CGFloat leftFlakeHeightHalf = leftFlakeHeight / 2.0;
+    CGFloat leftFlakeWidth = self.leftFlake.bounds.size.width;
+    CGFloat leftFlakeWidthHalf = leftFlakeWidth / 2.0;
+
+    CGFloat pullRatio = MIN( MAX(pullDistance, 0.0), 100.0) / 100.0;
+    CGFloat rightFlakeY = pullDistance / 2.0 - rightFlakeHeightHalf;
+    CGFloat leftFlakeY = pullDistance / 2.0 - leftFlakeHeightHalf;
+    CGFloat rightFlakeX = (midX + rightFlakeWidthHalf) - (rightFlakeWidth * pullRatio);
+    CGFloat leftFlakeX = (midX - leftFlakeWidth - leftFlakeWidthHalf) + (leftFlakeWidth * pullRatio);
+
+    if (fabs(rightFlakeX - leftFlakeX) < 1.0)
+    {
+        self.isFlakesOverlap = YES;
+    }
+
+    if (self.isFlakesOverlap || self.refreshControl.isRefreshing)
+    {
+        rightFlakeX = midX - rightFlakeWidthHalf;
+        leftFlakeX = midX - leftFlakeWidthHalf;
+    }
+
+    CGRect rightFlakeFrame = self.rightFlake.frame;
+    rightFlakeFrame.origin.x = rightFlakeX;
+    rightFlakeFrame.origin.y = rightFlakeY;
+
+    CGRect leftFlakeFrame = self.leftFlake.frame;
+    leftFlakeFrame.origin.x= leftFlakeX;
+    leftFlakeFrame.origin.y = leftFlakeY;
+
+    self.rightFlake.frame = rightFlakeFrame;
+    self.leftFlake.frame = leftFlakeFrame;
+
+    refreshBounds.size.height = pullDistance;
+    self.refreshColorView.frame = refreshBounds;
+    self.refreshLoadingView.frame = refreshBounds;
+
+    if (self.refreshControl.isRefreshing && !self.isAnimating)
+    {
+        [self animateRefreshView];
+    }
+}
+
+
+- (void)animateRefreshView
+{
+    NSArray *colorArray = @[[UIColor redColor],[UIColor blueColor],[UIColor purpleColor],[UIColor cyanColor],[UIColor orangeColor],[UIColor magentaColor]];
+    static int colorIndex = 0;
+    self.isAnimating = YES;
+
+    [UIView animateWithDuration:0.6
+                          delay:0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self.leftFlake setTransform:CGAffineTransformRotate(self.leftFlake.transform, M_PI_2)];
+                         [self.rightFlake setTransform:CGAffineTransformRotate(self.rightFlake.transform, -M_PI_2)];
+                         self.refreshColorView.backgroundColor = [colorArray objectAtIndex:colorIndex];
+                         colorIndex = (colorIndex + 1) % colorArray.count;
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         if (self.refreshControl.isRefreshing)
+                         {
+                             [self animateRefreshView];
+                         }
+                         else
+                         {
+                             [self resetAnimation];
+                         }
+                     }];
+}
+
+
+- (void)resetAnimation
+{
+    self.isAnimating = NO;
+    self.isFlakesOverlap = NO;
+    self.refreshColorView.backgroundColor = [UIColor blueColor];
+}
+
+
+#pragma mark - Actions
 
 - (IBAction)createPostButtonPressed:(UIBarButtonItem *)button
 {
@@ -227,6 +364,8 @@
         [self performSegueWithIdentifier:@"loginFirst" sender:self];
     }
 }
+
+#pragma mark - Prepare for segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
