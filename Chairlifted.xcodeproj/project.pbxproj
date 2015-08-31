@@ -12,6 +12,8 @@
 		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
 		96FBDC211B94060200FEB799 /* DismissingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC201B94060200FEB799 /* DismissingAnimationController.m */; };
 		96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC231B94061500FEB799 /* PresentingAnimationController.m */; };
+		96FBDC2A1B940DB800FEB799 /* CommentPresentingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC291B940DB800FEB799 /* CommentPresentingAnimation.m */; };
+		96FBDC2D1B940DCD00FEB799 /* CommentDismissingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC2C1B940DCD00FEB799 /* CommentDismissingAnimation.m */; };
 		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
@@ -105,6 +107,10 @@
 		96FBDC201B94060200FEB799 /* DismissingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissingAnimationController.m; sourceTree = "<group>"; };
 		96FBDC221B94061500FEB799 /* PresentingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingAnimationController.h; sourceTree = "<group>"; };
 		96FBDC231B94061500FEB799 /* PresentingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentingAnimationController.m; sourceTree = "<group>"; };
+		96FBDC281B940DB800FEB799 /* CommentPresentingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentPresentingAnimation.h; sourceTree = "<group>"; };
+		96FBDC291B940DB800FEB799 /* CommentPresentingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentPresentingAnimation.m; sourceTree = "<group>"; };
+		96FBDC2B1B940DCD00FEB799 /* CommentDismissingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDismissingAnimation.h; sourceTree = "<group>"; };
+		96FBDC2C1B940DCD00FEB799 /* CommentDismissingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDismissingAnimation.m; sourceTree = "<group>"; };
 		BA215E181B8787170087DBEB /* GroupFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedViewController.h; sourceTree = "<group>"; };
 		BA215E191B8787170087DBEB /* GroupFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedViewController.m; sourceTree = "<group>"; };
 		BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedHeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -289,12 +295,54 @@
 		96FBDC251B94061800FEB799 /* Pop Models */ = {
 			isa = PBXGroup;
 			children = (
-				96FBDC1F1B94060200FEB799 /* DismissingAnimationController.h */,
-				96FBDC201B94060200FEB799 /* DismissingAnimationController.m */,
 				96FBDC221B94061500FEB799 /* PresentingAnimationController.h */,
 				96FBDC231B94061500FEB799 /* PresentingAnimationController.m */,
+				96FBDC1F1B94060200FEB799 /* DismissingAnimationController.h */,
+				96FBDC201B94060200FEB799 /* DismissingAnimationController.m */,
+				96FBDC281B940DB800FEB799 /* CommentPresentingAnimation.h */,
+				96FBDC291B940DB800FEB799 /* CommentPresentingAnimation.m */,
+				96FBDC2B1B940DCD00FEB799 /* CommentDismissingAnimation.h */,
+				96FBDC2C1B940DCD00FEB799 /* CommentDismissingAnimation.m */,
 			);
 			name = "Pop Models";
+			sourceTree = "<group>";
+		};
+		96FBDC261B940D5F00FEB799 /* Parse Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA6F8C561B8280B90083E71E /* User.h */,
+				BA6F8C571B8280B90083E71E /* User.m */,
+				BA6F8C591B8280D50083E71E /* Run.h */,
+				BA6F8C5A1B8280D50083E71E /* Run.m */,
+				BA6F8C5C1B8280E50083E71E /* Post.h */,
+				BA6F8C5D1B8280E50083E71E /* Post.m */,
+				BAE3D1951B853B2800BAC4EF /* Like.h */,
+				BAE3D1961B853B2800BAC4EF /* Like.m */,
+				BA6F8C5F1B8280F70083E71E /* Comment.h */,
+				BA6F8C601B8280F70083E71E /* Comment.m */,
+				BA757BFB1B84EC0100394195 /* Resort.h */,
+				BA757BFC1B84EC0100394195 /* Resort.m */,
+				BAE3D1981B86850F00BAC4EF /* PostTopic.h */,
+				BAE3D1991B86850F00BAC4EF /* PostTopic.m */,
+				BAE3D19B1B869B5700BAC4EF /* Group.h */,
+				BAE3D19C1B869B5700BAC4EF /* Group.m */,
+				BAE3D19E1B86A7D300BAC4EF /* JoinGroup.h */,
+				BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */,
+			);
+			name = "Parse Models";
+			sourceTree = "<group>";
+		};
+		96FBDC271B940D8C00FEB799 /* UIAlertViewController Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
+				BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */,
+				FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */,
+				FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */,
+				FE83A95C1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.h */,
+				FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */,
+			);
+			name = "UIAlertViewController Models";
 			sourceTree = "<group>";
 		};
 		BA6F8C041B8253270083E71E = {
@@ -363,32 +411,10 @@
 		BA6F8C621B8281000083E71E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BA6F8C561B8280B90083E71E /* User.h */,
-				BA6F8C571B8280B90083E71E /* User.m */,
-				BA6F8C591B8280D50083E71E /* Run.h */,
-				BA6F8C5A1B8280D50083E71E /* Run.m */,
-				BA6F8C5C1B8280E50083E71E /* Post.h */,
-				BA6F8C5D1B8280E50083E71E /* Post.m */,
-				BAE3D1951B853B2800BAC4EF /* Like.h */,
-				BAE3D1961B853B2800BAC4EF /* Like.m */,
-				BA6F8C5F1B8280F70083E71E /* Comment.h */,
-				BA6F8C601B8280F70083E71E /* Comment.m */,
-				BA757BFB1B84EC0100394195 /* Resort.h */,
-				BA757BFC1B84EC0100394195 /* Resort.m */,
-				BAE3D1981B86850F00BAC4EF /* PostTopic.h */,
-				BAE3D1991B86850F00BAC4EF /* PostTopic.m */,
-				BAE3D19B1B869B5700BAC4EF /* Group.h */,
-				BAE3D19C1B869B5700BAC4EF /* Group.m */,
-				BAE3D19E1B86A7D300BAC4EF /* JoinGroup.h */,
-				BAE3D19F1B86A7D300BAC4EF /* JoinGroup.m */,
+				96FBDC261B940D5F00FEB799 /* Parse Models */,
 				BA6F8C701B8296640083E71E /* NetworkRequests.h */,
 				BA6F8C711B8296640083E71E /* NetworkRequests.m */,
-				BA6F8C761B82C7E10083E71E /* UIAlertController+UIImagePicker.h */,
-				BA6F8C771B82C7E10083E71E /* UIAlertController+UIImagePicker.m */,
-				FE8CC9FF1B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.h */,
-				FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */,
-				FE83A95C1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.h */,
-				FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */,
+				96FBDC271B940D8C00FEB799 /* UIAlertViewController Models */,
 				BA6F8C7C1B83A0D00083E71E /* NSDate+TimePassage.h */,
 				BA6F8C7D1B83A0D00083E71E /* NSDate+TimePassage.m */,
 				BA88E74C1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.h */,
@@ -623,6 +649,7 @@
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
 				BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */,
+				96FBDC2D1B940DCD00FEB799 /* CommentDismissingAnimation.m in Sources */,
 				BA6F8C851B8413000083E71E /* DetailHeaderTableViewCell.m in Sources */,
 				96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */,
 				BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */,
@@ -667,6 +694,7 @@
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,
 				BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */,
 				BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */,
+				96FBDC2A1B940DB800FEB799 /* CommentPresentingAnimation.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
 				BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */,
 			);

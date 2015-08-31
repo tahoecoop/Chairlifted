@@ -22,13 +22,16 @@
 #import "UIImageView+SpinningFigure.h"
 #import "UIAlertController+ReportInappropriate.h"
 #import <MessageUI/MessageUI.h>
+#import "CommentPresentingAnimation.h"
+#import "CommentDismissingAnimation.h"
+#import "CreateCommentWithTextViewController.h"
+#import "CreateCommentWithImageViewController.h"
+#import <pop/POP.h>
 
 
 
+@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, UIViewControllerAnimatedTransitioning>
 
-@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray *comments;
 @property (nonatomic)int skipCount;
 
@@ -47,6 +50,17 @@
     self.skipCount = 30;
 }
 
+
+- (void)setupComments:(UIView *)activityView
+{
+    [NetworkRequests getPostComments:self.post withSkipCount:0 andCompletion:^(NSArray *array)
+     {
+         self.comments = [NSMutableArray arrayWithArray:array];
+         [activityView removeFromSuperview];
+         [self.tableView reloadData];
+     }];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -57,19 +71,27 @@
     [self.view addSubview:activityView];
     [spinnerImageView rotateLayerInfinite];
 
-
-    [NetworkRequests getPostComments:self.post withSkipCount:0 andCompletion:^(NSArray *array)
-     {
-         self.comments = [NSMutableArray arrayWithArray:array];
-         [activityView removeFromSuperview];
-         [self.tableView reloadData];
-     }];
+    [self setupComments:activityView];
+    [self.tableView reloadData];
 
 }
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    [self.tableView reloadData];
-//}
+
+#pragma mark - Pop Related Methods
+
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [[CommentPresentingAnimation alloc] init];
+}
+
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [[CommentDismissingAnimation alloc] init];
+}
+
+
+
 
 #pragma mark - Table View Methods
 
@@ -103,8 +125,6 @@
              {
                  cell.postImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
                  cell.postImageView.image = [UIImage imageWithData:data scale:1.0];
-//                 cell.postText.frame = CGRectMake(8, cell.postImageView.frame.origin.y + cell.postImageView.frame.size.height + 8, self.view.frame.size.width - 16, 20);
-
              }];
             
             return cell;
@@ -214,11 +234,22 @@
     {
         if (self.post.image)
         {
-            [self performSegueWithIdentifier:@"photoSegue" sender:button];
+            CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
+            modalVC.transitioningDelegate = self;
+            modalVC.modalPresentationStyle = UIModalPresentationCustom;
+            modalVC.post = self.post;
+
+            [self presentViewController:modalVC animated:YES completion:nil];
+
         }
         else
         {
-            [self performSegueWithIdentifier:@"textSegue" sender:button];
+            CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
+            modalVC.transitioningDelegate = self;
+            modalVC.modalPresentationStyle = UIModalPresentationCustom;
+            modalVC.post = self.post;
+
+            [self presentViewController:modalVC animated:YES completion:nil];
         }
     }
     else
