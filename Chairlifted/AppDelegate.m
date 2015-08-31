@@ -72,9 +72,30 @@
 
     User *user = [User currentUser];
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    UITabBarItem *tabBarItem = [[tabBarController.tabBar items] objectAtIndex:3];
-    [tabBarItem setImage:[UIImage returnSkierOrSnowboarderImage:[user.isSnowboarder boolValue]]];
-    tabBarItem.title = @"Profile";
+    tabBarController.tabBar.tintColor = [UIColor lightGrayColor];
+
+    UITabBarItem *tabBarFeed = [[tabBarController.tabBar items] objectAtIndex:0];
+    [tabBarFeed setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:75.0/255.0 green:171.0/255.0 blue:253.0/255.0  alpha:1.0]} forState:UIControlStateSelected];
+    tabBarFeed.selectedImage = [[UIImage imageNamed:@"FeedSelected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarFeed.image = [[UIImage imageNamed:@"FeedUnselected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    UITabBarItem *tabBarDiscover = [[tabBarController.tabBar items] objectAtIndex:1];
+    [tabBarDiscover setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:140.0/255.0 green:1.0/255.0 blue:240.0/255.0  alpha:1.0]} forState:UIControlStateSelected];
+    tabBarDiscover.selectedImage = [[UIImage imageNamed:@"DiscoverSelected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarDiscover.image = [[UIImage imageNamed:@"DiscoverUnselected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+
+    UITabBarItem *tabBarGroups = [[tabBarController.tabBar items] objectAtIndex:2];
+    [tabBarGroups setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.0/255.0 green:64.0/255.0 blue:128.0/255.0  alpha:1.0]} forState:UIControlStateSelected];
+    tabBarGroups.selectedImage = [[UIImage imageNamed:@"GroupsSelected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarGroups.image = [[UIImage imageNamed:@"GroupsUnselected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    UITabBarItem *tabBarProfile = [[tabBarController.tabBar items] objectAtIndex:3];
+     [tabBarProfile setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:174.0/255.0 green:16.0/255.0 blue:13.0/255.0  alpha:1.0]} forState:UIControlStateSelected];
+    tabBarProfile.selectedImage = [[UIImage imageNamed:@"ProfileSelected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarProfile.image = [[UIImage imageNamed:@"ProfileUnselected.pdf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+
 
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

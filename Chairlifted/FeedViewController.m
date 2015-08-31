@@ -77,7 +77,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:75.0/255.0 green:171.0/255.0 blue:253.0/255.0  alpha:1.0];
     [self retrievePosts];
 
 }

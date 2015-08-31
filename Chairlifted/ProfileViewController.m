@@ -53,7 +53,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:174.0/255.0 green:16.0/255.0 blue:13.0/255.0  alpha:1.0];
+    
 }
 
 - (void)setUpUser
