@@ -3448,43 +3448,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqQ-I2-OzZ" customClass="PPEmitterView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJU-pq-aLR">
-                                        <rect key="frame" x="137" y="343" width="46" height="30"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onCancelButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="B5C-qo-Mv0"/>
-                                            <action selector="onCreateUserButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="Cqn-OI-oak"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="lJU-pq-aLR" secondAttribute="centerX" id="Kwo-Kv-E7N"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gs7-Mq-EH6">
-                                <rect key="frame" x="16" y="185" width="288" height="30"/>
+                                <rect key="frame" x="16" y="162" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-Rc-MGd">
-                                <rect key="frame" x="16" y="251" width="288" height="30"/>
+                                <rect key="frame" x="16" y="220" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fu-uR-ASh">
-                                <rect key="frame" x="122" y="307" width="76" height="30"/>
+                                <rect key="frame" x="122" y="267" width="76" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
                                 <state key="normal" title="Create User">
@@ -3495,32 +3472,48 @@
                                     <action selector="onCreateUserButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="cY9-hI-vaN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CP8-BN-7WV">
+                                <rect key="frame" x="138" y="305" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCancelButtonPressed:" destination="YTn-kz-ggW" eventType="touchUpInside" id="0hP-ep-wi8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Your User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFE-nv-Y0b">
+                                <rect key="frame" x="53" y="60" width="215.5" height="36"/>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-qu-ewW">
-                                <rect key="frame" x="16" y="116" width="288" height="30"/>
+                                <rect key="frame" x="16" y="104" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.76357653039999995" green="0.87125576240000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.32484576003880783" blue="0.26824199032506335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YqQ-I2-OzZ" secondAttribute="trailing" id="2So-5X-kIm"/>
+                            <constraint firstAttribute="centerX" secondItem="CP8-BN-7WV" secondAttribute="centerX" constant="-1" id="2b8-rk-AMN"/>
                             <constraint firstItem="gs7-Mq-EH6" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="5g4-V8-XbE"/>
                             <constraint firstItem="vtW-Rc-MGd" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leadingMargin" id="BVI-nv-t45"/>
-                            <constraint firstItem="YqQ-I2-OzZ" firstAttribute="top" secondItem="s5q-cy-WVD" secondAttribute="top" id="FUA-Hm-yqF"/>
+                            <constraint firstItem="YBd-qu-ewW" firstAttribute="top" secondItem="qFE-nv-Y0b" secondAttribute="bottom" constant="8" id="Dsg-Mh-Zny"/>
                             <constraint firstItem="gs7-Mq-EH6" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leadingMargin" id="IbF-8h-d8y"/>
                             <constraint firstItem="YBd-qu-ewW" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leadingMargin" id="JLn-Wz-nsh"/>
-                            <constraint firstItem="Nql-bn-yWq" firstAttribute="top" secondItem="YqQ-I2-OzZ" secondAttribute="bottom" id="Krc-EF-srt"/>
                             <constraint firstItem="YBd-qu-ewW" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="N76-U3-AeJ"/>
-                            <constraint firstItem="Nql-bn-yWq" firstAttribute="top" secondItem="3fu-uR-ASh" secondAttribute="bottom" constant="231" id="aNh-Cp-ifS"/>
+                            <constraint firstItem="qFE-nv-Y0b" firstAttribute="top" secondItem="jq7-Oy-7Lw" secondAttribute="bottom" constant="40" id="TB1-wt-OTU"/>
+                            <constraint firstItem="CP8-BN-7WV" firstAttribute="top" secondItem="3fu-uR-ASh" secondAttribute="bottom" constant="8" id="a28-gi-TSn"/>
                             <constraint firstItem="vtW-Rc-MGd" firstAttribute="trailing" secondItem="s5q-cy-WVD" secondAttribute="trailingMargin" id="c6Q-KY-0lE"/>
-                            <constraint firstItem="vtW-Rc-MGd" firstAttribute="top" secondItem="gs7-Mq-EH6" secondAttribute="bottom" constant="36" id="oSh-Kc-KOG"/>
+                            <constraint firstItem="3fu-uR-ASh" firstAttribute="top" secondItem="vtW-Rc-MGd" secondAttribute="bottom" constant="17" id="mjB-Ml-zKV"/>
+                            <constraint firstAttribute="centerX" secondItem="qFE-nv-Y0b" secondAttribute="centerX" constant="-0.75" id="mli-9y-RWD"/>
                             <constraint firstAttribute="centerX" secondItem="3fu-uR-ASh" secondAttribute="centerX" id="rIK-nT-DUe"/>
-                            <constraint firstItem="3fu-uR-ASh" firstAttribute="top" secondItem="vtW-Rc-MGd" secondAttribute="bottom" constant="26" id="tHt-Ck-K0l"/>
-                            <constraint firstItem="lJU-pq-aLR" firstAttribute="top" secondItem="3fu-uR-ASh" secondAttribute="bottom" constant="6" id="tdL-7n-mVM"/>
-                            <constraint firstItem="YqQ-I2-OzZ" firstAttribute="leading" secondItem="s5q-cy-WVD" secondAttribute="leading" id="uH9-WO-JQQ"/>
-                            <constraint firstItem="gs7-Mq-EH6" firstAttribute="top" secondItem="YBd-qu-ewW" secondAttribute="bottom" constant="39" id="zIl-J4-R7C"/>
+                            <constraint firstItem="vtW-Rc-MGd" firstAttribute="top" secondItem="gs7-Mq-EH6" secondAttribute="bottom" constant="28" id="wLO-JA-hxh"/>
+                            <constraint firstItem="gs7-Mq-EH6" firstAttribute="top" secondItem="YBd-qu-ewW" secondAttribute="bottom" constant="28" id="ya6-5j-IIp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2QY-BC-xch"/>

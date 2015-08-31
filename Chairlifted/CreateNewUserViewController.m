@@ -32,6 +32,8 @@
     self.passwordTextField.delegate = self;
     self.emailTextField.delegate = self;
 
+    self.view.layer.cornerRadius = 10.f;
+
     // Do any additional setup after loading the view.
 
 }
