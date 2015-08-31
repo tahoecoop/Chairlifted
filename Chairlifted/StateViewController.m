@@ -36,6 +36,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.textLabel.text = self.states[indexPath.row];
+//    cell.textLabel.font = 
     return cell;
 }
 

@@ -24,13 +24,13 @@
 @property (nonatomic) NSMutableArray *posts;
 @property (nonatomic) CustomFeedTableViewCell *prototypeCell;
 @property (nonatomic) CustomFeedWithPhotoTableViewCell *photoPrototypeCell;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+//@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 
 // Pull to refresh properties
-@property (nonatomic) UIRefreshControl *refreshControl;
+//@property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) UIView *refreshLoadingView;
 @property (nonatomic, strong) UIView *refreshColorView;
 @property (nonatomic, strong) UIImageView *rightFlake;
@@ -55,7 +55,7 @@
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
     [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self setupRefreshControl];
 }
 
@@ -77,8 +77,12 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:75.0/255.0 green:171.0/255.0 blue:253.0/255.0  alpha:1.0];
+    [self retrievePosts];
 
+}
+
+- (void)retrievePosts
+{
     self.skipCount = 30;
     [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
      {
@@ -87,7 +91,6 @@
      }];
 
 }
-
 
 #pragma mark - Parse Delegate Methods
 
@@ -225,6 +228,21 @@
     return _photoPrototypeCell;
 }
 
+
+#pragma mark - Actions
+
+- (IBAction)createPostButtonPressed:(UIBarButtonItem *)button
+{
+    if ([User currentUser])
+    {
+        [self performSegueWithIdentifier:@"createPost" sender:button];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"loginFirst" sender:self];
+    }
+}
+
 #pragma mark - Pull to refresh methods
 
 - (void)setupRefreshControl
@@ -255,8 +273,17 @@
 
 - (void)refresh:(id)sender
 {
-    [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+                   {
+                       self.skipCount = 30;
+                       [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
+                        {
+                            self.posts = [NSMutableArray arrayWithArray:array];
+                            [self.refreshControl endRefreshing];
+                        }];
+                   });
 }
 
 
@@ -320,7 +347,7 @@
     static int colorIndex = 0;
     self.isAnimating = YES;
 
-    [UIView animateWithDuration:0.6
+    [UIView animateWithDuration:0.5
                           delay:0
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
@@ -330,16 +357,18 @@
                          colorIndex = (colorIndex + 1) % colorArray.count;
                      }
                      completion:^(BOOL finished)
-                     {
-                         if (self.refreshControl.isRefreshing)
-                         {
-                             [self animateRefreshView];
-                         }
-                         else
-                         {
-                             [self resetAnimation];
-                         }
-                     }];
+     {
+         if (self.refreshControl.isRefreshing)
+         {
+             [self animateRefreshView];
+         }
+         else
+         {
+             [self resetAnimation];
+             [self.tableView reloadData];
+
+         }
+     }];
 }
 
 
@@ -351,19 +380,7 @@
 }
 
 
-#pragma mark - Actions
 
-- (IBAction)createPostButtonPressed:(UIBarButtonItem *)button
-{
-    if ([User currentUser])
-    {
-        [self performSegueWithIdentifier:@"createPost" sender:button];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"loginFirst" sender:self];
-    }
-}
 
 #pragma mark - Prepare for segue
 

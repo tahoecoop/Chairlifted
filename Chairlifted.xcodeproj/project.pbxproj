@@ -70,6 +70,8 @@
 		BAC93D1C1B89646800697FEA /* ChooseResortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC93D1B1B89646800697FEA /* ChooseResortViewController.m */; };
 		BAD5753A1B8FEFAD000FB31F /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD575391B8FEFAD000FB31F /* DiscoverViewController.m */; };
 		BAD5753D1B900094000FB31F /* TopicsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */; };
+		BAD575441B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD575431B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.m */; };
+		BAD575471B94C560000FB31F /* CustomAnimationRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD575461B94C560000FB31F /* CustomAnimationRefresh.m */; };
 		BAE3D1971B853B2800BAC4EF /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1961B853B2800BAC4EF /* Like.m */; };
 		BAE3D19A1B86850F00BAC4EF /* PostTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D1991B86850F00BAC4EF /* PostTopic.m */; };
 		BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE3D19C1B869B5700BAC4EF /* Group.m */; };
@@ -209,6 +211,10 @@
 		BAD575391B8FEFAD000FB31F /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		BAD5753B1B900094000FB31F /* TopicsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicsFeedViewController.h; sourceTree = "<group>"; };
 		BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicsFeedViewController.m; sourceTree = "<group>"; };
+		BAD575421B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+CustomAnimation.h"; sourceTree = "<group>"; };
+		BAD575431B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+CustomAnimation.m"; sourceTree = "<group>"; };
+		BAD575451B94C560000FB31F /* CustomAnimationRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnimationRefresh.h; sourceTree = "<group>"; };
+		BAD575461B94C560000FB31F /* CustomAnimationRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnimationRefresh.m; sourceTree = "<group>"; };
 		BAE3D1951B853B2800BAC4EF /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
 		BAE3D1961B853B2800BAC4EF /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
 		BAE3D1981B86850F00BAC4EF /* PostTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTopic.h; sourceTree = "<group>"; };
@@ -426,6 +432,10 @@
 				BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */,
 				BA88E7521B8D1B74006D3CE6 /* UIImageView+SpinningFigure.h */,
 				BA88E7531B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m */,
+				BAD575421B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.h */,
+				BAD575431B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.m */,
+				BAD575451B94C560000FB31F /* CustomAnimationRefresh.h */,
+				BAD575461B94C560000FB31F /* CustomAnimationRefresh.m */,
 				96FBDC251B94061800FEB799 /* Pop Models */,
 			);
 			name = Model;
@@ -673,6 +683,7 @@
 				BA6F8C8E1B8413420083E71E /* DetailActionTableViewCell.m in Sources */,
 				BAC93D161B8920B600697FEA /* SearchViewController.m in Sources */,
 				BA6F8C5B1B8280D50083E71E /* Run.m in Sources */,
+				BAD575471B94C560000FB31F /* CustomAnimationRefresh.m in Sources */,
 				BAE3D19D1B869B5700BAC4EF /* Group.m in Sources */,
 				BA6F8C811B8404460083E71E /* CustomFeedWithPhotoTableViewCell.m in Sources */,
 				BA88E74E1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m in Sources */,
@@ -683,6 +694,7 @@
 				BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */,
 				BA6F8C1C1B8253280083E71E /* FeedViewController.m in Sources */,
 				96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */,
+				BAD575441B94C3C9000FB31F /* UIRefreshControl+CustomAnimation.m in Sources */,
 				FE8CCA011B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m in Sources */,
 				BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */,
 				96FBDC211B94060200FEB799 /* DismissingAnimationController.m in Sources */,

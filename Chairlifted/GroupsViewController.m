@@ -45,8 +45,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.0/255.0 green:64.0/255.0 blue:128.0/255.0  alpha:1.0];
-
     if ([User currentUser])
     {
         if (!self.myGroups)
@@ -80,10 +78,6 @@
         {
             self.segControl.hidden = YES;
             [self performSegueWithIdentifier:@"loginBeforeGroups" sender:self];
-        }
-        else
-        {
-            self.segControl.hidden = NO;
         }
     }
 }

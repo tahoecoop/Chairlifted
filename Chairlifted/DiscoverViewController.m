@@ -50,8 +50,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:64.0/255.0  alpha:1.0];
-
     if (!self.topics)
     {
         UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
