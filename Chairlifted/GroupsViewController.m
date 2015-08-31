@@ -81,10 +81,6 @@
             self.segControl.hidden = YES;
             [self performSegueWithIdentifier:@"loginBeforeGroups" sender:self];
         }
-        else
-        {
-            self.segControl.hidden = NO;
-        }
     }
 }
 
