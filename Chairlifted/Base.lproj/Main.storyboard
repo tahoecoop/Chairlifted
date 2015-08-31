@@ -2676,7 +2676,7 @@
                                     <segment title="Mountains"/>
                                     <segment title="Search"/>
                                 </segments>
-                                <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.55090213830000001" green="0.0055091739470000001" blue="0.93939393940000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="onSegControlToggle:" destination="NJT-Hf-MmZ" eventType="valueChanged" id="e6z-qb-VCu"/>
                                 </connections>
@@ -2809,7 +2809,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="r48-Y5-y8F" secondAttribute="trailing" constant="6" id="uAS-ah-jvA"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.55090213830394308" green="0.0055091739471036334" blue="0.93939393939393945" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="authorLabel" destination="NJf-or-AIA" id="vWK-Y2-Xg0"/>
@@ -2919,7 +2919,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="2to-St-kMD" secondAttribute="trailing" constant="6" id="ocS-k0-maQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.55090213830394308" green="0.0055091739471036334" blue="0.93939393939393945" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="authorLabel" destination="w4t-cY-Vud" id="vpK-aK-wmx"/>
                                             <outlet property="likesLabel" destination="2S0-sj-SQA" id="wuX-VI-jp0"/>
@@ -3080,7 +3080,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="N5L-es-alX" secondAttribute="bottom" constant="3" id="hb8-Dv-BdM"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.55090213830000001" green="0.0055091739470000001" blue="0.93939393940000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="authorLabel" destination="Evu-A1-c1A" id="hcH-Bs-bw9"/>
                                             <outlet property="likesLabel" destination="v2d-wX-eKz" id="ckS-KN-JKo"/>
@@ -3180,7 +3180,7 @@
                                                 <constraint firstItem="4ZQ-vq-9DC" firstAttribute="top" secondItem="m8K-Ky-eq5" secondAttribute="top" constant="3" id="ikn-7l-SNQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.55090213830000001" green="0.0055091739470000001" blue="0.93939393940000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="authorLabel" destination="hIh-bG-ubM" id="OiQ-Hf-kO1"/>
@@ -5110,7 +5110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.55090213830000001" green="0.0055091739470000001" blue="0.93939393940000004" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
