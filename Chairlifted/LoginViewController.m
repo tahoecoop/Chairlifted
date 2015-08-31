@@ -15,6 +15,9 @@
 #import "UIAlertController+ErrorAlert.h"
 #import "NetworkRequests.h"
 #import "UIAlertController+ErrorAlert.h"
+#import "PresentingAnimationController.h"
+#import "DismissingAnimationController.h"
+#import "CreateNewUserViewController.h"
 
 
 @interface LoginViewController ()
@@ -52,6 +55,30 @@
 
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
+}
+
+
+- (IBAction)didClickOnPresent:(id)sender {
+
+    CreateNewUserViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createNewUser"];
+
+    modalVC.transitioningDelegate = self;
+
+    modalVC.modalPresentationStyle = UIModalPresentationCustom;
+
+    [self presentViewController:modalVC animated:YES completion:nil];
+}
+
+#pragma mark - UIViewControllerTransitionDelegate -
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [[PresentingAnimationController alloc] init];
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [[DismissingAnimationController alloc] init];
 }
 
 
