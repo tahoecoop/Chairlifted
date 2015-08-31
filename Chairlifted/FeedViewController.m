@@ -55,7 +55,7 @@
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
     [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self setupRefreshControl];
 }
 
