@@ -10,7 +10,6 @@
 #import "Post.h"
 
 @interface CreateCommentWithImageViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *postTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postBodyLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commentImageView;

@@ -50,7 +50,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:64.0/255.0  alpha:1.0];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:140.0/255.0 green:1.0/255.0 blue:240.0/255.0  alpha:1.0];
 
     if (!self.topics)
     {

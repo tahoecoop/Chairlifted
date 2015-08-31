@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
     [self setUpPostInComments];
+    self.textView.layer.cornerRadius = 10.f;
 
 }
 
@@ -30,7 +31,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
+- (IBAction)onSaveButtonPressed:(UIButton *)sender
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
@@ -45,8 +46,6 @@
     comment.text = self.textView.text;
     comment.author = [User currentUser];
     comment.post = self.post;
-
-//    [self.post.comments addObject:comment];
     [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (succeeded)
@@ -77,8 +76,8 @@
               }];
          }
      }];
+    
 }
-
 - (void)setUpPostInComments
 {
     self.postTitleLabel.text = self.post.title;

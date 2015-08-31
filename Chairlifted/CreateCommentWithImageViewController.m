@@ -10,8 +10,16 @@
 #import "Comment.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "PresentingAnimationController.h"
+#import "DismissingAnimationController.h"
+#import <pop/POP.h>
+#import "PostDetailViewController.h"
 
 @interface CreateCommentWithImageViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -21,16 +29,28 @@
 {
     [super viewDidLoad];
     [self setUpPostInComments];
-    // Do any additional setup after loading the view.
+    self.view.layer.cornerRadius = 10.f;
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.cancelButton.layer.cornerRadius = 10.f;
+    [self.cancelButton setBackgroundColor:[UIColor redColor]];
+
+    self.postButton.layer.cornerRadius = 10.f;
+    [self.postButton setBackgroundColor:[UIColor greenColor]];
+
+    self.textView.layer.cornerRadius = 5.f;
 }
 
 
-- (IBAction)onCancelButtonPressed:(UIBarButtonItem *)sender
+- (IBAction)cancelButtonPressed:(UIButton *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
+- (IBAction)onSaveButtonPressed:(UIButton *)sender
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
@@ -90,4 +110,6 @@
      }];
     [self.textView becomeFirstResponder];
 }
+
+
 @end

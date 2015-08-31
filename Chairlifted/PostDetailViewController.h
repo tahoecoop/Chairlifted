@@ -11,6 +11,7 @@
 
 @interface PostDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) Post *post;
 
 @end
