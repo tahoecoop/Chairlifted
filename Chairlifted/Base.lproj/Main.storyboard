@@ -3359,7 +3359,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="YTn-kz-ggW" kind="modal" id="vom-FD-Sr7"/>
+                                            <action selector="didClickOnPresent:" destination="tXg-Zz-ck9" eventType="touchUpInside" id="3qI-5m-4uP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1K-Nr-Nqs">
@@ -3439,7 +3439,7 @@
         <!--Create New User View Controller-->
         <scene sceneID="9DP-Wi-aM8">
             <objects>
-                <viewController id="YTn-kz-ggW" customClass="CreateNewUserViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createNewUser" id="YTn-kz-ggW" customClass="CreateNewUserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jq7-Oy-7Lw"/>
                         <viewControllerLayoutGuide type="bottom" id="Nql-bn-yWq"/>

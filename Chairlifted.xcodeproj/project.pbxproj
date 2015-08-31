@@ -10,6 +10,8 @@
 		96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */; };
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
 		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
+		96FBDC211B94060200FEB799 /* DismissingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC201B94060200FEB799 /* DismissingAnimationController.m */; };
+		96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC231B94061500FEB799 /* PresentingAnimationController.m */; };
 		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
@@ -99,6 +101,10 @@
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		96FBDC1F1B94060200FEB799 /* DismissingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissingAnimationController.h; sourceTree = "<group>"; };
+		96FBDC201B94060200FEB799 /* DismissingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissingAnimationController.m; sourceTree = "<group>"; };
+		96FBDC221B94061500FEB799 /* PresentingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingAnimationController.h; sourceTree = "<group>"; };
+		96FBDC231B94061500FEB799 /* PresentingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentingAnimationController.m; sourceTree = "<group>"; };
 		BA215E181B8787170087DBEB /* GroupFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedViewController.h; sourceTree = "<group>"; };
 		BA215E191B8787170087DBEB /* GroupFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedViewController.m; sourceTree = "<group>"; };
 		BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedHeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -280,6 +286,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		96FBDC251B94061800FEB799 /* Pop Models */ = {
+			isa = PBXGroup;
+			children = (
+				96FBDC1F1B94060200FEB799 /* DismissingAnimationController.h */,
+				96FBDC201B94060200FEB799 /* DismissingAnimationController.m */,
+				96FBDC221B94061500FEB799 /* PresentingAnimationController.h */,
+				96FBDC231B94061500FEB799 /* PresentingAnimationController.m */,
+			);
+			name = "Pop Models";
+			sourceTree = "<group>";
+		};
 		BA6F8C041B8253270083E71E = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +395,7 @@
 				BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */,
 				BA88E7521B8D1B74006D3CE6 /* UIImageView+SpinningFigure.h */,
 				BA88E7531B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m */,
+				96FBDC251B94061800FEB799 /* Pop Models */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -606,6 +624,7 @@
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
 				BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */,
 				BA6F8C851B8413000083E71E /* DetailHeaderTableViewCell.m in Sources */,
+				96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */,
 				BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */,
 				BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */,
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
@@ -634,6 +653,7 @@
 				96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */,
 				FE8CCA011B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m in Sources */,
 				BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */,
+				96FBDC211B94060200FEB799 /* DismissingAnimationController.m in Sources */,
 				BA6F8C8B1B84132E0083E71E /* DetailPostTextOnlyTableViewCell.m in Sources */,
 				BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */,
 				BA757BFD1B84EC0100394195 /* Resort.m in Sources */,
