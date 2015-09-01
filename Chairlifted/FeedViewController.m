@@ -27,7 +27,7 @@
 //@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
-@property (weak, nonatomic) IBOutlet UIView *cardView;
+@property (nonatomic) SortSelection sortSelection;
 
 // Pull to refresh properties
 //@property (nonatomic) UIRefreshControl *refreshControl;
@@ -57,6 +57,7 @@
     [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self setupRefreshControl];
+    self.sortSelection = SortSelectionHottest;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -84,7 +85,7 @@
 - (void)retrievePosts
 {
     self.skipCount = 30;
-    [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 fromGroup:nil sortedBy:self.sortSelection andIsPrivate:NO completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.tableView reloadData];
@@ -200,7 +201,7 @@
     
     if (indexPath.row == self.skipCount - 5)
     {
-        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
+        [NetworkRequests getPostsWithSkipCount:self.skipCount fromGroup:nil sortedBy:self.sortSelection andIsPrivate:NO completion:^(NSArray *array)
         {
              [self.posts addObjectsFromArray:array];
              self.skipCount = self.skipCount + 30;
@@ -276,14 +277,14 @@
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-                   {
-                       self.skipCount = 30;
-                       [NetworkRequests getPostsWithSkipCount:0 andGroup:nil andIsPrivate:NO completion:^(NSArray *array)
-                        {
-                            self.posts = [NSMutableArray arrayWithArray:array];
-                            [self.refreshControl endRefreshing];
-                        }];
-                   });
+   {
+       self.skipCount = 30;
+       [NetworkRequests getPostsWithSkipCount:0 fromGroup:nil sortedBy:self.sortSelection andIsPrivate:NO completion:^(NSArray *array)
+        {
+            self.posts = [NSMutableArray arrayWithArray:array];
+            [self.refreshControl endRefreshing];
+        }];
+   });
 }
 
 
@@ -379,6 +380,42 @@
     self.refreshColorView.backgroundColor = [UIColor blueColor];
 }
 
+- (IBAction)onSortButtonPressed:(UIBarButtonItem *)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sort feed by:" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *hottest = [UIAlertAction actionWithTitle:@"Hottest" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    {
+        self.sortSelection = SortSelectionHottest;
+        [self retrievePosts];
+    }];
+    UIAlertAction *newest = [UIAlertAction actionWithTitle:@"Most Recent" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    {
+        self.sortSelection = SortSelectionNewest;
+        [self retrievePosts];
+    }];
+    UIAlertAction *mostLiked = [UIAlertAction actionWithTitle:@"Most ❤️s" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    {
+        self.sortSelection = SortSelectionMostLikes;
+        [self retrievePosts];
+    }];
+    UIAlertAction *mostComments = [UIAlertAction actionWithTitle:@"Most 💬s" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    {
+        self.sortSelection = SortSelectionMostComments;
+        [self retrievePosts];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+    {
+        [alert dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    [alert addAction:hottest];
+    [alert addAction:newest];
+    [alert addAction:mostLiked];
+    [alert addAction:mostComments];
+    [alert addAction:cancel];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 
 

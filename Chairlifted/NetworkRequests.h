@@ -15,9 +15,18 @@
 #import "Resort.h"
 #import "UIAlertController+ErrorAlert.h"
 
+typedef NS_ENUM(NSInteger, SortSelection)
+{
+    SortSelectionHottest = 0,
+    SortSelectionNewest,
+    SortSelectionMostLikes,
+    SortSelectionMostComments
+};
+
+
 @interface NetworkRequests : NSObject
 
-+ (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete;
++ (void)getPostsWithSkipCount:(int)skipCount fromGroup:(Group *)group sortedBy:(SortSelection)sortSelection andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete;
 +(void)getDisplayNamesWithDisplayName: (NSString *)name Completion:(void(^)(NSArray *array))complete;
 + (void)getPostComments:(Post *)post withSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete;
 + (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete;
@@ -38,14 +47,10 @@
 +(void)getPendingUsersInGroup:(Group *)group andSkipCount: (int)skipCount withCompletion:(void(^)(NSArray *array))complete;
 +(void)getJoinedUsersInGroup:(Group *)group andSkipCount: (int)skipCount withCompletion:(void(^)(NSArray *array))complete;
 
-
 + (void)getResortsWithState:(NSString *)state andCompletion:(void(^)(NSArray *array))complete;
-
 + (void)getWeatherFromLatitude:(double)latitude andLongitude:(double)longitude andCompletion:(void(^)(NSDictionary *dictionary))complete;
 
 
-
-
-
+@property (nonatomic, assign) SortSelection selection;
 
 @end

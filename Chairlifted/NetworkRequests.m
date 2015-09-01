@@ -14,11 +14,10 @@
 #pragma mark - Post methods
 
 
-+ (void)getPostsWithSkipCount:(int)skipCount andGroup:(Group *)group andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete
++ (void)getPostsWithSkipCount:(int)skipCount fromGroup:(Group *)group sortedBy:(SortSelection)sortSelection andIsPrivate:(BOOL)isPrivate completion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Post query];
     [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:isPrivate]];
-    [query orderByDescending:@"hottness"];
     [query includeKey:@"author"];
     query.limit = 30;
     query.skip = skipCount;
@@ -26,6 +25,25 @@
     {
         [query whereKey:@"group" equalTo:group];
     }
+
+    if (sortSelection == SortSelectionHottest)
+    {
+        [query orderByDescending:@"hottness"];
+    }
+    else if (sortSelection == SortSelectionNewest)
+    {
+        [query orderByDescending:@"createdAt"];
+    }
+    else if (sortSelection == SortSelectionMostLikes)
+    {
+        [query orderByDescending:@"likeCount"];
+    }
+    else if (sortSelection == SortSelectionMostComments)
+    {
+        [query orderByDescending:@"commentCount"];
+    }
+
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
         if (error)
@@ -39,19 +57,6 @@
     }];
 }
 
-
-+(void)getDisplayNamesWithDisplayName: (NSString *)name Completion:(void(^)(NSArray *array))complete
-{
-    PFQuery *query = [User query];
-    [query whereKey:@"displayName" equalTo:name];
-
-    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
-     {
-         if (!error) {
-             complete(array);
-         }
-     }];
-}
 
 
 + (void)getPostsWithSkipCount:(int)skipCount andUser:(User *)user andShowsPrivate:(BOOL)showsPrivate completion:(void(^)(NSArray *array))complete
@@ -324,6 +329,20 @@
     }];
 }
 
+
++ (void)getDisplayNamesWithDisplayName: (NSString *)name Completion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [User query];
+    [query whereKey:@"displayName" equalTo:name];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
+     {
+         if (!error)
+         {
+             complete(array);
+         }
+     }];
+}
 
 #pragma mark - get Resorts
 

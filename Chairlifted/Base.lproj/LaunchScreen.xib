@@ -33,6 +33,6 @@
         </view>
     </objects>
     <resources>
-        <image name="liftShadow1" width="485" height="490"/>
+        <image name="liftShadow1" width="360" height="640"/>
     </resources>
 </document>

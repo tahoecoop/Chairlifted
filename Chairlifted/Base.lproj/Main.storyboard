@@ -3480,6 +3480,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="BEb-1N-VU2">
+                        <barButtonItem key="leftBarButtonItem" image="sort" id="f33-o1-s03">
+                            <connections>
+                                <action selector="onSortButtonPressed:" destination="xOt-F3-d1s" id="ScV-xz-dNR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9sA-Vq-Lb0">
                             <connections>
                                 <action selector="createPostButtonPressed:" destination="xOt-F3-d1s" id="b2v-2L-wYc"/>
@@ -5077,6 +5082,7 @@
         <image name="rejectIcon33" width="33" height="33"/>
         <image name="shareIcon" width="30" height="30"/>
         <image name="shareIcon37" width="37" height="37"/>
+        <image name="sort" width="30" height="20"/>
         <image name="svg2pdf.htm" width="45" height="45"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -5087,9 +5093,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="e9Z-DB-KJn"/>
         <segue reference="H5x-1z-wpL"/>
+        <segue reference="AIY-s3-N9h"/>
+        <segue reference="UrV-tQ-8vR"/>
         <segue reference="GLv-ub-mwA"/>
-        <segue reference="PUz-IB-R6f"/>
-        <segue reference="boM-rY-1tv"/>
         <segue reference="ocA-MQ-8Kx"/>
     </inferredMetricsTieBreakers>
 </document>
