@@ -105,10 +105,12 @@
      }];
 }
 
+
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
     [logInController dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 #pragma mark - TableView Delegate
@@ -135,6 +137,7 @@
         return cell;
     }
 }
+
 
 
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,6 +184,7 @@
     }
 }
 
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell respondsToSelector:@selector(setSeparatorInset:)])
@@ -218,6 +222,7 @@
     }
     return _prototypeCell;
 }
+
 
 - (CustomFeedWithPhotoTableViewCell *)photoPrototypeCell
 {
