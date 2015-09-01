@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		96131C431B8CE8D8005BDF9F /* CreateNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */; };
 		9648D03C1B83AB090062BA99 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9648D03B1B83AB090062BA99 /* StatsViewController.m */; };
+		965414F11B95070D00EC1BE5 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 965414F01B95070D00EC1BE5 /* UIImageEffects.m */; };
 		96E4A6801B8A5A9F0006C097 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */; };
 		96FBDC211B94060200FEB799 /* DismissingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC201B94060200FEB799 /* DismissingAnimationController.m */; };
 		96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC231B94061500FEB799 /* PresentingAnimationController.m */; };
@@ -103,6 +104,8 @@
 		96131C421B8CE8D8005BDF9F /* CreateNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewUserViewController.m; sourceTree = "<group>"; };
 		9648D03A1B83AB090062BA99 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		9648D03B1B83AB090062BA99 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		965414EF1B95070D00EC1BE5 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		965414F01B95070D00EC1BE5 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		96E4A67E1B8A5A9F0006C097 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96E4A67F1B8A5A9F0006C097 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		96FBDC1F1B94060200FEB799 /* DismissingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissingAnimationController.h; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 				96FBDC291B940DB800FEB799 /* CommentPresentingAnimation.m */,
 				96FBDC2B1B940DCD00FEB799 /* CommentDismissingAnimation.h */,
 				96FBDC2C1B940DCD00FEB799 /* CommentDismissingAnimation.m */,
+				965414EF1B95070D00EC1BE5 /* UIImageEffects.h */,
+				965414F01B95070D00EC1BE5 /* UIImageEffects.m */,
 			);
 			name = "Pop Models";
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 				BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */,
 				BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */,
 				BAE3D1A01B86A7D300BAC4EF /* JoinGroup.m in Sources */,
+				965414F11B95070D00EC1BE5 /* UIImageEffects.m in Sources */,
 				96FBDC2A1B940DB800FEB799 /* CommentPresentingAnimation.m in Sources */,
 				BA6F8C611B8280F70083E71E /* Comment.m in Sources */,
 				BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */,

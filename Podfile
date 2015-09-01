@@ -6,3 +6,6 @@ pod 'FBSDKShareKit'
 pod 'ParseFacebookUtilsV4'
 pod ‘Parse’
 pod ‘Bolts’
+pod ‘GPUImage’
+pod ‘pop’
+

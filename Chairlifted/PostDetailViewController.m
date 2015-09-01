@@ -27,13 +27,17 @@
 #import "CreateCommentWithTextViewController.h"
 #import "CreateCommentWithImageViewController.h"
 #import <pop/POP.h>
-
+#import <GPUImage/GPUImage.h>
+#import <Accelerate/Accelerate.h>
+#import "UIImageEffects.h"
 
 
 @interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic) NSMutableArray *comments;
 @property (nonatomic)int skipCount;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredBGImage;
+@property (weak, nonatomic) IBOutlet UIView *blurredBackgroundView;
 
 @end
 
@@ -48,7 +52,12 @@
     self.tableView.estimatedSectionHeaderHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.skipCount = 30;
+    self.blurredBGImage.hidden = YES;
 }
+
+
+
+#pragma mark - setup methods
 
 
 - (void)setupComments:(UIView *)activityView
@@ -219,6 +228,66 @@
     }
 }
 
+#pragma mark - Blur Effect Methods
+
+
+- (UIImage *)takeSnapshotOfView:(UIView *)view
+{
+    UIGraphicsBeginImageContext(CGSizeMake(view.frame.size.width, view.frame.size.height));
+    [view drawViewHierarchyInRect:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height) afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return image;
+}
+
+- (UIImage *)blurWithGPUImage:(UIImage *)sourceImage
+{
+    // Gaussian Blur
+    GPUImageGaussianBlurFilter *blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
+    blurFilter.blurRadiusInPixels = 10.0;
+
+    return [blurFilter imageByFilteringImage: sourceImage];
+}
+
+
+#pragma mark - cass's blur
+
+-(void)captureBackgroundBlurImage {
+    UIScreen *screen = [UIScreen mainScreen];
+    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, YES, screen.scale);
+
+    CGRect screenRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view drawViewHierarchyInRect:screenRect afterScreenUpdates:NO];
+
+    UIImage *backgroundBlurImage = [UIImageEffects imageByApplyingLightEffectToImage:[self takeSnapshotOfView:self.view]];
+    UIImageView *backgroundBlurImageView = [[UIImageView alloc] initWithImage:backgroundBlurImage];
+
+    self.blurredBackgroundView = [[UIView alloc] initWithFrame:screenRect];
+    [self.blurredBackgroundView addSubview:backgroundBlurImageView];
+
+    UIGraphicsEndImageContext();
+}
+
+-(void)showBackgroundBlurImage {
+    [self.blurredBackgroundView setAlpha:0.0f];
+    [self.view addSubview:self.blurredBackgroundView];
+    [UIView animateWithDuration:0.2f animations:^() {
+        self.blurredBackgroundView.alpha = 1.0f;
+    }];
+}
+
+-(void)hideBackgroundBlurImage {
+    [self.blurredBackgroundView setAlpha:1.0f];
+    [self.view addSubview:self.blurredBackgroundView];
+    [UIView animateWithDuration:0.2f animations:^() {
+        self.blurredBackgroundView.alpha = 0.0f;
+    }];
+}
+
+
+#pragma mark - button pressed methods
+
 
 - (IBAction)onLikeButtonPressed:(UIButton *)button
 {
@@ -232,25 +301,20 @@
 {
     if ([User currentUser])
     {
-        if (self.post.image)
-        {
-            CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
-            modalVC.transitioningDelegate = self;
-            modalVC.modalPresentationStyle = UIModalPresentationCustom;
-            modalVC.post = self.post;
+        self.blurredBGImage.hidden = NO;
 
-            [self presentViewController:modalVC animated:YES completion:nil];
+        self.blurredBGImage.image =[self blurWithGPUImage:[self takeSnapshotOfView:self.view]];
 
-        }
-        else
-        {
-            CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
-            modalVC.transitioningDelegate = self;
-            modalVC.modalPresentationStyle = UIModalPresentationCustom;
-            modalVC.post = self.post;
+        [self captureBackgroundBlurImage];
 
-            [self presentViewController:modalVC animated:YES completion:nil];
-        }
+        [self showBackgroundBlurImage];
+
+        CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
+        modalVC.transitioningDelegate = self;
+        modalVC.modalPresentationStyle = UIModalPresentationCustom;
+        modalVC.post = self.post;
+
+        [self presentViewController:modalVC animated:YES completion:nil];
     }
     else
     {
@@ -340,5 +404,11 @@
 }
 
 
+-(IBAction)prepareForUnwindFromCancelOrPost:(UIStoryboardSegue *)segue
+{
+    self.blurredBGImage.hidden = YES;
+    self.blurredBGImage.image = nil;
+    [self.tableView reloadData];
+}
 
 @end

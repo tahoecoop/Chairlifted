@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -307,28 +307,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INd-oF-JJ2">
-                                                    <rect key="frame" x="8" y="8" width="61" height="15"/>
+                                                    <rect key="frame" x="8" y="8" width="60.5" height="14.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfH-so-M7D">
-                                                    <rect key="frame" x="263" y="8" width="49" height="15"/>
+                                                    <rect key="frame" x="263" y="8" width="49" height="14.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69 likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOB-aF-yPi">
-                                                    <rect key="frame" x="269" y="60" width="43" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="69 likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOB-aF-yPi">
+                                                    <rect key="frame" x="269" y="60" width="42.5" height="14.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIK-kx-Esu">
-                                                    <rect key="frame" x="8" y="60" width="71" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIK-kx-Esu">
+                                                    <rect key="frame" x="8" y="60" width="71" height="14.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -554,12 +554,19 @@
                                     <outlet property="delegate" destination="tdP-05-5rf" id="JZb-rP-AZ7"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xmz-m6-Mci">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WCa-Gh-fxD" firstAttribute="top" secondItem="Xmz-m6-Mci" secondAttribute="bottom" id="1VO-he-RgL"/>
                             <constraint firstItem="cl0-9I-TmS" firstAttribute="leading" secondItem="Ggf-qx-0zO" secondAttribute="leading" id="JeJ-gd-Bej"/>
+                            <constraint firstItem="Xmz-m6-Mci" firstAttribute="leading" secondItem="Ggf-qx-0zO" secondAttribute="leading" id="Vlb-Pz-wNz"/>
+                            <constraint firstAttribute="trailing" secondItem="Xmz-m6-Mci" secondAttribute="trailing" id="XlX-TZ-07a"/>
                             <constraint firstItem="cl0-9I-TmS" firstAttribute="top" secondItem="Ggf-qx-0zO" secondAttribute="top" id="b8L-di-cL4"/>
+                            <constraint firstItem="Xmz-m6-Mci" firstAttribute="top" secondItem="3gs-7S-M5f" secondAttribute="bottom" constant="-64" id="dMA-oo-OQk"/>
                             <constraint firstAttribute="trailing" secondItem="cl0-9I-TmS" secondAttribute="trailing" id="hcl-3c-4Hb"/>
                             <constraint firstAttribute="bottom" secondItem="cl0-9I-TmS" secondAttribute="bottom" id="mdx-MF-kmU"/>
                         </constraints>
@@ -573,6 +580,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="blurredBGImage" destination="Xmz-m6-Mci" id="IZq-8p-8OM"/>
                         <outlet property="tableView" destination="cl0-9I-TmS" id="IDB-1s-SlN"/>
                     </connections>
                 </viewController>
@@ -835,7 +843,7 @@
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="URL-aa-fXk" eventType="touchUpInside" id="AIW-Q6-T7J"/>
-                                    <segue destination="14Q-dQ-gAO" kind="unwind" unwindAction="prepareForUnwindFromPostCreation:" id="P3J-Mr-fT3"/>
+                                    <segue destination="14Q-dQ-gAO" kind="unwind" unwindAction="prepareForUnwindFromCancelOrPost:" id="pM1-W8-CdO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMi-Xr-oU7">
@@ -850,6 +858,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onSaveButtonPressed:" destination="URL-aa-fXk" eventType="touchUpInside" id="Koy-8g-IDB"/>
+                                    <segue destination="14Q-dQ-gAO" kind="unwind" unwindAction="prepareForUnwindFromCancelOrPost:" id="Ja5-Vt-lII"/>
                                 </connections>
                             </button>
                         </subviews>
