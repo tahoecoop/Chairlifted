@@ -30,6 +30,8 @@
 #import <GPUImage/GPUImage.h>
 #import <Accelerate/Accelerate.h>
 #import "UIImageEffects.h"
+#import "UIAlertController+SignInPrompt.h"
+#import "ProfileViewController.h"
 
 
 @interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, UIViewControllerAnimatedTransitioning>
@@ -197,7 +199,7 @@
         header.postTitleLabel.text = self.post.title;
         header.minutesAgoLabel.text = [NSDate determineTimePassed:self.post.createdAt];
         header.likesLabel.text = [NSString stringWithFormat:@"%i likes",self.post.likeCount];
-        header.userNameLabel.text = self.post.author.displayName;
+        [header.usernameButton setTitle:self.post.author.displayName forState:UIControlStateNormal];
 
         if (self.post.group)
         {
@@ -293,33 +295,42 @@
 {
     if (![User currentUser])
     {
-        [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
+        UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
+        {
+            if (signIn)
+            {
+                [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
+            }
+            else
+            {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
 - (IBAction)onCommentButtonPressed:(UIButton *)button
 {
-//    if ([User currentUser])
-//    {
-//        self.blurredBGImage.hidden = NO;
-//
-//        self.blurredBGImage.image =[self blurWithGPUImage:[self takeSnapshotOfView:self.view]];
-//
-//        [self captureBackgroundBlurImage];
-//
-//        [self showBackgroundBlurImage];
-//
-//        CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
-//        modalVC.transitioningDelegate = self;
-//        modalVC.modalPresentationStyle = UIModalPresentationCustom;
-//        modalVC.post = self.post;
-//
-//        [self presentViewController:modalVC animated:YES completion:nil];
-//    }
-//    else
-//    {
-//        [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
-//    }
+    if ([User currentUser])
+    {
+        [self performSegueWithIdentifier:@"textSegue" sender:self];
+    }
+    else
+    {
+        UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
+        {
+            if (signIn)
+            {
+                [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
+            }
+            else
+            {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 
@@ -368,6 +379,11 @@
     {
         CreateCommentWithTextViewController *vc = (CreateCommentWithTextViewController *)[segue.destinationViewController topViewController];
         vc.post = self.post;
+    }
+    else if ([segue.identifier isEqualToString:@"ToOthersProfile"])
+    {
+        ProfileViewController *vc = segue.destinationViewController;
+        vc.selectedUser = self.post.author;
     }
 }
 

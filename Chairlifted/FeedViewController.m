@@ -18,6 +18,8 @@
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIAlertController+ErrorAlert.h"
 #import <AFNetworkReachabilityManager.h>
+#import "UIAlertController+SignInPrompt.h"
+#import "ProfileViewController.h"
 
 @interface FeedViewController ()
 
@@ -245,7 +247,18 @@
     }
     else
     {
-        [self performSegueWithIdentifier:@"loginFirst" sender:self];
+        UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
+        {
+            if (signIn)
+            {
+                [self performSegueWithIdentifier:@"loginFirst" sender:self];
+            }
+            else
+            {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

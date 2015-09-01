@@ -15,6 +15,7 @@
 		96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC231B94061500FEB799 /* PresentingAnimationController.m */; };
 		96FBDC2A1B940DB800FEB799 /* CommentPresentingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC291B940DB800FEB799 /* CommentPresentingAnimation.m */; };
 		96FBDC2D1B940DCD00FEB799 /* CommentDismissingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FBDC2C1B940DCD00FEB799 /* CommentDismissingAnimation.m */; };
+		BA06DA491B9615CF00F7FEAC /* UIAlertController+SignInPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06DA481B9615CF00F7FEAC /* UIAlertController+SignInPrompt.m */; };
 		BA215E1A1B8787170087DBEB /* GroupFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E191B8787170087DBEB /* GroupFeedViewController.m */; };
 		BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E1C1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m */; };
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
@@ -116,6 +117,8 @@
 		96FBDC291B940DB800FEB799 /* CommentPresentingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentPresentingAnimation.m; sourceTree = "<group>"; };
 		96FBDC2B1B940DCD00FEB799 /* CommentDismissingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDismissingAnimation.h; sourceTree = "<group>"; };
 		96FBDC2C1B940DCD00FEB799 /* CommentDismissingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDismissingAnimation.m; sourceTree = "<group>"; };
+		BA06DA471B9615CF00F7FEAC /* UIAlertController+SignInPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+SignInPrompt.h"; sourceTree = "<group>"; };
+		BA06DA481B9615CF00F7FEAC /* UIAlertController+SignInPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+SignInPrompt.m"; sourceTree = "<group>"; };
 		BA215E181B8787170087DBEB /* GroupFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedViewController.h; sourceTree = "<group>"; };
 		BA215E191B8787170087DBEB /* GroupFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedViewController.m; sourceTree = "<group>"; };
 		BA215E1B1B8787940087DBEB /* GroupFeedHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedHeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				FE8CCA001B8EDAED00C699B3 /* UIAlertController+ReportInappropriate.m */,
 				FE83A95C1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.h */,
 				FE83A95D1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m */,
+				BA06DA471B9615CF00F7FEAC /* UIAlertController+SignInPrompt.h */,
+				BA06DA481B9615CF00F7FEAC /* UIAlertController+SignInPrompt.m */,
 			);
 			name = "UIAlertViewController Models";
 			sourceTree = "<group>";
@@ -672,6 +677,7 @@
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
 				BA6F8C881B8413110083E71E /* DetailPostImageTableViewCell.m in Sources */,
 				BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */,
+				BA06DA491B9615CF00F7FEAC /* UIAlertController+SignInPrompt.m in Sources */,
 				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
 				FE8F1A0B1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m in Sources */,

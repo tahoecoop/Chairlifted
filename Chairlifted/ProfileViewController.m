@@ -21,7 +21,7 @@
 #import "PostDetailViewController.h"
 #import "UIAlertController+ReportInappropriate.h"
 #import <MessageUI/MessageUI.h>
-
+#import "UIAlertController+SignInPrompt.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, updatedResortDelegate, MFMailComposeViewControllerDelegate>
 
@@ -48,33 +48,44 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.shouldUpdateResort = YES;
-    [self setUpUser];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    [self setUpUser];
 }
 
 - (void)setUpUser
 {
+    if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
+    {
+        [self.moreButton setImage:[UIImage imageNamed:@"editProfile"]];
 
-    if (![User currentUser])
-    {
-        [self performSegueWithIdentifier:@"loginBeforeProfile" sender:self];
-        self.shouldUpdateResort = NO;
-    }
-    else if (!self.selectedUser || [self.selectedUser isEqual:[User currentUser]])
-    {
-        self.selectedUser = [User currentUser];
-        self.moreButton.enabled = NO;
-        self.moreButton.tintColor = [UIColor clearColor];
+        if (![User currentUser])
+        {
+            self.moreButton.enabled = NO;
+            UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
+            {
+                if (signIn)
+                {
+                    [self performSegueWithIdentifier:@"loginBeforeProfile" sender:self];
+                }
+                else
+                {
+                    [alert dismissViewControllerAnimated:YES completion:nil];
+                }
+            }];
+            [self presentViewController:alert animated:YES completion:nil];
+            self.shouldUpdateResort = NO;
+        }
+        else
+        {
+            self.selectedUser = [User currentUser];
+        }
     }
     else
     {
-        self.editButton.enabled = NO;
-        self.editButton.tintColor = [UIColor clearColor];
-        self.title = self.selectedUser.displayName;
+        [self.moreButton setImage:[UIImage imageNamed:@"ellipses"]];
         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 
@@ -141,11 +152,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (![User currentUser])
-    {
-        return 0;
-    }
-    else if (section == 0)
+    if (section == 0)
     {
         return 1;
     }
@@ -260,40 +267,48 @@
 
 - (IBAction)moreButtonPressed:(UIBarButtonItem *)button
 {
-    UIAlertController *alert = [UIAlertController alertForReportInappropriateWithCompletion:^(BOOL sendReport)
+    if (self.selectedUser == [User currentUser])
     {
-        if (sendReport)
+        [self performSegueWithIdentifier:@"EditProfile" sender:self];
+    }
+    else
+    {
+        UIAlertController *alert = [UIAlertController alertForReportInappropriateWithCompletion:^(BOOL sendReport)
         {
-            if ([MFMailComposeViewController canSendMail])
+            if (sendReport)
             {
-                MFMailComposeViewController *mailer = [MFMailComposeViewController new];
-                mailer.delegate = self;
-
-                [mailer setSubject:@"Report User"];
-
-                NSArray *toRecipients = @[@"chairlifted.devteam@gmail.com"];
-                [mailer setToRecipients:toRecipients];
-
-                NSString *emailBody = [NSString stringWithFormat:@"User: %@ \n\n\nThank you for your feedback. Please explain why you are reporting this user as inappropriate: \n\t", self.selectedUser.username];
-                [mailer setMessageBody:emailBody isHTML:NO];
-
-                [self presentViewController:mailer animated:YES completion:nil];
-            }
-            else
-            {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Your device is not set up to send emails" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                if ([MFMailComposeViewController canSendMail])
                 {
-                    [alert dismissViewControllerAnimated:YES completion:nil];
-                }];
-                
-                [alert addAction:okay];
-                [self presentViewController:alert animated:YES completion:nil];
+                    MFMailComposeViewController *mailer = [MFMailComposeViewController new];
+                    mailer.delegate = self;
+
+                    [mailer setSubject:@"Report User"];
+
+                    NSArray *toRecipients = @[@"chairlifted.devteam@gmail.com"];
+                    [mailer setToRecipients:toRecipients];
+
+                    NSString *emailBody = [NSString stringWithFormat:@"User: %@ \n\n\nThank you for your feedback. Please explain why you are reporting this user as inappropriate: \n\t", self.selectedUser.username];
+                    [mailer setMessageBody:emailBody isHTML:NO];
+
+                    [self presentViewController:mailer animated:YES completion:nil];
+                }
+                else
+                {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Your device is not set up to send emails" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                                           {
+                                               [alert dismissViewControllerAnimated:YES completion:nil];
+                                           }];
+                    
+                    [alert addAction:okay];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
             }
-        }
-    }];
-    [self presentViewController:alert animated:YES completion:nil];
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

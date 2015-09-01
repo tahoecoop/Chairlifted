@@ -17,6 +17,7 @@
 #import "UIImage+SkiSnowboardIcon.h"
 #import <AFNetworkReachabilityManager.h>
 #import "UIAlertController+ErrorAlert.h"
+#import "UIAlertController+SignInPrompt.h"
 
 @interface GroupsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
@@ -74,12 +75,20 @@
 {
     if (![User currentUser])
     {
-        if (![User currentUser])
+        UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
         {
-            self.segControl.hidden = YES;
-            [self performSegueWithIdentifier:@"loginBeforeGroups" sender:self];
-        }
+            if (signIn)
+            {
+                [self performSegueWithIdentifier:@"loginBeforeGroups" sender:self];
+            }
+            else
+            {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
     }
+    
 }
 
 
@@ -245,6 +254,26 @@
     }
 }
 
+- (IBAction)onCreateGroupButtonPressed:(UIBarButtonItem *)sender
+{
+    if (![User currentUser])
+    {
+        UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
+        {
+            if (signIn)
+            {
+                [self performSegueWithIdentifier:@"loginBeforeGroups" sender:self];
+            }
+            else
+            {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -263,7 +292,7 @@
             vc.group = self.allGroups[self.tableView.indexPathForSelectedRow.row];
         }
     }
-    else if ([segue.identifier isEqualToString:@"CreateGroupSegue"])
+    else if ([segue.identifier isEqualToString:@"CreateGroupsSegue"])
     {
         CreateGroupViewController *vc = (CreateGroupViewController *)[segue.destinationViewController topViewController];
         vc.delegate = self;

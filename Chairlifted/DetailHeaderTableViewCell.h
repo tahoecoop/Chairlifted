@@ -10,9 +10,9 @@
 
 @interface DetailHeaderTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *postTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesAgoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *usernameButton;
 
 @end
