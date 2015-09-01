@@ -74,6 +74,10 @@
          }
          else
          {
+             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+             currentInstallation[@"user"] = [User currentUser];
+             [currentInstallation saveInBackground];
+             
             [self dismissViewControllerAnimated:YES completion:nil];
          }
      }];

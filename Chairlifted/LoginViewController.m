@@ -24,6 +24,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet UIButton *loginFBButton;
+@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *forgotPassButton;
 @property (nonatomic) NSArray *displayNames;
 
 
@@ -55,6 +59,26 @@
 
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
+
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    // Optional: Place the button in the center of your view.
+    CGPoint fbCenter = CGPointMake([[UIScreen mainScreen]bounds].size.width / 2, [[UIScreen mainScreen]bounds].size.height - 50);
+    loginButton.center = fbCenter;
+    loginButton.userInteractionEnabled = NO;
+    [self.view addSubview:loginButton];
+
+    [self.view bringSubviewToFront:self.loginFBButton];
+    [self.view sendSubviewToBack:loginButton];
+    self.loginFBButton.backgroundColor = [UIColor clearColor];
+//    self.signUpButton.layer.borderColor = [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:64.0/255.0 alpha:1.0].CGColor;
+//    self.signUpButton.layer.borderWidth = 0.5;
+    self.signUpButton.layer.cornerRadius = self.signUpButton.bounds.size.width / 50;
+
+//    self.loginButton.layer.borderColor = [UIColor colorWithRed:174.0/255.0 green:16.0/255.0 blue:13.0/255.0 alpha:1.0].CGColor;
+//    self.loginButton.layer.borderWidth = 0.5;
+    self.loginButton.layer.cornerRadius = self.loginButton.bounds.size.width / 30;
+
+    self.forgotPassButton.layer.cornerRadius = self.forgotPassButton.bounds.size.width / 30;
 }
 
 
@@ -91,7 +115,6 @@
      {
          if (!error)
          {
-
              if (!user)
              {
 
@@ -175,6 +198,10 @@
                                    user[@"displayName"] = dName.text;
                                    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                                     {
+                                        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                                        currentInstallation[@"user"] = [User currentUser];
+                                        [currentInstallation saveInBackground];
+
                                         NSLog(@"%@", user);
                                         [activityView removeFromSuperview];
                                         [self performSegueWithIdentifier:@"newUser" sender:set];
@@ -234,6 +261,10 @@
          }
          if ([User currentUser])
          {
+             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+             currentInstallation[@"user"] = [User currentUser];
+             [currentInstallation saveInBackground];
+             
              [activityView removeFromSuperview];
              
              [self dismissViewControllerAnimated:YES completion:nil];
@@ -279,6 +310,10 @@
 }
 
 
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)button
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
