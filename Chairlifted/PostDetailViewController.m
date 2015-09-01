@@ -299,27 +299,27 @@
 
 - (IBAction)onCommentButtonPressed:(UIButton *)button
 {
-    if ([User currentUser])
-    {
-        self.blurredBGImage.hidden = NO;
-
-        self.blurredBGImage.image =[self blurWithGPUImage:[self takeSnapshotOfView:self.view]];
-
-        [self captureBackgroundBlurImage];
-
-        [self showBackgroundBlurImage];
-
-        CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
-        modalVC.transitioningDelegate = self;
-        modalVC.modalPresentationStyle = UIModalPresentationCustom;
-        modalVC.post = self.post;
-
-        [self presentViewController:modalVC animated:YES completion:nil];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
-    }
+//    if ([User currentUser])
+//    {
+//        self.blurredBGImage.hidden = NO;
+//
+//        self.blurredBGImage.image =[self blurWithGPUImage:[self takeSnapshotOfView:self.view]];
+//
+//        [self captureBackgroundBlurImage];
+//
+//        [self showBackgroundBlurImage];
+//
+//        CreateCommentWithImageViewController *modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoComment"];
+//        modalVC.transitioningDelegate = self;
+//        modalVC.modalPresentationStyle = UIModalPresentationCustom;
+//        modalVC.post = self.post;
+//
+//        [self presentViewController:modalVC animated:YES completion:nil];
+//    }
+//    else
+//    {
+//        [self performSegueWithIdentifier:@"loginBeforeLikePost" sender:button];
+//    }
 }
 
 
@@ -364,13 +364,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"photoSegue"])
-    {
-        CreateCommentWithImageViewController *vc = (CreateCommentWithImageViewController *)[segue.destinationViewController topViewController];
-        vc.post = self.post;
-
-    }
-    else if ([segue.identifier isEqualToString:@"textSegue"])
+    if ([segue.identifier isEqualToString:@"textSegue"])
     {
         CreateCommentWithTextViewController *vc = (CreateCommentWithTextViewController *)[segue.destinationViewController topViewController];
         vc.post = self.post;

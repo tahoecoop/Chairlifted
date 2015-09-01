@@ -10,9 +10,8 @@
 #import "Post.h"
 
 @interface CreateCommentWithTextViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UILabel *postTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *postTextLabel;
 @property (nonatomic) Post *post;
 
 @end

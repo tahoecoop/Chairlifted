@@ -31,7 +31,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)onSaveButtonPressed:(UIButton *)sender
+
+- (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
@@ -76,12 +77,13 @@
               }];
          }
      }];
-    
+
 }
+
+
+
 - (void)setUpPostInComments
 {
-    self.postTitleLabel.text = self.post.title;
-    self.postTextLabel.text = self.post.text;
     [self.textView becomeFirstResponder];
 }
 
