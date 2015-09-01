@@ -472,6 +472,7 @@
                                                     <connections>
                                                         <action selector="onCommentButtonPressed:" destination="tdP-05-5rf" eventType="touchUpInside" id="PmB-xJ-yyD"/>
                                                         <action selector="onCommentButtonPressed:" destination="Kpd-TQ-4fK" eventType="touchUpInside" id="Qb5-Ij-fVX"/>
+                                                        <segue destination="H2g-wI-Wqp" kind="modal" identifier="textSegue" id="7tM-TQ-qsZ"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JL-Py-XF9">
@@ -1970,6 +1971,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6HJ-H9-57K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2152" y="1093"/>
+        </scene>
+        <!--Create Comment With Text View Controller-->
+        <scene sceneID="7rK-2d-6rZ">
+            <objects>
+                <viewController id="xNF-8Y-JBl" customClass="CreateCommentWithTextViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rxe-Kc-WEz"/>
+                        <viewControllerLayoutGuide type="bottom" id="b7d-LT-FgM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iYF-1S-ijw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create a comment..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnk-2X-c6a">
+                                <rect key="frame" x="16" y="101" width="123" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="759-QQ-Z16">
+                                <rect key="frame" x="16" y="130" width="288" height="140"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QS9-YJ-LxV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Cgh-sF-akj">
+                            <connections>
+                                <action selector="onCancelButtonPressed:" destination="xNF-8Y-JBl" id="dBc-9V-gCg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kjV-g0-nge">
+                            <connections>
+                                <action selector="onSaveButtonPressed:" destination="xNF-8Y-JBl" id="Gyd-Sf-wC5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="759-QQ-Z16" id="7X2-81-Rbi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9f-QH-NCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2970" y="368"/>
         </scene>
         <!--Group Member List View Controller-->
         <scene sceneID="F6b-LO-jcr">
@@ -3629,6 +3677,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="BEb-1N-VU2">
+                        <barButtonItem key="leftBarButtonItem" image="sort" id="f33-o1-s03">
+                            <connections>
+                                <action selector="onSortButtonPressed:" destination="xOt-F3-d1s" id="ScV-xz-dNR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9sA-Vq-Lb0">
                             <connections>
                                 <action selector="createPostButtonPressed:" destination="xOt-F3-d1s" id="b2v-2L-wYc"/>
@@ -5211,6 +5264,24 @@
             </objects>
             <point key="canvasLocation" x="-147" y="-390"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mU0-qS-bkn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H2g-wI-Wqp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gLh-fU-3L9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xNF-8Y-JBl" kind="relationship" relationship="rootViewController" id="7vp-0Y-cdZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zwm-HI-4kF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544" y="368"/>
+        </scene>
     </scenes>
     <resources>
         <image name="FeedUnselected" width="30" height="30"/>
@@ -5228,14 +5299,15 @@
         <image name="rejectIcon33" width="33" height="33"/>
         <image name="shareIcon" width="30" height="30"/>
         <image name="shareIcon37" width="37" height="37"/>
+        <image name="sort" width="30" height="20"/>
         <image name="svg2pdf.htm" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e9Z-DB-KJn"/>
+        <segue reference="AIY-s3-N9h"/>
         <segue reference="H5x-1z-wpL"/>
+        <segue reference="Vyn-fc-o24"/>
+        <segue reference="UrV-tQ-8vR"/>
         <segue reference="GLv-ub-mwA"/>
-        <segue reference="PUz-IB-R6f"/>
-        <segue reference="boM-rY-1tv"/>
         <segue reference="ocA-MQ-8Kx"/>
     </inferredMetricsTieBreakers>
 </document>

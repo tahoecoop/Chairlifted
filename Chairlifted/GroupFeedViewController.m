@@ -31,6 +31,7 @@
 @property (nonatomic) int skipCount;
 @property (nonatomic) BOOL continueLoading;
 @property (nonatomic) UIView *activityView;
+@property (nonatomic) SortSelection sortSelection;
 
 @end
 
@@ -48,6 +49,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
+    self.sortSelection = SortSelectionHottest;
 
     self.activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
@@ -74,16 +76,21 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self retrievePosts];
+}
+
+- (void)retrievePosts
+{
     self.skipCount = 30;
 
-    [NetworkRequests getPostsWithSkipCount:0 andGroup:self.group andIsPrivate:[self.group.isPrivate boolValue] completion:^(NSArray *array)
+    [NetworkRequests getPostsWithSkipCount:0 fromGroup:self.group sortedBy:self.sortSelection andIsPrivate:[self.group.isPrivate boolValue] completion:^(NSArray *array)
      {
          self.posts = [NSMutableArray arrayWithArray:array];
          [self.activityView removeFromSuperview];
          [self.tableView reloadData];
      }];
-}
 
+}
 
 -(void)setUpGroupInfo
 {
@@ -233,7 +240,7 @@
 
     if (indexPath.row == self.skipCount - 5)
     {
-        [NetworkRequests getPostsWithSkipCount:self.skipCount andGroup:self.group andIsPrivate:self.group.isPrivate completion:^(NSArray *array)
+        [NetworkRequests getPostsWithSkipCount:self.skipCount fromGroup:self.group sortedBy:self.sortSelection andIsPrivate:[self.group.isPrivate boolValue] completion:^(NSArray *array)
          {
              [self.posts addObjectsFromArray:array];
              self.skipCount = self.skipCount + 30;
@@ -275,12 +282,49 @@
            [alert dismissViewControllerAnimated:YES completion:nil];
        }];
     }
+    UIAlertAction *sort = [UIAlertAction actionWithTitle:@"Sort posts" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sort feed by:" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *hottest = [UIAlertAction actionWithTitle:@"Hottest" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+          {
+              self.sortSelection = SortSelectionHottest;
+              [self retrievePosts];
+          }];
+        UIAlertAction *newest = [UIAlertAction actionWithTitle:@"Most Recent" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+          {
+              self.sortSelection = SortSelectionNewest;
+              [self retrievePosts];
+          }];
+        UIAlertAction *mostLiked = [UIAlertAction actionWithTitle:@"Most ❤️s" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+          {
+              self.sortSelection = SortSelectionMostLikes;
+              [self retrievePosts];
+          }];
+        UIAlertAction *mostComments = [UIAlertAction actionWithTitle:@"Most 💬s" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+          {
+              self.sortSelection = SortSelectionMostComments;
+              [self retrievePosts];
+          }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+          {
+              [alert dismissViewControllerAnimated:YES completion:nil];
+          }];
+
+        [alert addAction:hottest];
+        [alert addAction:newest];
+        [alert addAction:mostLiked];
+        [alert addAction:mostComments];
+        [alert addAction:cancel];
+
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
 
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
                              {
                                  [alert dismissViewControllerAnimated:YES completion:nil];
                              }];
-    
+
+    [alert addAction:sort];
     [alert addAction:notificationsAction];
     [alert addAction:cancel];
 
