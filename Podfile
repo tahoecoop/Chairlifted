@@ -4,8 +4,8 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 pod 'ParseFacebookUtilsV4'
-pod ‘Parse’
-pod ‘Bolts’
-pod ‘GPUImage’
-pod ‘pop’
+pod 'Parse'
+pod 'Bolts'
+pod 'GPUImage'
+pod 'pop'
 
