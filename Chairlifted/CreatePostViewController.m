@@ -54,9 +54,10 @@
     self.pickerView = [UIPickerView new];
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
+    [self addToolBarToPicker];
     self.topicTextField.inputView = self.pickerView;
 
-    [self addToolBarToPicker];
+
 
     [NetworkRequests getTopicsWithCompletion:^(NSArray *array)
     {
@@ -65,27 +66,6 @@
     }];
 
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-
-//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//
-//        NSLog(@"Reachability changed: %@", AFStringFromNetworkReachabilityStatus(status));
-//
-//
-//        switch (status) {
-//            case AFNetworkReachabilityStatusReachableViaWWAN:
-//            case AFNetworkReachabilityStatusReachableViaWiFi:
-//                // -- Reachable -- //
-//                NSLog(@"Reachable");
-//                break;
-//            case AFNetworkReachabilityStatusNotReachable:
-//            default:
-//                // -- Not reachable -- //
-//                NSLog(@"Not Reachable");
-//                break;
-//        }
-//        
-//    }];
-
 }
 
 
@@ -242,38 +222,22 @@
     [self.keyboardToolBar setBarStyle:UIBarStyleDefault];
     [self.keyboardToolBar sizeToFit];
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor colorWithRed:46.0/255.0 green:204.0/255.0 blue:113.0/255.0 alpha:1.0];
-    label.font = [UIFont fontWithName:@"Avenir-Black" size: 18];
-//    label.text = [self.titlesArray objectAtIndex:self.indexPath.row];
+    UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(resignToolbar:)];
+    UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignToolbar:)];
 
-    UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:@selector(resignToolbar)];
-
-    UIBarButtonItem *doneButton1 =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(resignToolbar)];
-    UIBarButtonItem *title = [[UIBarButtonItem alloc]initWithCustomView:label];
-    title.tag = 666;
-
-    NSArray *itemsArray = [NSArray arrayWithObjects:title,flexButton,doneButton1, nil];
+    NSArray *itemsArray = [NSArray arrayWithObjects:doneButton1, nil];
 
     [self.keyboardToolBar setItems:itemsArray];
-    [self.pickerView addSubview:self.keyboardToolBar];
-//    self.topicTextField.inputView = self.keyboardToolBar;
-
+    self.topicTextField.inputAccessoryView = self.keyboardToolBar;
 }
 
-- (void)resignToolbar
+- (void)resignToolbar:(UIBarButtonItem *)sender
 {
-//    if (self.pickerView.hidden == NO)
-//    {
-        PostTopic *postTopic = [self.topics objectAtIndex:[self.pickerView selectedRowInComponent:0]];
-        self.topicTextField.text = postTopic.name;
-        [self.topicTextField resignFirstResponder];
-//        self.pickerView.hidden = YES;
-//        [self.coverView removeFromSuperview];
-//    }
+    PostTopic *postTopic = [self.topics objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+    self.topicTextField.text = postTopic.name;
+    [self.topicTextField resignFirstResponder];
 }
+
 
 #pragma mark - TextView Methods
 
@@ -284,15 +248,15 @@
 }
 
 
-//-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
-//{
-//    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
-//    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
-//    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignTextViewKeyboard)], nil];
-//    [self.keyboardToolbarTextview sizeToFit];
-//    textView.inputAccessoryView = self.keyboardToolbarTextview;
-//    return YES;
-//}
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
+    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
+    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignTextViewKeyboard)], nil];
+    [self.keyboardToolbarTextview sizeToFit];
+    textView.inputAccessoryView = self.keyboardToolbarTextview;
+    return YES;
+}
 
 -(void)textViewDidChange:(UITextView *)textView
 {
