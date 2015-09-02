@@ -586,15 +586,6 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select topic" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onZ-3m-vm5">
-                                                <rect key="frame" x="8" y="74" width="304" height="30"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="I3Y-AD-axG" id="6bv-ng-ew7"/>
-                                                </connections>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optional:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="031-Vh-teK">
                                                 <rect key="frame" x="8" y="270" width="70" height="21"/>
                                                 <animations/>
@@ -617,6 +608,15 @@
                                                 <connections>
                                                     <action selector="editingChanged:" destination="I3Y-AD-axG" eventType="editingChanged" id="eS9-mc-6Ht"/>
                                                     <outlet property="delegate" destination="I3Y-AD-axG" id="bvp-3Q-aXE"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select topic" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onZ-3m-vm5">
+                                                <rect key="frame" x="8" y="74" width="304" height="30"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="I3Y-AD-axG" id="6bv-ng-ew7"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -1169,7 +1169,7 @@
                             <searchBar contentMode="redraw" placeholder="What are you searching for?" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-yb-xbL">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <animations/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="X6j-Ag-GgR" id="wtK-wA-In5"/>
                                 </connections>
@@ -2196,7 +2196,7 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9g8-2D-6yt">
                                 <rect key="frame" x="0.0" y="116" width="320" height="44"/>
                                 <animations/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="NJT-Hf-MmZ" id="bEF-Ah-ifg"/>
                                 </connections>
@@ -3290,13 +3290,13 @@
                                 <rect key="frame" x="16" y="162" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-Rc-MGd">
                                 <rect key="frame" x="16" y="220" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fu-uR-ASh">
                                 <rect key="frame" x="122" y="267" width="76" height="30"/>
@@ -3333,7 +3333,7 @@
                                 <rect key="frame" x="16" y="104" width="288" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                         </subviews>
                         <animations/>
@@ -4261,12 +4261,12 @@ If you have any questions regarding privacy while using the Application, or have
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="boM-rY-1tv"/>
         <segue reference="fGn-2G-lvj"/>
-        <segue reference="e9Z-DB-KJn"/>
+        <segue reference="mQS-Qm-PkY"/>
+        <segue reference="ypa-Le-irg"/>
+        <segue reference="GLv-ub-mwA"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="AIY-s3-N9h"/>
-        <segue reference="eSN-dC-lKM"/>
-        <segue reference="GLv-ub-mwA"/>
+        <segue reference="sE3-KK-I6P"/>
     </inferredMetricsTieBreakers>
 </document>

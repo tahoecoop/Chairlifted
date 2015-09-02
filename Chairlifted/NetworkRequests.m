@@ -202,6 +202,7 @@
 + (void)getTopicsWithCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [PostTopic query];
+    [query orderByAscending:@"name"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          if (!error)
