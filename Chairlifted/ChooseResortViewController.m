@@ -58,18 +58,6 @@
 
     Resort *resort = self.resorts[indexPath.row];
     cell.textLabel.text = resort.name;
-    User *user = [User currentUser];
-    [user.favoriteResort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
-    {
-        if ((!self.isForPost && [resort.name isEqualToString:user.favoriteResort.name]) || [tableView indexPathForSelectedRow] == indexPath)
-        {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-    }];
     return cell;
 }
 

@@ -13,7 +13,6 @@
 
 @interface EditProfileViewController : UIViewController <UIImagePickerControllerDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *resortNameLabel;
 @property (nonatomic) Resort *selectedResort;
 @property (nonatomic) id <updatedResortDelegate> delegate;
 

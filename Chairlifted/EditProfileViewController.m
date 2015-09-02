@@ -20,11 +20,14 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutlet UILabel *editPictureLabel;
-@property (strong, nonatomic) IBOutlet UIButton *changeFavoriteResortButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (nonatomic) BOOL changedProfilePicture;
-@property (weak, nonatomic) IBOutlet UIButton *eggButton;
+@property (weak, nonatomic) IBOutlet UITextField *resortTextField;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UISwitch *likeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *commentSwitch;
+
 
 @end
 
@@ -35,7 +38,13 @@
 {
     [super viewDidLoad];
     [self setUpUserInfo];
-    self.eggButton.imageView.image = [UIImage imageNamed:@"egg"];
+
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeLeading relatedBy:0 toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    [self.view addConstraint:leftConstraint];
+
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeTrailing relatedBy:0 toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+    [self.view addConstraint:rightConstraint];
+
 }
 
 
@@ -75,13 +84,12 @@
         self.selectedResort = [User currentUser].favoriteResort;
         [self.selectedResort fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
          {
-             self.resortNameLabel.text = self.selectedResort.name;
+             self.resortTextField.text = self.selectedResort.name;
          }];
     }
     else
     {
-        self.resortNameLabel.text = @"";
-        [self.changeFavoriteResortButton setTitle:@"Add Favorite Resort" forState:UIControlStateNormal];
+        self.resortTextField.placeholder = @"Select favorite mountain";
     }
 
     if ([[User currentUser].isSnowboarder boolValue])
@@ -91,6 +99,26 @@
     else
     {
         [self.segControl setSelectedSegmentIndex:0];
+    }
+
+
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if ([currentInstallation[@"likes"] boolValue])
+    {
+        [self.likeSwitch setOn:YES];
+    }
+    else
+    {
+        [self.likeSwitch setOn:NO];
+    }
+
+    if ([currentInstallation[@"comments"] boolValue])
+    {
+        [self.commentSwitch setOn:YES];
+    }
+    else
+    {
+        [self.commentSwitch setOn:NO];
     }
 }
 
@@ -164,13 +192,13 @@
         self.fullNameTextField.textColor = [UIColor redColor];
     }
 
-    if ([self.resortNameLabel.text isEqualToString:[User currentUser].favoriteResort.name])
+    if ([self.resortTextField.text isEqualToString:[User currentUser].favoriteResort.name])
     {
-        self.resortNameLabel.textColor = [UIColor blackColor];
+        self.resortTextField.textColor = [UIColor blackColor];
     }
     else
     {
-        self.resortNameLabel.textColor = [UIColor redColor];
+        self.resortTextField.textColor = [UIColor redColor];
     }
 
     if (self.changedProfilePicture)
@@ -197,6 +225,14 @@
 {
     [textField resignFirstResponder];
     return NO;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.resortTextField)
+    {
+        [self performSegueWithIdentifier:@"ToStates" sender:self];
+    }
 }
 
 
@@ -238,8 +274,7 @@
 -(IBAction)unwindSegue:(UIStoryboardSegue *)segue
 {
     [self checkIfEditsMade];
-    self.resortNameLabel.text = self.selectedResort.name;
-    [self.changeFavoriteResortButton setTitle:@"Change Favorite Resort" forState:UIControlStateNormal];
+    self.resortTextField.text = self.selectedResort.name;
     [self.delegate didUpdateResort];
 }
 
