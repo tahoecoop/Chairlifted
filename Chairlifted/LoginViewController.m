@@ -38,17 +38,24 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if ([User currentUser]) {
-
+    if ([User currentUser])
+    {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-
-    [self.usernameTextField resignFirstResponder];
-    [self.passwordTextField resignFirstResponder];
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.usernameTextField)
+    {
+        [self.passwordTextField becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+        [self performSelector:@selector(onParseLoginButtonPressed:) withObject:nil afterDelay:0];
+    }
 
     return NO;
 }
@@ -239,20 +246,17 @@
 - (IBAction)onParseLoginButtonPressed:(UIButton *)button
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-
     UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];
-
     spinnerImageView.image = [UIImage returnSkierOrSnowboarderImage:[[User currentUser].isSnowboarder boolValue]];
-
     [activityView addSubview:spinnerImageView];
-
     [self.view addSubview:activityView];
-
     [spinnerImageView rotateLayerInfinite];
 
-    [User logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
+    NSString *userNameString = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *passwordString = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    [User logInWithUsernameInBackground:userNameString password:passwordString block:^(PFUser *user, NSError *error)
      {
          if (error)
          {

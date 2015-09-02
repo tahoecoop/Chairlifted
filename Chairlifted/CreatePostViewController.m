@@ -20,18 +20,22 @@
 @interface CreatePostViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *topicTextField;
 @property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *scrollViewContentView;
 @property (nonatomic) UIPickerView *pickerView;
 @property (nonatomic) NSArray *topics;
-@property (weak, nonatomic) IBOutlet UIButton *topicButton;
 @property (weak, nonatomic) IBOutlet UILabel *textPostPlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (nonatomic) UIView *activityView;
 @property (weak, nonatomic) IBOutlet UILabel *selectedResortLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tagResortButton;
+@property (nonatomic) UIToolbar *keyboardToolBar;
+@property (nonatomic) UIView *coverView;
+@property (nonatomic) UIToolbar *keyboardToolbarTextview;
+
 
 @end
 
@@ -40,16 +44,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.selectedResortLabel.hidden = YES;
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewContentView attribute:NSLayoutAttributeLeading relatedBy:0 toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    [self.view addConstraint:leftConstraint];
 
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewContentView attribute:NSLayoutAttributeTrailing relatedBy:0 toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+    [self.view addConstraint:rightConstraint];
+
+    self.pickerView = [UIPickerView new];
+    self.pickerView.dataSource = self;
+    self.pickerView.delegate = self;
+    self.topicTextField.inputView = self.pickerView;
+
+    [self addToolBarToPicker];
 
     [NetworkRequests getTopicsWithCompletion:^(NSArray *array)
     {
         self.topics = array;
         [self.pickerView reloadAllComponents];
     }];
-
-
-
 
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
@@ -78,6 +91,7 @@
 
 - (IBAction)onCancelButtonPressed:(UIBarButtonItem *)sender
 {
+    [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -97,7 +111,7 @@
     Post *post = [Post new];
     post.title = self.postTitleTextField.text;
     post.text = self.bodyTextView.text;
-    post.postTopic = self.topicButton.titleLabel.text;
+    post.postTopic = self.topicTextField.text;
 
 
     if (self.imageView.image)
@@ -180,35 +194,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)onTopicButtonPressed:(UIButton *)button
-{
-
-
-    if ([button.titleLabel.textColor isEqual:[UIColor blueColor]])
-    {
-        self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y + 30, button.frame.size.width, button.frame.size.height)];
-        self.pickerView.delegate = self;
-        self.pickerView.dataSource = self;
-        [self.pickerView reloadAllComponents];
-        [self.scrollViewContentView addSubview:self.pickerView];
-        self.imageView.hidden = YES;
-        self.uploadPhotoButton.hidden = YES;
-        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-     }
-    else
-    {
-        self.imageView.hidden = NO;
-        self.uploadPhotoButton.hidden = NO;
-        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [self.pickerView removeFromSuperview];
-    }
-    [self checkIfCanPost];
-}
-
 
 - (void)checkIfCanPost
 {
-    if ([self.postTitleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0 && ![self.topicButton.titleLabel.text isEqualToString:@"Topic (required)"] && (self.imageView.image || [self.bodyTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0))
+    if ([self.postTitleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0 && ![self.topicTextField.text isEqualToString:@"Topic (required)"] && (self.imageView.image || [self.bodyTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0))
     {
         self.saveButton.enabled = YES;
     }
@@ -223,8 +212,9 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    [self.topicButton setTitle:[[pickerView delegate] pickerView:pickerView titleForRow:row forComponent:component] forState:UIControlStateNormal];
+//    self.topicTextField.text = [[pickerView delegate] pickerView:pickerView titleForRow:row forComponent:component];
 }
+
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
@@ -242,16 +232,73 @@
     return postTopic.name;
 }
 
+
+- (void)addToolBarToPicker
+{
+    if (!self.keyboardToolBar)
+    {
+        self.keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 44)];
+    }
+    [self.keyboardToolBar setBarStyle:UIBarStyleDefault];
+    [self.keyboardToolBar sizeToFit];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor colorWithRed:46.0/255.0 green:204.0/255.0 blue:113.0/255.0 alpha:1.0];
+    label.font = [UIFont fontWithName:@"Avenir-Black" size: 18];
+//    label.text = [self.titlesArray objectAtIndex:self.indexPath.row];
+
+    UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:@selector(resignToolbar)];
+
+    UIBarButtonItem *doneButton1 =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(resignToolbar)];
+    UIBarButtonItem *title = [[UIBarButtonItem alloc]initWithCustomView:label];
+    title.tag = 666;
+
+    NSArray *itemsArray = [NSArray arrayWithObjects:title,flexButton,doneButton1, nil];
+
+    [self.keyboardToolBar setItems:itemsArray];
+    [self.pickerView addSubview:self.keyboardToolBar];
+//    self.topicTextField.inputView = self.keyboardToolBar;
+
+}
+
+- (void)resignToolbar
+{
+//    if (self.pickerView.hidden == NO)
+//    {
+        PostTopic *postTopic = [self.topics objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+        self.topicTextField.text = postTopic.name;
+        [self.topicTextField resignFirstResponder];
+//        self.pickerView.hidden = YES;
+//        [self.coverView removeFromSuperview];
+//    }
+}
+
 #pragma mark - TextView Methods
 
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+
+
+}
+
+
+//-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+//{
+//    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
+//    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
+//    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignTextViewKeyboard)], nil];
+//    [self.keyboardToolbarTextview sizeToFit];
+//    textView.inputAccessoryView = self.keyboardToolbarTextview;
+//    return YES;
+//}
 
 -(void)textViewDidChange:(UITextView *)textView
 {
-
     if (textView.text.length > 0)
     {
         self.textPostPlaceholderLabel.hidden = YES;
-
     }
     else
     {
@@ -260,6 +307,8 @@
     [self checkIfCanPost];
 }
 
+
+
 #pragma mark - Text Field Methods
 
 - (IBAction)editingChanged:(UITextField *)textField
@@ -267,6 +316,47 @@
     [self checkIfCanPost];
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.topicTextField)
+    {
+//        textField.userInteractionEnabled = NO;
+
+//        self.coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width,  [[UIScreen mainScreen]bounds].size.height)];
+//        self.coverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//        [self.coverView endEditing:YES];
+//        [self.view addSubview:self.coverView];
+//
+//        self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen]bounds].size.height - 216, [[UIScreen mainScreen]bounds].size.width, 216)];
+//        self.pickerView.delegate = self;
+//        self.pickerView.dataSource = self;
+//        [self.pickerView reloadAllComponents];
+//        self.pickerView.backgroundColor = [UIColor whiteColor];
+//        [self.coverView addSubview:self.pickerView];
+
+    }
+}
+
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    textField.userInteractionEnabled = YES;
+    [textField resignFirstResponder];
+    [self checkIfCanPost];
+    [self.view endEditing:YES];
+
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)resignTextViewKeyboard
+{
+    [self.bodyTextView resignFirstResponder];
+}
 
 #pragma mark - Segue methods
 
@@ -287,12 +377,23 @@
     
 }
 
-#pragma mark - activity indicator methods
 
+- (IBAction)onFakeButtonPress:(id)sender
+{
 
+    self.coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width,  [[UIScreen mainScreen]bounds].size.height)];
+    self.coverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [self.coverView endEditing:YES];
+    [self.view addSubview:self.coverView];
 
-
-
+    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen]bounds].size.height - 216, [[UIScreen mainScreen]bounds].size.width, 216)];
+    self.pickerView.delegate = self;
+    self.pickerView.dataSource = self;
+    [self.pickerView reloadAllComponents];
+    self.pickerView.backgroundColor = [UIColor whiteColor];
+    [self.coverView addSubview:self.pickerView];
+    [self addToolBarToPicker];
+}
 
 
 @end
