@@ -34,7 +34,7 @@
 #import "ProfileViewController.h"
 
 
-@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, UIViewControllerAnimatedTransitioning>
+@interface PostDetailViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic) NSMutableArray *comments;
 @property (nonatomic)int skipCount;

@@ -48,7 +48,7 @@
     {
         if (error)
         {
-            UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
+//            UIAlertController *alert = [UIAlertController showErrorAlert:error orMessage:nil];
         }
         else
         {

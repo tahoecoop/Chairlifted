@@ -70,7 +70,6 @@
     [application registerForRemoteNotifications];
 
 
-    User *user = [User currentUser];
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     tabBarController.tabBar.tintColor = [UIColor lightGrayColor];
 

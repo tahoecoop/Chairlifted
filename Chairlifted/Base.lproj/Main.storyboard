@@ -4463,12 +4463,12 @@ If you have any questions regarding privacy while using the Application, or have
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fGn-2G-lvj"/>
-        <segue reference="PMH-qz-YDK"/>
-        <segue reference="Vyn-fc-o24"/>
         <segue reference="H5x-1z-wpL"/>
-        <segue reference="GLv-ub-mwA"/>
+        <segue reference="juL-cQ-eax"/>
         <segue reference="PUz-IB-R6f"/>
+        <segue reference="PMH-qz-YDK"/>
+        <segue reference="fGn-2G-lvj"/>
         <segue reference="sE3-KK-I6P"/>
+        <segue reference="GLv-ub-mwA"/>
     </inferredMetricsTieBreakers>
 </document>

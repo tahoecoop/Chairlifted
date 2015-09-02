@@ -230,10 +230,9 @@
     [self.keyboardToolBar setBarStyle:UIBarStyleDefault];
     [self.keyboardToolBar sizeToFit];
 
-    UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(resignToolbar:)];
-    UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignToolbar:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignToolbar:)];
 
-    NSArray *itemsArray = [NSArray arrayWithObjects:doneButton1, nil];
+    NSArray *itemsArray = [NSArray arrayWithObjects:doneButton, nil];
 
     [self.keyboardToolBar setItems:itemsArray];
     self.topicTextField.inputAccessoryView = self.keyboardToolBar;
