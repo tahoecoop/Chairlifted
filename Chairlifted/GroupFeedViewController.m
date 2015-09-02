@@ -266,7 +266,7 @@
     {
         notificationsAction = [UIAlertAction actionWithTitle:@"Turn off notifications" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
        {
-           [installation removeObject:[NSString stringWithFormat:@"group%@", self.group.name] forKey:@"channels"];
+           [installation removeObject:[NSString stringWithFormat:@"group%@", self.group.objectId] forKey:@"channels"];
            [installation saveInBackground];
 
            [alert dismissViewControllerAnimated:YES completion:nil];

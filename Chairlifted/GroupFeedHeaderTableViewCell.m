@@ -48,6 +48,17 @@
                  {
                      if (succeeded)
                      {
+                         NSDictionary *pushData = @{
+                                                    @"alert" : [NSString stringWithFormat:@"%@ requested to join \"%@\"!", [User currentUser].displayName, self.group.name],
+                                                    @"badge" : @"Increment"
+                                                    };
+
+                         PFPush *push = [PFPush new];
+                         [push setChannel:[NSString stringWithFormat:@"admin%@",self.group.objectId]];
+                         [push setData:pushData];
+
+                         [push sendPushInBackground];
+
                          [activityView removeFromSuperview];
                          [button setTitle:@"Pending" forState:UIControlStateNormal];
                      }
