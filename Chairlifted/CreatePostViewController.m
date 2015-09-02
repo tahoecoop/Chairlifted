@@ -108,9 +108,14 @@
         post.group = self.group;
         post.isPrivate = self.group.isPrivate;
 
+        NSDictionary *pushData = @{
+                                   @"alert" : [NSString stringWithFormat:@"New group post in %@ from %@", self.group.name, [User currentUser].displayName],
+                                   @"badge" : @"Increment"
+                                   };
+
         PFPush *push = [PFPush new];
-        [push setChannel:self.group.objectId];
-        [push setMessage:[NSString stringWithFormat:@"New group post in %@ from %@", self.group.name, [User currentUser].displayName]];
+        [push setChannel:[NSString stringWithFormat:@"group%@", self.group.objectId]];
+        [push setData:pushData];
         [push sendPushInBackground];
     }
     else
