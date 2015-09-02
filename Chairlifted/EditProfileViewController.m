@@ -260,6 +260,8 @@
         [login logOut];
 
         [FBSDKAccessToken setCurrentAccessToken:nil];
+
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

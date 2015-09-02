@@ -360,6 +360,11 @@
      }];
 }
 
+
+//+ (void)getNewUser
+
+
+
 #pragma mark - get Resorts
 
 + (void)getResortsWithState:(NSString *)state andCompletion:(void(^)(NSArray *array))complete

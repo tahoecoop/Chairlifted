@@ -11,7 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <pop/POP.h>
 
-@interface LoginViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate, UIViewControllerAnimatedTransitioning>
+@interface LoginViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 
 
 @end

@@ -64,6 +64,7 @@
 
         if (![User currentUser])
         {
+            self.title = @"Profile";
             self.moreButton.enabled = NO;
             UIAlertController *alert = [UIAlertController alertToSignInWithCompletion:^(BOOL signIn)
             {
@@ -82,12 +83,14 @@
         else
         {
             self.selectedUser = [User currentUser];
+            self.title = self.selectedUser.displayName;
         }
     }
     else
     {
         [self.moreButton setImage:[UIImage imageNamed:@"ellipses"]];
         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        self.title = self.selectedUser.displayName;
     }
 
     if (!self.selectedUser.favoriteResort)

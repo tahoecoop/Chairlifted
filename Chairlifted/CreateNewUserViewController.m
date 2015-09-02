@@ -38,9 +38,7 @@
 
 }
 
-
-- (IBAction)onCreateUserButtonPressed:(UIButton *)sender
-
+- (IBAction)onSaveButtonPressed:(UIBarButtonItem *)button
 {
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
@@ -76,17 +74,16 @@
          {
              PFInstallation *currentInstallation = [PFInstallation currentInstallation];
              currentInstallation[@"user"] = [User currentUser];
+             [currentInstallation addUniqueObject:[NSString stringWithFormat:@"likes%@", [User currentUser].objectId] forKey:@"channels"];
+             [currentInstallation addUniqueObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId] forKey:@"channels"];
              [currentInstallation saveInBackground];
+
              
             [self dismissViewControllerAnimated:YES completion:nil];
          }
      }];
 }
 
-- (IBAction)onCancelButtonPressed:(UIButton *)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
