@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A215h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -51,6 +51,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiM-5o-odq">
                                                     <rect key="frame" x="8" y="2" width="65" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <state key="normal" title="username">
                                                         <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,6 +63,7 @@
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartEmptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-uR-saS">
                                                     <rect key="frame" x="294" y="89" width="18" height="27"/>
+                                                    <animations/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="MY8-aA-6IC"/>
@@ -583,6 +585,7 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select topic" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onZ-3m-vm5">
                                                 <rect key="frame" x="8" y="74" width="304" height="30"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -591,6 +594,7 @@
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optional:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="031-Vh-teK">
                                                 <rect key="frame" x="8" y="270" width="70" height="21"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -749,6 +753,7 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="Ou6-5a-naI">
                                                     <rect key="frame" x="287" y="8" width="25" height="25"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="1Lr-ns-fFy"/>
                                                         <constraint firstAttribute="height" constant="25" id="SZQ-1K-v5w"/>
@@ -756,6 +761,7 @@
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown" translatesAutoresizingMaskIntoConstraints="NO" id="0aJ-yr-K8R">
                                                     <rect key="frame" x="249" y="6" width="30" height="30"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="360-RE-J5K"/>
                                                         <constraint firstAttribute="height" constant="30" id="6o5-Rw-ey4"/>
@@ -888,6 +894,7 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="JMJ-b0-etL">
                                                     <rect key="frame" x="286" y="8" width="26" height="26"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="8hD-kI-qlC"/>
                                                         <constraint firstAttribute="width" constant="26" id="tZl-8e-k1g"/>
@@ -3307,8 +3314,10 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OPE-13-2HM">
                                     <rect key="frame" x="8" y="0.0" width="128" height="33"/>
+                                    <animations/>
                                 </imageView>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9sA-Vq-Lb0">
@@ -3650,7 +3659,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTf-jf-ORH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTf-jf-ORH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQz-xZ-S2R" userLabel="Content View">
@@ -3776,6 +3785,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Mountain:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sw2-0D-PIj">
                                                 <rect key="frame" x="9" y="215" width="135" height="21"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -3788,12 +3798,14 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whi-px-P4v">
                                                 <rect key="frame" x="51" y="-46" width="0.0" height="0.0"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*Must also enable push notifications for Chairlifted in Settings." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvE-LW-Nhu">
                                                 <rect key="frame" x="50" y="414" width="223" height="31"/>
+                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="223" id="fpB-Ok-llN"/>
                                                 </constraints>
@@ -3802,6 +3814,7 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4a-cu-xxZ">
                                                 <rect key="frame" x="19" y="243" width="284" height="30"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -3809,6 +3822,7 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
+                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="8Mj-c2-rzn" firstAttribute="leading" secondItem="PQz-xZ-S2R" secondAttribute="leading" constant="33" id="1I7-Wy-Gfi"/>
@@ -3856,6 +3870,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <animations/>
                                 <constraints>
                                     <constraint firstItem="PQz-xZ-S2R" firstAttribute="leading" secondItem="cTf-jf-ORH" secondAttribute="leading" id="3kM-vH-3Id"/>
                                     <constraint firstAttribute="bottom" secondItem="PQz-xZ-S2R" secondAttribute="bottom" constant="-150" id="M5y-xg-qcd"/>
@@ -3902,7 +3917,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqL-3Z-Nft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="1755"/>
+            <point key="canvasLocation" x="375" y="1755"/>
         </scene>
         <!--Select State-->
         <scene sceneID="smY-zH-i7F">
@@ -4057,7 +4072,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6w-55-ypC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187" y="1755"/>
+            <point key="canvasLocation" x="-16" y="1755"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hat-6T-GjD">
@@ -4164,12 +4179,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e9Z-DB-KJn"/>
+        <segue reference="ypa-Le-irg"/>
         <segue reference="fGn-2G-lvj"/>
         <segue reference="boM-rY-1tv"/>
+        <segue reference="sE3-KK-I6P"/>
+        <segue reference="GLv-ub-mwA"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="AIY-s3-N9h"/>
-        <segue reference="eSN-dC-lKM"/>
-        <segue reference="GLv-ub-mwA"/>
     </inferredMetricsTieBreakers>
 </document>
