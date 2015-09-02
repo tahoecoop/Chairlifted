@@ -56,7 +56,7 @@
                               PFQuery *pushQuery = [PFInstallation query];
                               [pushQuery whereKey:@"user" equalTo:self.post.author];
 
-                              NSDictionary *pushData = @{@"alert" : [NSString stringWithFormat:@"%@ liked your post!", [User currentUser].username],
+                              NSDictionary *pushData = @{@"alert" : [NSString stringWithFormat:@"%@ liked your post!", [User currentUser].displayName],
                                                          @"badge" : @"Increment"};
                               PFPush *push = [PFPush new];
                               [push setData:pushData];

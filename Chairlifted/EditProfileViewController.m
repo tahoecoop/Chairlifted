@@ -192,9 +192,11 @@
 {
     if (textField == self.resortTextField)
     {
+        textField.userInteractionEnabled = NO;
         [self performSegueWithIdentifier:@"ToStates" sender:self];
     }
 }
+
 
 
 - (IBAction)onLikeSwitchChanged:(UISwitch *)sender
@@ -235,6 +237,7 @@
 -(IBAction)unwindSegue:(UIStoryboardSegue *)segue
 {
     self.resortTextField.text = self.selectedResort.name;
+    self.resortTextField.userInteractionEnabled = YES;
     [self.delegate didUpdateResort];
 }
 

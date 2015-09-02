@@ -296,7 +296,7 @@
                     NSArray *toRecipients = @[@"chairlifted.devteam@gmail.com"];
                     [mailer setToRecipients:toRecipients];
 
-                    NSString *emailBody = [NSString stringWithFormat:@"User: %@ \n\n\nThank you for your feedback. Please explain why you are reporting this user as inappropriate: \n\t", self.selectedUser.username];
+                    NSString *emailBody = [NSString stringWithFormat:@"User: %@ \n\n\nThank you for your feedback. Please explain why you are reporting this user as inappropriate: \n\t", self.selectedUser.displayName];
                     [mailer setMessageBody:emailBody isHTML:NO];
 
                     [self presentViewController:mailer animated:YES completion:nil];
