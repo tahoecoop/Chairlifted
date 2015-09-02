@@ -74,14 +74,18 @@
         groupCell.memberQuantityLabel.text = [NSString stringWithFormat:@"%i members", group.memberQuantity];
         groupCell.lastUpdatedLabel.text = [NSDate determineTimePassed:group.mostRecentPost];
 
-        if (group.isPrivate)
+
+        if ([group.isPrivate boolValue])
         {
-            groupCell.privateLabel.hidden = NO;
+            groupCell.lockImageView.hidden = NO;
         }
         else
         {
-            groupCell.privateLabel.hidden = YES;
+            groupCell.lockImageView.hidden = YES;
         }
+
+
+
         groupCell.backgroundColor = [UIColor whiteColor];
         tableView.backgroundColor = [UIColor clearColor];
 
@@ -94,9 +98,9 @@
         {
             CustomFeedWithPhotoTableViewCell *postPhotoCell = [tableView dequeueReusableCellWithIdentifier:@"PostImageCell"];
             postPhotoCell.titleLabel.text = post.title;
-            postPhotoCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            postPhotoCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
             postPhotoCell.authorLabel.text = post.author.displayName;
-            postPhotoCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
+            postPhotoCell.repliesLabel.text = [NSString stringWithFormat:@"%i", post.commentCount];
             postPhotoCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
 
             PFFile *imageData = post.imageThumbnail;
@@ -114,9 +118,9 @@
         {
             CustomFeedTableViewCell *postTextCell = [tableView dequeueReusableCellWithIdentifier:@"PostTextCell"];
             postTextCell.postLabel.text = post.title;
-            postTextCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            postTextCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
             postTextCell.authorLabel.text = post.author.displayName;
-            postTextCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
+            postTextCell.repliesLabel.text = [NSString stringWithFormat:@"%i", post.commentCount];
             postTextCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
             postTextCell.backgroundColor = [UIColor whiteColor];
             tableView.backgroundColor = [UIColor clearColor];
@@ -171,8 +175,9 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self populateTheCells:[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     [searchBar resignFirstResponder];
+    NSString *searchTerm = [searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [self populateTheCells:[searchTerm lowercaseString]];
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText

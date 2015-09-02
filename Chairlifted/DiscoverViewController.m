@@ -111,9 +111,9 @@
             CustomFeedWithPhotoTableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"CellPostImage"];
             imageCell.titleLabel.text = post.title;
             imageCell.authorLabel.text = post.author.displayName;
-            imageCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+            imageCell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
             imageCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            imageCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            imageCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
             [imageCell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
             [imageCell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
@@ -135,9 +135,9 @@
             CustomFeedTableViewCell *textCell = [tableView dequeueReusableCellWithIdentifier:@"CellPostText"];
             textCell.postLabel.text = post.title;
             textCell.authorLabel.text = post.author.displayName;
-            textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+            textCell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
             textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            textCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
             [textCell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
             [textCell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
@@ -191,6 +191,7 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [searchBar resignFirstResponder];
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     UIImageView *spinnerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.height / 2) - 15, 30, 30)];

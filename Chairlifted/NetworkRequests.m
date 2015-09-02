@@ -273,8 +273,8 @@
 + (void)getGroupsFromSearch:(NSString *)searchTerm WithSkipCount:(int)skipCount andCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [Group query];
-    [query orderByAscending:@"name"];
-    [query whereKey:@"name" containsString:searchTerm];
+    [query orderByAscending:@"lowercaseName"];
+    [query whereKey:@"lowercaseName" containsString:searchTerm];
     query.skip = skipCount;
     query.limit = 30;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -285,6 +285,21 @@
          }
      }];
 }
+
++ (void)checkIfGroupNameExists:(NSString *)name andCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [Group query];
+    [query orderByAscending:@"name"];
+    [query whereKey:@"name" equalTo:name];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             complete(objects);
+         }
+     }];
+}
+
 
 
 #pragma mark - Get Users

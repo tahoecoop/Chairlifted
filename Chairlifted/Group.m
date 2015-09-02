@@ -11,6 +11,7 @@
 @implementation Group
 
 @dynamic name;
+@dynamic lowercaseName;
 @dynamic isPrivate;
 @dynamic mostRecentPost;
 @dynamic memberQuantity;

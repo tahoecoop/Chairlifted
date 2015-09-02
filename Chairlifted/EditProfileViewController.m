@@ -134,7 +134,6 @@
 {
     self.profileImageView.image = info[UIImagePickerControllerOriginalImage];
     self.changedProfilePicture = YES;
-    [self checkIfEditsMade];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -181,44 +180,6 @@
     }];
 }
 
--(void)checkIfEditsMade
-{
-    if ([[self.fullNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:[User currentUser].name])
-    {
-        self.fullNameTextField.textColor = [UIColor blackColor];
-    }
-    else
-    {
-        self.fullNameTextField.textColor = [UIColor redColor];
-    }
-
-    if ([self.resortTextField.text isEqualToString:[User currentUser].favoriteResort.name])
-    {
-        self.resortTextField.textColor = [UIColor blackColor];
-    }
-    else
-    {
-        self.resortTextField.textColor = [UIColor redColor];
-    }
-
-    if (self.changedProfilePicture)
-    {
-        self.profileImageView.layer.borderColor = [UIColor redColor].CGColor;
-        self.profileImageView.layer.borderWidth = 1.0;
-    }
-    else
-    {
-        self.profileImageView.layer.borderColor = [UIColor blackColor].CGColor;
-        self.profileImageView.layer.borderWidth = 0.0;
-    }
-}
-
-
-
-- (IBAction)editingDidChange:(UITextField *)textField
-{
-    [self checkIfEditsMade];
-}
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -273,7 +234,6 @@
 
 -(IBAction)unwindSegue:(UIStoryboardSegue *)segue
 {
-    [self checkIfEditsMade];
     self.resortTextField.text = self.selectedResort.name;
     [self.delegate didUpdateResort];
 }

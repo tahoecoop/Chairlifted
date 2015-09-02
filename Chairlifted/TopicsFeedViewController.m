@@ -115,9 +115,9 @@
         CustomFeedWithPhotoTableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"CellImage"];
         imageCell.titleLabel.text = post.title;
         imageCell.authorLabel.text = post.author.displayName;
-        imageCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+        imageCell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
         imageCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-        imageCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+        imageCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
         [imageCell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
         [imageCell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
@@ -139,9 +139,9 @@
         CustomFeedTableViewCell *textCell = [tableView dequeueReusableCellWithIdentifier:@"CellText"];
         textCell.postLabel.text = post.title;
         textCell.authorLabel.text = post.author.displayName;
-        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+        textCell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
         textCell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-        textCell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+        textCell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
         [textCell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
         [textCell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];

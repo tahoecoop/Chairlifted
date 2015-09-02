@@ -48,6 +48,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.shouldUpdateResort = YES;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -174,7 +175,15 @@
         {
             headerCell.weatherLabel.text = [NSString stringWithFormat:@"%.f°", [self.weatherDict[@"temperature"] floatValue]];
             headerCell.weatherIconImageView.image = [UIImage imageNamed:self.weatherDict[@"icon"]];
-            headerCell.locationLabel.text = self.resort.name;
+
+            if (self.resort)
+            {
+                headerCell.locationLabel.text = self.resort.name;
+            }
+            else
+            {
+                headerCell.locationLabel.text = @"No favorite mountain chosen";
+            }
         }
 
         PFFile *imageData = self.selectedUser.profileImage;
@@ -193,9 +202,9 @@
             CustomFeedWithPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImagePostCell"];
             cell.authorLabel.text = post.author.displayName;
             cell.titleLabel.text = post.title;
-            cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
+            cell.repliesLabel.text = [NSString stringWithFormat:@"%i", post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            cell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
             [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
             [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
@@ -216,9 +225,9 @@
             CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextPostCell"];
             cell.authorLabel.text = post.author.displayName;
             cell.postLabel.text = post.title;
-            cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", post.commentCount];
+            cell.repliesLabel.text = [NSString stringWithFormat:@"%i", post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            cell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
             [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
             [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];

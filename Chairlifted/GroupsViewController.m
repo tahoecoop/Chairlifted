@@ -189,21 +189,21 @@
     cell.lastUpdatedLabel.text = [NSDate determineTimePassed:group.mostRecentPost];
     if ([group.isPrivate boolValue])
     {
-        cell.privateLabel.hidden = NO;
+        cell.lockImageView.hidden = NO;
     }
     else
     {
-        cell.privateLabel.hidden = YES;
-        cell.adminLabel.hidden = YES;
+        cell.lockImageView.hidden = YES;
+        cell.crownImageView.hidden = YES;
     }
 
     if (![joinGroup.status isEqualToString:@"admin"])
     {
-        cell.adminLabel.hidden = YES;
+        cell.crownImageView.hidden = YES;
     }
     else
     {
-        cell.adminLabel.hidden = NO;
+        cell.crownImageView.hidden = NO;
     }
 
     return cell;

@@ -198,7 +198,7 @@
         header.selectionStyle = UITableViewCellSelectionStyleNone;
         header.postTitleLabel.text = self.post.title;
         header.minutesAgoLabel.text = [NSDate determineTimePassed:self.post.createdAt];
-        header.likesLabel.text = [NSString stringWithFormat:@"%i likes",self.post.likeCount];
+        header.likesLabel.text = [NSString stringWithFormat:@"%i",self.post.likeCount];
         [header.usernameButton setTitle:self.post.author.displayName forState:UIControlStateNormal];
 
         if (self.post.group)
@@ -229,64 +229,6 @@
         return header;
     }
 }
-
-#pragma mark - Blur Effect Methods
-
-
-- (UIImage *)takeSnapshotOfView:(UIView *)view
-{
-    UIGraphicsBeginImageContext(CGSizeMake(view.frame.size.width, view.frame.size.height));
-    [view drawViewHierarchyInRect:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height) afterScreenUpdates:YES];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return image;
-}
-
-- (UIImage *)blurWithGPUImage:(UIImage *)sourceImage
-{
-    // Gaussian Blur
-    GPUImageGaussianBlurFilter *blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-    blurFilter.blurRadiusInPixels = 10.0;
-
-    return [blurFilter imageByFilteringImage: sourceImage];
-}
-
-
-#pragma mark - cass's blur
-
--(void)captureBackgroundBlurImage {
-    UIScreen *screen = [UIScreen mainScreen];
-    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, YES, screen.scale);
-
-    CGRect screenRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view drawViewHierarchyInRect:screenRect afterScreenUpdates:NO];
-
-    UIImage *backgroundBlurImage = [UIImageEffects imageByApplyingLightEffectToImage:[self takeSnapshotOfView:self.view]];
-    UIImageView *backgroundBlurImageView = [[UIImageView alloc] initWithImage:backgroundBlurImage];
-
-    self.blurredBackgroundView = [[UIView alloc] initWithFrame:screenRect];
-    [self.blurredBackgroundView addSubview:backgroundBlurImageView];
-
-    UIGraphicsEndImageContext();
-}
-
--(void)showBackgroundBlurImage {
-    [self.blurredBackgroundView setAlpha:0.0f];
-    [self.view addSubview:self.blurredBackgroundView];
-    [UIView animateWithDuration:0.2f animations:^() {
-        self.blurredBackgroundView.alpha = 1.0f;
-    }];
-}
-
--(void)hideBackgroundBlurImage {
-    [self.blurredBackgroundView setAlpha:1.0f];
-    [self.view addSubview:self.blurredBackgroundView];
-    [UIView animateWithDuration:0.2f animations:^() {
-        self.blurredBackgroundView.alpha = 0.0f;
-    }];
-}
-
 
 #pragma mark - button pressed methods
 

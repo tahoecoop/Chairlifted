@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface GroupCustomTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memberQuantityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *privateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *adminLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *crownImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *lockImageView;
 
 @end

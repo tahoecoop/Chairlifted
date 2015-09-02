@@ -13,6 +13,8 @@
 #import "User.h"
 #import "UIImageView+SpinningFigure.h"
 #import "UIImage+SkiSnowboardIcon.h"
+#import "NetworkRequests.h"
+#import "UIAlertController+ErrorAlert.h"
 
 @interface CreateGroupViewController () <UITextViewDelegate>
 
@@ -87,52 +89,72 @@
     [self.view addSubview:activityView];
     [spinnerImageView rotateLayerInfinite];
 
-    Group *group = [Group new];
-    group.name = [self.groupTitleTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    group.purpose = [self.groupPurposeTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
-    if (self.groupImageView.image)
-    {
-        group.imageThumbnail =  [PFFile fileWithData: UIImageJPEGRepresentation(self.groupImageView.image, 0.25)];
-    }
-
-    group.memberQuantity = 1;
-    group.mostRecentPost = nil;
-
-    if (self.segControl.selectedSegmentIndex == 0)
-    {
-        group.isPrivate = [NSNumber numberWithBool:NO];
-    }
-    else
-    {
-        group.isPrivate = [NSNumber numberWithBool:YES];
-    }
-
-    [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    NSString *groupName = [self.groupTitleTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [NetworkRequests checkIfGroupNameExists:groupName andCompletion:^(NSArray *array)
      {
-         if (succeeded)
+         if (array.count > 0)
          {
-             JoinGroup *joinGroup = [JoinGroup new];
-             joinGroup.group = group;
-             joinGroup.groupName = group.name;
-             if (group.isPrivate)
+             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"A group with that name already exists." preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
              {
-                 joinGroup.status = @"admin";
+                 [activityView removeFromSuperview];
+             }];
+             
+             [alert addAction:dismiss];
+             [self presentViewController:alert animated:YES completion:nil];
+         }
+         else
+         {
+             Group *group = [Group new];
+             group.name = groupName;
+             group.lowercaseName = [groupName lowercaseString];
+             group.purpose = [self.groupPurposeTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+             if (self.groupImageView.image)
+             {
+                 group.imageThumbnail =  [PFFile fileWithData: UIImageJPEGRepresentation(self.groupImageView.image, 0.25)];
+             }
+
+             group.memberQuantity = 1;
+             group.mostRecentPost = nil;
+
+             if (self.segControl.selectedSegmentIndex == 0)
+             {
+                 group.isPrivate = [NSNumber numberWithBool:NO];
              }
              else
              {
-                 joinGroup.status = @"joined";
+                 group.isPrivate = [NSNumber numberWithBool:YES];
              }
-             joinGroup.user = [User currentUser];
-             joinGroup.lastViewed = [NSDate date];
-             [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+
+             [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
               {
-                  [activityView removeFromSuperview];
-                  [self.delegate didFinishSaving];
-                  [self dismissViewControllerAnimated:YES completion:nil];
+                  if (succeeded)
+                  {
+                      JoinGroup *joinGroup = [JoinGroup new];
+                      joinGroup.group = group;
+                      joinGroup.groupName = group.name;
+                      if (group.isPrivate)
+                      {
+                          joinGroup.status = @"admin";
+                      }
+                      else
+                      {
+                          joinGroup.status = @"joined";
+                      }
+                      joinGroup.user = [User currentUser];
+                      joinGroup.lastViewed = [NSDate date];
+                      [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                       {
+                           [activityView removeFromSuperview];
+                           [self.delegate didFinishSaving];
+                           [self dismissViewControllerAnimated:YES completion:nil];
+                       }];
+                  }
               }];
          }
      }];
+    
 }
 
 #pragma mark - TextView Methods

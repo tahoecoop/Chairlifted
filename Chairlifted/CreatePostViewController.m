@@ -57,6 +57,9 @@
     [self addToolBarToPicker];
     self.topicTextField.inputView = self.pickerView;
 
+    self.tagResortButton.layer.cornerRadius = self.tagResortButton.frame.size.width / 45;
+    self.uploadPhotoButton.layer.cornerRadius = self.uploadPhotoButton.frame.size.width / 45;
+
 
 
     [NetworkRequests getTopicsWithCompletion:^(NSArray *array)
@@ -177,7 +180,7 @@
 
 - (void)checkIfCanPost
 {
-    if ([self.postTitleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0 && ![self.topicTextField.text isEqualToString:@"Topic (required)"] && (self.imageView.image || [self.bodyTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0))
+    if ([self.postTitleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0 && self.topicTextField.text.length > 0 && (self.imageView.image || [self.bodyTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0))
     {
         self.saveButton.enabled = YES;
     }
@@ -337,27 +340,9 @@
 -(IBAction)unwindToCreatePost:(UIStoryboardSegue *)segue
 {
     self.selectedResortLabel.text = self.selectedResort.name;
-    [self.tagResortButton setTitle:@"Change Tagged Resort" forState:UIControlStateNormal];
-    
+    self.selectedResortLabel.hidden = NO;
 }
 
-
-- (IBAction)onFakeButtonPress:(id)sender
-{
-
-    self.coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width,  [[UIScreen mainScreen]bounds].size.height)];
-    self.coverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    [self.coverView endEditing:YES];
-    [self.view addSubview:self.coverView];
-
-    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen]bounds].size.height - 216, [[UIScreen mainScreen]bounds].size.width, 216)];
-    self.pickerView.delegate = self;
-    self.pickerView.dataSource = self;
-    [self.pickerView reloadAllComponents];
-    self.pickerView.backgroundColor = [UIColor whiteColor];
-    [self.coverView addSubview:self.pickerView];
-    [self addToolBarToPicker];
-}
 
 
 @end

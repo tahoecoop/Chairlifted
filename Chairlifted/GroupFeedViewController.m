@@ -106,7 +106,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (self.group.isPrivate && ![self.joinGroup.status isEqualToString:@"joined"])
+    if ([self.group.isPrivate boolValue] && (![self.joinGroup.status isEqualToString:@"joined"] || ![self.joinGroup.status isEqualToString:@"admin"]))
     {
         return 1;
     }
@@ -182,9 +182,9 @@
             CustomFeedWithPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellWithImage"];
             cell.titleLabel.text = post.title;
             cell.authorLabel.text = post.author.displayName;
-            cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+            cell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            cell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
             [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
             [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
@@ -203,9 +203,9 @@
             CustomFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             cell.postLabel.text = post.title;
             cell.authorLabel.text = post.author.displayName;
-            cell.repliesLabel.text = [NSString stringWithFormat:@"%i comments", (int)post.commentCount];
+            cell.repliesLabel.text = [NSString stringWithFormat:@"%i", (int)post.commentCount];
             cell.minutesAgoLabel.text = [NSDate determineTimePassed:post.createdAt];
-            cell.likesLabel.text = [NSString stringWithFormat:@"%i likes", post.likeCount];
+            cell.likesLabel.text = [NSString stringWithFormat:@"%i", post.likeCount];
 
             [cell.cardView.layer setShadowColor:[UIColor blackColor].CGColor];
             [cell.cardView.layer setShadowOffset:CGSizeMake(0, 2)];
