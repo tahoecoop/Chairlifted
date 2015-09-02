@@ -137,6 +137,17 @@
                       if (group.isPrivate)
                       {
                           joinGroup.status = @"admin";
+
+                          [NetworkRequests checkIfGroupNameExists:group.name andCompletion:^(NSArray *array)
+                           {
+                               Group *groupForPush = array.firstObject;
+
+                               PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                               [currentInstallation addUniqueObject:[NSString stringWithFormat:@"group%@", groupForPush.objectId] forKey:@"channels"];
+                               [currentInstallation addUniqueObject:[NSString stringWithFormat:@"admin%@", groupForPush.objectId] forKey:@"channels"];
+                           }];
+
+
                       }
                       else
                       {
@@ -146,6 +157,14 @@
                       joinGroup.lastViewed = [NSDate date];
                       [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                        {
+                           [NetworkRequests checkIfGroupNameExists:group.name andCompletion:^(NSArray *array)
+                            {
+                                Group *groupForPush = array.firstObject;
+
+                                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                                [currentInstallation addUniqueObject:[NSString stringWithFormat:@"group%@", groupForPush.objectId] forKey:@"channels"];
+                            }];
+                           
                            [activityView removeFromSuperview];
                            [self.delegate didFinishSaving];
                            [self dismissViewControllerAnimated:YES completion:nil];

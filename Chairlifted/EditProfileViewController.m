@@ -204,11 +204,13 @@
     PFInstallation *installation = [PFInstallation currentInstallation];
     if (sender.on)
     {
-        [installation setObject:[NSNumber numberWithBool:YES] forKey:@"likes"];
+//        [installation setObject:[NSNumber numberWithBool:YES] forKey:@"likes"];
+        [installation addUniqueObject:[NSString stringWithFormat:@"likes%@", [User currentUser].objectId] forKey:@"channels"];
     }
     else
     {
-        [installation setObject:[NSNumber numberWithBool:NO] forKey:@"likes"];
+//        [installation setObject:[NSNumber numberWithBool:NO] forKey:@"likes"];
+        [installation removeObject:[NSString stringWithFormat:@"likes%@", [User currentUser].objectId] forKey:@"channels"];
     }
     [installation saveInBackground];
 }
@@ -224,11 +226,13 @@
 
     if (sender.on)
     {
-        [installation setObject:[NSNumber numberWithBool:YES] forKey:@"comments"];
+//        [installation setObject:[NSNumber numberWithBool:YES] forKey:@"comments"];
+        [installation addUniqueObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId] forKey:@"channels"];
     }
     else
     {
-        [installation setObject:[NSNumber numberWithBool:NO] forKey:@"comments"];
+//        [installation setObject:[NSNumber numberWithBool:NO] forKey:@"comments"];
+        [installation removeObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId] forKey:@"channels"];
     }
     [installation saveInBackground];
 }

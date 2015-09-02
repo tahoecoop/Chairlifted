@@ -57,14 +57,12 @@
               {
                   if (succeededTwo)
                   {
-                      PFQuery *pushQuery = [PFInstallation query];
-                      [pushQuery whereKey:@"user" equalTo:self.post.author];
-
                       NSDictionary *pushData = @{@"alert" : [NSString stringWithFormat:@"%@ commented on your post!", [User currentUser].displayName],
                                                  @"badge" : @"Increment"};
                       PFPush *push = [PFPush new];
+                      [push setChannel:[NSString stringWithFormat:@"comments%@",self.post.author.objectId]];
                       [push setData:pushData];
-                      [push setQuery:pushQuery];
+
                       [push sendPushInBackgroundWithBlock:^(BOOL succeededPush, NSError *error)
                        {
                            if (succeededPush)
