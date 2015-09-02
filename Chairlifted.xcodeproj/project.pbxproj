@@ -21,6 +21,7 @@
 		BA215E231B87992E0087DBEB /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E221B87992E0087DBEB /* CreateGroupViewController.m */; };
 		BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */; };
 		BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */; };
+		BA3455611B9763160037E045 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3455601B9763160037E045 /* IntroViewController.m */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
 		BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C151B8253280083E71E /* AppDelegate.m */; };
 		BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C171B8253280083E71E /* Chairlifted.xcdatamodeld */; };
@@ -129,6 +130,8 @@
 		BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
 		BA215E291B8811AF0087DBEB /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		BA34555F1B9763160037E045 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		BA3455601B9763160037E045 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		BA6F8C0D1B8253270083E71E /* Chairlifted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chairlifted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6F8C111B8253270083E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6F8C121B8253280083E71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -489,6 +492,8 @@
 				BAD5753C1B900094000FB31F /* TopicsFeedViewController.m */,
 				FE319EED1B901466007E631D /* DiscoverResortsViewController.h */,
 				FE319EEE1B901466007E631D /* DiscoverResortsViewController.m */,
+				BA34555F1B9763160037E045 /* IntroViewController.h */,
+				BA3455601B9763160037E045 /* IntroViewController.m */,
 				BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */,
 				BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */,
 			);
@@ -681,6 +686,7 @@
 				BAE3D1A31B86AD9500BAC4EF /* GroupCustomTableViewCell.m in Sources */,
 				BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */,
 				FE8F1A0B1B8E6E2A00A22BD7 /* GroupMemberRespondRequestCellTableViewCell.m in Sources */,
+				BA3455611B9763160037E045 /* IntroViewController.m in Sources */,
 				BA215E1D1B8787940087DBEB /* GroupFeedHeaderTableViewCell.m in Sources */,
 				BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */,
 				FE319EEF1B901466007E631D /* DiscoverResortsViewController.m in Sources */,

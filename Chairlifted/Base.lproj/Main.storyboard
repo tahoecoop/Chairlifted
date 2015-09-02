@@ -689,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNO-0w-X0N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2380" y="-313"/>
+            <point key="canvasLocation" x="2912" y="-313"/>
         </scene>
         <!--Groups-->
         <scene sceneID="cXg-cD-Cn6">
@@ -2709,7 +2709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClS-Dw-Stt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309" y="-390"/>
+            <point key="canvasLocation" x="841" y="-390"/>
         </scene>
         <!--Topics Feed View Controller-->
         <scene sceneID="gbq-A2-dMO">
@@ -2987,7 +2987,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSd-fb-Scc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="-402"/>
+            <point key="canvasLocation" x="1656" y="-402"/>
         </scene>
         <!--Discover Resorts View Controller-->
         <scene sceneID="qxT-LA-djH">
@@ -3042,7 +3042,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfa-Vf-ENt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="-550"/>
+            <point key="canvasLocation" x="1237" y="-550"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="YRP-gw-WC4">
@@ -3301,16 +3301,6 @@
                                 <action selector="onSortButtonPressed:" destination="xOt-F3-d1s" id="ScV-xz-dNR"/>
                             </connections>
                         </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="Kjs-PK-zR6">
-                            <rect key="frame" x="96" y="6" width="128" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OPE-13-2HM">
-                                    <rect key="frame" x="8" y="0.0" width="128" height="33"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9sA-Vq-Lb0">
                             <connections>
                                 <action selector="createPostButtonPressed:" destination="xOt-F3-d1s" id="b2v-2L-wYc"/>
@@ -3320,6 +3310,7 @@
                     <connections>
                         <segue destination="4DD-lG-lYp" kind="modal" identifier="createPost" id="PUz-IB-R6f"/>
                         <segue destination="u08-6Y-v1Z" kind="modal" identifier="loginFirst" id="juL-cQ-eax"/>
+                        <segue destination="JUm-fW-En3" kind="modal" identifier="ToIntroSegue" id="1t2-gq-9nM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HSu-cw-s1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3347,7 +3338,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erb-er-BKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="-313"/>
+            <point key="canvasLocation" x="2538" y="-313"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jmP-LG-O4n">
@@ -4078,6 +4069,92 @@
             </objects>
             <point key="canvasLocation" x="178" y="2413"/>
         </scene>
+        <!--Intro View Controller-->
+        <scene sceneID="IZj-4m-wB3">
+            <objects>
+                <viewController id="AUf-WA-WN4" customClass="IntroViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="62K-gm-61t"/>
+                        <viewControllerLayoutGuide type="bottom" id="UaI-An-6mE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v7C-Dd-HGe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-eK-yag">
+                                <rect key="frame" x="96" y="329" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="KTd-ol-5Nr"/>
+                                    <constraint firstAttribute="width" constant="128" id="m7a-et-Yh2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chairlifted is for you!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-at-6IE">
+                                <rect key="frame" x="55" y="81" width="211" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="cw3-N5-z8B"/>
+                                    <constraint firstAttribute="width" constant="211" id="mDJ-h7-Xyx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover the mountains!" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FD-ty-DQR">
+                                <rect key="frame" x="56" y="297" width="208" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="O7M-M2-gj9"/>
+                                    <constraint firstAttribute="width" constant="208" id="dnL-uK-NXg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your great stories and memories in many topics.            " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjS-tg-c2g">
+                                <rect key="frame" x="16" y="116" width="288" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="Mzl-hE-LWT"/>
+                                    <constraint firstAttribute="width" constant="288" id="Zzy-9s-6o7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create and join groups to connect with other passionate riders and skiers.                  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-Br-JwB">
+                                <rect key="frame" x="16" y="191" width="288" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="BHV-9B-FDZ"/>
+                                    <constraint firstAttribute="height" constant="88" id="C1D-Yl-UIS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="1FD-ty-DQR" secondAttribute="centerX" id="7Vu-5D-FuD"/>
+                            <constraint firstAttribute="centerX" secondItem="9ik-eK-yag" secondAttribute="centerX" id="JIM-yc-Z52"/>
+                            <constraint firstAttribute="centerX" secondItem="uM7-Br-JwB" secondAttribute="centerX" id="LEh-3m-OIX"/>
+                            <constraint firstAttribute="centerX" secondItem="BjS-tg-c2g" secondAttribute="centerX" id="TjN-2X-fcU"/>
+                            <constraint firstItem="9ik-eK-yag" firstAttribute="top" secondItem="1FD-ty-DQR" secondAttribute="bottom" constant="8" id="XnS-2B-oEI"/>
+                            <constraint firstItem="1FD-ty-DQR" firstAttribute="top" secondItem="uM7-Br-JwB" secondAttribute="bottom" constant="18" id="ZvV-yX-Ndd"/>
+                            <constraint firstItem="uM7-Br-JwB" firstAttribute="top" secondItem="BjS-tg-c2g" secondAttribute="bottom" constant="-4" id="ePg-cS-L4y"/>
+                            <constraint firstItem="BjS-tg-c2g" firstAttribute="top" secondItem="9Ve-at-6IE" secondAttribute="bottom" constant="8" id="mih-dc-HKE"/>
+                            <constraint firstItem="9Ve-at-6IE" firstAttribute="top" secondItem="62K-gm-61t" secondAttribute="bottom" constant="17" id="phI-r6-Htj"/>
+                            <constraint firstAttribute="centerX" secondItem="9Ve-at-6IE" secondAttribute="centerX" id="uPq-k3-rnI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hWb-a0-ffg">
+                        <barButtonItem key="rightBarButtonItem" title="Start!" id="Xev-9T-qsL">
+                            <connections>
+                                <action selector="onStartButtonPressed:" destination="AUf-WA-WN4" id="uzy-7V-rJF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0og-1r-bdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-350" y="-402"/>
+        </scene>
         <!--Discover-->
         <scene sceneID="MIm-6p-rXW">
             <objects>
@@ -4097,7 +4174,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sg5-dO-wew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-147" y="-390"/>
+            <point key="canvasLocation" x="385" y="-390"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mU0-qS-bkn">
@@ -4137,8 +4214,27 @@
             </objects>
             <point key="canvasLocation" x="-729" y="320"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x7P-5j-Hy5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JUm-fW-En3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="grL-MR-8Cf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AUf-WA-WN4" kind="relationship" relationship="rootViewController" id="2jn-jS-CdV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7hI-F6-2hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-753" y="-402"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="AppIcon2" width="1024" height="1024"/>
         <image name="FeedUnselected" width="30" height="30"/>
         <image name="acceptIcon" width="30" height="30"/>
         <image name="cloudy" width="50" height="50"/>
@@ -4149,7 +4245,6 @@
         <image name="groupIcon40" width="40" height="40"/>
         <image name="heartEmptyIcon" width="30" height="30"/>
         <image name="lock" width="30" height="30"/>
-        <image name="logoIcon" width="500" height="500"/>
         <image name="newGroup" width="30" height="30"/>
         <image name="newPostIcon" width="30" height="30"/>
         <image name="rejectIcon33" width="33" height="33"/>
@@ -4164,12 +4259,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e9Z-DB-KJn"/>
         <segue reference="fGn-2G-lvj"/>
-        <segue reference="boM-rY-1tv"/>
+        <segue reference="PMH-qz-YDK"/>
+        <segue reference="juL-cQ-eax"/>
         <segue reference="H5x-1z-wpL"/>
-        <segue reference="AIY-s3-N9h"/>
-        <segue reference="eSN-dC-lKM"/>
         <segue reference="GLv-ub-mwA"/>
+        <segue reference="PUz-IB-R6f"/>
+        <segue reference="eSN-dC-lKM"/>
     </inferredMetricsTieBreakers>
 </document>

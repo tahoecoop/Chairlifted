@@ -64,18 +64,10 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-//    if (![User currentUser])
-//    {
-//        PFLogInViewController *loginVC = [PFLogInViewController new];
-//        loginVC.delegate = self;
-//        PFSignUpViewController *signupVC = [PFSignUpViewController new];
-//        signupVC.delegate = self;
-//        [loginVC setSignUpController:signupVC];
-//        [self presentViewController:loginVC animated:YES completion:nil];
-
-
-//        [self performSegueWithIdentifier:@"loginFirst" sender:self];
-//    }
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenIntro"])
+    {
+        [self performSegueWithIdentifier:@"ToIntroSegue" sender:self];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
