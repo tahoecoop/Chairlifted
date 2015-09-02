@@ -178,7 +178,7 @@
 
         for (JoinGroup *jg in self.myGroups)
         {
-            if ([jg.group.name isEqualToString: group.name] && [jg.user.username isEqualToString:[User currentUser].username])
+            if ([jg.group.name isEqualToString: group.name] && [jg.user.displayName isEqualToString:[User currentUser].displayName])
             {
                 joinGroup = jg;
             }

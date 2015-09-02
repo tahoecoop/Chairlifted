@@ -42,7 +42,7 @@
                 joinGroup.user = [User currentUser];
                 joinGroup.group = self.group;
                 joinGroup.groupName = self.group.name;
-                joinGroup.userUsername = [[User currentUser].username lowercaseString];
+                joinGroup.userUsername = [[User currentUser].displayName lowercaseString];
                 joinGroup.status = @"pending";
                 [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                  {
@@ -61,7 +61,7 @@
                 joinGroup.status = @"joined";
                 joinGroup.lastViewed = [NSDate date];
                 joinGroup.groupName = self.group.name;
-                joinGroup.userUsername = [[User currentUser].username lowercaseString];
+                joinGroup.userUsername = [[User currentUser].displayName lowercaseString];
                 [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                  {
                      if (succeeded)
