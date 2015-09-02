@@ -137,6 +137,7 @@
         headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
+        headerCell.shareButton.hidden = YES;
 
         if ([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"])
         {

@@ -18,5 +18,6 @@
 @property (nonatomic) Group *group;
 @property (nonatomic) JoinGroup *joinGroup;
 @property (strong, nonatomic) IBOutlet UIButton *createNewPostButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end

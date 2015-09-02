@@ -287,7 +287,7 @@
             if ([MFMailComposeViewController canSendMail])
             {
                 MFMailComposeViewController *mailer = [MFMailComposeViewController new];
-                mailer.delegate = self;
+                mailer.mailComposeDelegate = self;
 
                 [mailer setSubject:@"Report User"];
 
@@ -322,7 +322,7 @@
     if ([MFMailComposeViewController canSendMail])
     {
         MFMailComposeViewController *mailer = [MFMailComposeViewController new];
-        mailer.delegate = self;
+        mailer.mailComposeDelegate = self;
 
         [mailer setSubject:@"Check out this cool post on Chairlifted!"];
 
@@ -374,22 +374,26 @@
     switch (result)
     {
         case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
             break;
 
         case MFMailComposeResultFailed:
+            NSLog(@"Mail failed");
             break;
 
         case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
             break;
 
         case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
             break;
 
         default:
             break;
     }
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A215h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1335,6 +1335,7 @@
                                             <outlet property="groupNameLabel" destination="mXW-bX-SUO" id="RQi-kI-7GA"/>
                                             <outlet property="groupPurposeLabel" destination="uO7-aB-dR0" id="qct-fu-UzR"/>
                                             <outlet property="requestToJoinButton" destination="PWG-LN-NI8" id="j4W-EE-e6U"/>
+                                            <outlet property="shareButton" destination="pYY-PY-4td" id="CBd-pi-Hx1"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="116" id="D24-b7-20t" customClass="CustomFeedTableViewCell">

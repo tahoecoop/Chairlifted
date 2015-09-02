@@ -289,7 +289,7 @@
                 if ([MFMailComposeViewController canSendMail])
                 {
                     MFMailComposeViewController *mailer = [MFMailComposeViewController new];
-                    mailer.delegate = self;
+                    mailer.mailComposeDelegate = self;
 
                     [mailer setSubject:@"Report User"];
 
