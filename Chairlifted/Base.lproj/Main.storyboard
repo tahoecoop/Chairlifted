@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A215h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cl0-9I-TmS">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cl0-9I-TmS">
+                                <rect key="frame" x="0.0" y="-191" width="320" height="835"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -215,6 +215,9 @@
                                                         <constraint firstAttribute="width" constant="45" id="X8o-5H-esF"/>
                                                     </constraints>
                                                     <state key="normal" image="shareIcon"/>
+                                                    <connections>
+                                                        <action selector="onShareButtonPressed:" destination="tdP-05-5rf" eventType="touchUpInside" id="KKc-Mu-se1"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xmz-m6-Mci">
                                                     <rect key="frame" x="0.0" y="-428" width="320" height="568"/>
@@ -3789,6 +3792,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFb-AN-xXw">
                                                 <rect key="frame" x="9" y="459" width="42" height="30"/>
+                                                <animations/>
                                                 <state key="normal" title="About">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -3910,8 +3914,9 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Red-n7-VgQ">
                                 <rect key="frame" x="16" y="327" width="288" height="241"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">This privacy policy governs your use of the software application Chairlifted (“Application”) for mobile devices that was created by Benjamin Cooper, Eric Schofield, and Bradley Justice. The Application is a “ski and snowboard social network” used to converse and share information including, but not limited to, profile pictures, profile biographies, stories, and conversations.
+                                <string key="text">This privacy policy governs your use of the software application Chairlifted (“Application”) for mobile devices that was created by Benjamin Cooper, Eric Schofield, and Bradley Justice. The Application is a “ski and snowboard social network” used to converse and share information including, but not limited to, profile pictures, profile biographies, stories, and conversations.
 
  What information does the Application obtain and how is it used?
  
@@ -3995,54 +4000,62 @@ By using the Application, you are consenting to our processing of your informati
 Contact us
 
  
-If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at chairlifted.devteam@gmail.com.</mutableString>
+If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at chairlifted.devteam@gmail.com.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWQ-qH-sGM">
                                 <rect key="frame" x="91" y="304" width="121" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Chairlifted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhk-55-9A5">
                                 <rect key="frame" x="89" y="85" width="143" height="24"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envisioned and Created By:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmM-gD-Ryk">
                                 <rect key="frame" x="59" y="158" width="203" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eric Schofield" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIs-YS-2oC">
                                 <rect key="frame" x="104" y="187" width="112" height="23"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ben Cooper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-0W-23u">
                                 <rect key="frame" x="110" y="218" width="100" height="23"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bradley Justice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fde-cX-L4t">
                                 <rect key="frame" x="98" y="249" width="125" height="23"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-Jw-jKz">
                                 <rect key="frame" x="145" y="127" width="30" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="f2t-tk-ybb"/>
                                     <constraint firstAttribute="width" constant="30" id="nbJ-3y-f4G"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="fde-cX-L4t" secondAttribute="centerX" id="1a5-B9-SyM"/>
@@ -4247,6 +4260,7 @@ If you have any questions regarding privacy while using the Application, or have
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-eK-yag">
                                 <rect key="frame" x="96" y="329" width="128" height="128"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="KTd-ol-5Nr"/>
                                     <constraint firstAttribute="width" constant="128" id="m7a-et-Yh2"/>
@@ -4254,6 +4268,7 @@ If you have any questions regarding privacy while using the Application, or have
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chairlifted is for you!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-at-6IE">
                                 <rect key="frame" x="55" y="81" width="211" height="27"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="cw3-N5-z8B"/>
                                     <constraint firstAttribute="width" constant="211" id="mDJ-h7-Xyx"/>
@@ -4264,6 +4279,7 @@ If you have any questions regarding privacy while using the Application, or have
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover the mountains!" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FD-ty-DQR">
                                 <rect key="frame" x="56" y="297" width="208" height="24"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="O7M-M2-gj9"/>
                                     <constraint firstAttribute="width" constant="208" id="dnL-uK-NXg"/>
@@ -4274,6 +4290,7 @@ If you have any questions regarding privacy while using the Application, or have
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your great stories and memories in many topics.            " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjS-tg-c2g">
                                 <rect key="frame" x="16" y="116" width="288" height="79"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="Mzl-hE-LWT"/>
                                     <constraint firstAttribute="width" constant="288" id="Zzy-9s-6o7"/>
@@ -4284,6 +4301,7 @@ If you have any questions regarding privacy while using the Application, or have
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create and join groups to connect with other passionate riders and skiers.                  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-Br-JwB">
                                 <rect key="frame" x="16" y="191" width="288" height="88"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="288" id="BHV-9B-FDZ"/>
                                     <constraint firstAttribute="height" constant="88" id="C1D-Yl-UIS"/>
@@ -4293,6 +4311,7 @@ If you have any questions regarding privacy while using the Application, or have
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="1FD-ty-DQR" secondAttribute="centerX" id="7Vu-5D-FuD"/>
@@ -4386,6 +4405,7 @@ If you have any questions regarding privacy while using the Application, or have
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="grL-MR-8Cf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -4404,6 +4424,7 @@ If you have any questions regarding privacy while using the Application, or have
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qvl-kp-uFr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -4441,12 +4462,12 @@ If you have any questions regarding privacy while using the Application, or have
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ypa-Le-irg"/>
         <segue reference="fGn-2G-lvj"/>
         <segue reference="PMH-qz-YDK"/>
-        <segue reference="sE3-KK-I6P"/>
+        <segue reference="Vyn-fc-o24"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="GLv-ub-mwA"/>
         <segue reference="PUz-IB-R6f"/>
+        <segue reference="sE3-KK-I6P"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -40,6 +40,7 @@
 @property (nonatomic)int skipCount;
 @property (weak, nonatomic) IBOutlet UIImageView *blurredBGImage;
 @property (weak, nonatomic) IBOutlet UIView *blurredBackgroundView;
+@property (nonatomic) UIImage *postImage;
 
 @end
 
@@ -136,6 +137,7 @@
              {
                  cell.postImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
                  cell.postImageView.image = [UIImage imageWithData:data scale:1.0];
+                 self.postImage = cell.postImageView.image;
              }];
             
             return cell;
@@ -312,6 +314,41 @@
 
     }];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (IBAction)onShareButtonPressed:(UIButton *)button
+{
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [MFMailComposeViewController new];
+        mailer.delegate = self;
+
+        [mailer setSubject:@"Check out this cool post on Chairlifted!"];
+
+        NSString *emailBody = [NSString stringWithFormat:@"%@\n\n %@", self.post.title, self.post.text];
+
+        if (self.post.image)
+        {
+            NSData *postImage = UIImageJPEGRepresentation(self.postImage, 1.0);
+            [mailer addAttachmentData:postImage mimeType:@"image/jpeg" fileName:[NSString stringWithFormat:@"ChairliftedPhoto_%@", self.post.objectId]];
+        }
+
+        [mailer setMessageBody:emailBody isHTML:NO];
+
+        [self presentViewController:mailer animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Your device is not set up to send emails" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                               {
+                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                               }];
+
+        [alert addAction:okay];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 
