@@ -113,7 +113,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryh-oM-efv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryh-oM-efv">
                                                     <rect key="frame" x="8" y="19" width="304" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -4263,7 +4263,7 @@ If you have any questions regarding privacy while using the Application, or have
     <inferredMetricsTieBreakers>
         <segue reference="fGn-2G-lvj"/>
         <segue reference="mQS-Qm-PkY"/>
-        <segue reference="ypa-Le-irg"/>
+        <segue reference="Vyn-fc-o24"/>
         <segue reference="GLv-ub-mwA"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="AIY-s3-N9h"/>
