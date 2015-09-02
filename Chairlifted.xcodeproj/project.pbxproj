@@ -22,6 +22,7 @@
 		BA215E281B87FF560087DBEB /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E271B87FF560087DBEB /* ProfileHeaderTableViewCell.m */; };
 		BA215E2B1B8811AF0087DBEB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */; };
 		BA3455611B9763160037E045 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3455601B9763160037E045 /* IntroViewController.m */; };
+		BA3455641B976B7E0037E045 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3455631B976B7E0037E045 /* AboutViewController.m */; };
 		BA6F8C131B8253280083E71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C121B8253280083E71E /* main.m */; };
 		BA6F8C161B8253280083E71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C151B8253280083E71E /* AppDelegate.m */; };
 		BA6F8C191B8253280083E71E /* Chairlifted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C171B8253280083E71E /* Chairlifted.xcdatamodeld */; };
@@ -132,6 +133,8 @@
 		BA215E2A1B8811AF0087DBEB /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		BA34555F1B9763160037E045 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
 		BA3455601B9763160037E045 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		BA3455621B976B7E0037E045 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		BA3455631B976B7E0037E045 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		BA6F8C0D1B8253270083E71E /* Chairlifted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chairlifted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6F8C111B8253270083E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6F8C121B8253280083E71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				FE319EEE1B901466007E631D /* DiscoverResortsViewController.m */,
 				BA34555F1B9763160037E045 /* IntroViewController.h */,
 				BA3455601B9763160037E045 /* IntroViewController.m */,
+				BA3455621B976B7E0037E045 /* AboutViewController.h */,
+				BA3455631B976B7E0037E045 /* AboutViewController.m */,
 				BA962CE71B8B8ED2001B87C6 /* PPEmitterView.h */,
 				BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */,
 			);
@@ -678,6 +683,7 @@
 				BA6F8C851B8413000083E71E /* DetailHeaderTableViewCell.m in Sources */,
 				96FBDC241B94061500FEB799 /* PresentingAnimationController.m in Sources */,
 				BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */,
+				BA3455641B976B7E0037E045 /* AboutViewController.m in Sources */,
 				BA6F8C781B82C7E10083E71E /* UIAlertController+UIImagePicker.m in Sources */,
 				BA6F8C581B8280B90083E71E /* User.m in Sources */,
 				BA6F8C881B8413110083E71E /* DetailPostImageTableViewCell.m in Sources */,

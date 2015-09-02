@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A215h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mtb-gw-xtd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -503,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4B-fA-Rsx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="2101"/>
+            <point key="canvasLocation" x="2520" y="2101"/>
         </scene>
         <!--Make a post-->
         <scene sceneID="b85-NI-rX7">
@@ -1959,7 +1959,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Idv-8g-OMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3249" y="2067"/>
+            <point key="canvasLocation" x="3781" y="2067"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Mgz-Tq-csq">
@@ -2318,29 +2318,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqJ-TX-G0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-254" y="2423"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="LOa-rM-W3S">
-            <objects>
-                <viewController id="kYq-A7-ZyQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wu8-xz-LkZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wVJ-5k-HnT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TKt-d7-vK2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="bem-mE-yv4">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m9y-Bi-xha"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="nSv-IV-DOK"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ipK-vi-qD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="530" y="2423"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JMx-fs-Tuy">
@@ -3648,7 +3625,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTf-jf-ORH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTf-jf-ORH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQz-xZ-S2R" userLabel="Content View">
@@ -3707,8 +3684,8 @@
                                                     <action selector="onEditProfilePictureButtonPressed:" destination="OQS-CS-eyQ" eventType="touchUpInside" id="4Vs-CI-LQ6"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCN-rd-xdp">
-                                                <rect key="frame" x="259" y="458" width="46" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCN-rd-xdp">
+                                                <rect key="frame" x="259" y="459" width="46" height="30"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                 <state key="normal" title="Logout">
@@ -3810,10 +3787,20 @@
                                                     <outlet property="delegate" destination="OQS-CS-eyQ" id="Sxa-9U-1Eb"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFb-AN-xXw">
+                                                <rect key="frame" x="9" y="459" width="42" height="30"/>
+                                                <state key="normal" title="About">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="byb-c4-Doo" kind="modal" id="yXn-uX-QqY"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="KFb-AN-xXw" firstAttribute="leading" secondItem="PQz-xZ-S2R" secondAttribute="leading" constant="9" id="0FC-Na-kFZ"/>
                                             <constraint firstItem="8Mj-c2-rzn" firstAttribute="leading" secondItem="PQz-xZ-S2R" secondAttribute="leading" constant="33" id="1I7-Wy-Gfi"/>
                                             <constraint firstAttribute="trailing" secondItem="f4a-cu-xxZ" secondAttribute="trailing" constant="17" id="1hS-ba-rDW"/>
                                             <constraint firstItem="rvE-LW-Nhu" firstAttribute="top" secondItem="9s6-bD-M5T" secondAttribute="bottom" constant="16" id="7ix-DY-C8f"/>
@@ -3848,6 +3835,7 @@
                                             <constraint firstItem="Cic-VW-hXn" firstAttribute="top" secondItem="PQz-xZ-S2R" secondAttribute="top" constant="16" id="oc3-lP-Kc7"/>
                                             <constraint firstAttribute="trailing" secondItem="vsK-Bs-b7F" secondAttribute="trailing" constant="17" id="qNB-Xp-sVD"/>
                                             <constraint firstAttribute="width" constant="320" id="qhE-rB-g9C"/>
+                                            <constraint firstItem="KFb-AN-xXw" firstAttribute="top" secondItem="rvE-LW-Nhu" secondAttribute="bottom" constant="13" id="qwY-Ch-Xwo"/>
                                             <constraint firstItem="Ncg-Sy-QJz" firstAttribute="leading" secondItem="UPA-UX-yDc" secondAttribute="trailing" constant="118" id="rUl-EJ-9pa"/>
                                             <constraint firstItem="db9-7C-YWH" firstAttribute="top" secondItem="pfh-CB-blW" secondAttribute="bottom" constant="14" id="rwT-xj-pQx"/>
                                             <constraint firstItem="tCN-rd-xdp" firstAttribute="top" secondItem="rvE-LW-Nhu" secondAttribute="bottom" constant="13" id="sWN-r1-rss"/>
@@ -3907,6 +3895,188 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqL-3Z-Nft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="375" y="1755"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="5KB-3e-5F2">
+            <objects>
+                <viewController id="dKa-iv-GnS" customClass="AboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jNn-3I-3mJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="N8W-g8-Hse"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j0D-Lt-GxT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Red-n7-VgQ">
+                                <rect key="frame" x="16" y="327" width="288" height="241"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">This privacy policy governs your use of the software application Chairlifted (“Application”) for mobile devices that was created by Benjamin Cooper, Eric Schofield, and Bradley Justice. The Application is a “ski and snowboard social network” used to converse and share information including, but not limited to, profile pictures, profile biographies, stories, and conversations.
+
+ What information does the Application obtain and how is it used?
+ 
+User Provided Information 
+
+The Application obtains the information you provide when you download and register the Application. Registration with us is optional. However, please keep in mind that you may not be able to use some of the features offered by the Application unless you register with us.
+
+ 
+When you register with us and use the Application, you generally provide (a) email address, username, password and other registration information; (b) information you provide us when you contact us for help, and; (c) information you enter into our system when using the Application.
+
+ 
+If you connect to the Service using your Facebook credentials, you authorize us to collect your authentication information, such as your username, encrypted access credentials, and other information that may be available on or through your Facebook account, including your name, profile picture, country, hometown, e-mail address, date of birth, gender, friends’ names and profile pictures and networks.
+
+ 
+We may also use the information you provided us to contact your from time to time to provide you with important information, required notices and marketing promotions.
+
+ 
+ 
+Automatically Collected Information
+
+ 
+In addition, the Application may collect certain information automatically, including, but not limited to, the type of mobile device you use, your mobile devices unique device ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browsers you use, and information about the way you use the Application.
+
+  
+Do third parties see and/or have access to information obtained by the Application?
+
+ 
+Yes. We will share your information with third parties only in the ways that are described in this privacy statement.
+
+ 
+We may disclose User Provided and Automatically Collected Information:
+
+As required by law, such as to comply with a subpoena, or similar legal process;
+when we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;
+with our trusted services providers who work on our behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.
+if Chairlifted is involved in a merger, acquisition, or sale of all or a portion of its assets, you will be notified via a prominent notice on our Application of any change in ownership or uses of this information, as well as any choices you may have regarding this information.
+ 
+ 
+What are my opt-out rights?
+
+ 
+You can stop all collection of information by the Application easily by uninstalling the Application. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network. You can also request to opt-out via email, at chairlifted.devteam@gmail.com.
+
+ 
+ 
+Data Retention Policy
+
+ 
+We will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. We will retain Automatically Collected information for up to 24 months and thereafter may store it in aggregate. If you’d like us to delete User Provided Data that you have provided via the Application, please contact us at chairlifted.devteam@gmail.com and we will respond in a reasonable time. Please note that some or all of the User Provided Data may be required in order for the Application to function properly.
+
+ 
+ 
+Children
+
+ 
+We do not use the Application to knowingly solicit data from or market to children under the age of 13. If a parent or guardian becomes aware that his or her child has provided us with information without their consent, he or she should contact us at chairlifted.devteam@gmail.com. We will delete such information from our files within a reasonable time.
+
+ 
+ 
+Security
+
+ 
+We are concerned about safeguarding the confidentiality of your information. We provide physical, electronic, and procedural safeguards to protect information we process and maintain. For example, we limit access to this information to authorized employees and contractors who need to know that information in order to operate, develop or improve our Application. Please be aware that, although we endeavor provide reasonable security for information we process and maintain, no security system can prevent all potential security breaches.
+
+ 
+ 
+Changes
+
+ 
+This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
+
+ 
+ 
+Your Consent
+
+ 
+By using the Application, you are consenting to our processing of your information as set forth in this Privacy Policy now and as amended by us. “Processing,” means using cookies on a computer/hand held device or using or touching information in any way, including, but not limited to, collecting, storing, deleting, using, combining and disclosing information, all of which activities will take place in the United States. If you reside outside the United States your information will be transferred, processed and stored there under United States privacy standards.
+
+ 
+ 
+Contact us
+
+ 
+If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at chairlifted.devteam@gmail.com.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWQ-qH-sGM">
+                                <rect key="frame" x="91" y="304" width="121" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Chairlifted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhk-55-9A5">
+                                <rect key="frame" x="89" y="85" width="143" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envisioned and Created By:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmM-gD-Ryk">
+                                <rect key="frame" x="59" y="158" width="203" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eric Schofield" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIs-YS-2oC">
+                                <rect key="frame" x="104" y="187" width="112" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ben Cooper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-0W-23u">
+                                <rect key="frame" x="110" y="218" width="100" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bradley Justice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fde-cX-L4t">
+                                <rect key="frame" x="98" y="249" width="125" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-Jw-jKz">
+                                <rect key="frame" x="145" y="127" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="f2t-tk-ybb"/>
+                                    <constraint firstAttribute="width" constant="30" id="nbJ-3y-f4G"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="fde-cX-L4t" secondAttribute="centerX" id="1a5-B9-SyM"/>
+                            <constraint firstAttribute="centerX" secondItem="ObU-0W-23u" secondAttribute="centerX" id="4TT-yG-Sbc"/>
+                            <constraint firstAttribute="centerX" secondItem="Red-n7-VgQ" secondAttribute="centerX" id="EUJ-K6-EoN"/>
+                            <constraint firstItem="N8W-g8-Hse" firstAttribute="top" secondItem="Red-n7-VgQ" secondAttribute="bottom" id="HF6-BO-UUh"/>
+                            <constraint firstItem="Xhk-55-9A5" firstAttribute="top" secondItem="jNn-3I-3mJ" secondAttribute="bottom" constant="21" id="Hs8-Re-FD9"/>
+                            <constraint firstItem="mIs-YS-2oC" firstAttribute="top" secondItem="vmM-gD-Ryk" secondAttribute="bottom" constant="8" id="ION-8j-Rqr"/>
+                            <constraint firstItem="sWQ-qH-sGM" firstAttribute="top" secondItem="fde-cX-L4t" secondAttribute="bottom" constant="32" id="Iyh-Q5-uHN"/>
+                            <constraint firstItem="Red-n7-VgQ" firstAttribute="leading" secondItem="j0D-Lt-GxT" secondAttribute="leadingMargin" id="OTf-pa-YPL"/>
+                            <constraint firstItem="Red-n7-VgQ" firstAttribute="trailing" secondItem="j0D-Lt-GxT" secondAttribute="trailingMargin" id="U7Q-rz-rba"/>
+                            <constraint firstAttribute="centerX" secondItem="vmM-gD-Ryk" secondAttribute="centerX" id="fGG-yx-wjU"/>
+                            <constraint firstItem="fde-cX-L4t" firstAttribute="top" secondItem="ObU-0W-23u" secondAttribute="bottom" constant="8" id="hO8-Rc-xCk"/>
+                            <constraint firstItem="zeD-Jw-jKz" firstAttribute="top" secondItem="Xhk-55-9A5" secondAttribute="bottom" constant="18" id="lw1-oF-zTw"/>
+                            <constraint firstAttribute="centerX" secondItem="mIs-YS-2oC" secondAttribute="centerX" id="nxW-os-ylC"/>
+                            <constraint firstItem="Red-n7-VgQ" firstAttribute="top" secondItem="sWQ-qH-sGM" secondAttribute="bottom" constant="2" id="pFj-Gx-l3h"/>
+                            <constraint firstItem="ObU-0W-23u" firstAttribute="top" secondItem="mIs-YS-2oC" secondAttribute="bottom" constant="8" id="pjU-4y-aGI"/>
+                            <constraint firstAttribute="centerX" secondItem="Xhk-55-9A5" secondAttribute="centerX" id="qd7-Qx-h4z"/>
+                            <constraint firstAttribute="centerX" secondItem="zeD-Jw-jKz" secondAttribute="centerX" id="rPc-SL-Hul"/>
+                            <constraint firstItem="vmM-gD-Ryk" firstAttribute="top" secondItem="Xhk-55-9A5" secondAttribute="bottom" constant="49" id="tcN-fL-9Mr"/>
+                            <constraint firstAttribute="centerX" secondItem="sWQ-qH-sGM" secondAttribute="centerX" constant="8.5" id="wIM-42-sLx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2MY-ct-m7t">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="7n0-o8-8m4">
+                            <connections>
+                                <action selector="onCloseButtonPressed:" destination="dKa-iv-GnS" id="IbP-kR-Tz7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kxa-ka-AzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="988" y="2386"/>
         </scene>
         <!--Select State-->
         <scene sceneID="smY-zH-i7F">
@@ -4041,7 +4211,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFD-fI-1GW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615" y="2096"/>
+            <point key="canvasLocation" x="2147" y="2096"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zcd-hC-oAH">
@@ -4062,25 +4232,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6w-55-ypC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-16" y="1755"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Hat-6T-GjD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A4h-Kx-rbY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQW-Xs-04w">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="kYq-A7-ZyQ" kind="relationship" relationship="rootViewController" id="tZI-Qf-UbX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cWs-9w-SLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="178" y="2413"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="IZj-4m-wB3">
@@ -4245,6 +4396,24 @@
             </objects>
             <point key="canvasLocation" x="-753" y="-402"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3wf-jV-RaP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="byb-c4-Doo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qvl-kp-uFr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dKa-iv-GnS" kind="relationship" relationship="rootViewController" id="22C-rJ-V9g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kb8-1h-xdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="2386"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AppIcon2" width="1024" height="1024"/>
@@ -4272,12 +4441,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ypa-Le-irg"/>
         <segue reference="fGn-2G-lvj"/>
         <segue reference="PMH-qz-YDK"/>
-        <segue reference="juL-cQ-eax"/>
+        <segue reference="sE3-KK-I6P"/>
         <segue reference="H5x-1z-wpL"/>
         <segue reference="GLv-ub-mwA"/>
         <segue reference="PUz-IB-R6f"/>
-        <segue reference="eSN-dC-lKM"/>
     </inferredMetricsTieBreakers>
 </document>
