@@ -59,8 +59,13 @@
 
                          [push sendPushInBackground];
 
+                         
+                         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                         [currentInstallation addUniqueObject:[NSString stringWithFormat:@"group%@request%@", self.group.objectId, [User currentUser].displayName] forKey:@"channels"];
+
                          [activityView removeFromSuperview];
                          [button setTitle:@"Pending" forState:UIControlStateNormal];
+                         [self.delegate didEditJoinGroup];
                      }
                  }];
             }
@@ -84,6 +89,7 @@
                               {
                                   [activityView removeFromSuperview];
                                   [button setTitle:@"Leave group" forState:UIControlStateNormal];
+                                  [self.delegate didEditJoinGroup];
                               }
                           }];
                      }
@@ -103,6 +109,7 @@
                           {
                               [activityView removeFromSuperview];
                               [button setTitle:@"Join" forState:UIControlStateNormal];
+                              [self.delegate didEditJoinGroup];
                           }
                       }];
                  }

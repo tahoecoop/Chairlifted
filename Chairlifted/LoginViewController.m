@@ -169,8 +169,9 @@
                           user[@"friends"] = [NSArray arrayWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
                       }];
 
-                     UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"Choose a dsiplay name" message:@"Choose your display name." preferredStyle:UIAlertControllerStyleAlert];
-                     [vc addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                     UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"Choose a display name" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                     [vc addTextFieldWithConfigurationHandler:^(UITextField *textField)
+                     {
                          textField.placeholder = @"Display Name";
                      }];
                      UITextField *dName = [[vc textFields]firstObject];

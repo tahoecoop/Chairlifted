@@ -14,7 +14,6 @@
 #import "NetworkRequests.h"
 #import "CustomFeedWithPhotoTableViewCell.h"
 #import "PostDetailViewController.h"
-#import "GroupFeedHeaderTableViewCell.h"
 #import "CreatePostViewController.h"
 #import "UIImage+SkiSnowboardIcon.h"
 #import "UIImageView+SpinningFigure.h"
@@ -138,6 +137,7 @@
         headerCell.groupNameLabel.text = self.group.name;
         headerCell.groupPurposeLabel.text = self.group.purpose;
         headerCell.shareButton.hidden = YES;
+        headerCell.delegate = self;
 
         if ([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"])
         {
@@ -263,7 +263,8 @@
 
     PFInstallation *installation = [PFInstallation currentInstallation];
     UIAlertAction *notificationsAction;
-    if ([installation.channels containsObject:self.group.name])
+
+    if ([installation.channels containsObject:[NSString stringWithFormat:@"group%@", self.group.objectId]])
     {
         notificationsAction = [UIAlertAction actionWithTitle:@"Turn off notifications" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
        {
@@ -326,10 +327,26 @@
                              }];
 
     [alert addAction:sort];
-    [alert addAction:notificationsAction];
+
+    if ([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"])
+    {
+        [alert addAction:notificationsAction];
+    }
+
     [alert addAction:cancel];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+-(void)didEditJoinGroup
+{
+    [NetworkRequests getJoinGroupIfAlreadyJoinedWithGroup:self.group andCompletion:^(NSArray *array)
+    {
+        self.joinGroup = array.firstObject;
+        [self.tableView reloadData];
+        [self setUpGroupInfo];
+    }];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

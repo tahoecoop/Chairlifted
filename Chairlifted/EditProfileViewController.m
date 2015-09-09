@@ -103,7 +103,8 @@
 
 
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    if ([currentInstallation[@"likes"] boolValue])
+
+    if ([currentInstallation.channels containsObject:[NSString stringWithFormat:@"likes%@", [User currentUser].objectId]])
     {
         [self.likeSwitch setOn:YES];
     }
@@ -112,7 +113,7 @@
         [self.likeSwitch setOn:NO];
     }
 
-    if ([currentInstallation[@"comments"] boolValue])
+    if ([currentInstallation.channels containsObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId]])
     {
         [self.commentSwitch setOn:YES];
     }

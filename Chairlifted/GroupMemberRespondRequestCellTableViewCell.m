@@ -51,6 +51,19 @@
                 group.memberQuantity++;
                 [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                 {
+                    if (succeeded)
+                    {
+                        NSDictionary *pushData = @{
+                                                   @"alert" : [NSString stringWithFormat:@"Your request to join \"%@\" was just accepted!", self.joinGroup.groupName],
+                                                   @"badge" : @"Increment"
+                                                   };
+
+                        PFPush *push = [PFPush new];
+                        [push setChannel:[NSString stringWithFormat:@"group%@request%@", group.objectId, self.usernameLabel.text]];
+                        [push setData:pushData];
+
+                        [push sendPushInBackground];
+                    }
                     [self.delegate buttonWasTapped];
                 }];
             }];

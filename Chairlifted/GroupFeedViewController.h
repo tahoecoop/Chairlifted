@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Group.h"
 #import "JoinGroup.h"
+#import "GroupFeedHeaderTableViewCell.h"
 
-@interface GroupFeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GroupFeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, JoinGroupEditDelegate>
 
 @property (nonatomic) Group *group;
 @property (nonatomic) JoinGroup *joinGroup;

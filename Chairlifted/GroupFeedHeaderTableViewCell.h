@@ -10,6 +10,8 @@
 #import "Group.h"
 #import "JoinGroup.h"
 
+@protocol JoinGroupEditDelegate;
+
 @interface GroupFeedHeaderTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *groupImageView;
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
@@ -19,5 +21,12 @@
 @property (nonatomic) JoinGroup *joinGroup;
 @property (strong, nonatomic) IBOutlet UIButton *createNewPostButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (nonatomic) id<JoinGroupEditDelegate> delegate;
+
+@end
+
+@protocol JoinGroupEditDelegate <NSObject>
+
+-(void)didEditJoinGroup;
 
 @end
