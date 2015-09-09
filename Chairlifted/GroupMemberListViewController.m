@@ -9,6 +9,7 @@
 #import "GroupMemberListViewController.h"
 #import "GroupMemberRespondRequestCellTableViewCell.h"
 #import "NetworkRequests.h"
+#import "ProfileViewController.h"
 
 @interface GroupMemberListViewController ()
 
@@ -18,6 +19,7 @@
 @property (nonatomic) NSMutableArray *pendingMembers;
 @property (nonatomic) int joinedSkipCount;
 @property (nonatomic) int pendingSkipCount;
+@property (nonatomic) User *selectedUser;
 
 @end
 
@@ -143,6 +145,8 @@
             [user fetchIfNeededInBackgroundWithBlock:^(PFObject * object, NSError *error)
              {
                  cell.textLabel.text = user.displayName;
+                 cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:13.0];
+                 cell.textLabel.textColor = [UIColor colorWithRed:174.0/255.0 green:16.0/255.0 blue:13.0/255.0  alpha:1.0];
              }];
         }
         return cell;
@@ -190,9 +194,39 @@
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && [self.joinGroup.status isEqualToString:@"admin"] && self.pendingMembers.count > 0)
+    {
+        JoinGroup *joinGroup = self.pendingMembers[indexPath.row];
+        self.selectedUser = joinGroup.user;
+    }
+    else if (self.members.count > 0)
+    {
+        JoinGroup *joinGroup = self.members[indexPath.row];
+        self.selectedUser = joinGroup.user;
+    }
+
+    [self.selectedUser fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+     {
+         if (!error)
+         {
+             [self performSegueWithIdentifier:@"toGroupMemberProfile" sender:self];
+         }
+     }];
+}
+
+
 -(void)buttonWasTapped
 {
     [self getInfo];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ProfileViewController *vc = segue.destinationViewController;
+    vc.selectedUser = self.selectedUser;
 }
 
 @end
