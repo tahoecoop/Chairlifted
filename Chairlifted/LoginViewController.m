@@ -276,9 +276,9 @@
          }
          if ([User currentUser])
          {
-//             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-//             currentInstallation[@"user"] = [User currentUser];
-//             [currentInstallation saveInBackground];
+             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+             currentInstallation[@"user"] = [User currentUser];
+             [currentInstallation saveInBackground];
 
              [activityView removeFromSuperview];
              
@@ -287,7 +287,6 @@
                  [self registerForNotifications];
              }];
          }
-
      }];
 }
 
