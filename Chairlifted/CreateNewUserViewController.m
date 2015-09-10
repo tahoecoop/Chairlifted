@@ -79,7 +79,18 @@
              [currentInstallation saveInBackground];
 
              
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:^
+             {
+                 UIApplication *application = [UIApplication sharedApplication];
+                 UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                                 UIUserNotificationTypeBadge |
+                                                                 UIUserNotificationTypeSound);
+                 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                          categories:nil];
+
+                 [application registerUserNotificationSettings:settings];
+                 [application registerForRemoteNotifications];
+            }];
          }
      }];
 }
