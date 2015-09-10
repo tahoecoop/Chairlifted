@@ -69,6 +69,7 @@
 
     self.tagResortButton.layer.cornerRadius = self.tagResortButton.frame.size.width / 45;
     self.uploadPhotoButton.layer.cornerRadius = self.uploadPhotoButton.frame.size.width / 45;
+    self.bodyTextView.layer.cornerRadius = self.bodyTextView.frame.size.width / 70;
 
 
 

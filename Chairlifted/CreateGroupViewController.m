@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupPurposePlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (nonatomic) UIToolbar *keyboardToolbarTextview;
 
 
 @end
@@ -54,6 +55,8 @@
                                                                         constant:0];
     [self.view addConstraint:rightConstraint];
     self.uploadImageButton.layer.cornerRadius = self.uploadImageButton.bounds.size.width / 45;
+    self.groupTitleTextView.layer.cornerRadius = self.groupTitleTextView.frame.size.width / 70;
+    self.groupPurposeTextView.layer.cornerRadius = self.groupPurposeTextView.frame.size.width / 70;
 }
 
 
@@ -144,7 +147,7 @@
                       JoinGroup *joinGroup = [JoinGroup new];
                       joinGroup.group = group;
                       joinGroup.groupName = group.name;
-                      if (group.isPrivate)
+                      if ([group.isPrivate boolValue])
                       {
                           joinGroup.status = @"admin";
 
@@ -156,8 +159,6 @@
                                [currentInstallation addUniqueObject:[NSString stringWithFormat:@"group%@", groupForPush.objectId] forKey:@"channels"];
                                [currentInstallation addUniqueObject:[NSString stringWithFormat:@"admin%@", groupForPush.objectId] forKey:@"channels"];
                            }];
-
-
                       }
                       else
                       {
@@ -236,6 +237,22 @@
         }
     }
     [self checkIfCanPost];
+}
+
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
+    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
+    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignTextViewKeyboard)], nil];
+    [self.keyboardToolbarTextview sizeToFit];
+    textView.inputAccessoryView = self.keyboardToolbarTextview;
+    return YES;
+}
+
+-(void)resignTextViewKeyboard
+{
+    [self.groupPurposeTextView resignFirstResponder];
+    [self.groupTitleTextView resignFirstResponder];
 }
 
 @end

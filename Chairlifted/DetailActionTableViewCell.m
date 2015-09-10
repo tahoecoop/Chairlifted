@@ -38,10 +38,10 @@
 
         if ([sender.imageView.image isEqual:[UIImage imageNamed:@"heartEmptyIcon.pdf"]])
         {
-            self.like = [Like new];
-            self.like.liker = [User currentUser];
-            self.like.post = self.post;
-            [self.like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+            Like *like = [Like new];
+            like.liker = [User currentUser];
+            like.post = self.post;
+            [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
              {
                  if (succeeded)
                  {

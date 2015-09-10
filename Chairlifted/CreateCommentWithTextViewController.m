@@ -13,6 +13,9 @@
 
 @interface CreateCommentWithTextViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *commentTextPlaceholderLabel;
+@property (nonatomic) UIToolbar *keyboardToolbarTextview;
+
 @end
 
 @implementation CreateCommentWithTextViewController
@@ -20,8 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setUpPostInComments];
-    self.textView.layer.cornerRadius = 10.f;
+    self.textView.layer.cornerRadius = self.textView.frame.size.width / 70;
 
 }
 
@@ -75,14 +77,35 @@
               }];
          }
      }];
-
 }
 
+#pragma mark - Text View Methods
 
-
-- (void)setUpPostInComments
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    [self.textView becomeFirstResponder];
+    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
+    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
+    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignTextViewKeyboard)], nil];
+    [self.keyboardToolbarTextview sizeToFit];
+    textView.inputAccessoryView = self.keyboardToolbarTextview;
+    return YES;
+}
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length > 0)
+    {
+        self.commentTextPlaceholderLabel.hidden = YES;
+    }
+    else
+    {
+        self.commentTextPlaceholderLabel.hidden = NO;
+    }
+}
+
+-(void)resignTextViewKeyboard
+{
+    [self.textView resignFirstResponder];
 }
 
 @end

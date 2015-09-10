@@ -48,11 +48,11 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.shouldUpdateResort = YES;
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [self setUpUser];
 }
 

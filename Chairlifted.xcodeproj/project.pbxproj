@@ -63,7 +63,6 @@
 		BA6F8C911B8413510083E71E /* DetailCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F8C901B8413510083E71E /* DetailCommentTableViewCell.m */; };
 		BA757BFD1B84EC0100394195 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFC1B84EC0100394195 /* Resort.m */; };
 		BA757C001B84FB5A00394195 /* CreateCommentWithTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */; };
-		BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */; };
 		BA88E74E1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */; };
 		BA88E7541B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m in Sources */ = {isa = PBXBuildFile; fileRef = BA88E7531B8D1B74006D3CE6 /* UIImageView+SpinningFigure.m */; };
 		BA962CE91B8B8ED2001B87C6 /* PPEmitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA962CE81B8B8ED2001B87C6 /* PPEmitterView.m */; };
@@ -201,8 +200,6 @@
 		BA757BFC1B84EC0100394195 /* Resort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resort.m; sourceTree = "<group>"; };
 		BA757BFE1B84FB5A00394195 /* CreateCommentWithTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentWithTextViewController.h; sourceTree = "<group>"; };
 		BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithTextViewController.m; sourceTree = "<group>"; };
-		BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentWithImageViewController.h; sourceTree = "<group>"; };
-		BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentWithImageViewController.m; sourceTree = "<group>"; };
 		BA88E74C1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SkiSnowboardIcon.h"; sourceTree = "<group>"; };
 		BA88E74D1B8CDA97006D3CE6 /* UIImage+SkiSnowboardIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SkiSnowboardIcon.m"; sourceTree = "<group>"; };
 		BA88E7521B8D1B74006D3CE6 /* UIImageView+SpinningFigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SpinningFigure.h"; sourceTree = "<group>"; };
@@ -473,8 +470,6 @@
 				9648D03B1B83AB090062BA99 /* StatsViewController.m */,
 				BA757BFE1B84FB5A00394195 /* CreateCommentWithTextViewController.h */,
 				BA757BFF1B84FB5A00394195 /* CreateCommentWithTextViewController.m */,
-				BA757C011B84FB6B00394195 /* CreateCommentWithImageViewController.h */,
-				BA757C021B84FB6B00394195 /* CreateCommentWithImageViewController.m */,
 				BA215E181B8787170087DBEB /* GroupFeedViewController.h */,
 				BA215E191B8787170087DBEB /* GroupFeedViewController.m */,
 				BA215E211B87992E0087DBEB /* CreateGroupViewController.h */,
@@ -680,7 +675,6 @@
 				FE83A95E1B8FBAD5000D7D52 /* UIAlertController+ErrorAlert.m in Sources */,
 				BAE3D1971B853B2800BAC4EF /* Like.m in Sources */,
 				BAD5753A1B8FEFAD000FB31F /* DiscoverViewController.m in Sources */,
-				BA757C031B84FB6B00394195 /* CreateCommentWithImageViewController.m in Sources */,
 				BA6F8C661B8295CF0083E71E /* CreatePostViewController.m in Sources */,
 				BA6F8C691B8295E00083E71E /* PostDetailViewController.m in Sources */,
 				BA6F8C7B1B8386A20083E71E /* CustomFeedTableViewCell.m in Sources */,
