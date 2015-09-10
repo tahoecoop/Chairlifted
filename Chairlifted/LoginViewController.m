@@ -211,6 +211,8 @@
                                     {
                                         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
                                         currentInstallation[@"user"] = [User currentUser];
+                                        [currentInstallation addUniqueObject:[NSString stringWithFormat:@"likes%@", [User currentUser].objectId] forKey:@"channels"];
+                                        [currentInstallation addUniqueObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId] forKey:@"channels"];
                                         [currentInstallation saveInBackground];
 
                                         NSLog(@"%@", user);
@@ -278,6 +280,8 @@
          {
              PFInstallation *currentInstallation = [PFInstallation currentInstallation];
              currentInstallation[@"user"] = [User currentUser];
+             [currentInstallation addUniqueObject:[NSString stringWithFormat:@"likes%@", [User currentUser].objectId] forKey:@"channels"];
+             [currentInstallation addUniqueObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId] forKey:@"channels"];
              [currentInstallation saveInBackground];
 
              [activityView removeFromSuperview];

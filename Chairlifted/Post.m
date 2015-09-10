@@ -13,6 +13,7 @@
 @dynamic author;
 @dynamic text;
 @dynamic title;
+@dynamic lowercaseTitle;
 @dynamic image;
 @dynamic imageThumbnail;
 @dynamic createdAt;

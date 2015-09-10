@@ -88,7 +88,7 @@
     PFQuery *query = [Post query];
     [query orderByAscending:@"title"];
     [query includeKey:@"author"];
-    [query whereKey:@"title" containsString:searchTerm];
+    [query whereKey:@"lowercaseTitle" containsString:searchTerm];
     [query whereKey:@"isPrivate" equalTo:[NSNumber numberWithBool:NO]];
     [query orderByDescending:@"createdAt"];
     query.skip = skipCount;

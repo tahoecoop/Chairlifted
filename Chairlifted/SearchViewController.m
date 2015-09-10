@@ -17,8 +17,10 @@
 
 @property (nonatomic) NSMutableArray *results;
 @property (nonatomic) int skipCount;
+@property (nonatomic) UIToolbar *keyboardToolbarTextview;
 
 @end
+
 
 @implementation SearchViewController
 
@@ -185,9 +187,27 @@
     if ([self.searchBar.text isEqualToString:@""])
     {
         self.tableView.hidden = YES;
-        [searchBar resignFirstResponder];
     }
 }
+
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
+    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
+    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignSearchBarKeyboard)], nil];
+    [self.keyboardToolbarTextview sizeToFit];
+    searchBar.inputAccessoryView = self.keyboardToolbarTextview;
+
+    return YES;
+}
+
+
+- (void)resignSearchBarKeyboard
+{
+    [self.searchBar resignFirstResponder];
+}
+
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

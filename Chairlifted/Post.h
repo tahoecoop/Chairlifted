@@ -18,6 +18,7 @@
 @property (nonatomic) User *author;
 @property (nonatomic) NSString *text;
 @property (nonatomic) NSString *title;
+@property (nonatomic) NSString *lowercaseTitle;
 @property (nonatomic) PFFile *image;
 @property (nonatomic) PFFile *imageThumbnail;
 @property (nonatomic) NSDate *createdAt;

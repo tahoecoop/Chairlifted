@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) int skipCount;
+@property (nonatomic) UIToolbar *keyboardToolbarTextview;
 
 @end
 
@@ -206,13 +207,31 @@
     NSString *searchText = [searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (searchText.length > 0)
     {
-        [NetworkRequests getPostsFromSearch:searchText WithSkipCount:0 andCompletion:^(NSArray *array)
+        [NetworkRequests getPostsFromSearch:[searchText lowercaseString] WithSkipCount:0 andCompletion:^(NSArray *array)
         {
             self.posts = [NSMutableArray arrayWithArray:array];
             [activityView removeFromSuperview];
             [self.tableView reloadData];
         }];
     }
+}
+
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    self.keyboardToolbarTextview = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, 50)];
+    self.keyboardToolbarTextview.barStyle = UIBarStyleDefault;
+    self.keyboardToolbarTextview.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignSearchBarKeyboard)], nil];
+    [self.keyboardToolbarTextview sizeToFit];
+    searchBar.inputAccessoryView = self.keyboardToolbarTextview;
+
+    return YES;
+}
+
+
+- (void)resignSearchBarKeyboard
+{
+    [self.searchBar resignFirstResponder];
 }
 
 

@@ -99,10 +99,11 @@
     [self.view addSubview:activityView];
     [spinnerImageView rotateLayerInfinite];
 
-
+    NSString *title = [self.postTitleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
     Post *post = [Post new];
-    post.title = self.postTitleTextField.text;
+    post.title = title;
+    post.lowercaseTitle = [title lowercaseString];
     post.text = self.bodyTextView.text;
     post.postTopic = self.topicTextField.text;
 
