@@ -78,19 +78,17 @@
              [currentInstallation addUniqueObject:[NSString stringWithFormat:@"comments%@", [User currentUser].objectId] forKey:@"channels"];
              [currentInstallation saveInBackground];
 
-             
-            [self dismissViewControllerAnimated:YES completion:^
-             {
-                 UIApplication *application = [UIApplication sharedApplication];
-                 UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                                 UIUserNotificationTypeBadge |
-                                                                 UIUserNotificationTypeSound);
-                 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                                          categories:nil];
+             UIApplication *application = [UIApplication sharedApplication];
+             UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                             UIUserNotificationTypeBadge |
+                                                             UIUserNotificationTypeSound);
+             UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                      categories:nil];
 
-                 [application registerUserNotificationSettings:settings];
-                 [application registerForRemoteNotifications];
-            }];
+             [application registerUserNotificationSettings:settings];
+             [application registerForRemoteNotifications];
+
+            [self dismissViewControllerAnimated:YES completion:nil];
          }
      }];
 }
