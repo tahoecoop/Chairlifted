@@ -40,7 +40,10 @@
 {
     if ([User currentUser])
     {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^
+        {
+            [self registerForNotifications];
+        }];
     }
 }
 
@@ -240,7 +243,6 @@
 
                  }
              }
-
          }
          else
          {
