@@ -62,6 +62,7 @@
 
     // Register for Push Notitications
 
+
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     tabBarController.tabBar.tintColor = [UIColor lightGrayColor];
 
