@@ -155,6 +155,7 @@
                       }
                       joinGroup.user = [User currentUser];
                       joinGroup.lastViewed = [NSDate date];
+                      joinGroup.userUsername = [User currentUser].displayName;
                       [joinGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                        {
                            [NetworkRequests checkIfGroupNameExists:group.name andCompletion:^(NSArray *array)
