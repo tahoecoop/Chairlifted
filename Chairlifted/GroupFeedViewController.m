@@ -46,6 +46,7 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.posts = [NSMutableArray new];
     self.continueLoading = YES;
     self.sortSelection = SortSelectionHottest;
