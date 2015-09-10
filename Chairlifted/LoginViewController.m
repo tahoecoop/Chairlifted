@@ -211,8 +211,13 @@
                                         [currentInstallation saveInBackground];
 
                                         NSLog(@"%@", user);
+
                                         [activityView removeFromSuperview];
-                                        [self performSegueWithIdentifier:@"newUser" sender:set];
+
+                                        [self dismissViewControllerAnimated:YES completion:^
+                                        {
+                                            [self registerForNotifications];
+                                        }];
                                     }];
                                }
                            }];
@@ -228,7 +233,10 @@
                  {
 
                      NSLog(@"User with facebook logged in!");
-                     [self dismissViewControllerAnimated:YES completion:nil];
+                     [self dismissViewControllerAnimated:YES completion:^
+                     {
+                         [self registerForNotifications];
+                     }];
 
                  }
              }
@@ -266,13 +274,16 @@
          }
          if ([User currentUser])
          {
-             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-             currentInstallation[@"user"] = [User currentUser];
-             [currentInstallation saveInBackground];
-             
+//             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+//             currentInstallation[@"user"] = [User currentUser];
+//             [currentInstallation saveInBackground];
+
              [activityView removeFromSuperview];
              
-             [self dismissViewControllerAnimated:YES completion:nil];
+             [self dismissViewControllerAnimated:YES completion:^
+             {
+                 [self registerForNotifications];
+             }];
          }
 
      }];
@@ -321,6 +332,21 @@
 }
 
 
+
+#pragma mark - Register for Push Notifications
+
+-(void)registerForNotifications
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+}
 
 @end
 
