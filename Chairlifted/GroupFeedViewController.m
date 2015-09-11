@@ -106,7 +106,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([self.group.isPrivate boolValue] && (![self.joinGroup.status isEqualToString:@"joined"] || ![self.joinGroup.status isEqualToString:@"admin"]))
+    if ([self.group.isPrivate boolValue] && !([self.joinGroup.status isEqualToString:@"joined"] || [self.joinGroup.status isEqualToString:@"admin"]))
     {
         return 1;
     }
