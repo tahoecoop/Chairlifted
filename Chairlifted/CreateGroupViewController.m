@@ -156,7 +156,6 @@
                                Group *groupForPush = array.firstObject;
 
                                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                               [currentInstallation addUniqueObject:[NSString stringWithFormat:@"group%@", groupForPush.objectId] forKey:@"channels"];
                                [currentInstallation addUniqueObject:[NSString stringWithFormat:@"admin%@", groupForPush.objectId] forKey:@"channels"];
                            }];
                       }
